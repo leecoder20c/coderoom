@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /libs/
+Allow: /$
+
+Sitemap: http://www.sk.com/sitemap.xml

@@ -1,8 +1,102 @@
-<!DOCTYPE>
-<html>
+<!DOCTYPE html>
+<html lang="ko" dir="ltr">
 <head>
-  <title>My pages</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- SEO -->
+  <meta name="Author" content="sj_LEE" />
+  <meta name="robots" content="index,follow" />
+  <meta name="googlebot" content="archive" />
+
+  <title>Leecoder's Coderoom</title>
+
+  <!-- 공통 플러그인 -->
+  <script src="https://code.jquery.com/jquery-3.5.0.slim.min.js" integrity="sha256-MlusDLJIP1GRgLrOflUQtshyP0TwT/RHXsI1wWGnQhs=" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+
+  <!-- 크로스브라우징 -->
+  <!--[if lt IE 9]>
+   <script src="./libs/plugin/html5shiv.min.js"></script>
+  <![endif]-->
+
+  <!-- 스타일시트 -->
+  <link rel="stylesheet" href="./lib/css/reset.css" />
+
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <script>
+    $(function(){
+     //
+    });
+  </script>
 </head>
-<body>
+<body data-page="index">
+  <!-- 크로스브라우징 IE8 이하 경고 -->
+  <!--[if lt IE 9]><div class="legacy-browser">
+  <div class="legacy-pad"><p>현재 사용중인 브라우저는 지원이 중단된 브라우저입니다.<br>	원활한 온라인 서비스를 위해 브라우저를 <a href="http://windows.microsoft.com/ko-kr/internet-explorer/ie-11-worldwide-languages" target="_blank">최신 버전</a>으로 업데이트 해주시길 바랍니다.	</p></div>
+  </div><![endif]-->
+
+  <!-- 스킵네비 -->
+  <div class="skip-wrap">
+    <a href="#skip-gnb" class="skip-nav">GNB 영역 바로가기</a>
+    <a href="#skip-main" class="skip-nav">본문 영역 바로가기</a>
+  </div>
+
+  <!-- 헤더 -->
+  <header class="ly-header">
+    <!-- 로고 -->
+    <h1>홈페이지명</h1>
+    <!-- 네비 -->
+    <nav>
+      <h2>네비게이션</h2>
+      <h3>네비1</h3>
+      <h3>네비2</h3>
+      <h3>네비3</h3>
+      <h3>네비4</h3>
+    </nav>
+  </header>
+
+  <!-- 메인 -->
+  <main role="main" class="ly-main" tabindex="0" id="skip-main">
+    <!-- 헬퍼 -->
+    <p is-hidden>안보임</p>
+    <p class="blind hide">숨김</p>
+    <p only-mobile class="only-mobile">모바일 전용</p>
+    <p only-desktop class="only-desktop">데스크탑 전용</p>
+    <!-- 섹션 -->
+    <section>
+      <h2>섹션-같은 성격을 묶을 때(영역)</h2>
+      <p>섹션 내용</p>
+      <article>
+        <h2>포스트1</h2>
+      </article>
+      <article>
+        <h2>포스트2</h2>
+      </article>
+      <article>
+        <h2>포스트3</h2>
+      </article>
+    </section>
+
+    <!-- 아티클 -->
+    <article>
+      <header><h2>아티클-독립적 내용(포스트)</h2></header>
+      <p>아티클 내용</p>
+    </article>
+  </main>
+
+  <!-- 푸터 -->
+  <footer class="ly-footer">
+    <p>푸터</p>
+  </footer>
+
+  <!-- 페이지 개별 스크립트 -->
+  <script>
+    
+  </script>
 </body>
 </html>
