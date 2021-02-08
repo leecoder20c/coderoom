@@ -306,33 +306,42 @@
           <div class="wind-speed"><span class="blind">풍속</span><span class="value"></span> 노트</div>
         </div>
       </div>
-      <div class="notice">본 저작물은 공공누리 제1유형으로 개방한 한국환경공단 국가대기오염정보 조회 서비스를 활용하였습니다.</div>
+      <!-- <div class="notice">본 저작물은 공공누리 제1유형으로 개방한 한국환경공단 국가대기오염정보 조회 서비스를 활용하였습니다.</div> -->
     </div>
     <!-- //콘텐츠 -->
   </div>
   <!-- //웨더 앱 -->
   <script>
     /* api 정보 : https://openweathermap.org/forecast5 */
-    var city = "Seoul";
-    var lang = "kr";
-    var geo = {lat:37.646809,lon:127.0580746};//노원구 *Todo 사용자 위치데이터 퍼미션 -> 조회
-    var exclude = "alerts";//전체 보기
-    var getForecastDay = function(UTC) {
-      var utc = UTC*1000;
-      var time = new Date(utc);
-      return time.getDate();
+    var forecast = {
+      city: "Seoul",
+      lang: "kr",
+      geo: {
+        lat: 37.646809,
+        lon: 127.0580746
+      },//노원구 *Todo 사용자 위치데이터 퍼미션 -> 조회
+      exclude: "alerts",//전체 보기
+      getForecastDay: function(UTC) {
+        var utc = UTC*1000;
+        var time = new Date(utc);
+        return time.getDate();
+      },
+      getForecastHour: function(UTC) {
+        var utc = UTC*1000;
+        var time = new Date(utc);
+        return time.getHours();
+      },
+      weatherUrl: function() {
+        return "https://api.openweathermap.org/data/2.5/weather?q="+this.city+"&appid="+"1c40f42436a06d02eff28e1526d29217"+"&lang="+this.lang;
+      },
+      onecallUrl: function() {
+        return "https://api.openweathermap.org/data/2.5/onecall?lat="+this.geo.lat+"&lon="+this.geo.lon+"&exclude="+this.exclude+"&appid="+"1c40f42436a06d02eff28e1526d29217"+"&lang="+this.lang;
+      }
     };
-    var getForecastHour = function(UTC) {
-      var utc = UTC*1000;
-      var time = new Date(utc);
-      return time.getHours();
-    };
-    var today = "https://api.openweathermap.org/data/2.5/weather?q="+city+"&appid="+"1c40f42436a06d02eff28e1526d29217"+"&lang="+lang;
-    var onecall = "https://api.openweathermap.org/data/2.5/onecall?lat="+geo.lat+"&lon="+geo.lon+"&exclude="+exclude+"&appid="+"1c40f42436a06d02eff28e1526d29217"+"&lang="+lang;
     //현재 날씨
     (function updateNow() {
       $.ajax({
-        url: today,
+        url: forecast.weatherUrl(),
         dataType: "json",
         type: "GET",
         async: "false",
@@ -366,14 +375,14 @@
     //시간별 날씨
     (function updateHourly() {
       $.ajax({
-        url: onecall,
+        url: forecast.onecallUrl(),
         dataType: "json",
         type: "GET",
         async: "false",
         success: function(resp) {
           //console.log(resp);
           for (i=0;i<resp.hourly.length;i++) {
-            $('.weather-wrap .forecast.eachHour .time'+i).find('.date .value').text(getForecastHour(resp.hourly[i].dt)+':00');
+            $('.weather-wrap .forecast.eachHour .time'+i).find('.date .value').text(forecast.getForecastHour(resp.hourly[i].dt)+':00');
             $('.weather-wrap .forecast.eachHour .time'+i).find('.temperature .value').text(parseInt(resp.hourly[i].temp - 273.15));
             $('.weather-wrap .forecast.eachHour .time'+i).find('.weather-img .icon').attr('src', './lib/images/weather/icon/'+resp.hourly[i].weather[0].main+'.png');
             $('.weather-wrap .forecast.eachHour .time'+i).find('.desc .value').text(resp.hourly[i].weather[0].description);
@@ -387,14 +396,14 @@
     //한주간 날씨
     (function updateOnecall() {
       $.ajax({
-        url: onecall,
+        url: forecast.onecallUrl(),
         dataType: "json",
         type: "GET",
         async: "false",
         success: function(resp) {
           //console.log(resp);
           for (i=0;i<resp.daily.length;i++) {
-            $('.weather-wrap .forecast.daily .time'+i).find('.date .value').text(getForecastDay(resp.daily[i].dt));
+            $('.weather-wrap .forecast.daily .time'+i).find('.date .value').text(forecast.getForecastDay(resp.daily[i].dt));
             $('.weather-wrap .forecast.daily .time'+i).find('.temp-min .value').text(parseInt(resp.daily[i].temp.min - 273.15));
             $('.weather-wrap .forecast.daily .time'+i).find('.temp-max .value').text(parseInt(resp.daily[i].temp.max - 273.15));
             $('.weather-wrap .forecast.daily .time'+i).find('.weather-img .icon').attr('src', './lib/images/weather/icon/'+resp.daily[i].weather[0].main+'.png');
@@ -425,23 +434,23 @@
 
     //미세먼지 API
     var mimun = {
-      key: "serviceKey=bqe2eZbyRVgn4WUOJVUwtct8lxVxy%2B%2BaDAW3bywvmgTHVKaztYZz5qBJQcQOe%2BQVj%2FuuvbPCMHDh6Yz5ZFYlRw%3D%3D",
-      numOfRows: "&numOfRows=10",
-      pageNo: "&pageNo=1",
-      sidoName: "&sidoName=%EC%84%9C%EC%9A%B8",
-      ver: "&ver=1.3"
+      key: "bqe2eZbyRVgn4WUOJVUwtct8lxVxy%2B%2BaDAW3bywvmgTHVKaztYZz5qBJQcQOe%2BQVj%2FuuvbPCMHDh6Yz5ZFYlRw%3D%3D",
+      numOfRows: "40",//출력 개수
+      pageNo: "1",
+      sidoName: "%EC%84%9C%EC%9A%B8",//서울
+      ver: "1.3",
+      url: function() {
+        return "http://openapi.airkorea.or.kr/openapi/services/rest/ArpltnInforInqireSvc/getCtprvnRltmMesureDnsty?serviceKey="+this.key+"&numOfRows="+this.numOfRows+"&pageNo="+this.pageNo+"&sidoName="+this.sidoName+"&ver="+this.ver;
+      }
     };
-    var mimunUrl =  "http://openapi.airkorea.or.kr/openapi/services/rest/ArpltnInforInqireSvc/getCtprvnRltmMesureDnsty?"+mimun.key+mimun.numOfRows+mimun.pageNo+mimun.sidoName+mimun.ver;
-    var xmlTest = null;
     (function updateMimun() {
       $.ajax({
-        url: mimunUrl,
+        url: mimun.url(),
         dataType: "json",
         type: "GET",
         async: "false",
         success: function(xml) {
-          console.log(xml);
-          xmlTest = xml;
+          //console.log(xml);
         }
       }).then(function() {
         setTimeout(updateMimun, 6000000);//10분마다 실행
