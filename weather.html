@@ -77,7 +77,7 @@
         </script>
         <div class="temperature"><span class="blind">온도</span><span class="value"></span><span class="unit">˚C</span></div>
         <div class="feels-like"><span class="blind">체감 온도</span><span class="value"></span><span class="unit">˚C</span></div>
-        <div class="temp-minmax"><span class="temp-min">MIN <span class="blind">최고</span><span class="value"></span><span class="unit">˚C</span></span> / <span class="temp-max">MAX <span class="blind">최저</span><span class="value"></span><span class="unit">˚C</span></span></div>
+        <div class="temp-minmax"><span class="temp-min">MIN <span class="blind">최고</span><span class="value"></span><span class="unit">˚C</span></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span class="temp-max">MAX <span class="blind">최저</span><span class="value"></span><span class="unit">˚C</span></span></div>
         <div class="humidity"><div class="icon"><?xml version="1.0" encoding="iso-8859-1"?><!-- Generator: Adobe Illustrator 18.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  --><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 25.906 25.906" style="enable-background:new 0 0 25.906 25.906;" xml:space="preserve"><g><path style="fill:#4dc3ff;" d="M12.953,0c0,0-9,10.906-9,16.906c0,4.971,4.029,9,9,9s9-4.029,9-9C21.953,10.906,12.953,0,12.953,0z M9.026,17.496c0,1.426,0.668,4.25,1.134,5.426c-3.042-1.494-3.846-4.425-3.846-6.463c0-3.173,3.684-7.824,5.777-12.149 C11.861,6.581,9.026,13.177,9.026,17.496z"/></g></svg></div><span class="value"></span><span class="unit">%</span></div>
         <div class="weather"><img src="./lib/images/weather/icon/default.png" class="icon" draggable="false"></div>
         <div class="desc"><span class="blind">날씨설명</span><span class="value"></span></div>
@@ -343,7 +343,7 @@
           $('.weather-wrap .today .temp-min .value').text(parseInt(resp.main.temp_min - 273.15));//최저
           $('.weather-wrap .today .pressure .value').text(resp.main.pressure);//기압
           $('.weather-wrap .today .humidity .value').text(resp.main.humidity);//습도
-          $('.weather-wrap .today .humidity .progress .bar').css('width', resp.main.humidity+'%');//습도
+          $('.weather-wrap .today').css('background-image', 'linear-gradient(180deg, #51127f '+resp.main.humidity+'%, #d70a84 100%)');//습도
             if(resp.main.humidity > 60) {$('.weather-wrap .today .humidity .progress .bar').css('background','blue');} //습함
             if(resp.main.humidity < 59) {$('.weather-wrap .today .humidity .progress .bar').css('background','skyblue');} //좋음
             if(resp.main.humidity < 40) {$('.weather-wrap .today .humidity .progress .bar').css('background','gray');} //건조
