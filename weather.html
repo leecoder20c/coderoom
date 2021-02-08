@@ -82,7 +82,7 @@
         <div class="weather"><img src="./lib/images/weather/icon/default.png" class="icon" draggable="false"></div>
         <div class="desc"><span class="blind">날씨설명</span><span class="value"></span></div>
       </div>
-      <div class="notice">Last updated <span class="time"></span></div>
+      <div class="notice">OpenWeather®, Last updated <span class="time"></span></div>
       <div class="forecast eachHour">
         <h3 class="blind">1시간 예보</h3>
         <div class="time time1">
@@ -306,6 +306,7 @@
           <div class="wind-speed"><span class="blind">풍속</span><span class="value"></span> 노트</div>
         </div>
       </div>
+      <div class="notice">본 저작물은 공공누리 제1유형으로 개방한 한국환경공단 국가대기오염정보 조회 서비스를 활용하였습니다.</div>
     </div>
     <!-- //콘텐츠 -->
   </div>
@@ -405,7 +406,6 @@
         setTimeout(updateOnecall, 7200000);//120분마다 실행
       });
     })();
-
     /*Descripttions 
       Clouds 구름
       Snow 눈
@@ -422,6 +422,31 @@
       Ash 잿더미
       Squall 돌풍
       Tornado 태풍 */
+
+    //미세먼지 API
+    var mimun = {
+      key: "serviceKey=bqe2eZbyRVgn4WUOJVUwtct8lxVxy%2B%2BaDAW3bywvmgTHVKaztYZz5qBJQcQOe%2BQVj%2FuuvbPCMHDh6Yz5ZFYlRw%3D%3D",
+      numOfRows: "&numOfRows=10",
+      pageNo: "&pageNo=1",
+      sidoName: "&sidoName=%EC%84%9C%EC%9A%B8",
+      ver: "&ver=1.3"
+    };
+    var mimunUrl =  "http://openapi.airkorea.or.kr/openapi/services/rest/ArpltnInforInqireSvc/getCtprvnRltmMesureDnsty?"+mimun.key+mimun.numOfRows+mimun.pageNo+mimun.sidoName+mimun.ver;
+    var xmlTest = null;
+    (function updateMimun() {
+      $.ajax({
+        url: mimunUrl,
+        dataType: "json",
+        type: "GET",
+        async: "false",
+        success: function(xml) {
+          console.log(xml);
+          xmlTest = xml;
+        }
+      }).then(function() {
+        setTimeout(updateMimun, 6000000);//10분마다 실행
+      });
+    })();
   </script>
 </body>
 </html>
