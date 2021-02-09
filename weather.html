@@ -351,6 +351,13 @@
         success: function(resp) {
           //console.log(resp);
           $('.weather-wrap .today .bg').attr("style","background-image: url('./lib/images/weather/"+resp.weather[0].main+".jpg');");//날씨별 배경
+            /*온도별 날씨이미지 개별화*/
+            if(parseInt(resp.main.temp - 273.15) < -7) {
+              $('.weather-wrap .today .bg').attr("style","background-image: url('./lib/images/weather/Cold.jpg');");//추운 날
+            }
+            if(parseInt(resp.main.temp - 273.15) > 27) {
+              $('.weather-wrap .today .bg').attr("style","background-image: url('./lib/images/weather/Hot.jpg');");//더운 날
+            }
           $('.weather-wrap .today .temperature .value').text(parseInt(resp.main.temp - 273.15));//온도
           $('.weather-wrap .today .feels-like .value').text(parseInt(resp.main.feels_like - 273.15));//체감
           $('.weather-wrap .today .temp-max .value').text(parseInt(resp.main.temp_max - 273.15));//최대
