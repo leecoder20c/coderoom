@@ -66,6 +66,7 @@
     <div class="content">
       <div class="today">
         <h3 class="blind">현재 날씨</h3>
+        <div class="bg"></div>
         <div class="current-time">00:00</div>
         <script>
           (function currentTime() {
@@ -84,224 +85,226 @@
       </div>
       <div class="notice">OpenWeather®, Last updated <span class="time"></span></div>
       <div class="forecast eachHour">
-        <h3 class="blind">1시간 예보</h3>
-        <div class="time time1">
-          <div class="date"><span class="blind">시간</span><span class="value"></span></div>
-          <div class="weather-img"><span class="blind">날씨</span><img src="./lib/images/weather/icon/default.png" class="icon" draggable="false"></div>
-          <div class="temperature"><span class="blind">온도</span><span class="value"></span><span class="unit">˚C</span></div>
-          <div class="desc"><span class="blind">날씨설명</span><span class="value"></span></div>
-          <div class="wind-speed"><span class="blind">풍속</span><span class="value"></span> 노트</div>
-        </div>
-        <div class="time time2">
-          <div class="date"><span class="blind">시간</span><span class="value"></span></div>
-          <div class="weather-img"><span class="blind">날씨</span><img src="./lib/images/weather/icon/default.png" class="icon" draggable="false"></div>
-          <div class="temperature"><span class="blind">온도</span><span class="value"></span><span class="unit">˚C</span></div>
-          <div class="desc"><span class="blind">날씨설명</span><span class="value"></span></div>
-          <div class="wind-speed"><span class="blind">풍속</span><span class="value"></span> 노트</div>
-        </div>
-        <div class="time time3">
-          <div class="date"><span class="blind">시간</span><span class="value"></span></div>
-          <div class="weather-img"><span class="blind">날씨</span><img src="./lib/images/weather/icon/default.png" class="icon" draggable="false"></div>
-          <div class="temperature"><span class="blind">온도</span><span class="value"></span><span class="unit">˚C</span></div>
-          <div class="desc"><span class="blind">날씨설명</span><span class="value"></span></div>
-          <div class="wind-speed"><span class="blind">풍속</span><span class="value"></span> 노트</div>
-        </div>
-        <div class="time time4">
-          <div class="date"><span class="blind">시간</span><span class="value"></span></div>
-          <div class="weather-img"><span class="blind">날씨</span><img src="./lib/images/weather/icon/default.png" class="icon" draggable="false"></div>
-          <div class="temperature"><span class="blind">온도</span><span class="value"></span><span class="unit">˚C</span></div>
-          <div class="desc"><span class="blind">날씨설명</span><span class="value"></span></div>
-          <div class="wind-speed"><span class="blind">풍속</span><span class="value"></span> 노트</div>
-        </div>
-        <div class="time time5">
-          <div class="date"><span class="blind">시간</span><span class="value"></span></div>
-          <div class="weather-img"><span class="blind">날씨</span><img src="./lib/images/weather/icon/default.png" class="icon" draggable="false"></div>
-          <div class="temperature"><span class="blind">온도</span><span class="value"></span><span class="unit">˚C</span></div>
-          <div class="desc"><span class="blind">날씨설명</span><span class="value"></span></div>
-          <div class="wind-speed"><span class="blind">풍속</span><span class="value"></span> 노트</div>
-        </div>
-        <div class="time time6">
-          <div class="date"><span class="blind">시간</span><span class="value"></span></div>
-          <div class="weather-img"><span class="blind">날씨</span><img src="./lib/images/weather/icon/default.png" class="icon" draggable="false"></div>
-          <div class="temperature"><span class="blind">온도</span><span class="value"></span><span class="unit">˚C</span></div>
-          <div class="desc"><span class="blind">날씨설명</span><span class="value"></span></div>
-          <div class="wind-speed"><span class="blind">풍속</span><span class="value"></span> 노트</div>
-        </div>
-        <div class="time time7">
-          <div class="date"><span class="blind">시간</span><span class="value"></span></div>
-          <div class="weather-img"><span class="blind">날씨</span><img src="./lib/images/weather/icon/default.png" class="icon" draggable="false"></div>
-          <div class="temperature"><span class="blind">온도</span><span class="value"></span><span class="unit">˚C</span></div>
-          <div class="desc"><span class="blind">날씨설명</span><span class="value"></span></div>
-          <div class="wind-speed"><span class="blind">풍속</span><span class="value"></span> 노트</div>
-        </div>
-        <div class="time time8">
-          <div class="date"><span class="blind">시간</span><span class="value"></span></div>
-          <div class="weather-img"><span class="blind">날씨</span><img src="./lib/images/weather/icon/default.png" class="icon" draggable="false"></div>
-          <div class="temperature"><span class="blind">온도</span><span class="value"></span><span class="unit">˚C</span></div>
-          <div class="desc"><span class="blind">날씨설명</span><span class="value"></span></div>
-          <div class="wind-speed"><span class="blind">풍속</span><span class="value"></span> 노트</div>
-        </div>
-        <div class="time time9">
-          <div class="date"><span class="blind">시간</span><span class="value"></span></div>
-          <div class="weather-img"><span class="blind">날씨</span><img src="./lib/images/weather/icon/default.png" class="icon" draggable="false"></div>
-          <div class="temperature"><span class="blind">온도</span><span class="value"></span><span class="unit">˚C</span></div>
-          <div class="desc"><span class="blind">날씨설명</span><span class="value"></span></div>
-          <div class="wind-speed"><span class="blind">풍속</span><span class="value"></span> 노트</div>
-        </div>
-        <div class="time time10">
-          <div class="date"><span class="blind">시간</span><span class="value"></span></div>
-          <div class="weather-img"><span class="blind">날씨</span><img src="./lib/images/weather/icon/default.png" class="icon" draggable="false"></div>
-          <div class="temperature"><span class="blind">온도</span><span class="value"></span><span class="unit">˚C</span></div>
-          <div class="desc"><span class="blind">날씨설명</span><span class="value"></span></div>
-          <div class="wind-speed"><span class="blind">풍속</span><span class="value"></span> 노트</div>
-        </div>
-        <div class="time time11">
-          <div class="date"><span class="blind">시간</span><span class="value"></span></div>
-          <div class="weather-img"><span class="blind">날씨</span><img src="./lib/images/weather/icon/default.png" class="icon" draggable="false"></div>
-          <div class="temperature"><span class="blind">온도</span><span class="value"></span><span class="unit">˚C</span></div>
-          <div class="desc"><span class="blind">날씨설명</span><span class="value"></span></div>
-          <div class="wind-speed"><span class="blind">풍속</span><span class="value"></span> 노트</div>
-        </div>
-        <div class="time time12">
-          <div class="date"><span class="blind">시간</span><span class="value"></span></div>
-          <div class="weather-img"><span class="blind">날씨</span><img src="./lib/images/weather/icon/default.png" class="icon" draggable="false"></div>
-          <div class="temperature"><span class="blind">온도</span><span class="value"></span><span class="unit">˚C</span></div>
-          <div class="desc"><span class="blind">날씨설명</span><span class="value"></span></div>
-          <div class="wind-speed"><span class="blind">풍속</span><span class="value"></span> 노트</div>
-        </div>
-        <div class="time time13">
-          <div class="date"><span class="blind">시간</span><span class="value"></span></div>
-          <div class="weather-img"><span class="blind">날씨</span><img src="./lib/images/weather/icon/default.png" class="icon" draggable="false"></div>
-          <div class="temperature"><span class="blind">온도</span><span class="value"></span><span class="unit">˚C</span></div>
-          <div class="desc"><span class="blind">날씨설명</span><span class="value"></span></div>
-          <div class="wind-speed"><span class="blind">풍속</span><span class="value"></span> 노트</div>
-        </div>
-        <div class="time time14">
-          <div class="date"><span class="blind">시간</span><span class="value"></span></div>
-          <div class="weather-img"><span class="blind">날씨</span><img src="./lib/images/weather/icon/default.png" class="icon" draggable="false"></div>
-          <div class="temperature"><span class="blind">온도</span><span class="value"></span><span class="unit">˚C</span></div>
-          <div class="desc"><span class="blind">날씨설명</span><span class="value"></span></div>
-          <div class="wind-speed"><span class="blind">풍속</span><span class="value"></span> 노트</div>
-        </div>
-        <div class="time time15">
-          <div class="date"><span class="blind">시간</span><span class="value"></span></div>
-          <div class="weather-img"><span class="blind">날씨</span><img src="./lib/images/weather/icon/default.png" class="icon" draggable="false"></div>
-          <div class="temperature"><span class="blind">온도</span><span class="value"></span><span class="unit">˚C</span></div>
-          <div class="desc"><span class="blind">날씨설명</span><span class="value"></span></div>
-          <div class="wind-speed"><span class="blind">풍속</span><span class="value"></span> 노트</div>
-        </div>
-        <div class="time time16">
-          <div class="date"><span class="blind">시간</span><span class="value"></span></div>
-          <div class="weather-img"><span class="blind">날씨</span><img src="./lib/images/weather/icon/default.png" class="icon" draggable="false"></div>
-          <div class="temperature"><span class="blind">온도</span><span class="value"></span><span class="unit">˚C</span></div>
-          <div class="desc"><span class="blind">날씨설명</span><span class="value"></span></div>
-          <div class="wind-speed"><span class="blind">풍속</span><span class="value"></span> 노트</div>
-        </div>
-        <div class="time time17">
-          <div class="date"><span class="blind">시간</span><span class="value"></span></div>
-          <div class="weather-img"><span class="blind">날씨</span><img src="./lib/images/weather/icon/default.png" class="icon" draggable="false"></div>
-          <div class="temperature"><span class="blind">온도</span><span class="value"></span><span class="unit">˚C</span></div>
-          <div class="desc"><span class="blind">날씨설명</span><span class="value"></span></div>
-          <div class="wind-speed"><span class="blind">풍속</span><span class="value"></span> 노트</div>
-        </div>
-        <div class="time time18">
-          <div class="date"><span class="blind">시간</span><span class="value"></span></div>
-          <div class="weather-img"><span class="blind">날씨</span><img src="./lib/images/weather/icon/default.png" class="icon" draggable="false"></div>
-          <div class="temperature"><span class="blind">온도</span><span class="value"></span><span class="unit">˚C</span></div>
-          <div class="desc"><span class="blind">날씨설명</span><span class="value"></span></div>
-          <div class="wind-speed"><span class="blind">풍속</span><span class="value"></span> 노트</div>
-        </div>
-        <div class="time time19">
-          <div class="date"><span class="blind">시간</span><span class="value"></span></div>
-          <div class="weather-img"><span class="blind">날씨</span><img src="./lib/images/weather/icon/default.png" class="icon" draggable="false"></div>
-          <div class="temperature"><span class="blind">온도</span><span class="value"></span><span class="unit">˚C</span></div>
-          <div class="desc"><span class="blind">날씨설명</span><span class="value"></span></div>
-          <div class="wind-speed"><span class="blind">풍속</span><span class="value"></span> 노트</div>
-        </div>
-        <div class="time time20">
-          <div class="date"><span class="blind">시간</span><span class="value"></span></div>
-          <div class="weather-img"><span class="blind">날씨</span><img src="./lib/images/weather/icon/default.png" class="icon" draggable="false"></div>
-          <div class="temperature"><span class="blind">온도</span><span class="value"></span><span class="unit">˚C</span></div>
-          <div class="desc"><span class="blind">날씨설명</span><span class="value"></span></div>
-          <div class="wind-speed"><span class="blind">풍속</span><span class="value"></span> 노트</div>
-        </div>
-        <div class="time time21">
-          <div class="date"><span class="blind">시간</span><span class="value"></span></div>
-          <div class="weather-img"><span class="blind">날씨</span><img src="./lib/images/weather/icon/default.png" class="icon" draggable="false"></div>
-          <div class="temperature"><span class="blind">온도</span><span class="value"></span><span class="unit">˚C</span></div>
-          <div class="desc"><span class="blind">날씨설명</span><span class="value"></span></div>
-          <div class="wind-speed"><span class="blind">풍속</span><span class="value"></span> 노트</div>
-        </div>
-        <div class="time time22">
-          <div class="date"><span class="blind">시간</span><span class="value"></span></div>
-          <div class="weather-img"><span class="blind">날씨</span><img src="./lib/images/weather/icon/default.png" class="icon" draggable="false"></div>
-          <div class="temperature"><span class="blind">온도</span><span class="value"></span><span class="unit">˚C</span></div>
-          <div class="desc"><span class="blind">날씨설명</span><span class="value"></span></div>
-          <div class="wind-speed"><span class="blind">풍속</span><span class="value"></span> 노트</div>
-        </div>
-        <div class="time time23">
-          <div class="date"><span class="blind">시간</span><span class="value"></span></div>
-          <div class="weather-img"><span class="blind">날씨</span><img src="./lib/images/weather/icon/default.png" class="icon" draggable="false"></div>
-          <div class="temperature"><span class="blind">온도</span><span class="value"></span><span class="unit">˚C</span></div>
-          <div class="desc"><span class="blind">날씨설명</span><span class="value"></span></div>
-          <div class="wind-speed"><span class="blind">풍속</span><span class="value"></span> 노트</div>
-        </div>
-        <div class="time time24">
-          <div class="date"><span class="blind">시간</span><span class="value"></span></div>
-          <div class="weather-img"><span class="blind">날씨</span><img src="./lib/images/weather/icon/default.png" class="icon" draggable="false"></div>
-          <div class="temperature"><span class="blind">온도</span><span class="value"></span><span class="unit">˚C</span></div>
-          <div class="desc"><span class="blind">날씨설명</span><span class="value"></span></div>
-          <div class="wind-speed"><span class="blind">풍속</span><span class="value"></span> 노트</div>
+        <h3 class="tit">시간별 날씨</h3>
+        <div class="scroll-wrap">
+          <div class="time time1">
+            <div class="temperature"><span class="blind">온도</span><span class="value"></span><span class="unit">˚C</span></div>
+            <div class="weather-img"><img src="./lib/images/weather/icon/default.png" alt="날씨 아이콘" class="icon" draggable="false"></div>
+            <div class="desc"><span class="blind">날씨설명</span><span class="value"></span></div>
+            <div class="date"><span class="blind">시간</span><span class="value"></span></div>
+            <div class="wind-speed"><span class="blind">풍속</span><span class="value"></span> 노트</div>
+          </div>
+          <div class="time time2">
+            <div class="temperature"><span class="blind">온도</span><span class="value"></span><span class="unit">˚C</span></div>
+            <div class="weather-img"><img src="./lib/images/weather/icon/default.png" alt="날씨 아이콘" class="icon" draggable="false"></div>
+            <div class="desc"><span class="blind">날씨설명</span><span class="value"></span></div>
+            <div class="date"><span class="blind">시간</span><span class="value"></span></div>
+            <div class="wind-speed"><span class="blind">풍속</span><span class="value"></span> 노트</div>
+          </div>
+          <div class="time time3">
+            <div class="temperature"><span class="blind">온도</span><span class="value"></span><span class="unit">˚C</span></div>
+            <div class="weather-img"><img src="./lib/images/weather/icon/default.png" alt="날씨 아이콘" class="icon" draggable="false"></div>
+            <div class="desc"><span class="blind">날씨설명</span><span class="value"></span></div>
+            <div class="date"><span class="blind">시간</span><span class="value"></span></div>
+            <div class="wind-speed"><span class="blind">풍속</span><span class="value"></span> 노트</div>
+          </div>
+          <div class="time time4">
+            <div class="temperature"><span class="blind">온도</span><span class="value"></span><span class="unit">˚C</span></div>
+            <div class="weather-img"><img src="./lib/images/weather/icon/default.png" alt="날씨 아이콘" class="icon" draggable="false"></div>
+            <div class="desc"><span class="blind">날씨설명</span><span class="value"></span></div>
+            <div class="date"><span class="blind">시간</span><span class="value"></span></div>
+            <div class="wind-speed"><span class="blind">풍속</span><span class="value"></span> 노트</div>
+          </div>
+          <div class="time time5">
+            <div class="temperature"><span class="blind">온도</span><span class="value"></span><span class="unit">˚C</span></div>
+            <div class="weather-img"><img src="./lib/images/weather/icon/default.png" alt="날씨 아이콘" class="icon" draggable="false"></div>
+            <div class="desc"><span class="blind">날씨설명</span><span class="value"></span></div>
+            <div class="date"><span class="blind">시간</span><span class="value"></span></div>
+            <div class="wind-speed"><span class="blind">풍속</span><span class="value"></span> 노트</div>
+          </div>
+          <div class="time time6">
+            <div class="temperature"><span class="blind">온도</span><span class="value"></span><span class="unit">˚C</span></div>
+            <div class="weather-img"><img src="./lib/images/weather/icon/default.png" alt="날씨 아이콘" class="icon" draggable="false"></div>
+            <div class="desc"><span class="blind">날씨설명</span><span class="value"></span></div>
+            <div class="date"><span class="blind">시간</span><span class="value"></span></div>
+            <div class="wind-speed"><span class="blind">풍속</span><span class="value"></span> 노트</div>
+          </div>
+          <div class="time time7">
+            <div class="temperature"><span class="blind">온도</span><span class="value"></span><span class="unit">˚C</span></div>
+            <div class="weather-img"><img src="./lib/images/weather/icon/default.png" alt="날씨 아이콘" class="icon" draggable="false"></div>
+            <div class="desc"><span class="blind">날씨설명</span><span class="value"></span></div>
+            <div class="date"><span class="blind">시간</span><span class="value"></span></div>
+            <div class="wind-speed"><span class="blind">풍속</span><span class="value"></span> 노트</div>
+          </div>
+          <div class="time time8">
+            <div class="temperature"><span class="blind">온도</span><span class="value"></span><span class="unit">˚C</span></div>
+            <div class="weather-img"><img src="./lib/images/weather/icon/default.png" alt="날씨 아이콘" class="icon" draggable="false"></div>
+            <div class="desc"><span class="blind">날씨설명</span><span class="value"></span></div>
+            <div class="date"><span class="blind">시간</span><span class="value"></span></div>
+            <div class="wind-speed"><span class="blind">풍속</span><span class="value"></span> 노트</div>
+          </div>
+          <div class="time time9">
+            <div class="temperature"><span class="blind">온도</span><span class="value"></span><span class="unit">˚C</span></div>
+            <div class="weather-img"><img src="./lib/images/weather/icon/default.png" alt="날씨 아이콘" class="icon" draggable="false"></div>
+            <div class="desc"><span class="blind">날씨설명</span><span class="value"></span></div>
+            <div class="date"><span class="blind">시간</span><span class="value"></span></div>
+            <div class="wind-speed"><span class="blind">풍속</span><span class="value"></span> 노트</div>
+          </div>
+          <div class="time time10">
+            <div class="temperature"><span class="blind">온도</span><span class="value"></span><span class="unit">˚C</span></div>
+            <div class="weather-img"><img src="./lib/images/weather/icon/default.png" alt="날씨 아이콘" class="icon" draggable="false"></div>
+            <div class="desc"><span class="blind">날씨설명</span><span class="value"></span></div>
+            <div class="date"><span class="blind">시간</span><span class="value"></span></div>
+            <div class="wind-speed"><span class="blind">풍속</span><span class="value"></span> 노트</div>
+          </div>
+          <div class="time time11">
+            <div class="temperature"><span class="blind">온도</span><span class="value"></span><span class="unit">˚C</span></div>
+            <div class="weather-img"><img src="./lib/images/weather/icon/default.png" alt="날씨 아이콘" class="icon" draggable="false"></div>
+            <div class="desc"><span class="blind">날씨설명</span><span class="value"></span></div>
+            <div class="date"><span class="blind">시간</span><span class="value"></span></div>
+            <div class="wind-speed"><span class="blind">풍속</span><span class="value"></span> 노트</div>
+          </div>
+          <div class="time time12">
+            <div class="temperature"><span class="blind">온도</span><span class="value"></span><span class="unit">˚C</span></div>
+            <div class="weather-img"><img src="./lib/images/weather/icon/default.png" alt="날씨 아이콘" class="icon" draggable="false"></div>
+            <div class="desc"><span class="blind">날씨설명</span><span class="value"></span></div>
+            <div class="date"><span class="blind">시간</span><span class="value"></span></div>
+            <div class="wind-speed"><span class="blind">풍속</span><span class="value"></span> 노트</div>
+          </div>
+          <div class="time time13">
+            <div class="temperature"><span class="blind">온도</span><span class="value"></span><span class="unit">˚C</span></div>
+            <div class="weather-img"><img src="./lib/images/weather/icon/default.png" alt="날씨 아이콘" class="icon" draggable="false"></div>
+            <div class="desc"><span class="blind">날씨설명</span><span class="value"></span></div>
+            <div class="date"><span class="blind">시간</span><span class="value"></span></div>
+            <div class="wind-speed"><span class="blind">풍속</span><span class="value"></span> 노트</div>
+          </div>
+          <div class="time time14">
+            <div class="temperature"><span class="blind">온도</span><span class="value"></span><span class="unit">˚C</span></div>
+            <div class="weather-img"><img src="./lib/images/weather/icon/default.png" alt="날씨 아이콘" class="icon" draggable="false"></div>
+            <div class="desc"><span class="blind">날씨설명</span><span class="value"></span></div>
+            <div class="date"><span class="blind">시간</span><span class="value"></span></div>
+            <div class="wind-speed"><span class="blind">풍속</span><span class="value"></span> 노트</div>
+          </div>
+          <div class="time time15">
+            <div class="temperature"><span class="blind">온도</span><span class="value"></span><span class="unit">˚C</span></div>
+            <div class="weather-img"><img src="./lib/images/weather/icon/default.png" alt="날씨 아이콘" class="icon" draggable="false"></div>
+            <div class="desc"><span class="blind">날씨설명</span><span class="value"></span></div>
+            <div class="date"><span class="blind">시간</span><span class="value"></span></div>
+            <div class="wind-speed"><span class="blind">풍속</span><span class="value"></span> 노트</div>
+          </div>
+          <div class="time time16">
+            <div class="temperature"><span class="blind">온도</span><span class="value"></span><span class="unit">˚C</span></div>
+            <div class="weather-img"><img src="./lib/images/weather/icon/default.png" alt="날씨 아이콘" class="icon" draggable="false"></div>
+            <div class="desc"><span class="blind">날씨설명</span><span class="value"></span></div>
+            <div class="date"><span class="blind">시간</span><span class="value"></span></div>
+            <div class="wind-speed"><span class="blind">풍속</span><span class="value"></span> 노트</div>
+          </div>
+          <div class="time time17">
+            <div class="temperature"><span class="blind">온도</span><span class="value"></span><span class="unit">˚C</span></div>
+            <div class="weather-img"><img src="./lib/images/weather/icon/default.png" alt="날씨 아이콘" class="icon" draggable="false"></div>
+            <div class="desc"><span class="blind">날씨설명</span><span class="value"></span></div>
+            <div class="date"><span class="blind">시간</span><span class="value"></span></div>
+            <div class="wind-speed"><span class="blind">풍속</span><span class="value"></span> 노트</div>
+          </div>
+          <div class="time time18">
+            <div class="temperature"><span class="blind">온도</span><span class="value"></span><span class="unit">˚C</span></div>
+            <div class="weather-img"><img src="./lib/images/weather/icon/default.png" alt="날씨 아이콘" class="icon" draggable="false"></div>
+            <div class="desc"><span class="blind">날씨설명</span><span class="value"></span></div>
+            <div class="date"><span class="blind">시간</span><span class="value"></span></div>
+            <div class="wind-speed"><span class="blind">풍속</span><span class="value"></span> 노트</div>
+          </div>
+          <div class="time time19">
+            <div class="temperature"><span class="blind">온도</span><span class="value"></span><span class="unit">˚C</span></div>
+            <div class="weather-img"><img src="./lib/images/weather/icon/default.png" alt="날씨 아이콘" class="icon" draggable="false"></div>
+            <div class="desc"><span class="blind">날씨설명</span><span class="value"></span></div>
+            <div class="date"><span class="blind">시간</span><span class="value"></span></div>
+            <div class="wind-speed"><span class="blind">풍속</span><span class="value"></span> 노트</div>
+          </div>
+          <div class="time time20">
+            <div class="temperature"><span class="blind">온도</span><span class="value"></span><span class="unit">˚C</span></div>
+            <div class="weather-img"><img src="./lib/images/weather/icon/default.png" alt="날씨 아이콘" class="icon" draggable="false"></div>
+            <div class="desc"><span class="blind">날씨설명</span><span class="value"></span></div>
+            <div class="date"><span class="blind">시간</span><span class="value"></span></div>
+            <div class="wind-speed"><span class="blind">풍속</span><span class="value"></span> 노트</div>
+          </div>
+          <div class="time time21">
+            <div class="temperature"><span class="blind">온도</span><span class="value"></span><span class="unit">˚C</span></div>
+            <div class="weather-img"><img src="./lib/images/weather/icon/default.png" alt="날씨 아이콘" class="icon" draggable="false"></div>
+            <div class="desc"><span class="blind">날씨설명</span><span class="value"></span></div>
+            <div class="date"><span class="blind">시간</span><span class="value"></span></div>
+            <div class="wind-speed"><span class="blind">풍속</span><span class="value"></span> 노트</div>
+          </div>
+          <div class="time time22">
+            <div class="temperature"><span class="blind">온도</span><span class="value"></span><span class="unit">˚C</span></div>
+            <div class="weather-img"><img src="./lib/images/weather/icon/default.png" alt="날씨 아이콘" class="icon" draggable="false"></div>
+            <div class="desc"><span class="blind">날씨설명</span><span class="value"></span></div>
+            <div class="date"><span class="blind">시간</span><span class="value"></span></div>
+            <div class="wind-speed"><span class="blind">풍속</span><span class="value"></span> 노트</div>
+          </div>
+          <div class="time time23">
+            <div class="temperature"><span class="blind">온도</span><span class="value"></span><span class="unit">˚C</span></div>
+            <div class="weather-img"><img src="./lib/images/weather/icon/default.png" alt="날씨 아이콘" class="icon" draggable="false"></div>
+            <div class="desc"><span class="blind">날씨설명</span><span class="value"></span></div>
+            <div class="date"><span class="blind">시간</span><span class="value"></span></div>
+            <div class="wind-speed"><span class="blind">풍속</span><span class="value"></span> 노트</div>
+          </div>
+          <div class="time time24">
+            <div class="temperature"><span class="blind">온도</span><span class="value"></span><span class="unit">˚C</span></div>
+            <div class="weather-img"><img src="./lib/images/weather/icon/default.png" alt="날씨 아이콘" class="icon" draggable="false"></div>
+            <div class="desc"><span class="blind">날씨설명</span><span class="value"></span></div>
+            <div class="date"><span class="blind">시간</span><span class="value"></span></div>
+            <div class="wind-speed"><span class="blind">풍속</span><span class="value"></span> 노트</div>
+          </div>
         </div>
       </div>
       <div class="forecast daily">
-        <h3 class="blind">일별 예보</h3>
+        <h3 class="tit">주간 날씨</h3>
         <div class="time time1">
-          <div class="date"><span class="blind">날짜</span><span class=""></span>내일</div>
-          <div class="weather-img"><span class="blind">날씨</span><img src="./lib/images/weather/icon/default.png" class="icon" draggable="false"></div>
-          <div class="temperature"><span class="temp-min"><span class="blind">최저 기온</span><span class="value"></span><span class="unit">˚C</span></span>/<span class="temp-max"><span class="blind">최고 기온</span><span class="value"></span><span class="unit">˚C</span></span></div>
+          <div class="date"><span class="blind">날짜</span><span class="value"></span>일<span class="tip">(내일)</span></div>
+          <div class="weather-img"><img src="./lib/images/weather/icon/default.png" alt="날씨 아이콘" class="icon" draggable="false"></div>
+          <div class="temperature"><span class="temp-min"><span class="blind">최저 기온</span><span class="value"></span><span class="unit">˚C</span></span> / <span class="temp-max"><span class="blind">최고 기온</span><span class="value"></span><span class="unit">˚C</span></span></div>
           <div class="desc"><span class="blind">날씨설명</span><span class="value"></span></div>
           <div class="wind-speed"><span class="blind">풍속</span><span class="value"></span> 노트</div>
         </div>
         <div class="time time2">
-          <div class="date"><span class="blind">날짜</span><span class=""></span>모레</div>
-          <div class="weather-img"><span class="blind">날씨</span><img src="./lib/images/weather/icon/default.png" class="icon" draggable="false"></div>
-          <div class="temperature"><span class="temp-min"><span class="blind">최저 기온</span><span class="value"></span><span class="unit">˚C</span></span>/<span class="temp-max"><span class="blind">최고 기온</span><span class="value"></span><span class="unit">˚C</span></span></div>
+          <div class="date"><span class="blind">날짜</span><span class="value"></span>일</div>
+          <div class="weather-img"><img src="./lib/images/weather/icon/default.png" alt="날씨 아이콘" class="icon" draggable="false"></div>
+          <div class="temperature"><span class="temp-min"><span class="blind">최저 기온</span><span class="value"></span><span class="unit">˚C</span></span> / <span class="temp-max"><span class="blind">최고 기온</span><span class="value"></span><span class="unit">˚C</span></span></div>
           <div class="desc"><span class="blind">날씨설명</span><span class="value"></span></div>
           <div class="wind-speed"><span class="blind">풍속</span><span class="value"></span> 노트</div>
         </div>
         <div class="time time3">
           <div class="date"><span class="blind">날짜</span><span class="value"></span>일</div>
-          <div class="weather-img"><span class="blind">날씨</span><img src="./lib/images/weather/icon/default.png" class="icon" draggable="false"></div>
-          <div class="temperature"><span class="temp-min"><span class="blind">최저 기온</span><span class="value"></span><span class="unit">˚C</span></span>/<span class="temp-max"><span class="blind">최고 기온</span><span class="value"></span><span class="unit">˚C</span></span></div>
+          <div class="weather-img"><img src="./lib/images/weather/icon/default.png" alt="날씨 아이콘" class="icon" draggable="false"></div>
+          <div class="temperature"><span class="temp-min"><span class="blind">최저 기온</span><span class="value"></span><span class="unit">˚C</span></span> / <span class="temp-max"><span class="blind">최고 기온</span><span class="value"></span><span class="unit">˚C</span></span></div>
           <div class="desc"><span class="blind">날씨설명</span><span class="value"></span></div>
           <div class="wind-speed"><span class="blind">풍속</span><span class="value"></span> 노트</div>
         </div>
         <div class="time time4">
           <div class="date"><span class="blind">날짜</span><span class="value"></span>일</div>
-          <div class="weather-img"><span class="blind">날씨</span><img src="./lib/images/weather/icon/default.png" class="icon" draggable="false"></div>
-          <div class="temperature"><span class="temp-min"><span class="blind">최저 기온</span><span class="value"></span><span class="unit">˚C</span></span>/<span class="temp-max"><span class="blind">최고 기온</span><span class="value"></span><span class="unit">˚C</span></span></div>
+          <div class="weather-img"><img src="./lib/images/weather/icon/default.png" alt="날씨 아이콘" class="icon" draggable="false"></div>
+          <div class="temperature"><span class="temp-min"><span class="blind">최저 기온</span><span class="value"></span><span class="unit">˚C</span></span> / <span class="temp-max"><span class="blind">최고 기온</span><span class="value"></span><span class="unit">˚C</span></span></div>
           <div class="desc"><span class="blind">날씨설명</span><span class="value"></span></div>
           <div class="wind-speed"><span class="blind">풍속</span><span class="value"></span> 노트</div>
         </div>
         <div class="time time5">
           <div class="date"><span class="blind">날짜</span><span class="value"></span>일</div>
-          <div class="weather-img"><span class="blind">날씨</span><img src="./lib/images/weather/icon/default.png" class="icon" draggable="false"></div>
-          <div class="temperature"><span class="temp-min"><span class="blind">최저 기온</span><span class="value"></span><span class="unit">˚C</span></span>/<span class="temp-max"><span class="blind">최고 기온</span><span class="value"></span><span class="unit">˚C</span></span></div>
+          <div class="weather-img"><img src="./lib/images/weather/icon/default.png" alt="날씨 아이콘" class="icon" draggable="false"></div>
+          <div class="temperature"><span class="temp-min"><span class="blind">최저 기온</span><span class="value"></span><span class="unit">˚C</span></span> / <span class="temp-max"><span class="blind">최고 기온</span><span class="value"></span><span class="unit">˚C</span></span></div>
           <div class="desc"><span class="blind">날씨설명</span><span class="value"></span></div>
           <div class="wind-speed"><span class="blind">풍속</span><span class="value"></span> 노트</div>
         </div>
         <div class="time time6">
           <div class="date"><span class="blind">날짜</span><span class="value"></span>일</div>
-          <div class="weather-img"><span class="blind">날씨</span><img src="./lib/images/weather/icon/default.png" class="icon" draggable="false"></div>
-          <div class="temperature"><span class="temp-min"><span class="blind">최저 기온</span><span class="value"></span><span class="unit">˚C</span></span>/<span class="temp-max"><span class="blind">최고 기온</span><span class="value"></span><span class="unit">˚C</span></span></div>
+          <div class="weather-img"><img src="./lib/images/weather/icon/default.png" alt="날씨 아이콘" class="icon" draggable="false"></div>
+          <div class="temperature"><span class="temp-min"><span class="blind">최저 기온</span><span class="value"></span><span class="unit">˚C</span></span> / <span class="temp-max"><span class="blind">최고 기온</span><span class="value"></span><span class="unit">˚C</span></span></div>
           <div class="desc"><span class="blind">날씨설명</span><span class="value"></span></div>
           <div class="wind-speed"><span class="blind">풍속</span><span class="value"></span> 노트</div>
         </div>
         <div class="time time7">
           <div class="date"><span class="blind">날짜</span><span class="value"></span>일</div>
-          <div class="weather-img"><span class="blind">날씨</span><img src="./lib/images/weather/icon/default.png" class="icon" draggable="false"></div>
-          <div class="temperature"><span class="temp-min"><span class="blind">최저 기온</span><span class="value"></span><span class="unit">˚C</span></span>/<span class="temp-max"><span class="blind">최고 기온</span><span class="value"></span><span class="unit">˚C</span></span></div>
+          <div class="weather-img"><img src="./lib/images/weather/icon/default.png" alt="날씨 아이콘" class="icon" draggable="false"></div>
+          <div class="temperature"><span class="temp-min"><span class="blind">최저 기온</span><span class="value"></span><span class="unit">˚C</span></span> / <span class="temp-max"><span class="blind">최고 기온</span><span class="value"></span><span class="unit">˚C</span></span></div>
           <div class="desc"><span class="blind">날씨설명</span><span class="value"></span></div>
           <div class="wind-speed"><span class="blind">풍속</span><span class="value"></span> 노트</div>
         </div>
@@ -347,16 +350,18 @@
         async: "false",
         success: function(resp) {
           //console.log(resp);
+          $('.weather-wrap .today .bg').attr("style","background-image: url('./lib/images/weather/"+resp.weather[0].main+".jpg');");//날씨별 배경
           $('.weather-wrap .today .temperature .value').text(parseInt(resp.main.temp - 273.15));//온도
           $('.weather-wrap .today .feels-like .value').text(parseInt(resp.main.feels_like - 273.15));//체감
           $('.weather-wrap .today .temp-max .value').text(parseInt(resp.main.temp_max - 273.15));//최대
           $('.weather-wrap .today .temp-min .value').text(parseInt(resp.main.temp_min - 273.15));//최저
           $('.weather-wrap .today .pressure .value').text(resp.main.pressure);//기압
           $('.weather-wrap .today .humidity .value').text(resp.main.humidity);//습도
-          $('.weather-wrap .today').css('background-image', 'linear-gradient(180deg, #51127f '+resp.main.humidity+'%, #d70a84 100%)');//습도
-            if(resp.main.humidity > 60) {$('.weather-wrap .today .humidity .progress .bar').css('background','blue');} //습함
-            if(resp.main.humidity < 59) {$('.weather-wrap .today .humidity .progress .bar').css('background','skyblue');} //좋음
-            if(resp.main.humidity < 40) {$('.weather-wrap .today .humidity .progress .bar').css('background','gray');} //건조
+            /*습도별 아이콘 변화--*/
+            if(resp.main.humidity > 60) {$('.weather-wrap .today .humidity .icon path').attr('style','fill:blue');} //습함
+            if(resp.main.humidity < 59) {$('.weather-wrap .today .humidity .icon path').attr('style','fill:skyblue');} //좋음
+            if(resp.main.humidity < 40) {$('.weather-wrap .today .humidity .icon path').attr('style','fill:gray');} //건조
+            /*--습도별 아이콘 변화*/
           $('.weather-wrap .today .weather .value').text(resp.weather[0].main);//메인날씨
           $('.weather-wrap .today .desc .value').text(resp.weather[0].description);//설명
           $('.weather-wrap .today .wind-deg .value').text(resp.wind.deg);//풍향
@@ -382,7 +387,7 @@
         success: function(resp) {
           //console.log(resp);
           for (i=0;i<resp.hourly.length;i++) {
-            $('.weather-wrap .forecast.eachHour .time'+i).find('.date .value').text(forecast.getForecastHour(resp.hourly[i].dt)+':00');
+            $('.weather-wrap .forecast.eachHour .time'+i).find('.date .value').text(forecast.getForecastHour(resp.hourly[i].dt)+'시');
             $('.weather-wrap .forecast.eachHour .time'+i).find('.temperature .value').text(parseInt(resp.hourly[i].temp - 273.15));
             $('.weather-wrap .forecast.eachHour .time'+i).find('.weather-img .icon').attr('src', './lib/images/weather/icon/'+resp.hourly[i].weather[0].main+'.png');
             $('.weather-wrap .forecast.eachHour .time'+i).find('.desc .value').text(resp.hourly[i].weather[0].description);
