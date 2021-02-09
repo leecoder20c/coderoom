@@ -41,11 +41,29 @@
       var milliseconds = now.getMilliseconds(); //밀리초
       var localeDate = now.toLocaleDateString(); //yyyy.m.d
       var localeTime = now.toLocaleTimeString(); //오전+시간+분+초
+      var month = now.getMonth();//월
+      switch(month) {
+        case 0: month = "Jan"; break;
+        case 1: month = "Feb"; break;
+        case 2: month = "Mar"; break;
+        case 3: month = "Apr"; break;
+        case 4: month = "May"; break;
+        case 5: month = "Jun"; break;
+        case 6: month = "Jul"; break;
+        case 7: month = "Aug"; break;
+        case 8: month = "Sep"; break;
+        case 9: month = "Oct"; break;
+        case 10: month = "Nov"; break;
+        case 11: month = "Dec"; break;
+      }
+      var date = now.getDate();//일
+      var day = now.getDay();//요일
       if (data == "hm") return hours + ':' + minutes;
       else if (data == "hms") return hours + ':' + minutes + ':' + seconds;
       else if (data == "hmsm") return hours + ':' + minutes + ':' + seconds + ':' + milliseconds;
       else if (data == "time") return localeTime;//ex. 오전 11:27:17
       else if (data == "date") return localeDate;//ex. 2021. 2. 5.
+      else if (data == "md") return month+'. '+date;//ex. Jan.1
     }
   </script>
 </head>
@@ -67,9 +85,11 @@
       <div class="today">
         <h3 class="blind">현재 날씨</h3>
         <div class="bg"></div>
+        <div class="current-date"></div>
         <div class="current-time">00:00</div>
         <script>
           (function currentTime() {
+            $('.current-date').text(getTime("md"));
             $('.current-time').text(getTime("hm"));
             setTimeout(function() {
               currentTime();
@@ -79,7 +99,7 @@
         <div class="temperature"><span class="blind">온도</span><span class="value"></span><span class="unit">˚C</span></div>
         <div class="feels-like"><span class="blind">체감 온도</span><span class="value"></span><span class="unit">˚C</span></div>
         <div class="temp-minmax"><span class="temp-min">MIN <span class="blind">최고</span><span class="value"></span><span class="unit">˚C</span></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span class="temp-max">MAX <span class="blind">최저</span><span class="value"></span><span class="unit">˚C</span></span></div>
-        <div class="humidity"><div class="icon"><?xml version="1.0" encoding="iso-8859-1"?><!-- Generator: Adobe Illustrator 18.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  --><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 25.906 25.906" style="enable-background:new 0 0 25.906 25.906;" xml:space="preserve"><g><path style="fill:#4dc3ff;" d="M12.953,0c0,0-9,10.906-9,16.906c0,4.971,4.029,9,9,9s9-4.029,9-9C21.953,10.906,12.953,0,12.953,0z M9.026,17.496c0,1.426,0.668,4.25,1.134,5.426c-3.042-1.494-3.846-4.425-3.846-6.463c0-3.173,3.684-7.824,5.777-12.149 C11.861,6.581,9.026,13.177,9.026,17.496z"/></g></svg></div><span class="value"></span><span class="unit">%</span></div>
+        <div class="humidity"><div class="icon"><?xml version="1.0" encoding="iso-8859-1"?><!-- Generator: Adobe Illustrator 18.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  --><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 25.906 25.906" style="enable-background:new 0 0 25.906 25.906;" xml:space="preserve"><g><path style="fill: rgba(255,255,255,0.6);" d="M12.953,0c0,0-9,10.906-9,16.906c0,4.971,4.029,9,9,9s9-4.029,9-9C21.953,10.906,12.953,0,12.953,0z M9.026,17.496c0,1.426,0.668,4.25,1.134,5.426c-3.042-1.494-3.846-4.425-3.846-6.463c0-3.173,3.684-7.824,5.777-12.149 C11.861,6.581,9.026,13.177,9.026,17.496z"/></g></svg></div><div class="icon over" style="clip: rect(0px, 20px, 20px, 0px);"><?xml version="1.0" encoding="iso-8859-1"?><!-- Generator: Adobe Illustrator 18.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  --><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 25.906 25.906" style="enable-background:new 0 0 25.906 25.906;" xml:space="preserve"><g><path style="fill:#3175d0;" d="M12.953,0c0,0-9,10.906-9,16.906c0,4.971,4.029,9,9,9s9-4.029,9-9C21.953,10.906,12.953,0,12.953,0z M9.026,17.496c0,1.426,0.668,4.25,1.134,5.426c-3.042-1.494-3.846-4.425-3.846-6.463c0-3.173,3.684-7.824,5.777-12.149 C11.861,6.581,9.026,13.177,9.026,17.496z"/></g></svg></div><span class="value"></span><span class="unit">%</span></div>
         <div class="weather"><img src="./lib/images/weather/icon/default.png" class="icon" draggable="false"></div>
         <div class="desc"><span class="blind">날씨설명</span><span class="value"></span></div>
       </div>
@@ -370,11 +390,7 @@
           $('.weather-wrap .today .temp-min .value').text(parseInt(resp.main.temp_min - 273.15));//최저
           $('.weather-wrap .today .pressure .value').text(resp.main.pressure);//기압
           $('.weather-wrap .today .humidity .value').text(resp.main.humidity);//습도
-            /*습도별 아이콘 변화--*/
-            if(resp.main.humidity > 60) {$('.weather-wrap .today .humidity .icon path').attr('style','fill:blue');} //습함
-            if(resp.main.humidity < 59) {$('.weather-wrap .today .humidity .icon path').attr('style','fill:skyblue');} //좋음
-            if(resp.main.humidity < 40) {$('.weather-wrap .today .humidity .icon path').attr('style','fill:gray');} //건조
-            /*--습도별 아이콘 변화*/
+          $('.weather-wrap .today .humidity .icon.over').css('clip','rect('+(20-parseInt(resp.main.humidity)*0.25)+'px, 20px, 24px, 0px)');
           $('.weather-wrap .today .weather .value').text(resp.weather[0].main);//메인날씨
           $('.weather-wrap .today .desc .value').text(resp.weather[0].description);//설명
           $('.weather-wrap .today .wind-deg .value').text(resp.wind.deg);//풍향
@@ -383,8 +399,9 @@
           $('.weather-wrap .today .city .value').text(resp.name);//도시
           $('.weather-wrap .today .cloud .value').text(resp.clouds.all);//구름
 
-          $('.weather-wrap .today .weather .icon').attr('src', './lib/images/weather/icon/'+resp.weather[0].main+'.png');
-          $('.weather-wrap .notice .time').text(getTime('date')+' '+getTime('hm'));
+          $('.weather-wrap .today .weather .icon').attr('src', './lib/images/weather/icon/'+resp.weather[0].main+'.png');//아이콘
+          $('.weather-wrap .today .weather .icon').attr('data-stat',resp.weather[0].main);//아이콘 움직임
+          $('.weather-wrap .notice .time').text(getTime('date')+' '+getTime('hm'));//시계
         }
       }).then(function() {
         setTimeout(updateNow, 6000000);//10분마다 실행
@@ -405,6 +422,7 @@
             $('.weather-wrap .forecast.eachHour .time'+i).find('.weather-img .icon').attr('src', './lib/images/weather/icon/'+resp.hourly[i].weather[0].main+'.png');
             $('.weather-wrap .forecast.eachHour .time'+i).find('.desc .value').text(resp.hourly[i].weather[0].description);
             $('.weather-wrap .forecast.eachHour .time'+i).find('.wind-speed .value').text(resp.hourly[i].wind_speed);
+            $('.weather-wrap .forecast.eachHour .time'+i).find('.weather-img .icon').attr('data-stat',resp.hourly[i].weather[0].main);//아이콘 움직임
           }
         }
       }).then(function() {
@@ -427,6 +445,7 @@
             $('.weather-wrap .forecast.daily .time'+i).find('.weather-img .icon').attr('src', './lib/images/weather/icon/'+resp.daily[i].weather[0].main+'.png');
             $('.weather-wrap .forecast.daily .time'+i).find('.desc .value').text(resp.daily[i].weather[0].description);
             $('.weather-wrap .forecast.daily .time'+i).find('.wind-speed .value').text(resp.daily[i].wind_speed);
+            $('.weather-wrap .forecast.daily .time'+i).find('.weather-img .icon').attr('data-stat',resp.daily[i].weather[0].main);//아이콘 움직임
           }
         }
       }).then(function() {
