@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko"dir="ltr">
+<html lang="ko"dir="ltr" class="weather-app">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -77,7 +77,7 @@
     <!-- 헤더// -->
     <div class="header">
       <h1 class="title">Weather</h1>
-      <span class="city">노원구, 서울시</span>
+      <a href="#pop-geocode" target="_self" class="city">노원구, 서울특별시</a>
     </div>
     <!-- //헤더 -->
     <!-- 콘텐츠// -->
@@ -338,6 +338,158 @@
       <!-- <div class="notice">본 저작물은 공공누리 제1유형으로 개방한 한국환경공단 국가대기오염정보 조회 서비스를 활용하였습니다.</div> -->
     </div>
     <!-- //콘텐츠 -->
+    <!-- 팝업// -->
+    <div id="pop-geocode" class="pop-geocode">
+      <a href="javascript:void(0);" class="close" title="닫기"><span class="bar1"></span><span class="bar2"></span></a>
+      <ul class="city-list">
+        <li class="depth1"><a href="javascript:void(0);" target="_self" class="tit">서울특별시</a>
+          <ul>
+            <li class="depth2"><a href="#서울" target="_self" class="location" data-name="Seoul" data-lat="37.5990998" data-lon="127.9861493">서울(전체)</a></li>
+            <li class="depth2"><a href="#강남구" target="_self" class="location" data-name="강남구" data-lat="37.4959854" data-lon="127.0664091">강남구</a></li>
+            <li class="depth2"><a href="#강동구" target="_self" class="location" data-name="강동구" data-lat="37.5492077" data-lon="127.1464824">강동구</a></li>
+            <li class="depth2"><a href="#강북구" target="_self" class="location" data-name="강북구" data-lat="37.6469954" data-lon="127.0147158">강북구</a></li>
+            <li class="depth2"><a href="#강서구" target="_self" class="location" data-name="강서구" data-lat="37.5657617" data-lon="126.8226561">강서구</a></li>
+            <li class="depth2"><a href="#관악구" target="_self" class="location" data-name="관악구" data-lat="37.4653993" data-lon="126.9438071">관악구</a></li>
+            <li class="depth2"><a href="#광진구" target="_self" class="location" data-name="광진구" data-lat="37.5481445" data-lon="127.0857528">광진구</a></li>
+            <li class="depth2"><a href="#구로구" target="_self" class="location" data-name="구로구" data-lat="37.4954856" data-lon="126.858121">구로구</a></li>
+            <li class="depth2"><a href="#금천구" target="_self" class="location" data-name="금천구" data-lat="37.4600969" data-lon="126.9001546">금천구</a></li>
+            <li class="depth2"><a href="#노원구" target="_self" class="location" data-name="노원구" data-lat="37.655264" data-lon="127.0771201">노원구</a></li>
+            <li class="depth2"><a href="#도봉구" target="_self" class="location" data-name="도봉구" data-lat="37.6658609" data-lon="127.0317674">도봉구</a></li>
+            <li class="depth2"><a href="#동대문구" target="_self" class="location" data-name="동대문구" data-lat=" 37.5838012" data-lon="127.0507003">동대문구</a></li>
+            <li class="depth2"><a href="#동작구" target="_self" class="location" data-name="동작구" data-lat="37.4965037" data-lon="126.9443073">동작구</a></li>
+            <li class="depth2"><a href="#마포구" target="_self" class="location" data-name="마포구" data-lat="37.5622906" data-lon="126.9087803">마포구</a></li>
+            <li class="depth2"><a href="#서대문구" target="_self" class="location" data-name="서대문구" data-lat=" 37.5820369" data-lon="126.9356665">서대문구</a></li>
+            <li class="depth2"><a href="#서초구" target="_self" class="location" data-name="서초구" data-lat="37.4769528" data-lon="127.0378103">서초구</a></li>
+            <li class="depth2"><a href="#성동구" target="_self" class="location" data-name="성동구" data-lat="37.5506753" data-lon="127.0409622">성동구</a></li>
+            <li class="depth2"><a href="#성북구" target="_self" class="location" data-name="성북구" data-lat="37.606991" data-lon="27.0232185">성북구</a></li>
+            <li class="depth2"><a href="#송파구" target="_self" class="location" data-name="송파구" data-lat="37.5048534" data-lon="127.1144822">송파구</a></li>
+            <li class="depth2"><a href="#양천구" target="_self" class="location" data-name="양천구" data-lat="37.5270616" data-lon="126.8561534">양천구</a></li>
+            <li class="depth2"><a href="#영등포구" target="_self" class="location" data-name="영등포구" data-lat=" 37.520641" data-lon="126.9139242">영등포구</a></li>
+            <li class="depth2"><a href="#용산구" target="_self" class="location" data-name="용산구" data-lat="37.5311008" data-lon="126.9810742">용산구</a></li>
+            <li class="depth2"><a href="#은평구" target="_self" class="location" data-name="은평구" data-lat="37.6176125" data-lon="126.9227004">은평구</a></li>
+            <li class="depth2"><a href="#종로구" target="_self" class="location" data-name="종로구" data-lat="37.5990998" data-lon="126.9861493">종로구</a></li>
+            <li class="depth2"><a href="#중구" target="_self" class="location" data-name="중구" data-lat=" 37.5579452" data-lon="126.9941904">중구</a></li>
+            <li class="depth2"><a href="#중랑구" target="_self" class="location" data-name="중랑구" data-lat="37.5953795" data-lon="127.0939669">중랑구</a></li>
+          </ul>
+        </li>
+        <li class="depth1"><a href="javascript:void(0);" target="_self" class="tit">부산광역시</a>
+          <ul>
+            <li class="depth2"><a href="#부산" target="_self" class="location" data-name="Busan" data-lat="35.133331" data-lon="129.050003">부산(전체)</a></li>
+          </ul>
+        </li>
+        <li class="depth1"><a href="javascript:void(0);" target="_self" class="tit">대구광역시</a>
+          <ul>
+            <li class="depth2"><a href="#대구광역시" target="_self" class="location" data-name="Daegu" data-lat="35.799999" data-lon="128.550003">대구(전체)</a></li>
+          </ul>
+        </li>
+        <li class="depth1"><a href="javascript:void(0);" target="_self" class="tit">인천광역시</a>
+          <ul>
+            <li class="depth2"><a href="#인천광역시" target="_self" class="location" data-name="Incheon" data-lat="37.450001" data-lon="126.731667">인천(전체)</a></li>
+          </ul>
+        </li>
+        <li class="depth1"><a href="javascript:void(0);" target="_self" class="tit">광주광역시</a>
+          <ul>
+            <li class="depth2"><a href="#광주광역시" target="_self" class="location" data-name="Gwangju" data-lat="35.166672" data-lon="126.916672">광주(전체)</a></li>
+          </ul>
+        </li>
+        <li class="depth1"><a href="javascript:void(0);" target="_self" class="tit">대전광역시</a>
+          <ul>
+            <li class="depth2"><a href="#대전광역시" target="_self" class="location" data-name="Daejeon" data-lat="36.321388" data-lon="127.419724">대전(전체)</a></li>
+          </ul>
+        </li>
+        <li class="depth1"><a href="javascript:void(0);" target="_self" class="tit">울산광역시</a>
+          <ul>
+            <li class="depth2"><a href="#울산광역시" target="_self" class="location" data-name="Ulsan" data-lat="35.53722" data-lon="129.316666">울산(전체)</a></li>
+          </ul>
+        </li>
+        <li class="depth1"><a href="javascript:void(0);" target="_self" class="tit">세종특별자치시</a>
+          <ul>
+            <li class="depth2"><a href="#세종특별자치시" target="_self" class="location" data-name="Chungju" data-lat="36.970558" data-lon="127.93222">세종(전체)</a></li>
+          </ul>
+        </li>
+        <li class="depth1"><a href="javascript:void(0);" target="_self" class="tit">경기도</a>
+          <ul>
+            <li class="depth2"><a href="#경기도" target="_self" class="location" data-name="Gyeonggi-do" data-lat="37.599998" data-lon="127.25">경기(전체)</a></li>
+          </ul>
+        </li>
+        <li class="depth1"><a href="javascript:void(0);" target="_self" class="tit">강원도</a>
+          <ul>
+            <li class="depth2"><a href="#강원도" target="_self" class="location" data-name="Gangwon-do" data-lat="37.75" data-lon="128.25">강원(전체)</a></li>
+          </ul>
+        </li>
+        <li class="depth1"><a href="javascript:void(0);" target="_self" class="tit">충청북도</a>
+          <ul>
+            <li class="depth2"><a href="#충청북도" target="_self" class="location" data-name="Chungcheongbuk-do" data-lat="36.75" data-lon="128.0">충북(전체)</a></li>
+          </ul>
+        </li>
+        <li class="depth1"><a href="javascript:void(0);" target="_self" class="tit">충청남도</a>
+          <ul>
+            <li class="depth2"><a href="#충청남도" target="_self" class="location" data-name="Chungcheongnam-do" data-lat="36.5" data-lon="127.0">충남(전체)</a></li>
+          </ul>
+        </li>
+        <li class="depth1"><a href="javascript:void(0);" target="_self" class="tit">전라북도</a>
+          <ul>
+            <li class="depth2"><a href="#전라북도" target="_self" class="location" data-name="Jeollabuk-do" data-lat="35.75" data-lon="127.25">전북(전체)</a></li>
+          </ul>
+        </li>
+        <li class="depth1"><a href="javascript:void(0);" target="_self" class="tit">전라남도</a>
+          <ul>
+            <li class="depth2"><a href="#전라남도" target="_self" class="location" data-name="Jeollanam-do" data-lat="34.75" data-lon="127.0">전남(전체)</a></li>
+          </ul>
+        </li>
+        <li class="depth1"><a href="javascript:void(0);" target="_self" class="tit">경상북도</a>
+          <ul>
+            <li class="depth2"><a href="#경상북도" target="_self" class="location" data-name="Gyeongsangbuk-do" data-lat="36.333328" data-lon="128.75">경북(전체)</a></li>
+          </ul>
+        </li>
+        <li class="depth1"><a href="javascript:void(0);" target="_self" class="tit">경상남도</a>
+          <ul>
+            <li class="depth2"><a href="#경상남도" target="_self" class="location" data-name="Gyeongsangnam-do" data-lat="35.25" data-lon="128.25">경남(전체)</a></li>
+          </ul>
+        </li>
+        <li class="depth1"><a href="javascript:void(0);" target="_self" class="tit">제주특별자치도</a>
+          <ul>
+            <li class="depth2"><a href="#제주특별자치도" target="_self" class="location" data-name="Jeju-do" data-lat="33.416672" data-lon="126.5">제주(전체)</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <!-- //팝업 -->
+    <script>
+      var loca = $('.header .city');//도시명
+      var popClose = $('.pop-geocode .close');//팝업 내 닫기 버튼
+      var newLocaTit = $('.pop-geocode .tit');//도단위 리스트
+      var newLoca = $('.pop-geocode .location');//새로운 도시명 리스트
+      //팝업 열기(도시명 클릭 시)
+      loca.on('click', function() {
+        $('.pop-geocode').addClass("is-active");
+      });
+      //팝업 닫기
+      popClose.on('click', function() {
+        $('.pop-geocode .tit + ul > .depth2').hide(0);
+        $('.pop-geocode').removeClass("is-active");
+      });
+      //도시 드롭다운
+      newLocaTit.on('click', function() {
+        var $this = $(this);
+        newLocaTit.removeClass('on');
+        $this.addClass('on');
+        $('.pop-geocode .tit + ul > .depth2').hide(0);
+        $this.siblings('ul').find('.depth2').show(100);
+      });
+      //도시 변경하기
+      newLoca.on('click', function() {
+        loca.text($(this).text()+', '+$(this).parents('.depth1').find('.tit').text());//도시명 변경
+        forecast.geo.city = $(this).attr('data-name');//도시 변수 변경
+        forecast.geo.lat = $(this).attr('data-lat');//Geo lat 변경
+        forecast.geo.lon = $(this).attr('data-lon');//Geo lon 변경
+        //날씨 재실행
+        updateNow();
+        updateHourly();
+        updateOnecall();
+        popClose.trigger('click');
+      });
+    </script>
   </div>
   <!-- //웨더 앱 -->
   <script>
@@ -348,7 +500,7 @@
       geo: {
         lat: 37.646809,
         lon: 127.0580746
-      },//노원구 *Todo 사용자 위치데이터 퍼미션 -> 조회
+      },//노원구 좌표계 WGS1984
       exclude: "alerts",//전체 보기
       getForecastDay: function(UTC) {
         var utc = UTC*1000;
@@ -368,7 +520,7 @@
       }
     };
     //현재 날씨
-    (function updateNow() {
+    var updateNow = function() {
       $.ajax({
         url: forecast.weatherUrl(),
         dataType: "json",
@@ -398,17 +550,18 @@
           $('.weather-wrap .today .contry .value').text(resp.sys.country);//시
           $('.weather-wrap .today .city .value').text(resp.name);//도시
           $('.weather-wrap .today .cloud .value').text(resp.clouds.all);//구름
-
           $('.weather-wrap .today .weather .icon').attr('src', './lib/images/weather/icon/'+resp.weather[0].main+'.png');//아이콘
           $('.weather-wrap .today .weather .icon').attr('data-stat',resp.weather[0].main);//아이콘 움직임
+
           $('.weather-wrap .notice .time').text(getTime('date')+' '+getTime('hm'));//시계
         }
       }).then(function() {
         setTimeout(updateNow, 6000000);//10분마다 실행
       });
-    })();
+    };
+    updateNow();
     //시간별 날씨
-    (function updateHourly() {
+    var updateHourly = function() {
       $.ajax({
         url: forecast.onecallUrl(),
         dataType: "json",
@@ -428,9 +581,10 @@
       }).then(function() {
         setTimeout(updateHourly, 3600000);//60분마다 실행
       });
-    })();
+    };
+    updateHourly();
     //한주간 날씨
-    (function updateOnecall() {
+    var updateOnecall = function() {
       $.ajax({
         url: forecast.onecallUrl(),
         dataType: "json",
@@ -451,7 +605,8 @@
       }).then(function() {
         setTimeout(updateOnecall, 7200000);//120분마다 실행
       });
-    })();
+    };
+    updateOnecall();
     /*Descripttions 
       Clouds 구름
       Snow 눈
@@ -480,7 +635,7 @@
         return "http://openapi.airkorea.or.kr/openapi/services/rest/ArpltnInforInqireSvc/getCtprvnRltmMesureDnsty?serviceKey="+this.key+"&numOfRows="+this.numOfRows+"&pageNo="+this.pageNo+"&sidoName="+this.sidoName+"&ver="+this.ver;
       }
     };
-    (function updateMimun() {
+    var updateMimun = function() {
       $.ajax({
         url: mimun.url(),
         dataType: "json",
@@ -492,7 +647,8 @@
       }).then(function() {
         setTimeout(updateMimun, 6000000);//10분마다 실행
       });
-    })();
+    };
+    updateMimun();
   </script>
 </body>
 </html>
