@@ -566,7 +566,7 @@
           $('.weather-wrap .today .wind-deg .value').text(resp.current.wind_deg);//풍향
           $('.weather-wrap .today .wind-speed .value').text(resp.current.wind_speed);//풍속
           $('.weather-wrap .today .cloud .value').text(resp.current.clouds);//구름
-          $('.weather-wrap .today .weather .icon').attr('src', './lib/images/weather/icon/'+resp.current.weather[0].main+'.png');//아이콘
+          $('.weather-wrap .today .weather .icon').attr('src', './lib/images/weather/icon/'+resp.current.weather[0].main+'.svg');//아이콘
           $('.weather-wrap .today .weather .icon').attr('data-stat',resp.current.weather[0].main);//아이콘 움직임
           $('.weather-wrap .notice .time').text(getTime('date')+' '+getTime('hm'));//시계
           //최대&최소 온도(12 시간 이내)
@@ -587,7 +587,7 @@
           for (i=0;i<resp.hourly.length;i++) {
             $('.weather-wrap .forecast.eachHour .time'+i).find('.date .value').text(forecast.getForecastHour(resp.hourly[i].dt)+'시');
             $('.weather-wrap .forecast.eachHour .time'+i).find('.temperature .value').text(parseInt(resp.hourly[i].temp - 273.15));
-            $('.weather-wrap .forecast.eachHour .time'+i).find('.weather-img .icon').attr('src', './lib/images/weather/icon/'+resp.hourly[i].weather[0].main+'.png');
+            $('.weather-wrap .forecast.eachHour .time'+i).find('.weather-img .icon').attr('src', './lib/images/weather/icon/'+resp.hourly[i].weather[0].main+'.svg');
             $('.weather-wrap .forecast.eachHour .time'+i).find('.desc .value').text(resp.hourly[i].weather[0].description);
             $('.weather-wrap .forecast.eachHour .time'+i).find('.wind-speed .value').text(resp.hourly[i].wind_speed);
             $('.weather-wrap .forecast.eachHour .time'+i).find('.weather-img .icon').attr('data-stat',resp.hourly[i].weather[0].main);//아이콘 움직임
@@ -598,7 +598,7 @@
             $('.weather-wrap .forecast.daily .time'+i).find('.date .value').text(forecast.getForecastDay(resp.daily[i].dt));//각 날의 정오 기준
             $('.weather-wrap .forecast.daily .time'+i).find('.temp-min .value').text(parseInt(resp.daily[i].temp.min - 273.15));
             $('.weather-wrap .forecast.daily .time'+i).find('.temp-max .value').text(parseInt(resp.daily[i].temp.max - 273.15));
-            $('.weather-wrap .forecast.daily .time'+i).find('.weather-img .icon').attr('src', './lib/images/weather/icon/'+resp.daily[i].weather[0].main+'.png');
+            $('.weather-wrap .forecast.daily .time'+i).find('.weather-img .icon').attr('src', './lib/images/weather/icon/'+resp.daily[i].weather[0].main+'.svg');
             $('.weather-wrap .forecast.daily .time'+i).find('.desc .value').text(resp.daily[i].weather[0].description);
             $('.weather-wrap .forecast.daily .time'+i).find('.wind-speed .value').text(resp.daily[i].wind_speed);
             $('.weather-wrap .forecast.daily .time'+i).find('.weather-img .icon').attr('data-stat',resp.daily[i].weather[0].main);//아이콘 움직임
