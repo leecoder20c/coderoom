@@ -1,3 +1,10 @@
+<?php
+  header('Access-Control-Allow-Origin: *');
+  header('Access-Control-Max-Age: 86400');
+  header('Access-Control-Allow-Headers: x-requested-with');
+  header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS');
+  header("Content-type:text/html;charset=utf-8");
+?>
 
 <!DOCTYPE html>
 <html lang="ko"dir="ltr" class="weather-app">
@@ -679,7 +686,6 @@
       //Var
       var $mimun = $('.today .mimun');//미세먼지
       var mimunVal = parseInt(val);
-      var mimunState = null;
 
       //Set
       if (mimunVal <= 30) $mimun.attr('data-stat','good'); mimunState = 'good';

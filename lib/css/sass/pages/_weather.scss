@@ -211,8 +211,7 @@
       top: 303px;
       left: 20px;
       width: 80px;
-      padding-left: 27px;
-      border-radius: 5px;
+      padding-left: 25px;
       font-size: 3rem;
       font-weight: 700;
       line-height: 3rem;
@@ -236,14 +235,30 @@
         }
       }
       & .value {
+        margin-left: 0.3rem;
         letter-spacing: -0.03em;
-        vertical-align: middle;
+        vertical-align: 0;
       }
       & .unit {
         display: inline-block;
         font-size: 2rem;
         line-height: 1;
-        vertical-align: 0;
+        vertical-align: 0.3rem;
+      }
+    }
+    //미세먼지
+    & .mimun {
+      position: absolute;
+      top: 300px;
+      left: 110px;
+      width: 30px;
+      padding-top: 20px;
+      text-align: center;
+      background: url('https://leecoder20c.github.io/coderoom/lib/images/weather/icon/mimun.svg') no-repeat center top / 18px auto;
+      & .value {
+        font-size: 1rem;
+        font-weight: 400;
+        color: #fff;
       }
     }
     //아이콘
