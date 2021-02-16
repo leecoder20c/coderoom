@@ -688,10 +688,10 @@
       var mimunVal = parseInt(val);
 
       //Set
-      if (mimunVal <= 30) $mimun.attr('data-stat','good'); mimunState = 'good';
-      if (mimunVal > 30) $mimun.attr('data-stat','normal'); mimunState = 'normal';
-      if (mimunVal > 80) $mimun.attr('data-stat','bad'); mimunState = 'bad';
-      if (mimunVal > 150) $mimun.attr('data-stat','hell'); mimunState = 'hell';
+      if (mimunVal <= 30) { $mimun.attr('data-stat','good'); mimunState = 'Good'; }
+      if (mimunVal > 30) { $mimun.attr('data-stat','normal'); mimunState = 'Normal'; }
+      if (mimunVal > 80) { $mimun.attr('data-stat','bad'); mimunState = 'Bad'; }
+      if (mimunVal > 150) { $mimun.attr('data-stat','hell'); mimunState = 'Hell'; }
       //$mimun.find('.value').text(mimunVal);//수치로 적용
       $mimun.find('.value').text(mimunState);//텍스트로 적용
     }

@@ -397,34 +397,25 @@
       & .temperature {
         display: inline-block;
         position: relative;
-        padding-right: 15px;
-        margin-left: -8px;
         font-size: 3rem;
         font-weight: 700;
-        letter-spacing: 0;
+        letter-spacing: -0.03em;
         line-height: 1;
         white-space: nowrap;
+        text-align: center;
+        text-indent: 5px;
         color: #fff;
-        @media (max-width: 400px) {
-        }
         & .value {
           display: inline-block;
-          width: 30px;
           text-align: right;
           @media (max-width: 400px) {
-            width: 23px;
           }
         }
         & .unit {
           display: inline-block;
-          position: absolute;
-          top: 0;
-          right: -18px;
-          transform: scale(0.5) translate(0, 25%);
+          text-indent: -2px;
+          transform: scale(0.5) translate(5px, 0);
           transform-origin: top left;
-          @media (max-width: 400px) {
-            right: -8px;
-          }
         }
       }
       //아이콘
@@ -574,13 +565,12 @@
         @include centerX;
         font-size: 1.5rem;
         font-weight: 300;
-        letter-spacing: 0.05em;
+        letter-spacing: -0.05em;
         line-height: 1.5;
         white-space: nowrap;
         color: #fff;
         & .temp-min,& .temp-max {
           position: relative;
-          padding-right: 7px;
         }
         & .value {
           display: inline-block;
@@ -588,10 +578,8 @@
         }
         & .unit {
           display: inline-block;
-          position: absolute;
-          top: 0;
-          right: -12px;
-          transform: scale(0.5) translate(0, 0);
+          text-indent: -5px;
+          transform: scale(0.5) translate(5px, 0);
           transform-origin: top left;
         }
       }
@@ -614,6 +602,8 @@
       letter-spacing: 0;
       text-align: right;
       color: rgba(255,255,255,0.6);
+      transform: scale(0.8);
+      transform-origin: right;
     }
   }
   //팝업
