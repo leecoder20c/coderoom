@@ -1,10 +1,12 @@
 <?php
+  //헤더(크로스사이트 모두 허용)
   header('Access-Control-Allow-Origin: *');
   header('Access-Control-Max-Age: 86400');
   header('Access-Control-Allow-Headers: Origin,Accept,X-Requested-With,Content-Type,Access-Control-Request-Method,Access-Control-Request-Headers,Authorization');
   header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS');
   header("Content-type:text/html;charset=utf-8");
   
+  //API가져오기
   $ch = curl_init();//curl 초기화
   curl_setopt($ch, CURLOPT_URL, 'http://openapi.airkorea.or.kr/openapi/services/rest/ArpltnInforInqireSvc/getCtprvnMesureLIst?serviceKey=bqe2eZbyRVgn4WUOJVUwtct8lxVxy%2B%2BaDAW3bywvmgTHVKaztYZz5qBJQcQOe%2BQVj%2FuuvbPCMHDh6Yz5ZFYlRw%3D%3D&numOfRows=1&pageNo=1&itemCode=PM10&dataGubun=HOUR&searchCondition=MONTH');//URL 지정
   curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);//요청결과 문자열로 반환
@@ -13,12 +15,14 @@
   //curl_setopt($ch, CURLOPT_POSTFIELDS, $data);//POST data
   //curl_setopt($ch, CURLOPT_POST, true);//true시 post 전송
 
-  $response = curl_exec($ch);
+  $response = curl_exec($ch);//응답
   $errno = curl_errno($ch);
 
+  //json타입으로 변환
   $fileContents = str_replace(array("\n", "\r", "\t"), '', $response);
   $fileContents = trim(str_replace('"', "'", $fileContents));
   $simpleXml = simplexml_load_string($fileContents);
   $json = json_encode($simpleXml);
-  echo $json;
+
+  echo $json;//출력
 ?>
