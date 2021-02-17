@@ -60,6 +60,7 @@
         case 11: month = "Dec"; break;
       }
       switch(day) {
+        case 0: day = "일"; break;
         case 1: day = "월"; break;
         case 2: day = "화"; break;
         case 3: day = "수"; break;
@@ -618,15 +619,15 @@
             $('.weather-wrap .forecast.daily .time'+i).find('.weather-img .icon').attr('data-stat',resp.daily[i].weather[0].main);//아이콘 움직임
             //요일
             var day = new Date();
-            day = parseInt(day.getDay())+i%7;
+            day = (parseInt(day.getDay())+i)%7;
             switch(day) {
+              case 0: day = "일"; break;
               case 1: day = "월"; break;
               case 2: day = "화"; break;
               case 3: day = "수"; break;
               case 4: day = "목"; break;
               case 5: day = "금"; break;
               case 6: day = "토"; break;
-              case 7: day = "일"; break;
             }
             $('.weather-wrap .forecast.daily .time'+i).find('.date .tip.day').text('('+day+')');
           }
