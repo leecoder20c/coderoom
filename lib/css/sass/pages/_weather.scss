@@ -105,7 +105,7 @@
   }
   //헤더
   & .header {
-    padding: 5vh 0 1.5vh;
+    padding: 4vh 0 1.5vh;
     line-height: 2rem;
     font-size: 0;
     @include clearfix;
@@ -115,7 +115,7 @@
       font-family: 'Potta One', sans-serif;
       font-size: 3rem;
       font-weight: 500;
-      letter-spacing: 0;
+      letter-spacing: -0.03em;
       color: #fff;
     }
     & .util {
@@ -407,7 +407,7 @@
     }
     //시간별 예보
     &.eachHour {
-      margin: 2vh 0;
+      margin: 1vh 0;
       & .scroll-wrap {
         overflow-x: scroll;
         &::-webkit-scrollbar {
@@ -522,7 +522,7 @@
     }
     //일별 예보
     &.daily {
-      margin: 5vh 0 20px;
+      margin: 3vh 0 15px;
       & .scroll-wrap {
         overflow-x: scroll;
         &::-webkit-scrollbar {
