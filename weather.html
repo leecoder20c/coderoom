@@ -85,7 +85,44 @@
   <!--[if lt IE 9]><div class="legacy-browser">
   <div class="legacy-pad"><p>현재 사용중인 브라우저는 지원이 중단된 브라우저입니다.<br> 원활한 온라인 서비스를 위해 브라우저를 <a href="http://windows.microsoft.com/ko-kr/internet-explorer/ie-11-worldwide-languages" target="_blank">최신 버전</a>으로 업데이트 해주시길 바랍니다.  </p></div>
   </div><![endif]-->
-
+  <div class="intro">
+    <img class="app-logo" dragable="false" src="/lib/images/seo/weather-logo.png" alt="Good Weather" />
+    <img class="brand-logo" dragable="false" src="/lib/images/seo/brand-logo.png" alt="Tiny TIger" />
+    <div class="progress"><div class="gage"></div></div>
+  </div>
+  <script>
+    //인트로 사라지기
+    var intro = new gsap.timeline();
+    intro.to('.page-weather .intro', {
+      'delay': 0.3,
+      'onComplete': function() {
+        gsap.to('.page-weather .intro .app-logo', {'opacity':1,'duration':0.5});
+        gsap.to('.page-weather .intro .brand-logo', {'opacity':1,'duration':0.5});
+        gsap.to('.page-weather .intro .progress', {'opacity':1, 'duration':0.5});
+      }
+    })
+    .to('.page-weather .intro .progress .gage', {
+      'delay': 0,
+      'duration': 0.5,
+      'width': '100%'
+    })
+    .to('.page-weather .intro', {
+      'onComplete': function() {
+        gsap.to('.page-weather .intro .app-logo', {'opacity':0, 'duration':0.5});
+        gsap.to('.page-weather .intro .brand-logo', {'opacity':0, 'duration':0.5});
+        gsap.to('.page-weather .intro .progress', {'opacity':0, 'duration':0.5});
+      }
+    })
+    .to('.page-weather .intro', {
+      'opacity': 0,
+      'delay': 0.5,
+      'duration': 0.7,
+      'onComplete': function() {
+        //$('.page-weather .intro').remove();
+      }
+    }
+    );
+  </script>
   <!-- 웨더 앱// -->
   <div class="weather-wrap">
     <!-- 헤더// -->
