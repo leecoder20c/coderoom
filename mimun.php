@@ -1,5 +1,5 @@
 <?php
-  header('Access-Control-Allow-Origin: https://leecoder20c.github.io, http://106.248.232.170, http://192.168.11.34:9898');
+  header('Access-Control-Allow-Origin: *');
   header('Access-Control-Max-Age: 86400');
   header('Access-Control-Allow-Headers: Origin,Accept,X-Requested-With,Content-Type,Access-Control-Request-Method,Access-Control-Request-Headers,Authorization');
   header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS');
