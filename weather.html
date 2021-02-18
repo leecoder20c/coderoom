@@ -85,8 +85,8 @@
   <div class="legacy-pad"><p>현재 사용중인 브라우저는 지원이 중단된 브라우저입니다.<br> 원활한 온라인 서비스를 위해 브라우저를 <a href="http://windows.microsoft.com/ko-kr/internet-explorer/ie-11-worldwide-languages" target="_blank">최신 버전</a>으로 업데이트 해주시길 바랍니다.  </p></div>
   </div><![endif]-->
   <div class="intro">
-    <img class="app-logo" draggable="false" src="/lib/images/seo/weather-logo.svg" alt="Good Weather" />
-    <img class="brand-logo" draggable="false" src="/lib/images/seo/brand-logo.svg" alt="Tiny TIger" />
+    <img class="app-logo" draggable="false" src="./lib/images/seo/weather-logo.svg" alt="Good Weather" />
+    <img class="brand-logo" draggable="false" src="./lib/images/seo/brand-logo.svg" alt="Tiny TIger" />
     <div class="progress"><div class="gage"></div></div>
   </div>
   <script>
@@ -398,8 +398,9 @@
     <!-- //콘텐츠 -->
     <!-- 팝업// -->
     <div id="pop-geocode" class="pop-geocode">
-      <a href="javascript:void(0);" class="close" title="닫기"><span class="bar1"></span><span class="bar2"></span></a>
       <ul class="city-list">
+        <a href="javascript:void(0);" class="close" title="닫기"><span class="bar1"></span><span class="bar2"></span></a>
+        <li class="my-location"><a href="javascript:getUserGeolocation();" class="tit" target="_self">내위치</a></li>
         <li class="depth1"><a href="javascript:void(0);" target="_self" class="tit">서울특별시</a>
           <ul>
             <li class="depth2"><a href="#서울" target="_self" class="location" data-city="seoul" data-name="Seoul" data-lat="37.5990998" data-lon="127.9861493">서울(전체)</a></li>
@@ -540,8 +541,11 @@
         $this.siblings('ul').find('.depth2').show(100);
       });
 
+      //도시 클릭
+      $newLoca.on('click', changeLocation);
+
       //도시 변경하기
-      $newLoca.on('click', function() {
+      var changeLocation = function() {
         //Var
         $loca.text($(this).text()+', '+$(this).parents('.depth1').find('.tit').text());//도시명 변경
         forecast.geo.city = $(this).attr('data-name');//도시 변수 변경
@@ -556,23 +560,43 @@
         setMimun(mimunVal);
 
         $popClose.trigger('click');//팝업 닫기
-      });
+      };
+
+      /*내 위치 정보로 조회: HTTPS 동의 필수*/
+      var getUserGeolocation =function() {
+        if (navigator.geolocation) {
+          $('.alert').show().find('.message').text('위치정보 확인 중');
+          navigator.geolocation.getCurrentPosition(success, error);
+
+          function success(position) {
+            $('.alert .message').text('위치정보 확인 완료');
+            $loca.text('내 위치');
+            forecast.geo.city = '내 위치';
+            forecast.geo.lat = position.coords.latitude;
+            forecast.geo.lon = position.coords.longitude;
+            updateForecast();//날씨 재호출
+            $popClose.trigger('click');//팝업 닫기
+          }
+
+          function error() {
+            $('.alert').show().find('.message').text('위치정보 확인 실패. 권한을 확인해주세요.');
+          }
+        } else {
+          $('.alert').show().find('.message').text('위치 정보를 사용할 수 없는 브라우저 입니다. 위치를 직접 선택해주세요.');
+        }
+
+        $('.alert .close').on('click', function() {$('.alert').hide();});
+      };
     </script>
+    <!-- 알림창// -->
+    <div class="alert">
+      <a href="#" class="close" title="닫기"><span class="bar1"></span><span class="bar2"></span></a>
+      <p class="message"></p>
+    </div>
+    <!-- //알림창 -->
   </div>
   <!-- //웨더 앱 -->
   <script>
-    /*위치 정보: HTTPS 동의 필수*/
-    function getUserGeolocation() {
-      var userGeolocation = {};
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
-        function showPosition(position) {
-          userGeolocation.lat = position.coords.latitude;
-          userGeolocation.lon = position.coords.longitude;
-        }
-      }
-      return userGeolocation;
-    }
     /* api 정보 : https://openweathermap.org/forecast5 */
     var forecast = {
       city: "Seoul",
@@ -685,7 +709,6 @@
         setTimeout(updateForecast, 600000);//10분마다 실행
       });
     };
-    getUserGeolocation();
     updateForecast();
     /*Descripttions 
       Clouds 구름
