@@ -13,7 +13,7 @@
   background: -webkit-linear-gradient(-145deg, rgba(34,37,50,1) 0%, rgba(8,9,26,1) 100%);
   background: linear-gradient(-145deg, rgba(34,37,50,1) 0%, rgba(8,9,26,1) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#222532",endColorstr="#08091a",GradientType=1);
-  font-family: 'Lato', 'Noto Serif KR', sans-serif;
+  font-family: 'Lato', 'Nanum Gothic', 'Noto Serif KR', sans-serif;
   &::-webkit-scrollbar {
     width: 0;  /* 세로축 스크롤바 길이 */
     height: 0;  /* 가로축 스크롤바 길이 */
@@ -112,7 +112,7 @@
     & .title {
       display: inline-block;
       float: left;
-      font-family: 'Potta One', sans-serif;
+      font-family: 'Poiret One', 'Potta One', sans-serif;
       font-size: 3rem;
       font-weight: 500;
       letter-spacing: -0.03em;
@@ -129,7 +129,7 @@
         letter-spacing: 0;
         text-align: right;
         text-decoration: none;
-        color: rgba(255,255,255,1);
+        color: rgba(255,255,255,0.8);
         background: url("../images/weather/icon/earth.svg") no-repeat right top 0.6rem/1.7rem auto;
       }
     }
