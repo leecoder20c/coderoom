@@ -580,7 +580,8 @@
             updateForecast();//날씨 재호출
             setTimeout(function() {
               $('.alert').hide();//팝업 닫기
-            },1000);
+              $popClose.trigger('click');//팝업 닫기
+            },500);
           }
 
           function error() {
