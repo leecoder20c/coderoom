@@ -105,7 +105,7 @@
   }
   //헤더
   & .header {
-    padding: 4vh 0 1.5vh;
+    padding: 4vh 0 1vh;
     line-height: 2rem;
     font-size: 0;
     @include clearfix;
@@ -414,7 +414,7 @@
     }
     //시간별 예보
     &.eachHour {
-      margin: 1vh 0;
+      margin: 0;
       & .scroll-wrap {
         overflow-x: scroll;
         &::-webkit-scrollbar {
@@ -522,7 +522,7 @@
     }
     //일별 예보
     &.daily {
-      margin: 3vh 0 15px;
+      margin: 2vh 0 15px;
       & .scroll-wrap {
         overflow-x: scroll;
         &::-webkit-scrollbar {
@@ -651,7 +651,7 @@
   }
   //팝업
   & .pop-geocode {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: -101vw;
     z-index: -1;
@@ -659,7 +659,7 @@
     height: 100%;
     background: #fff;
     opacity: 0;
-    overflow: auto;
+    overflow: hidden;
     transition: all 0.3s ease, z-index 2s ease;
     //활성화
     &.is-active {
@@ -668,40 +668,68 @@
       opacity: 1;
       transition: all 0.3s ease, z-index 0s ease;
     }
-    //닫기
-    & .close {
+    //팝업헤더
+    & .pop-header {
       position: absolute;
-      top: 10px;
-      right: 10px;
-      width: 50px;
-      height: 50px;
-      & .bar1, & .bar2 {
+      top: 0;
+      left: 0;
+      width: 100%;
+      max-width: 800px;
+      height: 60px;
+      background: #fff;
+      //닫기
+      & .close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 50px;
+        height: 50px;
+        & .bar1, & .bar2 {
+          display: block;
+          position: absolute;
+          top: calc(50% - 1px);
+          left: calc(50% - 13px);
+          width: 26px;
+          height: 2px;
+          border-radius: 2px;
+          background: #333;
+        }
+        & .bar1 {
+          transform: rotate(45deg);
+        }
+        & .bar2 {
+          transform: rotate(-45deg);
+        }
+      }
+      //내위치
+      & .my-location {
         display: block;
         position: absolute;
-        top: calc(50% - 1px);
-        left: calc(50% - 13px);
-        width: 26px;
-        height: 2px;
-        border-radius: 2px;
-        background: #333;
-      }
-      & .bar1 {
-        transform: rotate(45deg);
-      }
-      & .bar2 {
-        transform: rotate(-45deg);
+        top: 10px;
+        right: 55px;
+        width: 50px;
+        height: 50px;
+        text-align: center;
+        text-decoration: none;
+        & .icon {
+          width: 25px;
+          @include centerXY;
+        }
       }
     }
     //도시 리스트
     & .city-list {
-      position: relative;
       width: 100%;
       max-width: 800px;
-      padding: 50px 30px;
+      height: 100%;
+      padding: 60px 30px 30px;
       margin: 0 auto;
+      overflow-y: auto;
       & .depth1 {
+        margin-bottom: 0.5rem;
         & .tit {
           position: relative;
+          padding: 0 0.5rem;
           font-size: 2rem;
           font-weight: 400;
           letter-spacing: -0.01em;
@@ -712,39 +740,51 @@
             content: '';
             display: block;
             position: absolute;
-            top: 0;
+            bottom: 0;
             left: 0;
             z-index: -1;
             width: 0;
-            height: 2rem;
+            height: 0.6rem;
             opacity: 0;
             background: rgba(192,255,0,0.48);
           }
-          &.on {
-            font-weight: 700;
+          &.on,&:hover,&:focus {
+            color: #000;
+            transition: all 0.5s ease;
             &:before {
               width: 100%;
               opacity: 1;
               transition: all 0.5s ease;
             }
           }
+          &.on+ul {
+            height: auto;
+            padding: 0 0.5rem;
+            margin-bottom: 1rem;
+            & .depth2 {
+              margin: 0;
+              opacity: 1;
+            }
+          }
         }
         & > ul {
-          padding: 0 5px;
-          margin-bottom: 10px;
+          height: 0;
+          overflow: hidden;
           @include clearfix;
         }
       }
       & .depth2 {
-        display: none;
         float: left;
+        margin-top: -1.5rem;
+        opacity: 0;
+        transition: all 0.3s ease;
         & .location {
           display: block;
           position: relative;
-          padding: 2px 3px;
-          margin: 4px 10px 4px 0;
+          padding: 0.2rem 0.3rem;
+          margin: 0.4rem 1rem 0.4rem 0;
           font-size: 1.6rem;
-          font-weight: 700;
+          font-weight: 400;
           letter-spacing: -0.01em;
           line-height: 3rem;
           text-decoration: none;
@@ -753,36 +793,20 @@
             content: '';
             display: block;
             position: absolute;
-            top: 0;
+            bottom: 1rem;
             left: 0;
             z-index: -1;
             width: 0;
-            height: 3rem;
+            height: 0.3rem;
             background: rgba(0,255,31,0.48);
           }
           &:hover {
+            color: #000;
             &:before {
               width: 100%;
               transition: width 0.3s ease;
             }
           }
-        }
-      }
-      & .my-location {
-        position: absolute;
-        top: 10px;
-        right: 55px;
-        & .btn {
-          display: block;
-          position: relative;
-          width: 50px;
-          height: 50px;
-          text-align: center;
-          text-decoration: none;
-        }
-        & .icon {
-          width: 25px;
-          @include centerXY;
         }
       }
     }

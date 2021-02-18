@@ -398,12 +398,15 @@
     <!-- //콘텐츠 -->
     <!-- 팝업// -->
     <div id="pop-geocode" class="pop-geocode">
-      <ul class="city-list">
+      <!-- 팝업헤더 -->
+      <div class="pop-header">
         <!-- 닫기 -->
         <a href="javascript:void(0);" class="close" title="닫기"><span class="bar1"></span><span class="bar2"></span></a>
         <!-- 내 위치 -->
-        <li class="my-location"><a href="javascript:getUserGeolocation();" class="btn" target="_self"><img class="icon" draggable="false" src="./lib/images/weather/icon/location.svg" alt="내위치" /></a></li>
-        <!-- 리스트 -->
+        <a class="my-location" href="javascript:getUserGeolocation();" target="_self" title="내위치"><img class="icon" draggable="false" src="./lib/images/weather/icon/location.svg" alt="" /></a>
+      </div>
+      <!-- 리스트 -->
+      <ul class="city-list">
         <li class="depth1"><a href="javascript:void(0);" target="_self" class="tit">서울특별시</a>
           <ul>
             <li class="depth2"><a href="#서울" target="_self" class="location" data-city="seoul" data-name="Seoul" data-lat="37.5990998" data-lon="127.9861493">서울(전체)</a></li>
@@ -578,17 +581,18 @@
 
       //팝업 닫기
       $popClose.on('click', function() {
-        $('.pop-geocode .tit + ul > .depth2').hide(0);
         $('.pop-geocode').removeClass("is-active");
       });
 
       //도시 드롭다운
       $newLocaTit.on('click', function() {
         var $this = $(this);
-        $newLocaTit.removeClass('on');
-        $this.addClass('on');
-        $('.pop-geocode .tit + ul > .depth2').hide(0);
-        $this.siblings('ul').find('.depth2').show(100);
+        if($this.hasClass('on')) {
+          $newLocaTit.removeClass('on');
+        } else {
+          $newLocaTit.removeClass('on');
+          $this.addClass('on');
+        }
       });
 
       //도시 클릭
