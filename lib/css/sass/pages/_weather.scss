@@ -662,6 +662,7 @@
     left: -101vw;
     z-index: -1;
     width: 100%;
+    max-width: 400px;
     height: 100%;
     background: #fff;
     opacity: 0;
@@ -679,9 +680,12 @@
       position: absolute;
       top: 0;
       left: 0;
+      right: 0;
+      z-index: 1;
       width: 100%;
       max-width: 800px;
       height: 60px;
+      margin: 0 auto;
       background: #fff;
       //닫기
       & .close {
@@ -705,21 +709,6 @@
         }
         & .bar2 {
           transform: rotate(-45deg);
-        }
-      }
-      //내위치
-      & .my-location {
-        display: block;
-        position: absolute;
-        top: 10px;
-        right: 55px;
-        width: 50px;
-        height: 50px;
-        text-align: center;
-        text-decoration: none;
-        & .icon {
-          width: 25px;
-          @include centerXY;
         }
       }
     }
@@ -814,6 +803,32 @@
             }
           }
         }
+      }
+    }
+    //내위치
+    & .my-location {
+      display: block;
+      position: absolute;
+      bottom: 25px;
+      right: 25px;
+      width: 50px;
+      height: 50px;
+      padding: 8px 0 0;
+      border-radius: 100%;
+      text-align: center;
+      text-decoration: none;
+      background: rgba(0,0,0,0.7);
+      & .icon {
+        width: 20px;
+      }
+      & .tit {
+        display: block;
+        margin-top: 3px;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1;
+        letter-spacing: -0.03em;
+        color: #fff;
       }
     }
   }
