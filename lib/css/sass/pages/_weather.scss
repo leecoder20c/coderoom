@@ -197,11 +197,15 @@
       text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
       color: #fff;
       @media (max-width: 400px) {
-        top: 140px;
+        top: 90px;
+        font-size: 28rem;
       }
       & .unit {
         font-size: 6rem;
         vertical-align: 8.3rem;
+        @media (max-width: 400px) {
+          vertical-align: 15.3rem;
+        }
       }
     }
     //체감
@@ -233,7 +237,7 @@
       line-height: 1;
       color: rgba(255,255,255,1);
       & .temp-min {
-        margin-right: -10px;
+        margin-right: -15px;
         letter-spacing: -0.03em;
         color: rgba(155,155,155,0.9);
         text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
@@ -298,6 +302,9 @@
       padding-top: 24px;
       text-align: center;
       background: url('../images/weather/icon/mimun.svg') no-repeat center top / 22px auto;
+      @media (max-width: 400px) {
+        left: 100px;
+      }
       & .value {
         font-size: 1rem;
         font-weight: 400;
@@ -451,8 +458,6 @@
         & .value {
           display: inline-block;
           text-align: right;
-          @media (max-width: 400px) {
-          }
         }
         & .unit {
           display: inline-block;
@@ -496,15 +501,10 @@
       //설명
       & .desc {
         display: none;
-        //font-size: 1.5rem;
-        //font-weight: 400;
-        //line-height: 1.5;
-        //letter-spacing: 0;
-        //color: #fff;
       }
       //시간 및 일자
       & .date {
-        font-size: 1.5rem;
+        font-size: 1.3rem;
         font-weight: 400;
         line-height: 1;
         letter-spacing: 0;

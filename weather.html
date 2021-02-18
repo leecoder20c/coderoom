@@ -165,7 +165,7 @@
       </script>
       <div class="forecast eachHour">
         <h3 class="tit">시간별 날씨</h3>
-        <div class="scroll-wrap">
+        <div class="scroll-wrap" id="scroll-wrap1">
           <div class="scroll-inner">
             <div class="time time1">
               <div class="temperature"><span class="blind">온도</span><span class="value"></span><span class="unit">˚C</span></div>
@@ -340,7 +340,7 @@
       </div>
       <div class="forecast daily">
         <h3 class="tit">주간 날씨</h3>
-        <div class="scroll-wrap">
+        <div class="scroll-wrap" id="scroll-wrap2">
           <div class="scroll-inner">
             <div class="time time1">
               <div class="date"><span class="blind">날짜</span><span class="value"></span>일<span class="tip">(내일)</span></div>
@@ -637,7 +637,8 @@
 
           //시간별 날씨
           for (i=0;i<resp.hourly.length;i++) {
-            $('.weather-wrap .forecast.eachHour .time'+i).find('.date .value').text(forecast.getForecastHour(resp.hourly[i].dt)+'시');
+            var ampm = parseInt(forecast.getForecastHour(resp.hourly[i].dt)) <= 12? "오전 ": "오후 ";
+            $('.weather-wrap .forecast.eachHour .time'+i).find('.date .value').text(ampm+forecast.getForecastHour(resp.hourly[i].dt)+'시');
             $('.weather-wrap .forecast.eachHour .time'+i).find('.temperature .value').text(parseInt(resp.hourly[i].temp - 273.15));
             $('.weather-wrap .forecast.eachHour .time'+i).find('.weather-img .icon').attr('src', './lib/images/weather/icon/'+resp.hourly[i].weather[0].main+'.svg');
             $('.weather-wrap .forecast.eachHour .time'+i).find('.desc .value').text(resp.hourly[i].weather[0].description);
@@ -726,6 +727,50 @@
       //$mimun.find('.value').text(mimunVal);//수치로 적용
       $mimun.find('.value').text(mimunState);//텍스트로 적용
     }
+  </script>
+
+  <script>
+    //Drag to scroll
+    var drag2scroll = function(target) {
+      var ele = target.get(0);
+      ele.style.cursor = 'grab';
+      var pos = { top: 0, left: 0, x: 0, y: 0 };
+      var mouseDownHandler = function(e) {
+          ele.style.cursor = 'grabbing';
+          ele.style.userSelect = 'none';
+          pos = {
+              left: ele.scrollLeft,
+              top: ele.scrollTop,
+              // Get the current mouse position
+              x: e.clientX,
+              y: e.clientY,
+          };
+
+          document.addEventListener('mousemove', mouseMoveHandler);
+          document.addEventListener('mouseup', mouseUpHandler);
+      };
+      var mouseMoveHandler = function(e) {
+          // How far the mouse has been moved
+          var dx = e.clientX - pos.x;
+          var dy = e.clientY - pos.y;
+          // Scroll the element
+          ele.scrollTop = pos.top - dy;
+          ele.scrollLeft = pos.left - dx;
+      };
+      var mouseUpHandler = function() {
+          ele.style.cursor = 'grab';
+          ele.style.removeProperty('user-select');
+          document.removeEventListener('mousemove', mouseMoveHandler);
+          document.removeEventListener('mouseup', mouseUpHandler);
+      };
+      // Attach the handler
+      ele.addEventListener('mousedown', mouseDownHandler);
+    };
+    $(function() {
+      //날씨 예보 스크롤
+      drag2scroll($('.forecast.eachHour .scroll-wrap'));
+      drag2scroll($('.forecast.daily .scroll-wrap'));
+    });
   </script>
 </body>
 </html>
