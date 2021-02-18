@@ -578,7 +578,7 @@
             forecast.geo.lat = position.coords.latitude;
             forecast.geo.lon = position.coords.longitude;
             updateForecast();//날씨 재호출
-            $popClose.trigger('click');//팝업 닫기
+            $('.alert').hide();//팝업 닫기
           }
 
           function error() {
