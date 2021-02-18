@@ -32,7 +32,6 @@
   <!--스타일시트-->
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700&family=Nanum+Gothic:wght@400;700&family=Poiret+One&family=Potta+One&display=swap" rel="stylesheet">
-  <!-- <link rel="stylesheet" href="./lib/css/base.css" /> -->
   <link rel="stylesheet" href="./lib/css/base.css" />
   <script>
     function getTime(data) {
@@ -562,6 +561,18 @@
   </div>
   <!-- //웨더 앱 -->
   <script>
+    /*위치 정보: HTTPS 동의 필수*/
+    function getUserGeolocation() {
+      var userGeolocation = {};
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+        function showPosition(position) {
+          userGeolocation.lat = position.coords.latitude;
+          userGeolocation.lon = position.coords.longitude;
+        }
+      }
+      return userGeolocation;
+    }
     /* api 정보 : https://openweathermap.org/forecast5 */
     var forecast = {
       city: "Seoul",
@@ -569,7 +580,7 @@
       geo: {
         lat: 37.646809,
         lon: 127.0580746
-      },//노원구 좌표계 WGS1984
+      },//기본 노원구 좌표계 WGS1984
       exclude: "alerts",//전체 보기
       getForecastDay: function(UTC) {
         var utc = UTC*1000;
@@ -674,6 +685,7 @@
         setTimeout(updateForecast, 600000);//10분마다 실행
       });
     };
+    getUserGeolocation();
     updateForecast();
     /*Descripttions 
       Clouds 구름
