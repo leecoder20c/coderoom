@@ -292,12 +292,12 @@
     //미세먼지
     & .mimun {
       position: absolute;
-      top: 303px;
+      top: 301px;
       left: 110px;
-      width: 30px;
-      padding-top: 20px;
+      width: 35px;
+      padding-top: 24px;
       text-align: center;
-      background: url('../images/weather/icon/mimun.svg') no-repeat center top / 18px auto;
+      background: url('../images/weather/icon/mimun.svg') no-repeat center top / 22px auto;
       & .value {
         font-size: 1rem;
         font-weight: 400;
@@ -637,7 +637,7 @@
     }
     //안내
     & + .notice {
-      padding-right: 10px;
+      //padding-right: 10px;
       font-size: 1rem;
       font-style: italic;
       font-weight: 100;
