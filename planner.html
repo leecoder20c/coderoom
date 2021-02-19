@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ko"dir="ltr" class="planner-app">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta name="viewport" content="width=800, user-scalable=yes">
+
+  <!--SEO-->
+  <meta name="Author" content="#Tiger & Rabbit Company #Tiny Tiger Application Teams #LeeCoder">
+  <meta name="robots" content="noidex, nofollow">
+  <meta name="googlebot" content="noindex"/>
+  <meta name="description" content="Simply planner application">
+  <meta name="format-detection" content="telephone=no"> <!-- 아이폰 number 버그 개선 -->
+  <link rel="image_src" href="./lib/images/planner/seo/logo.png" />
+  <link rel="icon" href="./lib/images/planner/seo/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon-precomposed" href="./lib/images/planner/seo/logo.png" />
+  <title>Infinite planner</title>
+
+  <!--스크립트 CDN 및 플러그인-->
+  <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/gsap-latest-beta.min.js"></script>
+
+
+  <!--스타일시트-->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;400&family=Nanum+Gothic:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./lib/css/planner.css" />
+  <script>
+    function getTime(data) {
+      var now = new Date();
+      var hours = ("0" + (now.getHours())).slice(-2);//시
+      var minutes = ("0" + (now.getMinutes())).slice(-2);//분
+      var seconds = ("0" + (now.getSeconds())).slice(-2);//초
+      var milliseconds = now.getMilliseconds(); //밀리초
+      var localeDate = now.toLocaleDateString(); //yyyy.m.d
+      var localeTime = now.toLocaleTimeString(); //오전+시간+분+초
+      var month = now.getMonth();//월
+      var day = now.getDay();//일
+      switch(month) {
+        case 0: month = "Jan"; break;
+        case 1: month = "Feb"; break;
+        case 2: month = "Mar"; break;
+        case 3: month = "Apr"; break;
+        case 4: month = "May"; break;
+        case 5: month = "Jun"; break;
+        case 6: month = "Jul"; break;
+        case 7: month = "Aug"; break;
+        case 8: month = "Sep"; break;
+        case 9: month = "Oct"; break;
+        case 10: month = "Nov"; break;
+        case 11: month = "Dec"; break;
+      }
+      switch(day) {
+        case 0: day = "일"; break;
+        case 1: day = "월"; break;
+        case 2: day = "화"; break;
+        case 3: day = "수"; break;
+        case 4: day = "목"; break;
+        case 5: day = "금"; break;
+        case 6: day = "토"; break;
+        case 7: day = "일"; break;
+      }
+      var date = now.getDate();//일
+      var day = now.getDay();//요일
+      if (data == "hm") return hours + ':' + minutes;
+      else if (data == "hms") return hours + ':' + minutes + ':' + seconds;
+      else if (data == "hmsm") return hours + ':' + minutes + ':' + seconds + ':' + milliseconds;
+      else if (data == "time") return localeTime;//ex. 오전 11:27:17
+      else if (data == "date") return localeDate;//ex. 2021. 2. 5.
+      else if (data == "md") return month+'. '+date;//ex. Jan.1
+      else if (data == "d") return day;//ex. 월,화,수,목,금,토,일
+    }
+  </script>
+</head>
+<body class="page-planner">
+  <!--[if lt IE 9]><div class="legacy-browser">
+  <div class="legacy-pad"><p>현재 사용중인 브라우저는 지원이 중단된 브라우저입니다.<br> 원활한 온라인 서비스를 위해 브라우저를 <a href="http://windows.microsoft.com/ko-kr/internet-explorer/ie-11-worldwide-languages" target="_blank">최신 버전</a>으로 업데이트 해주시길 바랍니다.  </p></div>
+  </div><![endif]-->
+  <main class="wrap">
+    <!-- 헤더 -->
+    <header class="header">
+      <!-- <a href="javascript:void(0);" draggable="false" class="btn-menu" title="메뉴 열기"><span class="bar1"></span><span class="bar2"></span><span class="bar3"></span></a> -->
+      <h1 class="tit">Infinite Planner<!-- <img src="./lib/planner/seo/logo.svg" alt="Infinite planner" class="logo" draggable="flase"> --></h1>
+    </header>
+    <!-- 컨텐츠// -->
+    <section class="content">
+      <div class="date">
+        <p class="month">Jan</p>
+      </div>
+    </section>
+    <!-- //컨텐츠 -->
+    <!-- 사이드메뉴 -->
+    <div class="sidemenu">
+      <a href="javascript:void(0);" draggable="false" class="btn-close" title="닫기"><span class="bar1"></span><span class="bar2"></span></a>
+      <p class="tit">사이드메뉴</p>
+    </div>
+  </main>
+
+  <script>
+    //Var
+    var $sidemenu = $('.sidemenu');//팝업 열기 버튼
+    var $popOpen = $('.header .btn-menu');//팝업 열기 버튼
+    var $popClose = $('.sidemenu .btn-close');//팝업 닫기 버튼
+
+    //Fx
+
+    //Event
+    $popOpen.on('click', function() {$sidemenu.addClass("is-active");});//팝업 열기
+    $popClose.on('click', function() {$sidemenu.removeClass("is-active");});//팝업 닫기
+  </script>
+</body>
+</html>
