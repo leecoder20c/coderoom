@@ -1,28 +1,34 @@
 @charset 'utf-8';
 //Commons
 html.planner-app {
-  body {}
+  min-height: 100%;
+  body {
+    min-height: 100%;
+    font-family: 'Lato', 'Nanum Gothic', 'Noto Serif KR', sans-serif;
+    &::-webkit-scrollbar {
+      width: 0;
+      height: 0;
+    }
+  }
 }
 $headerH: 5rem;
 //Planner Wrap
-.page-planner {
+body.page-planner {
   background: #333;
   //Wrapper
-  & .wrap {
+  main.ly-wrap {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     width: 800px;
     height: 100vh;
-    padding: $headerH 30px;
     margin: 0 auto;
     overflow: hidden;
-    overflow-y: auto;
-    background: #999;
+    background: #666;
   }
   //헤더
-  & .header {
+  & .ly-header {
     position: fixed;
     top: 0;
     left: 0;
@@ -32,52 +38,212 @@ $headerH: 5rem;
     padding: 0 30px;
     margin: 0 auto;
     background: #000;
-    //사이드 메뉴 열기
-    & .btn-menu {
-      position: absolute;
-      top: 10px;
-      left: 15px;
-      width: 30px;
-      height: 30px;
-      & .bar1, & .bar2, & .bar3 {
-        display: block;
-        position: absolute;
-        left: calc(50% - 13px);
-        width: 26px;
-        height: 2px;
-        border-radius: 2px;
-        background: #333;
-      }
-      & .bar1 {
-        top: calc(0% + 5px);
-      }
-      & .bar2 {
-        top: calc(50% - 1px);
-      }
-      & .bar3 {
-        top: calc(100% - 7px);
-      }
-    }
     & .tit {
       display: inline-block;
       font-size: 2.5rem;
-      font-weight: 700;
+      font-weight: 400;
       line-height: $headerH;
-      letter-spacing: 0;
+      letter-spacing: 0.03em;
       text-align: left;
       color: #fff;
       & .logo {
-        max-height: 30px;
+        display: inline-block;
+        height: 30px;
+        margin: 10px 6px 0 0;
       }
     }
   }
-  //사이드 메뉴
-  & .sidemenu {
+  //컨텐츠
+  & .ly-content {
+    height: 100%;
+    padding: $headerH 0 0;
+    //날짜 선택하기
+    & .date {
+      padding: 30px 0 0 30px;
+      @include clearfix;
+      //월 선택
+      & .month {
+        display: inline-block;
+        float: left;
+        position: relative;
+        width: 150px;
+        height: 150px;
+        border: 1px solid #fff;
+        margin: 0 0 0;
+        text-align: center;
+        & .value {
+          display: block;
+          width: 100%;
+          border: none;
+          margin: auto;
+          font-size: 5rem;
+          font-weight: 100;
+          line-height: 148px;
+          letter-spacing: 0;
+          text-align: center;
+          color: #fff;
+        }
+        & .select-month {
+          display: block;
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          border: none;
+          margin: auto;
+          color: rgba(0,0,0,0);
+        }
+      }
+      //일 선택
+      & .day {
+        float: left;
+        width: calc(100% - 200px);
+        margin: 110px 0 0 50px;
+        overflow: hidden;
+        @media (pointer:coarse) {
+          overflow-x: scroll;
+        }
+        & .scroll {
+          padding: 0;
+          margin: 0;
+          @include clearfix;
+          & > li {
+            float: left;
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+            border: 1px solid #fff;
+            border-radius: 100%;
+            white-space: nowrap;
+            overflow: hidden;
+            & .dd {
+              display: block;
+              font-size: 1.5rem;
+              font-weight: 400;
+              line-height: 3.8rem;
+              letter-spacing: 0;
+              text-align: center;
+              text-decoration: none;
+              color: #fff;
+            }
+            &:active {
+              background: #fff;
+              & .dd {
+                color: #000;
+              }
+            }
+            &.today {
+              background: #fff;
+              & .dd {
+                color: #000;
+              }
+            }
+          }
+        }
+      }
+    }
+    //다이어리
+    & .diary {
+      height: calc(100% - 180px);
+      padding: 0 30px 50px;
+      margin-top: 30px;
+      overflow: hidden;
+      overflow-y: auto;
+      @media (pointer:coarse) {
+      }
+      &::-webkit-scrollbar {
+        width: 0;
+        height: 0;
+      }
+      & .article {
+        padding: 15px 0 30px;
+        border-bottom: 1px solid #fff;
+        margin-bottom: 15px;
+        &:last-child {
+          border-bottom: 0;
+          margin-bottom: 0;
+        }
+        & .header {
+          position: relative;
+          & .when {
+            font-size: 2rem;
+            text-align: left;
+            font-weight: 100;
+            line-height: 1.5rem;
+            letter-spacing: 0;
+            color: #fff;
+          }
+          & .btn-edit {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: block;
+            width: 30px;
+            height: 30px;
+            border: 1px solid #fff;
+            border-radius: 100%;
+            font-size: 1rem;
+            text-align: center;
+            font-weight: 400;
+            line-height: 28px;
+            letter-spacing: -0.03em;
+            text-decoration: none;
+            color: #fff;
+            &:active {
+              color: #000;
+              background: #fff;
+            }
+          }
+        }
+        & .cont {
+          margin-top: 10px;
+          & .desc {
+            margin-top: 5px;
+            font-size: 1.5rem;
+            font-weight: 400;
+            line-height: 1.5;
+            letter-spacing: 0;
+            text-align: left;
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+
+  //팝업
+  & .btn-open {
+    position: absolute;
+    top: 10px;
+    left: 15px;
+    width: 30px;
+    height: 30px;
+    & .bar1, & .bar2, & .bar3 {
+      display: block;
+      position: absolute;
+      left: calc(50% - 13px);
+      width: 26px;
+      height: 2px;
+      border-radius: 2px;
+      background: #333;
+    }
+    & .bar1 {
+      top: calc(0% + 5px);
+    }
+    & .bar2 {
+      top: calc(50% - 1px);
+    }
+    & .bar3 {
+      top: calc(100% - 7px);
+    }
+  }
+  & .popup {
     position: absolute;
     top: 0;
-    left: -400px;
+    left: -800px;
     z-index: 99;
-    width: 400px;
+    width: 800px;
     height: 100%;
     padding: $headerH 30px;
     text-align: left;
@@ -85,6 +251,10 @@ $headerH: 5rem;
     transition: left 0.3s ease;
     &.is-active{
       left: 0;
+    }
+    & .editor-form {
+      width: 100%;
+      height: 100%;
     }
     //사이드 메뉴 닫기
     & .btn-close {
@@ -110,11 +280,42 @@ $headerH: 5rem;
         transform: rotate(-45deg);
       }
     }
+    //타이틀
     & .tit {
       font-size: 1.5rem;
       font-weight: 700;
       line-height: 1.5;
       letter-spacing: 0;
+      color: #000;
+    }
+    //에디터
+    & .editor {
+      width: 100%;
+      height: calc(100% - 110px);
+      padding: 10px;
+      border: 1px solid #333;
+      margin: 30px 0 0;
+      resize: none;
+      font-size: 1.3rem;
+      font-weight: 400;
+      line-height: 1.5;
+      letter-spacing: 0;
+      overflow: auto;
+      color: #000;
+    }
+    //전송 버튼
+    .btn-submit {
+      display: block;
+      width: 100px;
+      margin-top: 20px;
+      margin-left: calc(100% - 100px);
+      text-align: center;
+      font-family: 'Tangerine', cursive;
+      font-size: 4.5rem;
+      font-weight: 400;
+      line-height: 1;
+      letter-spacing: 0;
+      text-decoration: none;
       color: #000;
     }
   }

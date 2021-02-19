@@ -24,7 +24,8 @@
 
   <!--스타일시트-->
   <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;400&family=Nanum+Gothic:wght@400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;400&family=Nanum+Gothic:wght@400&family=Tangerine:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <link rel="stylesheet" href="./lib/css/planner.css" />
   <script>
     function getTime(data) {
@@ -77,37 +78,207 @@
   <!--[if lt IE 9]><div class="legacy-browser">
   <div class="legacy-pad"><p>현재 사용중인 브라우저는 지원이 중단된 브라우저입니다.<br> 원활한 온라인 서비스를 위해 브라우저를 <a href="http://windows.microsoft.com/ko-kr/internet-explorer/ie-11-worldwide-languages" target="_blank">최신 버전</a>으로 업데이트 해주시길 바랍니다.  </p></div>
   </div><![endif]-->
-  <main class="wrap">
+  <main class="ly-wrap">
     <!-- 헤더 -->
-    <header class="header">
-      <!-- <a href="javascript:void(0);" draggable="false" class="btn-menu" title="메뉴 열기"><span class="bar1"></span><span class="bar2"></span><span class="bar3"></span></a> -->
-      <h1 class="tit">Infinite Planner<!-- <img src="./lib/planner/seo/logo.svg" alt="Infinite planner" class="logo" draggable="flase"> --></h1>
+    <header class="ly-header">
+      <h1 class="tit"><img src="./lib/images/planner/seo/logo.svg" alt="" class="logo">Infinite Planner</h1>
     </header>
     <!-- 컨텐츠// -->
-    <section class="content">
+    <section class="ly-content">
+      <!-- 날짜 선택하기// -->
       <div class="date">
-        <p class="month">Jan</p>
+        <!-- 월 선택 -->
+        <div class="month"><span class="value">Jan</span><input type="text" class="select-month" id="select-month"></div>
+        <!-- 일 선택 -->
+        <div class="day">
+          <ul class="scroll" style="width: calc(50px * 31 + 20px);"><!-- 50px * dd 개수 -->
+            <li class="today"><a href="javascript:void(0);" class="dd">1</a></li>
+            <li><a href="javascript:void(0);" draggable="false" class="dd">2</a></li>
+            <li><a href="javascript:void(0);" draggable="false" class="dd">3</a></li>
+            <li><a href="javascript:void(0);" draggable="false" class="dd">4</a></li>
+            <li><a href="javascript:void(0);" draggable="false" class="dd">5</a></li>
+            <li><a href="javascript:void(0);" draggable="false" class="dd">6</a></li>
+            <li><a href="javascript:void(0);" draggable="false" class="dd">7</a></li>
+            <li><a href="javascript:void(0);" draggable="false" class="dd">8</a></li>
+            <li><a href="javascript:void(0);" draggable="false" class="dd">9</a></li>
+            <li><a href="javascript:void(0);" draggable="false" class="dd">10</a></li>
+            <li><a href="javascript:void(0);" draggable="false" class="dd">11</a></li>
+            <li><a href="javascript:void(0);" draggable="false" class="dd">12</a></li>
+            <li><a href="javascript:void(0);" draggable="false" class="dd">13</a></li>
+            <li><a href="javascript:void(0);" draggable="false" class="dd">14</a></li>
+            <li><a href="javascript:void(0);" draggable="false" class="dd">15</a></li>
+            <li><a href="javascript:void(0);" draggable="false" class="dd">16</a></li>
+            <li><a href="javascript:void(0);" draggable="false" class="dd">17</a></li>
+            <li><a href="javascript:void(0);" draggable="false" class="dd">18</a></li>
+            <li><a href="javascript:void(0);" draggable="false" class="dd">19</a></li>
+            <li><a href="javascript:void(0);" draggable="false" class="dd">20</a></li>
+            <li><a href="javascript:void(0);" draggable="false" class="dd">21</a></li>
+            <li><a href="javascript:void(0);" draggable="false" class="dd">22</a></li>
+            <li><a href="javascript:void(0);" draggable="false" class="dd">23</a></li>
+            <li><a href="javascript:void(0);" draggable="false" class="dd">24</a></li>
+            <li><a href="javascript:void(0);" draggable="false" class="dd">25</a></li>
+            <li><a href="javascript:void(0);" draggable="false" class="dd">26</a></li>
+            <li><a href="javascript:void(0);" draggable="false" class="dd">27</a></li>
+            <li><a href="javascript:void(0);" draggable="false" class="dd">28</a></li>
+            <li><a href="javascript:void(0);" draggable="false" class="dd">29</a></li>
+            <li><a href="javascript:void(0);" draggable="false" class="dd">30</a></li>
+            <li><a href="javascript:void(0);" draggable="false" class="dd">31</a></li>
+          </ul>
+        </div>
       </div>
+      <!-- //날짜 선택하기 -->
+      <!-- 다이어리// -->
+      <div class="diary">
+        <article class="article day-{dd}" data-date="01.{dd}">
+          <header class="header">
+            <span class="when">Day-{dd}</span>
+            <a href="javascript:void(0);" target="_self" draggable="false" class="btn-edit" data-date="01.{dd}">edit</a>
+          </header>
+          <div class="cont">
+            <h2 class="tit"></h2>
+            <p class="desc">19'<br>Who am I?<br>Another day another destny...<br><br>20'<br>What do you want to know?<br>I am goning to talk about my life!<br><br>21'<br>New year is here!<br>Happy new year!</p>
+          </div>
+        </article>
+        <article class="article day-{dd}" data-date="01.{dd}">
+          <header class="header">
+            <span class="when">Day-{dd}</span>
+            <a href="javascript:void(0);" target="_self" draggable="false" class="btn-edit" data-date="01.{dd}">edit</a>
+          </header>
+          <div class="cont">
+            <h2 class="tit"></h2>
+            <p class="desc">20'<br>What do you want to know?<br>I am goning to talk about my life!<br><br>21'<br>New year is here!<br>Happy new year!</p>
+          </div>
+        </article>
+        <article class="article day-03" data-date="01.{dd}">
+          <header class="header">
+            <span class="when">Day-{dd}</span>
+            <a href="javascript:void(0);" target="_self" draggable="false" class="btn-edit" data-date="01.{dd}">edit</a>
+          </header>
+          <div class="cont">
+            <h2 class="tit"></h2>
+            <p class="desc">20'<br>What do you want to know?<br>I am goning to talk about my life!<br><br>21'<br>New year is here!<br>Happy new year!</p>
+          </div>
+        </article>
+        <article class="article day-03" data-date="01.{dd}">
+          <header class="header">
+            <span class="when">Day-{dd}</span>
+            <a href="javascript:void(0);" target="_self" draggable="false" class="btn-edit" data-date="01.{dd}">edit</a>
+          </header>
+          <div class="cont">
+            <h2 class="tit"></h2>
+            <p class="desc">20'<br>What do you want to know?<br>I am goning to talk about my life!<br><br>21'<br>New year is here!<br>Happy new year!</p>
+          </div>
+        </article>
+        <article class="article day-03" data-date="01.{dd}">
+          <header class="header">
+            <span class="when">Day-{dd}</span>
+            <a href="javascript:void(0);" target="_self" draggable="false" class="btn-edit" data-date="01.{dd}">edit</a>
+          </header>
+          <div class="cont">
+            <h2 class="tit"></h2>
+            <p class="desc">20'<br>What do you want to know?<br>I am goning to talk about my life!<br><br>21'<br>New year is here!<br>Happy new year!</p>
+          </div>
+        </article>
+      </div>
+      <!-- //다이어리 -->
     </section>
     <!-- //컨텐츠 -->
-    <!-- 사이드메뉴 -->
-    <div class="sidemenu">
+
+    <!-- 팝업: 에디터 -->
+    <div class="popup">
+      <form action="" class="editor-form">
+      <!-- 닫기 -->
       <a href="javascript:void(0);" draggable="false" class="btn-close" title="닫기"><span class="bar1"></span><span class="bar2"></span></a>
-      <p class="tit">사이드메뉴</p>
+      <!-- 타이틀 -->
+      <p class="tit">Editor</p>
+      <!-- 에디터 -->
+      <textarea name="" class="editor" id="editor"></textarea>
+      <!-- 전송 버튼 -->
+      <a href="javascript:void(0);" draggable="false" class="btn-submit" title="작성">Done</a>
+      </form>
     </div>
   </main>
 
   <script>
-    //Var
-    var $sidemenu = $('.sidemenu');//팝업 열기 버튼
-    var $popOpen = $('.header .btn-menu');//팝업 열기 버튼
-    var $popClose = $('.sidemenu .btn-close');//팝업 닫기 버튼
+    $( function() {
+      /*날짜 선택*/
+      //월 선택: 데이터 불러오기
+      $("#select-month").datepicker({
+        showAnim: 'slideDown',
+        showOtherMonths: true,
+        selectOtherMonths: true
+      });
+      //일 선택: 해당 컨텐츠로 스크롤 이동
+      $('.ly-content .date .dd').on('click', function() {
+        var target = $('.day-'+$(this).text());
+        var getTargetOffset = target.offset().top;
+        $('html, body').stop().animate({"scrollTop":getTargetOffset});
+      });
 
-    //Fx
+      /* Drag to scroll */
+      var drag2scroll = function(target) {
+        var ele = target.get(0);
+        ele.style.cursor = 'grab';
+        var pos = { top: 0, left: 0, x: 0, y: 0 };
+        var mouseDownHandler = function(e) {
+            ele.style.cursor = 'grabbing';
+            ele.style.userSelect = 'none';
+            pos = {
+                left: ele.scrollLeft,
+                top: ele.scrollTop,
+                // Get the current mouse position
+                x: e.clientX,
+                y: e.clientY,
+            };
+
+            document.addEventListener('mousemove', mouseMoveHandler);
+            document.addEventListener('mouseup', mouseUpHandler);
+        };
+        var mouseMoveHandler = function(e) {
+            // How far the mouse has been moved
+            var dx = e.clientX - pos.x;
+            var dy = e.clientY - pos.y;
+            // Scroll the element
+            ele.scrollTop = pos.top - dy;
+            ele.scrollLeft = pos.left - dx;
+        };
+        var mouseUpHandler = function() {
+            ele.style.cursor = 'grab';
+            ele.style.removeProperty('user-select');
+            document.removeEventListener('mousemove', mouseMoveHandler);
+            document.removeEventListener('mouseup', mouseUpHandler);
+        };
+        // Attach the handler
+        ele.addEventListener('mousedown', mouseDownHandler);
+      };
+      //일자 선택 스크롤
+      drag2scroll($('.ly-content  .date .day'));
+      drag2scroll($('.ly-content  .diary'));
+    });
+  </script>
+
+  <!-- 팝업: 에디터 -->
+  <script>
+    //Var
+    var $popup = $('.popup');//팝업
+    var $popOpen = $('.btn-edit');//팝업 열기 버튼
+    var $popClose = $('.popup .btn-close');//팝업 닫기 버튼
+    var $popSubmit = $('.popup .btn-submit');//작성 버튼
 
     //Event
-    $popOpen.on('click', function() {$sidemenu.addClass("is-active");});//팝업 열기
-    $popClose.on('click', function() {$sidemenu.removeClass("is-active");});//팝업 닫기
+    $popOpen.on('click', function() {//팝업 열기
+      //Var
+      var $dbName = $popOpen.attr('data-date');
+
+      //DB불러오기
+
+      //Event
+      $popup.addClass("is-active");
+    });
+    $popSubmit.on('click', function() {$('.editor-form').submit();});//수정사항 전송: Ajax로 변경 필요
+    $popClose.on('click', function() {//팝업 닫기
+      $popup.removeClass("is-active");
+    })
   </script>
 </body>
 </html>
