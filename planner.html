@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-  <meta name="viewport" content="width=800, user-scalable=yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes">
 
   <!--SEO-->
   <meta name="Author" content="#Tiger & Rabbit Company #Tiny Tiger Application Teams #LeeCoder">
@@ -70,6 +70,8 @@
       else if (data == "time") return localeTime;//ex. 오전 11:27:17
       else if (data == "date") return localeDate;//ex. 2021. 2. 5.
       else if (data == "md") return month+'. '+date;//ex. Jan.1
+      else if (data == "mm") return month;//ex. Jan.1
+      else if (data == "dd") return date;//ex. Jan.1
       else if (data == "d") return day;//ex. 월,화,수,목,금,토,일
     }
   </script>
@@ -92,87 +94,87 @@
         <!-- 일 선택 -->
         <div class="day">
           <ul class="scroll" style="width: calc(50px * 31 + 20px);"><!-- 50px * dd 개수 -->
-            <li class="today"><a href="javascript:void(0);" class="dd">1</a></li>
-            <li><a href="javascript:void(0);" draggable="false" class="dd">2</a></li>
-            <li><a href="javascript:void(0);" draggable="false" class="dd">3</a></li>
-            <li><a href="javascript:void(0);" draggable="false" class="dd">4</a></li>
-            <li><a href="javascript:void(0);" draggable="false" class="dd">5</a></li>
-            <li><a href="javascript:void(0);" draggable="false" class="dd">6</a></li>
-            <li><a href="javascript:void(0);" draggable="false" class="dd">7</a></li>
-            <li><a href="javascript:void(0);" draggable="false" class="dd">8</a></li>
-            <li><a href="javascript:void(0);" draggable="false" class="dd">9</a></li>
-            <li><a href="javascript:void(0);" draggable="false" class="dd">10</a></li>
-            <li><a href="javascript:void(0);" draggable="false" class="dd">11</a></li>
-            <li><a href="javascript:void(0);" draggable="false" class="dd">12</a></li>
-            <li><a href="javascript:void(0);" draggable="false" class="dd">13</a></li>
-            <li><a href="javascript:void(0);" draggable="false" class="dd">14</a></li>
-            <li><a href="javascript:void(0);" draggable="false" class="dd">15</a></li>
-            <li><a href="javascript:void(0);" draggable="false" class="dd">16</a></li>
-            <li><a href="javascript:void(0);" draggable="false" class="dd">17</a></li>
-            <li><a href="javascript:void(0);" draggable="false" class="dd">18</a></li>
-            <li><a href="javascript:void(0);" draggable="false" class="dd">19</a></li>
-            <li><a href="javascript:void(0);" draggable="false" class="dd">20</a></li>
-            <li><a href="javascript:void(0);" draggable="false" class="dd">21</a></li>
-            <li><a href="javascript:void(0);" draggable="false" class="dd">22</a></li>
-            <li><a href="javascript:void(0);" draggable="false" class="dd">23</a></li>
-            <li><a href="javascript:void(0);" draggable="false" class="dd">24</a></li>
-            <li><a href="javascript:void(0);" draggable="false" class="dd">25</a></li>
-            <li><a href="javascript:void(0);" draggable="false" class="dd">26</a></li>
-            <li><a href="javascript:void(0);" draggable="false" class="dd">27</a></li>
-            <li><a href="javascript:void(0);" draggable="false" class="dd">28</a></li>
-            <li><a href="javascript:void(0);" draggable="false" class="dd">29</a></li>
-            <li><a href="javascript:void(0);" draggable="false" class="dd">30</a></li>
-            <li><a href="javascript:void(0);" draggable="false" class="dd">31</a></li>
+            <li data-date="1"><a href="javascript:void(0);" draggable="false" class="btn-day">1</a></li><!-- 활성화(li.selected)-->
+            <li data-date="2"><a href="javascript:void(0);" draggable="false" class="btn-day">2</a></li>
+            <li data-date="3"><a href="javascript:void(0);" draggable="false" class="btn-day">3</a></li>
+            <li data-date="4"><a href="javascript:void(0);" draggable="false" class="btn-day">4</a></li>
+            <li data-date="5"><a href="javascript:void(0);" draggable="false" class="btn-day">5</a></li>
+            <li data-date="6"><a href="javascript:void(0);" draggable="false" class="btn-day">6</a></li>
+            <li data-date="7"><a href="javascript:void(0);" draggable="false" class="btn-day">7</a></li>
+            <li data-date="8"><a href="javascript:void(0);" draggable="false" class="btn-day">8</a></li>
+            <li data-date="9"><a href="javascript:void(0);" draggable="false" class="btn-day">9</a></li>
+            <li data-date="10"><a href="javascript:void(0);" draggable="false" class="btn-day">10</a></li>
+            <li data-date="11"><a href="javascript:void(0);" draggable="false" class="btn-day">11</a></li>
+            <li data-date="12"><a href="javascript:void(0);" draggable="false" class="btn-day">12</a></li>
+            <li data-date="13"><a href="javascript:void(0);" draggable="false" class="btn-day">13</a></li>
+            <li data-date="14"><a href="javascript:void(0);" draggable="false" class="btn-day">14</a></li>
+            <li data-date="15"><a href="javascript:void(0);" draggable="false" class="btn-day">15</a></li>
+            <li data-date="16"><a href="javascript:void(0);" draggable="false" class="btn-day">16</a></li>
+            <li data-date="17"><a href="javascript:void(0);" draggable="false" class="btn-day">17</a></li>
+            <li data-date="18"><a href="javascript:void(0);" draggable="false" class="btn-day">18</a></li>
+            <li data-date="19"><a href="javascript:void(0);" draggable="false" class="btn-day">19</a></li>
+            <li data-date="20"><a href="javascript:void(0);" draggable="false" class="btn-day">20</a></li>
+            <li data-date="21"><a href="javascript:void(0);" draggable="false" class="btn-day">21</a></li>
+            <li data-date="22"><a href="javascript:void(0);" draggable="false" class="btn-day">22</a></li>
+            <li data-date="23"><a href="javascript:void(0);" draggable="false" class="btn-day">23</a></li>
+            <li data-date="24"><a href="javascript:void(0);" draggable="false" class="btn-day">24</a></li>
+            <li data-date="25"><a href="javascript:void(0);" draggable="false" class="btn-day">25</a></li>
+            <li data-date="26"><a href="javascript:void(0);" draggable="false" class="btn-day">26</a></li>
+            <li data-date="27"><a href="javascript:void(0);" draggable="false" class="btn-day">27</a></li>
+            <li data-date="28"><a href="javascript:void(0);" draggable="false" class="btn-day">28</a></li>
+            <li data-date="29"><a href="javascript:void(0);" draggable="false" class="btn-day">29</a></li>
+            <li data-date="30"><a href="javascript:void(0);" draggable="false" class="btn-day">30</a></li>
+            <li data-date="31"><a href="javascript:void(0);" draggable="false" class="btn-day">31</a></li>
           </ul>
         </div>
       </div>
       <!-- //날짜 선택하기 -->
       <!-- 다이어리// -->
       <div class="diary">
-        <article class="article day-{dd}" data-date="01.{dd}">
+        <article class="article day-1">
           <header class="header">
-            <span class="when">Day-{dd}</span>
-            <a href="javascript:void(0);" target="_self" draggable="false" class="btn-edit" data-date="01.{dd}">edit</a>
+            <span class="when">Day-1</span>
+            <a href="javascript:void(0);" target="_self" draggable="false" class="btn-edit" data-date="day-1">edit</a>
           </header>
           <div class="cont">
             <h2 class="tit"></h2>
             <p class="desc">19'<br>Who am I?<br>Another day another destny...<br><br>20'<br>What do you want to know?<br>I am goning to talk about my life!<br><br>21'<br>New year is here!<br>Happy new year!</p>
           </div>
         </article>
-        <article class="article day-{dd}" data-date="01.{dd}">
+        <article class="article day-2">
           <header class="header">
-            <span class="when">Day-{dd}</span>
-            <a href="javascript:void(0);" target="_self" draggable="false" class="btn-edit" data-date="01.{dd}">edit</a>
+            <span class="when">Day-2</span>
+            <a href="javascript:void(0);" target="_self" draggable="false" class="btn-edit" data-date="day-2">edit</a>
           </header>
           <div class="cont">
             <h2 class="tit"></h2>
             <p class="desc">20'<br>What do you want to know?<br>I am goning to talk about my life!<br><br>21'<br>New year is here!<br>Happy new year!</p>
           </div>
         </article>
-        <article class="article day-03" data-date="01.{dd}">
+        <article class="article day-3">
           <header class="header">
-            <span class="when">Day-{dd}</span>
-            <a href="javascript:void(0);" target="_self" draggable="false" class="btn-edit" data-date="01.{dd}">edit</a>
+            <span class="when">Day-3</span>
+            <a href="javascript:void(0);" target="_self" draggable="false" class="btn-edit" data-date="day-3">edit</a>
           </header>
           <div class="cont">
             <h2 class="tit"></h2>
             <p class="desc">20'<br>What do you want to know?<br>I am goning to talk about my life!<br><br>21'<br>New year is here!<br>Happy new year!</p>
           </div>
         </article>
-        <article class="article day-03" data-date="01.{dd}">
+        <article class="article day-4">
           <header class="header">
-            <span class="when">Day-{dd}</span>
-            <a href="javascript:void(0);" target="_self" draggable="false" class="btn-edit" data-date="01.{dd}">edit</a>
+            <span class="when">Day-4</span>
+            <a href="javascript:void(0);" target="_self" draggable="false" class="btn-edit" data-date="day-4">edit</a>
           </header>
           <div class="cont">
             <h2 class="tit"></h2>
             <p class="desc">20'<br>What do you want to know?<br>I am goning to talk about my life!<br><br>21'<br>New year is here!<br>Happy new year!</p>
           </div>
         </article>
-        <article class="article day-03" data-date="01.{dd}">
+        <article class="article day-5">
           <header class="header">
-            <span class="when">Day-{dd}</span>
-            <a href="javascript:void(0);" target="_self" draggable="false" class="btn-edit" data-date="01.{dd}">edit</a>
+            <span class="when">Day-5</span>
+            <a href="javascript:void(0);" target="_self" draggable="false" class="btn-edit" data-date="day-5">edit</a>
           </header>
           <div class="cont">
             <h2 class="tit"></h2>
@@ -209,10 +211,22 @@
         selectOtherMonths: true
       });
       //일 선택: 해당 컨텐츠로 스크롤 이동
-      $('.ly-content .date .dd').on('click', function() {
-        var target = $('.day-'+$(this).text());
-        var getTargetOffset = target.offset().top;
-        $('html, body').stop().animate({"scrollTop":getTargetOffset});
+      $('.ly-content .date .btn-day').on('click', function(e) {
+        //Reset
+        $('.ly-content .date .day .selected').removeClass('selected');
+
+        //Var
+        var $this = $(this);
+        var $target = $('.day-'+$this.parent('li').attr('data-date'));//다이어리-대상
+        var btnOffsetLeft = $this.offset().left - $('.ly-content .date .day li[data-date="1"]').offset().left;
+
+        //Set
+        $this.parent('li').addClass('selected');//네비게이션 버튼 활성
+        //$('.day').stop().animate({"scrollLeft":btnOffsetLeft});//네비게이션 버튼 스크롤
+        if($target.length) {
+          var getTargetOffsetTop = ($target.offset().top)-$('.day-1').offset().top;//대상 스크롤값 측정
+          $('.diary').stop().animate({"scrollTop":getTargetOffsetTop});//이동
+        }
       });
 
       /* Drag to scroll */
@@ -221,32 +235,32 @@
         ele.style.cursor = 'grab';
         var pos = { top: 0, left: 0, x: 0, y: 0 };
         var mouseDownHandler = function(e) {
-            ele.style.cursor = 'grabbing';
-            ele.style.userSelect = 'none';
-            pos = {
-                left: ele.scrollLeft,
-                top: ele.scrollTop,
-                // Get the current mouse position
-                x: e.clientX,
-                y: e.clientY,
-            };
+          ele.style.cursor = 'grabbing';
+          ele.style.userSelect = 'none';
+          pos = {
+              left: ele.scrollLeft,
+              top: ele.scrollTop,
+              // Get the current mouse position
+              x: e.clientX,
+              y: e.clientY,
+          };
 
-            document.addEventListener('mousemove', mouseMoveHandler);
-            document.addEventListener('mouseup', mouseUpHandler);
+          document.addEventListener('mousemove', mouseMoveHandler);
+          document.addEventListener('mouseup', mouseUpHandler);
         };
         var mouseMoveHandler = function(e) {
-            // How far the mouse has been moved
-            var dx = e.clientX - pos.x;
-            var dy = e.clientY - pos.y;
-            // Scroll the element
-            ele.scrollTop = pos.top - dy;
-            ele.scrollLeft = pos.left - dx;
+          // How far the mouse has been moved
+          var dx = e.clientX - pos.x;
+          var dy = e.clientY - pos.y;
+          // Scroll the element
+          ele.scrollTop = pos.top - dy;
+          ele.scrollLeft = pos.left - dx;
         };
-        var mouseUpHandler = function() {
-            ele.style.cursor = 'grab';
-            ele.style.removeProperty('user-select');
-            document.removeEventListener('mousemove', mouseMoveHandler);
-            document.removeEventListener('mouseup', mouseUpHandler);
+        var mouseUpHandler = function(e) {
+          ele.style.cursor = 'grab';
+          ele.style.removeProperty('user-select');
+          document.removeEventListener('mousemove', mouseMoveHandler);
+          document.removeEventListener('mouseup', mouseUpHandler);
         };
         // Attach the handler
         ele.addEventListener('mousedown', mouseDownHandler);
@@ -254,6 +268,10 @@
       //일자 선택 스크롤
       drag2scroll($('.ly-content  .date .day'));
       drag2scroll($('.ly-content  .diary'));
+
+      /*최초 데이터 세팅*/
+      $('.ly-content .date .month .value').text(getTime('mm'));//월
+      $('.ly-content .date .day [data-date='+getTime('dd')+'] .btn-day').trigger('click');//오늘 날짜 클릭
     });
   </script>
 

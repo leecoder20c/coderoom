@@ -21,7 +21,8 @@ body.page-planner {
     top: 0;
     left: 0;
     right: 0;
-    width: 800px;
+    width: 100%;
+    max-width: 800px;
     height: 100vh;
     margin: 0 auto;
     overflow: hidden;
@@ -33,7 +34,8 @@ body.page-planner {
     top: 0;
     left: 0;
     right: 0;
-    width: 800px;
+    width: 100%;
+    max-width: 800px;
     height: $headerH;
     padding: 0 30px;
     margin: 0 auto;
@@ -59,16 +61,14 @@ body.page-planner {
     padding: $headerH 0 0;
     //날짜 선택하기
     & .date {
-      padding: 30px 0 0 30px;
+      padding: 0 0 0 30px;
       @include clearfix;
       //월 선택
       & .month {
         display: inline-block;
         float: left;
         position: relative;
-        width: 150px;
-        height: 150px;
-        border: 1px solid #fff;
+        width: 170px;
         margin: 0 0 0;
         text-align: center;
         & .value {
@@ -76,11 +76,12 @@ body.page-planner {
           width: 100%;
           border: none;
           margin: auto;
-          font-size: 5rem;
+          font-size: 11rem;
           font-weight: 100;
-          line-height: 148px;
+          line-height: 170px;
           letter-spacing: 0;
           text-align: center;
+          white-space: nowrap;
           color: #fff;
         }
         & .select-month {
@@ -99,7 +100,7 @@ body.page-planner {
       & .day {
         float: left;
         width: calc(100% - 200px);
-        margin: 110px 0 0 50px;
+        margin: 90px 0 0 30px;
         overflow: hidden;
         @media (pointer:coarse) {
           overflow-x: scroll;
@@ -117,7 +118,7 @@ body.page-planner {
             border-radius: 100%;
             white-space: nowrap;
             overflow: hidden;
-            & .dd {
+            & .btn-day {
               display: block;
               font-size: 1.5rem;
               font-weight: 400;
@@ -127,15 +128,15 @@ body.page-planner {
               text-decoration: none;
               color: #fff;
             }
-            &:active {
+            &:active,&:hover,&:focus {
               background: #fff;
-              & .dd {
+              & .btn-day {
                 color: #000;
               }
             }
-            &.today {
+            &.selected {
               background: #fff;
-              & .dd {
+              & .btn-day {
                 color: #000;
               }
             }
@@ -147,7 +148,7 @@ body.page-planner {
     & .diary {
       height: calc(100% - 180px);
       padding: 0 30px 50px;
-      margin-top: 30px;
+      margin-top: 10px;
       overflow: hidden;
       overflow-y: auto;
       @media (pointer:coarse) {
@@ -183,14 +184,16 @@ body.page-planner {
             height: 30px;
             border: 1px solid #fff;
             border-radius: 100%;
-            font-size: 1rem;
+            font-family: "Tangerine", cursive;
+            font-size: 2.5rem;
             text-align: center;
             font-weight: 400;
-            line-height: 28px;
+            line-height: 1;
             letter-spacing: -0.03em;
             text-decoration: none;
             color: #fff;
-            &:active {
+            overflow: hidden;
+            &:active,&:hover,&:focus {
               color: #000;
               background: #fff;
             }
@@ -241,9 +244,10 @@ body.page-planner {
   & .popup {
     position: absolute;
     top: 0;
-    left: -800px;
+    left: -100%;
     z-index: 99;
-    width: 800px;
+    width: 100%;
+    max-width: 800px;
     height: 100%;
     padding: $headerH 30px;
     text-align: left;
