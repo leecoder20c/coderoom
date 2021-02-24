@@ -444,7 +444,6 @@
         </article>
       </div>
       <!-- //다이어리 -->
-      <i class="fas fa-arrow-circle-right"></i>
     </section>
     <!-- //컨텐츠 -->
 
@@ -473,27 +472,27 @@
     });
     //날짜 선택: 데이터 불러오기
     $("#select-month").change(function() {
-      var getDate = $(this).val();
-      var getYear = parseInt(getDate.slice(6,10));
-      var getDay = parseInt(getDate.slice(3,5));
-      var getMonth = parseInt(getDate.slice(0,2));
-      switch(getMonth) {
-        case 1: getMonth = "Jan"; break;
-        case 2: getMonth = "Feb"; break;
-        case 3: getMonth = "Mar"; break;
-        case 4: getMonth = "Apr"; break;
-        case 5: getMonth = "May"; break;
-        case 6: getMonth = "Jun"; break;
-        case 7: getMonth = "Jul"; break;
-        case 8: getMonth = "Aug"; break;
-        case 9: getMonth = "Sep"; break;
-        case 10: getMonth = "Oct"; break;
-        case 11: getMonth = "Nov"; break;
-        case 12: getMonth = "Dec"; break;
+      var selectDate = $(this).val();
+      var selectYear = parseInt(selectDate.slice(6,10));
+      var selectDay = parseInt(selectDate.slice(3,5));
+      var selectMonth = parseInt(selectDate.slice(0,2));
+      switch(selectMonth) {
+        case 1: selectMonth = "Jan"; break;
+        case 2: selectMonth = "Feb"; break;
+        case 3: selectMonth = "Mar"; break;
+        case 4: selectMonth = "Apr"; break;
+        case 5: selectMonth = "May"; break;
+        case 6: selectMonth = "Jun"; break;
+        case 7: selectMonth = "Jul"; break;
+        case 8: selectMonth = "Aug"; break;
+        case 9: selectMonth = "Sep"; break;
+        case 10: selectMonth = "Oct"; break;
+        case 11: selectMonth = "Nov"; break;
+        case 12: selectMonth = "Dec"; break;
       }
-      loadList(getDate('mm'));//해당 월 리스트 로드
+      loadList(getTime('mm'));//해당 월 리스트 로드
       setTimeout(function() {
-        goDate(getMonth,getDay);//해당 일로 스크롤 이동
+        goDate(selectMonth,selectDay);//해당 일로 스크롤 이동
       },500)
     });
 
@@ -587,7 +586,7 @@
       })
     };
     $(function() {
-      loadList(getDate('mm'));//최초 로드 시 컨텐츠 리스트 세팅
+      loadList(getTime('mm'));//최초 로드 시 컨텐츠 리스트 세팅
     });
 
 
