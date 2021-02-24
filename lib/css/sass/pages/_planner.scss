@@ -94,6 +94,7 @@ body.page-planner {
           border: none;
           margin: auto;
           color: rgba(0,0,0,0);
+          cursor: pointer;
         }
       }
       //일 선택
@@ -321,6 +322,55 @@ body.page-planner {
       letter-spacing: 0;
       text-decoration: none;
       color: #000;
+    }
+  }
+
+  //데이트피커
+  & .ui-datepicker {
+    & .ui-datepicker-prev {
+      & span {
+        background: none;
+      }
+      &::after {
+        content: "\f0a8";
+        display: block;
+        width: 16px;
+        height: 16px;
+        font-family: "Font Awesome 5 Free";
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        display: inline-block;
+        font-style: normal;
+        font-variant: normal;
+        text-rendering: auto;
+        font-size: 15px;
+        font-weight: 900;
+        line-height: 1;
+      }
+    }
+    & .ui-datepicker-next {
+      & span {
+        background: none;
+      }
+      &.ui-datepicker-next-hover {
+        right: 3px;
+      }
+      &::after {
+        content: "\f0a9";
+        display: block;
+        width: 16px;
+        height: 16px;
+        font-family: "Font Awesome 5 Free";
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        display: inline-block;
+        font-style: normal;
+        font-variant: normal;
+        text-rendering: auto;
+        font-size: 15px;
+        font-weight: 900;
+        line-height: 1;
+      }
     }
   }
 }
