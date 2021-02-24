@@ -302,6 +302,18 @@
       padding-top: 24px;
       text-align: center;
       background: url('../images/weather/icon/mimun.svg') no-repeat center top / 22px auto;
+      &[data-stat="good"] {
+        background: url('../images/weather/icon/mimun-good.svg') no-repeat center top / 22px auto;
+      }
+      &[data-stat="normal"] {
+        background: url('../images/weather/icon/mimun-normal.svg') no-repeat center top / 27px auto;
+      }
+      &[data-stat="bad"] {
+        background: url('../images/weather/icon/mimun-bad.svg') no-repeat center top / 22px auto;
+      }
+      &[data-stat="hell"] {
+        background: url('../images/weather/icon/mimun-hell.svg') no-repeat center top / 22px auto;
+      }
       @media (max-width: 400px) {
         left: 100px;
       }

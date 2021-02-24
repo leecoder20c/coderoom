@@ -71,6 +71,7 @@
       var date = now.getDate();//일
       var day = now.getDay();//요일
       if (data == "hm") return hours + ':' + minutes;
+      else if (data == "hh") return hours;
       else if (data == "hms") return hours + ':' + minutes + ':' + seconds;
       else if (data == "hmsm") return hours + ':' + minutes + ':' + seconds + ':' + milliseconds;
       else if (data == "time") return localeTime;//ex. 오전 11:27:17
@@ -644,14 +645,16 @@
         async: "false",
         success: function(resp) {
           //console.log(resp);
+          //해 진 뒤 구분
+          var sunset = ((getTime('hh') > 18) || (getTime('hh') < 7)) ? "after/" : "";
           //현재 날씨
-          $('.weather-wrap .today .bg').attr("style","background-image: url('./lib/images/weather/"+resp.current.weather[0].main+".jpg');");//날씨별 배경
+          $('.weather-wrap .today .bg').attr("style","background-image: url('./lib/images/weather/"+sunset+resp.current.weather[0].main+".jpg');");//날씨별 배경
             /*온도별 날씨이미지 개별화*/
             if(parseInt(resp.current.temp - 273.15) < -7) {
-              $('.weather-wrap .today .bg').attr("style","background-image: url('./lib/images/weather/Cold.jpg');");//추운 날
+              $('.weather-wrap .today .bg').attr("style","background-image: url('./lib/images/weather/"+sunset+"Cold.jpg');");//추운 날
             }
             if(parseInt(resp.current.temp - 273.15) > 27) {
-              $('.weather-wrap .today .bg').attr("style","background-image: url('./lib/images/weather/Hot.jpg');");//더운 날
+              $('.weather-wrap .today .bg').attr("style","background-image: url('./lib/images/weather/"+sunset+"Hot.jpg');");//더운 날
             }
           $('.weather-wrap .today .temperature .value').text(parseInt(resp.current.temp - 273.15));//온도
           $('.weather-wrap .today .feels-like .value').text(parseInt(resp.current.feels_like - 273.15));//체감
