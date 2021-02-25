@@ -40,6 +40,7 @@ body.page-planner {
     padding: 0 30px;
     margin: 0 auto;
     background: #000;
+    //로고
     & .tit {
       display: inline-block;
       font-size: 2.5rem;
@@ -52,6 +53,27 @@ body.page-planner {
         display: inline-block;
         height: 30px;
         margin: 10px 6px 0 0;
+      }
+    }
+    //오늘 보기
+    & .btn-gotoday {
+      display: inline-block;
+      position: absolute;
+      top: calc(50% - 0.9rem);
+      right: 15px;
+      padding: 5px;
+      border: 1px solid #fff;
+      border-radius: 5px;
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1rem;
+      letter-spacing: 0.03em;
+      text-align: left;
+      text-decoration: none;
+      color: #fff;
+      &:active,&:hover,&:focus {
+        background: #fff;
+        color: #000;
       }
     }
   }
@@ -327,6 +349,10 @@ body.page-planner {
 
   //데이트피커
   & .ui-datepicker {
+    font-family: "Nanum Gothic","Noto Sans KR","Malgun Gothic","맑은 고딕","Nanum Gothic","나눔 고딕","맑은 고딕",Malgun Gothic,"돋움",Dotum,"Apple SD Gothic Neo",Helvetica,sans-serif;
+    & .ui-datepicker-title {
+      font-size: 1.1rem;
+    }
     & .ui-datepicker-prev {
       & span {
         background: none;
@@ -351,9 +377,6 @@ body.page-planner {
     & .ui-datepicker-next {
       & span {
         background: none;
-      }
-      &.ui-datepicker-next-hover {
-        right: 3px;
       }
       &::after {
         content: "\f0a9";
