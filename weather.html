@@ -43,7 +43,8 @@
       var localeDate = now.toLocaleDateString(); //yyyy.m.d
       var localeTime = now.toLocaleTimeString(); //오전+시간+분+초
       var month = now.getMonth();//월
-      var day = now.getDay();//일
+      var date = now.getDate();//일
+      var day = now.getDay();//요일
       switch(month) {
         case 0: month = "Jan"; break;
         case 1: month = "Feb"; break;
@@ -68,8 +69,6 @@
         case 6: day = "토"; break;
         case 7: day = "일"; break;
       }
-      var date = now.getDate();//일
-      var day = now.getDay();//요일
       if (data == "hm") return hours + ':' + minutes;
       else if (data == "hh") return hours;
       else if (data == "hms") return hours + ':' + minutes + ':' + seconds;
