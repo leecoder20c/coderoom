@@ -1,3 +1,12 @@
+<?php
+  //Session checker
+  session_start();
+  if (isset($_SESSION['user_id'])) {
+
+  } else {
+    header("location:./planner/login.php");
+  }
+?>
 <!DOCTYPE html>
 <html lang="ko"dir="ltr" class="planner-app">
 <head>

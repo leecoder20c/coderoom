@@ -52,3 +52,9 @@ videos/
 *.gsheet
 *.apk
 db.php
+planner/chk-login.php
+planner/login.php
+planner/chk-login.php
+planner/db.php
+planner/db-load.php
+planner/db-update.php
