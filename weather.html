@@ -821,5 +821,14 @@
       drag2scroll($('.forecast.daily .scroll-wrap'));
     });
   </script>
+
+  <script>
+    $(function() {
+      //최초 로드 시 내위치 조회
+      setTimeout(function() {
+        getUserGeolocation();
+      }, 1500);
+    });
+  </script>
 </body>
 </html>
