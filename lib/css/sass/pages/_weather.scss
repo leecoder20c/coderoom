@@ -202,6 +202,9 @@
         top: 90px;
         font-size: 28rem;
       }
+      @media (max-width: 600px) {
+        right: 25px;
+      }
       & .unit {
         font-size: 6rem;
         vertical-align: 8.3rem;
@@ -259,7 +262,6 @@
       position: absolute;
       top: 303px;
       left: 20px;
-      width: 80px;
       padding-left: 25px;
       font-size: 3rem;
       font-weight: 700;
@@ -273,7 +275,7 @@
       & .icon {
         display: inline-block;
         position: absolute;
-        top: 5px;
+        top: 7px;
         left: 0;
         width: 20px;
         font-size: 2rem;
@@ -297,29 +299,35 @@
     }
     //미세먼지
     & .mimun {
-      position: absolute;
-      top: 301px;
-      left: 110px;
-      width: 35px;
-      padding-top: 24px;
+      display: inline-block;
+      //position: absolute;
+      //top: 303px;
+      //left: 100px;
+      //bottom: 15px;
+      width: 30px;
+      height: 3.2rem;
+      margin-left: 8px;
+      //padding-top: 24px;
       text-align: center;
-      background: url('../images/weather/icon/mimun.svg') no-repeat center top / 22px auto;
+      background: url('../images/weather/icon/mimun.svg') no-repeat center / contain;
+      @media (max-width: 400px) {
+        left: 95px;
+        height: 5rem;
+      }
       &[data-stat="good"] {
-        background: url('../images/weather/icon/mimun-good.svg') no-repeat center top / 22px auto;
+        background: url('../images/weather/icon/mimun-good.svg') no-repeat center / contain;
       }
       &[data-stat="normal"] {
-        background: url('../images/weather/icon/mimun-normal.svg') no-repeat center top / 27px auto;
+        background: url('../images/weather/icon/mimun-normal.svg') no-repeat center / contain;
       }
       &[data-stat="bad"] {
-        background: url('../images/weather/icon/mimun-bad.svg') no-repeat center top / 22px auto;
+        background: url('../images/weather/icon/mimun-bad.svg') no-repeat center / contain;
       }
       &[data-stat="hell"] {
-        background: url('../images/weather/icon/mimun-hell.svg') no-repeat center top / 22px auto;
-      }
-      @media (max-width: 400px) {
-        left: 100px;
+        background: url('../images/weather/icon/mimun-hell.svg') no-repeat center / contain;
       }
       & .value {
+        opacity: 0;
         font-size: 1rem;
         font-weight: 400;
         color: #fff;
@@ -677,6 +685,12 @@
       color: rgba(255,255,255,0.6);
       transform: scale(0.8);
       transform-origin: right;
+      & br {
+        display: none;
+        @media (max-width: 400px) {
+          display: block;
+        }
+      }
       & img {
         display: inline-block;
         width: 90px;
@@ -871,21 +885,31 @@
     z-index: 999999;
     width: 100vw;
     height: 100vh;
-    background: rgba(0,0,0,0.3);
+    background: rgba(0,0,0,0.7);
     & .inner {
       position: absolute;
-      top: calc(50vh - 30px);
-      left: calc(50vw - 150px);;
-      width: 300px;
-      height: 60px;
-      padding: 8px 20px;
-      border: 1px solid rgba(0,0,0,0.3);
-      border-radius: 4px;
-      box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.3);
-      background: #fff;
+      top: calc(50vh - 80px);
+      left: 0;
+      right: 0;
+      min-height: 60px;
+      padding: 15px 20px;
+      margin: 0 auto;
+      text-align: center;
+      //border: 1px solid rgba(0,0,0,0.3);
+      //border-radius: 4px;
+      //box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.3);
+      //background: #fff;
+    }
+    //아이콘
+    & .icon {
+      display: inline-block;
+      width: 35px;
+      margin: 0 auto 15px;
+      @include animation('flipYIcon', 1s, 0s, 'infinite', 'linear');
     }
     //닫기
     & .close {
+      display: none;
       position: absolute;
       top: 0px;
       right: 0px;
@@ -909,11 +933,14 @@
     }
     //내용
     & .message {
-      font-size: 1.3rem;
+      font-size: 2.4rem;
       font-weight: 400;
       line-height: 1.5;
       letter-spacing: -0.02em;
-      color: #333;
+      color: #fff;
+      @media (max-width: 400px) {
+        font-size: 3rem;
+      }
     }
   }
 }
