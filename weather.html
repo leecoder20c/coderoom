@@ -552,8 +552,8 @@
 
           function success(position) {
             $('.alert .message').text('위치정보 확인!');
-            $loca.text('My location, Here');
-            forecast.geo.city = 'My location, Here';
+            $loca.text('Here, My location');
+            forecast.geo.city = 'Here, My location';
             forecast.geo.lat = position.coords.latitude;
             forecast.geo.lon = position.coords.longitude;
             updateForecast();//날씨 재호출
