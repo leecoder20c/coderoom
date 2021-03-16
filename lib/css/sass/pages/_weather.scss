@@ -310,18 +310,18 @@
       }
       & .value {
         display: inline-block;
-        padding: 3px 0 2px;
+        padding: 3px 0 0;
         margin-left: 3px;
         line-height: 1;
         letter-spacing: -0.03em;
-        vertical-align: 0;
+        vertical-align: bottom;
       }
       & .unit {
         display: inline-block;
         margin-left: 3px;
         font-size: 20px;
         line-height: 1;
-        vertical-align: 0;
+        vertical-align: bottom;
         @media (max-width: 799px) {
           font-size: 13px;
         }
@@ -331,9 +331,10 @@
     & .mimun {
       display: inline-block;
       width: 25px;
-      height: 32px;
+      height: 26px;
       margin-left: 8px;
       text-align: center;
+      vertical-align: bottom;
       background: url('../images/weather/icon/mimun.svg') no-repeat center / contain;
       @media (max-width: 799px) {
         left: 95px;
