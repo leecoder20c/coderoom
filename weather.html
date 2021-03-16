@@ -403,7 +403,7 @@
     <!-- 팝업 도움말// -->
     <div class="pop-guide" title="앱 사용 안내: 클릭(터치)해서 이전화면으로 돌아가기">
       <i class="icon-close fas fa-times-circle"></i>
-      <div class="guide-items item-01"><div class="area"><p class="desc">현재 위치 정보</p></div></div>
+      <div class="guide-items item-01"><div class="area"><p class="desc">현재 위치 및 변경</p></div></div>
       <div class="guide-items item-02"><div class="area"><p class="desc">현재 날씨 아이콘</p></div></div>
       <div class="guide-items item-03"><div class="area"><p class="desc">날짜 및 시간</p></div></div>
       <div class="guide-items item-04"><div class="area"><p class="desc">현재 온도 / 체감 온도</p></div></div>
@@ -434,7 +434,6 @@
       <ul class="city-list">
         <li class="depth1"><a href="javascript:void(0);" target="_self" class="tit">서울특별시</a>
           <ul>
-            <li class="depth2"><a href="#서울" target="_self" class="location" data-city="seoul" data-name="Seoul" data-lat="37.5990998" data-lon="127.9861493">서울(전체)</a></li>
             <li class="depth2"><a href="#강남구" target="_self" class="location" data-city="seoul" data-name="강남구" data-lat="37.4959854" data-lon="127.0664091">강남구</a></li>
             <li class="depth2"><a href="#강동구" target="_self" class="location" data-city="seoul" data-name="강동구" data-lat="37.5492077" data-lon="127.1464824">강동구</a></li>
             <li class="depth2"><a href="#강북구" target="_self" class="location" data-city="seoul" data-name="강북구" data-lat="37.6469954" data-lon="127.0147158">강북구</a></li>
@@ -462,84 +461,152 @@
             <li class="depth2"><a href="#중랑구" target="_self" class="location" data-city="seoul" data-name="중랑구" data-lat="37.5953795" data-lon="127.0939669">중랑구</a></li>
           </ul>
         </li>
-        <li class="depth1"><a href="javascript:void(0);" target="_self" class="tit">부산광역시</a>
+        <li class="depth1"><a href="javascript:void(0);" target="_self" class="tit">광역시</a>
           <ul>
-            <li class="depth2"><a href="#부산" target="_self" class="location" data-city="busan" data-name="Busan" data-lat="35.133331" data-lon="129.050003">부산(전체)</a></li>
-          </ul>
-        </li>
-        <li class="depth1"><a href="javascript:void(0);" target="_self" class="tit">대구광역시</a>
-          <ul>
-            <li class="depth2"><a href="#대구광역시" target="_self" class="location" data-city="daegu" data-name="Daegu" data-lat="35.799999" data-lon="128.550003">대구(전체)</a></li>
-          </ul>
-        </li>
-        <li class="depth1"><a href="javascript:void(0);" target="_self" class="tit">인천광역시</a>
-          <ul>
-            <li class="depth2"><a href="#인천광역시" target="_self" class="location" data-city="incheon" data-name="Incheon" data-lat="37.450001" data-lon="126.731667">인천(전체)</a></li>
-          </ul>
-        </li>
-        <li class="depth1"><a href="javascript:void(0);" target="_self" class="tit">광주광역시</a>
-          <ul>
-            <li class="depth2"><a href="#광주광역시" target="_self" class="location" data-city="gwangju" data-name="Gwangju" data-lat="35.166672" data-lon="126.916672">광주(전체)</a></li>
-          </ul>
-        </li>
-        <li class="depth1"><a href="javascript:void(0);" target="_self" class="tit">대전광역시</a>
-          <ul>
-            <li class="depth2"><a href="#대전광역시" target="_self" class="location" data-city="daejeon" data-name="Daejeon" data-lat="36.321388" data-lon="127.419724">대전(전체)</a></li>
-          </ul>
-        </li>
-        <li class="depth1"><a href="javascript:void(0);" target="_self" class="tit">울산광역시</a>
-          <ul>
-            <li class="depth2"><a href="#울산광역시" target="_self" class="location" data-city="ulsan" data-name="Ulsan" data-lat="35.53722" data-lon="129.316666">울산(전체)</a></li>
-          </ul>
-        </li>
-        <li class="depth1"><a href="javascript:void(0);" target="_self" class="tit">세종특별자치시</a>
-          <ul>
-            <li class="depth2"><a href="#세종특별자치시" target="_self" class="location" data-city="sejong" data-name="Chungju" data-lat="36.970558" data-lon="127.93222">세종(전체)</a></li>
+            <li class="depth2"><a href="#인천" target="_self" class="location" data-city="incheon" data-name="Incheon" data-lat="37.450001" data-lon="126.731667">인천</a></li>
+            <li class="depth2"><a href="#세종" target="_self" class="location" data-city="sejong" data-name="Chungju" data-lat="36.970558" data-lon="127.93222">세종</a></li>
+            <li class="depth2"><a href="#대전" target="_self" class="location" data-city="daejeon" data-name="Daejeon" data-lat="36.321388" data-lon="127.419724">대전</a></li>
+            <li class="depth2"><a href="#광주" target="_self" class="location" data-city="gwangju" data-name="Gwangju" data-lat="35.166672" data-lon="126.916672">광주</a></li>
+            <li class="depth2"><a href="#대구" target="_self" class="location" data-city="daegu" data-name="Daegu" data-lat="35.799999" data-lon="128.550003">대구</a></li>
+            <li class="depth2"><a href="#울산" target="_self" class="location" data-city="ulsan" data-name="Ulsan" data-lat="35.53722" data-lon="129.316666">울산</a></li>
+            <li class="depth2"><a href="#부산" target="_self" class="location" data-city="busan" data-name="Busan" data-lat="35.133331" data-lon="129.050003">부산</a></li>
           </ul>
         </li>
         <li class="depth1"><a href="javascript:void(0);" target="_self" class="tit">경기도</a>
           <ul>
-            <li class="depth2"><a href="#경기도" target="_self" class="location" data-city="gyeonggi" data-name="Gyeonggi-do" data-lat="37.599998" data-lon="127.25">경기(전체)</a></li>
+            <li class="depth2"><a href="#가평군" target="_self" class="location" data-city="gyeonggi" data-name="Gyeonggi-do" data-lat="37.8312591" data-lon="127.5073877">가평군</a></li>
+            <li class="depth2"><a href="#고양시" target="_self" class="location" data-city="gyeonggi" data-name="Gyeonggi-do" data-lat="37.6625964" data-lon="126.7616294">고양시</a></li>
+            <li class="depth2"><a href="#광명시" target="_self" class="location" data-city="gyeonggi" data-name="Gyeonggi-do" data-lat="37.4294119" data-lon="127.2529534">광명시</a></li>
+            <li class="depth2"><a href="#광주시" target="_self" class="location" data-city="gyeonggi" data-name="Gyeonggi-do" data-lat="37.4294119" data-lon="127.2529534">광주시</a></li>
+            <li class="depth2"><a href="#구리시" target="_self" class="location" data-city="gyeonggi" data-name="Gyeonggi-do" data-lat="37.5988442" data-lon="127.1314165">구리시</a></li>
+            <li class="depth2"><a href="#군포시" target="_self" class="location" data-city="gyeonggi" data-name="Gyeonggi-do" data-lat="37.5990418" data-lon="126.995711">군포시</a></li>
+            <li class="depth2"><a href="#김포시" target="_self" class="location" data-city="gyeonggi" data-name="Gyeonggi-do" data-lat="37.615353" data-lon="126.7132623">김포시</a></li>
+            <li class="depth2"><a href="#남양주시" target="_self" class="location" data-city="gyeonggi" data-name="Gyeonggi-do" data-lat="37.6565427" data-lon="127.152689">남양주시</a></li>
+            <li class="depth2"><a href="#동두천시" target="_self" class="location" data-city="gyeonggi" data-name="Gyeonggi-do" data-lat="37.9035825" data-lon="127.0582076">동두천시</a></li>
+            <li class="depth2"><a href="#부천시" target="_self" class="location" data-city="gyeonggi" data-name="Gyeonggi-do" data-lat="37.4927937" data-lon="126.766107">부천시</a></li>
+            <li class="depth2"><a href="#성남시" target="_self" class="location" data-city="gyeonggi" data-name="Gyeonggi-do" data-lat="37.4930001" data-lon="126.6347789">성남시</a></li>
+            <li class="depth2"><a href="#수원시" target="_self" class="location" data-city="gyeonggi" data-name="Gyeonggi-do" data-lat="37.2938967" data-lon="126.990266">수원시</a></li>
+            <li class="depth2"><a href="#시흥시" target="_self" class="location" data-city="gyeonggi" data-name="Gyeonggi-do" data-lat="37.3801142" data-lon="126.800692">시흥시</a></li>
+            <li class="depth2"><a href="#안산시" target="_self" class="location" data-city="gyeonggi" data-name="Gyeonggi-do" data-lat="37.2200994" data-lon="126.4965717">안산시</a></li>
+            <li class="depth2"><a href="#안성시" target="_self" class="location" data-city="gyeonggi" data-name="Gyeonggi-do" data-lat="37.0112668" data-lon="127.2536452">안성시</a></li>
+            <li class="depth2"><a href="#안양시" target="_self" class="location" data-city="gyeonggi" data-name="Gyeonggi-do" data-lat="37.4057434" data-lon="126.8917989">안양시</a></li>
+            <li class="depth2"><a href="#양주시" target="_self" class="location" data-city="gyeonggi" data-name="Gyeonggi-do" data-lat="37.7852912" data-lon="127.0436013">양주시</a></li>
+            <li class="depth2"><a href="#양평군" target="_self" class="location" data-city="gyeonggi" data-name="Gyeonggi-do" data-lat="37.4916827" data-lon="127.4852496">양평군</a></li>
+            <li class="depth2"><a href="#여주시" target="_self" class="location" data-city="gyeonggi" data-name="Gyeonggi-do" data-lat="37.301989" data-lon="127.6220379">여주시</a></li>
+            <li class="depth2"><a href="#오산시" target="_self" class="location" data-city="gyeonggi" data-name="Gyeonggi-do" data-lat="37.1498322" data-lon="127.0752826">오산시</a></li>
+            <li class="depth2"><a href="#이천시" target="_self" class="location" data-city="gyeonggi" data-name="Gyeonggi-do" data-lat="37.2722498" data-lon="127.4328558">이천시</a></li>
+            <li class="depth2"><a href="#용인시" target="_self" class="location" data-city="gyeonggi" data-name="Gyeonggi-do" data-lat="37.2410491" data-lon="127.1757428">용인시</a></li>
+            <li class="depth2"><a href="#의왕시" target="_self" class="location" data-city="gyeonggi" data-name="Gyeonggi-do" data-lat="37.3447048" data-lon="126.9661213">의왕시</a></li>
+            <li class="depth2"><a href="#의정부시" target="_self" class="location" data-city="gyeonggi" data-name="Gyeonggi-do" data-lat="37.7380932" data-lon="127.0315443">의정부시</a></li>
+            <li class="depth2"><a href="#파주시" target="_self" class="location" data-city="gyeonggi" data-name="Gyeonggi-do" data-lat="37.8499002" data-lon="126.6924066">파주시</a></li>
+            <li class="depth2"><a href="#포천시" target="_self" class="location" data-city="gyeonggi" data-name="Gyeonggi-do" data-lat="37.8948786" data-lon="127.1987411">포천시</a></li>
+            <li class="depth2"><a href="#평택시" target="_self" class="location" data-city="gyeonggi" data-name="Gyeonggi-do" data-lat="37.0223143" data-lon="126.8134963">평택시</a></li>
+            <li class="depth2"><a href="#하남시" target="_self" class="location" data-city="gyeonggi" data-name="Gyeonggi-do" data-lat="37.5443667" data-lon="127.5443667">하남시</a></li>
+            <li class="depth2"><a href="#화성시" target="_self" class="location" data-city="gyeonggi" data-name="Gyeonggi-do" data-lat="37.1925387" data-lon="126.8892709">화성시</a></li>
           </ul>
         </li>
         <li class="depth1"><a href="javascript:void(0);" target="_self" class="tit">강원도</a>
           <ul>
-            <li class="depth2"><a href="#강원도" target="_self" class="location" data-city="gangwon" data-name="Gangwon-do" data-lat="37.75" data-lon="128.25">강원(전체)</a></li>
+            <li class="depth2"><a href="#고성군" target="_self" class="location" data-city="gangwon" data-name="Gangwon-do" data-lat="38.3806338" data-lon="128.4656388">고성군</a></li>
+            <li class="depth2"><a href="#강릉시" target="_self" class="location" data-city="gangwon" data-name="Gangwon-do" data-lat="37.7522787" data-lon="128.8800107">강릉시</a></li>
+            <li class="depth2"><a href="#동해시" target="_self" class="location" data-city="gangwon" data-name="Gangwon-do" data-lat="37.542895" data-lon="129.0358985">동해시</a></li>
+            <li class="depth2"><a href="#삼척시" target="_self" class="location" data-city="gangwon" data-name="Gangwon-do" data-lat="37.4499838" data-lon="129.1632448">삼척시</a></li>
+            <li class="depth2"><a href="#속초시" target="_self" class="location" data-city="gangwon" data-name="Gangwon-do" data-lat="38.2070215" data-lon="128.5896737">속초시</a></li>
+            <li class="depth2"><a href="#춘천시" target="_self" class="location" data-city="gangwon" data-name="Gangwon-do" data-lat="37.8808275" data-lon="127.7320184">춘천시</a></li>
+            <li class="depth2"><a href="#원주시" target="_self" class="location" data-city="gangwon" data-name="Gangwon-do" data-lat="37.3396911" data-lon="127.9274347">원주시</a></li>
+            <li class="depth2"><a href="#양구군" target="_self" class="location" data-city="gangwon" data-name="Gangwon-do" data-lat="38.2016932" data-lon="127.8751384">양구군</a></li>
+            <li class="depth2"><a href="#양양군" target="_self" class="location" data-city="gangwon" data-name="Gangwon-do" data-lat="38.0753963" data-lon="128.6169392">양양군</a></li>
+            <li class="depth2"><a href="#인제군" target="_self" class="location" data-city="gangwon" data-name="Gangwon-do" data-lat="38.069593" data-lon="128.1678457">인제군</a></li>
+            <li class="depth2"><a href="#철원군" target="_self" class="location" data-city="gangwon" data-name="Gangwon-do" data-lat="38.1467466" data-lon="127.3111716">철원군</a></li>
+            <li class="depth2"><a href="#태백시" target="_self" class="location" data-city="gangwon" data-name="Gangwon-do" data-lat="37.1628829" data-lon="128.9658904">태백시</a></li>
+            <li class="depth2"><a href="#홍천군" target="_self" class="location" data-city="gangwon" data-name="Gangwon-do" data-lat="37.6970397" data-lon="127.8866328">홍천군</a></li>
+            <li class="depth2"><a href="#화천군" target="_self" class="location" data-city="gangwon" data-name="Gangwon-do" data-lat="38.106289" data-lon="127.7059421">화천군</a></li>
           </ul>
         </li>
         <li class="depth1"><a href="javascript:void(0);" target="_self" class="tit">충청북도</a>
           <ul>
-            <li class="depth2"><a href="#충청북도" target="_self" class="location" data-city="chungbuk" data-name="Chungcheongbuk-do" data-lat="36.75" data-lon="128.0">충북(전체)</a></li>
+            <li class="depth2"><a href="#음성군" target="_self" class="location" data-city="chungbuk" data-name="Chungcheongbuk-do" data-lat="36.9402393" data-lon="127.6883128">음성군</a></li>
+            <li class="depth2"><a href="#제천시" target="_self" class="location" data-city="chungbuk" data-name="Chungcheongbuk-do" data-lat="37.1325864" data-lon="128.1887591">제천시</a></li>
+            <li class="depth2"><a href="#진천군" target="_self" class="location" data-city="chungbuk" data-name="Chungcheongbuk-do" data-lat="36.8269223" data-lon="127.4078137">진천군</a></li>
+            <li class="depth2"><a href="#청주시" target="_self" class="location" data-city="chungbuk" data-name="Chungcheongbuk-do" data-lat="36.6418464" data-lon="127.486576">청주시</a></li>
+            <li class="depth2"><a href="#충주시" target="_self" class="location" data-city="chungbuk" data-name="Chungcheongbuk-do" data-lat="36.985673" data-lon="127.9041052">충주시</a></li>
           </ul>
         </li>
         <li class="depth1"><a href="javascript:void(0);" target="_self" class="tit">충청남도</a>
           <ul>
-            <li class="depth2"><a href="#충청남도" target="_self" class="location" data-city="chungnam" data-name="Chungcheongnam-do" data-lat="36.5" data-lon="127.0">충남(전체)</a></li>
+            <li class="depth2"><a href="#공주시" target="_self" class="location" data-city="chungnam" data-name="Chungcheongnam-do" data-lat="36.4465944" data-lon="127.1168536">공주시</a></li>
+            <li class="depth2"><a href="#논산시" target="_self" class="location" data-city="chungnam" data-name="Chungcheongnam-do" data-lat="36.1871633" data-lon="127.0967016">논산시</a></li>
+            <li class="depth2"><a href="#당진시" target="_self" class="location" data-city="chungnam" data-name="Chungcheongnam-do" data-lat="36.8899422" data-lon="126.6436103">당진시</a></li>
+            <li class="depth2"><a href="#보령시" target="_self" class="location" data-city="chungnam" data-name="Chungcheongnam-do" data-lat="36.3334074" data-lon="126.6105548">보령시</a></li>
+            <li class="depth2"><a href="#부여군" target="_self" class="location" data-city="chungnam" data-name="Chungcheongnam-do" data-lat="36.2757223" data-lon="126.9076003">부여군</a></li>
+            <li class="depth2"><a href="#서산시" target="_self" class="location" data-city="chungnam" data-name="Chungcheongnam-do" data-lat="36.7848196" data-lon="126.4481313">서산시</a></li>
+            <li class="depth2"><a href="#아산시" target="_self" class="location" data-city="chungnam" data-name="Chungcheongnam-do" data-lat="36.7893533" data-lon="126.9997836">아산시</a></li>
+            <li class="depth2"><a href="#예산군" target="_self" class="location" data-city="chungnam" data-name="Chungcheongnam-do" data-lat="36.679786" data-lon="126.8429618">예산군</a></li>
+            <li class="depth2"><a href="#천안시" target="_self" class="location" data-city="chungnam" data-name="Chungcheongnam-do" data-lat="36.8453565" data-lon="127.0956309">천안시</a></li>
+            <li class="depth2"><a href="#태안군" target="_self" class="location" data-city="chungnam" data-name="Chungcheongnam-do" data-lat="36.7455995" data-lon="126.2958694">태안군</a></li>
+            <li class="depth2"><a href="#홍성군" target="_self" class="location" data-city="chungnam" data-name="Chungcheongnam-do" data-lat="36.6013065" data-lon="126.6586968">홍성군</a></li>
           </ul>
         </li>
         <li class="depth1"><a href="javascript:void(0);" target="_self" class="tit">전라북도</a>
           <ul>
-            <li class="depth2"><a href="#전라북도" target="_self" class="location" data-city="Jeollabuk" data-name="Jeollabuk-do" data-lat="35.75" data-lon="127.25">전북(전체)</a></li>
+            <li class="depth2"><a href="#고흥군" target="_self" class="location" data-city="Jeollabuk" data-name="Jeollabuk-do" data-lat="34.6079911" data-lon="127.2784954">고흥군</a></li>
+            <li class="depth2"><a href="#광양시" target="_self" class="location" data-city="Jeollabuk" data-name="Jeollabuk-do" data-lat="34.9406529" data-lon="127.6937853">광양시</a></li>
+            <li class="depth2"><a href="#나주시" target="_self" class="location" data-city="Jeollabuk" data-name="Jeollabuk-do" data-lat="35.0158974" data-lon="126.7086793">나주시</a></li>
+            <li class="depth2"><a href="#순천시" target="_self" class="location" data-city="Jeollabuk" data-name="Jeollabuk-do" data-lat="34.950641" data-lon="127.4851355">순천시</a></li>
+            <li class="depth2"><a href="#목포시" target="_self" class="location" data-city="Jeollabuk" data-name="Jeollabuk-do" data-lat="34.8118335" data-lon="126.39002">목포시</a></li>
+            <li class="depth2"><a href="#무안군" target="_self" class="location" data-city="Jeollabuk" data-name="Jeollabuk-do" data-lat="34.9904248" data-lon="126.4795072">무안군</a></li>
+            <li class="depth2"><a href="#여수시" target="_self" class="location" data-city="Jeollabuk" data-name="Jeollabuk-do" data-lat="34.7604165" data-lon="127.6600961">여수시</a></li>
+            <li class="depth2"><a href="#해남군" target="_self" class="location" data-city="Jeollabuk" data-name="Jeollabuk-do" data-lat="34.5733652" data-lon="126.5970618">해남군</a></li>
+            <li class="depth2"><a href="#화순군" target="_self" class="location" data-city="Jeollabuk" data-name="Jeollabuk-do" data-lat="35.0644522" data-lon="126.9844576">화순군</a></li>
           </ul>
         </li>
         <li class="depth1"><a href="javascript:void(0);" target="_self" class="tit">전라남도</a>
           <ul>
-            <li class="depth2"><a href="#전라남도" target="_self" class="location" data-city="Jeollanam" data-name="Jeollanam-do" data-lat="34.75" data-lon="127.0">전남(전체)</a></li>
+            <li class="depth2"><a href="#군산시" target="_self" class="location" data-city="Jeollanam" data-name="Jeollanam-do" data-lat="35.9811114" data-lon="126.6266189">군산시</a></li>
+            <li class="depth2"><a href="#김제시" target="_self" class="location" data-city="Jeollanam" data-name="Jeollanam-do" data-lat="35.8035222" data-lon="126.8783376">김제시</a></li>
+            <li class="depth2"><a href="#남원시" target="_self" class="location" data-city="Jeollanam" data-name="Jeollanam-do" data-lat="35.4163617" data-lon="127.388216">남원시</a></li>
+            <li class="depth2"><a href="#완주군" target="_self" class="location" data-city="Jeollanam" data-name="Jeollanam-do" data-lat="35.9405531" data-lon="127.1481713">완주군</a></li>
+            <li class="depth2"><a href="#익산시" target="_self" class="location" data-city="Jeollanam" data-name="Jeollanam-do" data-lat="35.9480538" data-lon="126.95545">익산시</a></li>
+            <li class="depth2"><a href="#전주시" target="_self" class="location" data-city="Jeollanam" data-name="Jeollanam-do" data-lat="35.8241975" data-lon="127.1458118">전주시</a></li>
+            <li class="depth2"><a href="#정읍시" target="_self" class="location" data-city="Jeollanam" data-name="Jeollanam-do" data-lat="35.5698547" data-lon="126.8538471">정읍시</a></li>
           </ul>
         </li>
         <li class="depth1"><a href="javascript:void(0);" target="_self" class="tit">경상북도</a>
           <ul>
-            <li class="depth2"><a href="#경상북도" target="_self" class="location" data-city="gyeongbuk" data-name="Gyeongsangbuk-do" data-lat="36.333328" data-lon="128.75">경북(전체)</a></li>
+            <li class="depth2"><a href="#경산시" target="_self" class="location" data-city="gyeongbuk" data-name="Gyeongsangbuk-do" data-lat="35.8250516" data-lon="128.7393547">경산시</a></li>
+            <li class="depth2"><a href="#경주시" target="_self" class="location" data-city="gyeongbuk" data-name="Gyeongsangbuk-do" data-lat="35.8561759" data-lon="129.2226143">경주시</a></li>
+            <li class="depth2"><a href="#구미시" target="_self" class="location" data-city="gyeongbuk" data-name="Gyeongsangbuk-do" data-lat="36.1196283" data-lon="128.3421063">구미시</a></li>
+            <li class="depth2"><a href="#김천시" target="_self" class="location" data-city="gyeongbuk" data-name="Gyeongsangbuk-do" data-lat="36.1398713" data-lon="128.1114614">김천시</a></li>
+            <li class="depth2"><a href="#울릉군" target="_self" class="location" data-city="gyeongbuk" data-name="Gyeongsangbuk-do" data-lat="37.4844306" data-lon="130.9036907">울릉군</a></li>
+            <li class="depth2"><a href="#독도" target="_self" class="location" data-city="gyeongbuk" data-name="Gyeongsangbuk-do" data-lat="37.241544" data-lon="131.8601902">독도</a></li>
+            <li class="depth2"><a href="#문경시" target="_self" class="location" data-city="gyeongbuk" data-name="Gyeongsangbuk-do" data-lat="36.5868215" data-lon="128.1849022">문경시</a></li>
+            <li class="depth2"><a href="#상주시" target="_self" class="location" data-city="gyeongbuk" data-name="Gyeongsangbuk-do" data-lat="36.4109707" data-lon="128.1568352">상주시</a></li>
+            <li class="depth2"><a href="#안동시" target="_self" class="location" data-city="gyeongbuk" data-name="Gyeongsangbuk-do" data-lat="36.5684353" data-lon="128.7273653">안동시</a></li>
+            <li class="depth2"><a href="#영주시" target="_self" class="location" data-city="gyeongbuk" data-name="Gyeongsangbuk-do" data-lat="36.8056963" data-lon="128.6217713">영주시</a></li>
+            <li class="depth2"><a href="#영천시" target="_self" class="location" data-city="gyeongbuk" data-name="Gyeongsangbuk-do" data-lat="35.9732676" data-lon="128.9364157">영천시</a></li>
+            <li class="depth2"><a href="#칠곡군" target="_self" class="location" data-city="gyeongbuk" data-name="Gyeongsangbuk-do" data-lat="35.9894395" data-lon="128.3937849">칠곡군</a></li>
+            <li class="depth2"><a href="#포항시" target="_self" class="location" data-city="gyeongbuk" data-name="Gyeongsangbuk-do" data-lat="36.0838113" data-lon="129.0129915">포항시</a></li>
           </ul>
         </li>
         <li class="depth1"><a href="javascript:void(0);" target="_self" class="tit">경상남도</a>
           <ul>
-            <li class="depth2"><a href="#경상남도" target="_self" class="location" data-city="gyeongnam" data-name="Gyeongsangnam-do" data-lat="35.25" data-lon="128.25">경남(전체)</a></li>
+            <li class="depth2"><a href="#거제시" target="_self" class="location" data-city="gyeongnam" data-name="Gyeongsangnam-do" data-lat="34.8805155" data-lon="128.6190241">거제시</a></li>
+            <li class="depth2"><a href="#거창군" target="_self" class="location" data-city="gyeongnam" data-name="Gyeongsangnam-do" data-lat="35.686683" data-lon="127.9073281">거창군</a></li>
+            <li class="depth2"><a href="#김해시" target="_self" class="location" data-city="gyeongnam" data-name="Gyeongsangnam-do" data-lat="35.219053" data-lon="128.8262968">김해시</a></li>
+            <li class="depth2"><a href="#밀양시" target="_self" class="location" data-city="gyeongnam" data-name="Gyeongsangnam-do" data-lat="35.5038199" data-lon="128.7444191">밀양시</a></li>
+            <li class="depth2"><a href="#사천시" target="_self" class="location" data-city="gyeongnam" data-name="Gyeongsangnam-do" data-lat="35.0036595" data-lon="128.0620809">사천시</a></li>
+            <li class="depth2"><a href="#양산시" target="_self" class="location" data-city="gyeongnam" data-name="Gyeongsangnam-do" data-lat="35.4033562" data-lon="128.9063819">양산시</a></li>
+            <li class="depth2"><a href="#진주시" target="_self" class="location" data-city="gyeongnam" data-name="Gyeongsangnam-do" data-lat="35.1796368" data-lon="128.1077311">진주시</a></li>
+            <li class="depth2"><a href="#창녕군" target="_self" class="location" data-city="gyeongnam" data-name="Gyeongsangnam-do" data-lat="35.5445971" data-lon="128.4901393">창녕군</a></li>
+            <li class="depth2"><a href="#창원시" target="_self" class="location" data-city="gyeongnam" data-name="Gyeongsangnam-do" data-lat="35.2279912" data-lon="128.6796256">창원시</a></li>
+            <li class="depth2"><a href="#통영시" target="_self" class="location" data-city="gyeongnam" data-name="Gyeongsangnam-do" data-lat="34.7435443" data-lon="128.2865262">통영시</a></li>
+            <li class="depth2"><a href="#함안군" target="_self" class="location" data-city="gyeongnam" data-name="Gyeongsangnam-do" data-lat="35.2724802" data-lon="128.4043463">함안군</a></li>
           </ul>
         </li>
         <li class="depth1"><a href="javascript:void(0);" target="_self" class="tit">제주특별자치도</a>
           <ul>
-            <li class="depth2"><a href="#제주특별자치도" target="_self" class="location" data-city="jeju" data-name="Jeju-do" data-lat="33.416672" data-lon="126.5">제주(전체)</a></li>
+            <li class="depth2"><a href="#제주시" target="_self" class="location" data-city="jeju" data-name="Jeju-do" data-lat="33.49960" data-lon="126.53125">제주시</a></li>
+            <li class="depth2"><a href="#서귀포시" target="_self" class="location" data-city="jeju" data-name="Jeju-do" data-lat="33.2468036" data-lon="126.5619184">서귀포시</a></li>
           </ul>
         </li>
       </ul>
