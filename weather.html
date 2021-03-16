@@ -154,12 +154,12 @@
         <div class="weather"><img src="./lib/images/weather/icon/default.png" class="icon" draggable="false"></div>
         <div class="desc"><span class="blind">날씨설명</span><span class="value"></span></div>
       </div>
-      <div class="notice">OpenWeather®, Last updated <span class="time"></span><a href="javascript:void(0);" title="새로고침" class="refresh"><span class="blind">REFRESH</span></a></div>
+      <div class="notice"><a href="javascript:void(0);" title="새로고침" class="refresh"><span>OpenWeather®, Last updated </span><span class="time"></span><i class="icon"></i></a></div>
       <script>
         //새로고침
         $('.notice .refresh').on('click', function() {
           updateForecast();
-          gsap.fromTo('.refresh', {rotation:0},{duration:1, rotation:360});
+          gsap.fromTo('.refresh .icon', {rotation:0},{duration:1, rotation:360});
         });
       </script>
       <div class="forecast eachHour">

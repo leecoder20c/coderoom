@@ -446,27 +446,39 @@
      }
     //안내
     & + .notice {
-      padding-right: 5px;
-      font-size: 12px;
-      font-style: italic;
-      font-weight: 100;
-      line-height: 20px;
-      letter-spacing: 0;
+      padding: 5px;
       text-align: right;
-      color: rgba(255,255,255,0.95);
-      @media (max-width: 799px) {
-        font-size: 10px;
-      }
+      opacity: 0.8;
       & .refresh {
         display: inline-block;
-        width: 20px;
-        height: 12px;
-        margin: 5px 0 5px 5px;
+        height: 20px;
         line-height: 20px;
         text-decoration: none;
-        vertical-align: -6px;
-        background: url("../images/weather/icon/refresh.svg") no-repeat center center/contain;
-        opacity: 0.7;
+        vertical-align: middle;
+        font-size: 12px;
+        font-style: italic;
+        font-weight: 100;
+        line-height: 20px;
+        letter-spacing: 0;
+        text-align: right;
+        text-shadow: 0 0 #fff;
+        color: #fff;
+        @media (max-width: 799px) {
+          font-size: 10px;
+        }
+        & span {
+          display: inline-block;
+          margin-left: 3px;
+          vertical-align: middle;
+        }
+        & .icon {
+          display: inline-block;
+          width: 12px;
+          height: 20px;
+          margin-left: 4px;
+          vertical-align: middle;
+          background: url("../images/weather/icon/refresh.svg") no-repeat right center/12px auto;
+        }
       }
     }
   }
