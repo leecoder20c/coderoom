@@ -1,6 +1,9 @@
 @charset 'utf-8';
 .weather-app, .weather-app body {
   min-height: 100%;
+  &.overflow-hidden {
+    overflow: hidden;
+  }
 }
 .weather-app body {
   background: rgb(34,37,50);
@@ -93,7 +96,7 @@
     width: 100%;
     min-height: 100%;
     max-width: 800px;
-    padding: 0 15px;
+    padding: 0 15px 30px;
     margin: 0 auto;
     &::-webkit-scrollbar {
       width: 0;  /* 세로축 스크롤바 길이 */
@@ -281,6 +284,7 @@
       position: absolute;
       bottom: 12px;
       left: 20px;
+      height: 30px;
       padding-left: 25px;
       font-weight: 700;
       line-height: 1;
@@ -289,6 +293,7 @@
       color: rgba(255,255,255,1);
       @media (max-width: 799px) {
         bottom: 18px;
+        height: 24px;
       }
       & .icon {
         display: inline-block;
@@ -312,14 +317,14 @@
       }
       & > .value {
         display: inline-block;
-        margin-top: 3px;
         margin-left: 3px;
         font-size: 30px;
-        line-height: 1;
+        line-height: 30px;
         letter-spacing: -0.03em;
-        vertical-align: bottom;
+        vertical-align: middle;
         @media (max-width: 799px) {
           font-size: 20px;
+          line-height: 24px;
         }
       }
       & .unit {
@@ -327,24 +332,25 @@
         margin-left: 3px;
         font-size: 20px;
         line-height: 1;
-        vertical-align: bottom;
+        vertical-align: middle;
         @media (max-width: 799px) {
           font-size: 13px;
+          line-height: 24px;
         }
       }
     }
     //미세먼지
     & .mimun {
       display: inline-block;
-      width: 25px;
-      height: 26px;
+      width: 24px;
+      height: 30px;
       margin-left: 8px;
       text-align: center;
-      vertical-align: bottom;
+      vertical-align: middle;
       background: url('../images/weather/icon/mimun.svg') no-repeat center / contain;
       @media (max-width: 799px) {
         height: 24px;
-        margin-left: 7px;
+        margin-left: 8px;
       }
       &[data-stat="good"] {
         background: url('../images/weather/icon/mimun-good.svg') no-repeat center / contain;
@@ -786,7 +792,7 @@
     width: 100%;
     max-width: 800px;
     height: 100%;
-    background: rgba(0,0,0,0.55);
+    background: rgba(0,0,0,0.6);
     cursor: pointer;
     & .icon-close {
       display: block;
@@ -812,6 +818,7 @@
         border-radius: 10px;
         border: 3px dashed rgba(0,231,255, 1);
         box-shadow: 0px 0px 7px 2px rgba(0,0,0,0.5);
+        background: #165c7d66;
       }
       & .desc {
         @include centerXY;

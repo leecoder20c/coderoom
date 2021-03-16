@@ -415,9 +415,12 @@
       <script>
         //팝업 도움말 토글
         $('.btn-guide').on('click', function() {
+          $('html,body').stop().animate({'scrollTop':0});
+          $('body').addClass('overflow-hidden');
           $('.pop-guide').show();
           $('.pop-guide').on('click', function() {
             $(this).hide();
+            $('body').removeClass('overflow-hidden');
           });
         });
       </script>
@@ -756,7 +759,7 @@
           $('.weather-wrap .today .temp-min .value').text(parseInt(resp.current.temp - 273.15));//최저
           $('.weather-wrap .today .pressure .value').text(resp.current.pressure);//기압
           $('.weather-wrap .today .humidity .value').text(resp.current.humidity);//습도
-          $('.weather-wrap .today .humidity .icon.over').css('clip','rect('+(20-parseInt(resp.current.humidity)*0.25)+'px, 20px, 24px, 0px)');
+          $('.weather-wrap .today .humidity .icon.over').css('clip','rect('+(24-parseInt(resp.current.humidity)*0.25)+'px, 20px, 24px, 0px)');
           $('.weather-wrap .today .weather .value').text(resp.current.weather[0].main);//메인날씨
           $('.weather-wrap .today .desc .value').text(resp.current.weather[0].main);//설명
           $('.weather-wrap .today .wind-deg .value').text(resp.current.wind_deg);//풍향
