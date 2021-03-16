@@ -195,7 +195,7 @@
     //기온
     & .temperature {
       position: absolute;
-      top: 120px;
+      bottom: 40px;
       right: 55px;
       font-size: 180px;
       font-weight: 700;
@@ -204,11 +204,9 @@
       text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
       color: #fff;
       @media (max-width: 799px) {
-        top: 112px;
-        font-size: 190px;
-      }
-      @media (max-width: 600px) {
+        bottom: 45px;
         right: 25px;
+        font-size: 170px;
       }
       & .unit {
         font-size: 60px;
@@ -222,7 +220,7 @@
     //체감
     & .feels-like {
       position: absolute;
-      top: 240px;
+      bottom: 60px;
       right: 20px;
       font-size: 40px;
       font-weight: 700;
@@ -273,7 +271,7 @@
     //습도
     & .humidity {
       position: absolute;
-      top: 303px;
+      bottom: 12px;
       left: 20px;
       padding-left: 25px;
       font-size: 30px;
@@ -283,21 +281,20 @@
       text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
       color: rgba(255,255,255,1);
       @media (max-width: 799px) {
+        bottom: 22px;
         font-size: 20px;
-        line-height: 50px;
+        line-height: 25px;
       }
       & .icon {
         display: inline-block;
         position: absolute;
-        top: 3px;
+        top: 0;
         left: 0;
         width: 20px;
         height: 35px;
         line-height: 1;
         vertical-align: middle;
         @media (max-width: 799px) {
-          top: 14px;
-          font-size: 10px;
         }
         &.over {
           z-index: 1;
@@ -334,7 +331,7 @@
       background: url('../images/weather/icon/mimun.svg') no-repeat center / contain;
       @media (max-width: 799px) {
         left: 95px;
-        height: 50px;
+        height: 25px;
       }
       &[data-stat="good"] {
         background: url('../images/weather/icon/mimun-good.svg') no-repeat center / contain;
