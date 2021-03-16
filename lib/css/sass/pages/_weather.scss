@@ -102,10 +102,27 @@
   }
   //헤더
   & .header {
-    padding: 40px 0 10px;
+    padding: 30px 0 10px;
     line-height: 20px;
     font-size: 0;
     @include clearfix;
+    //도움말 버튼
+    & .icon-help {
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 25px;
+      height: 25px;
+      padding: 8px 4px 0 0;
+      font-size: 10px;
+      font-weight: 100;
+      line-height: 1;
+      text-align: center;
+      text-decoration: none;
+      color: #fff;
+      opacity: 0.5;
+    }
     & .title {
       display: inline-block;
       float: left;
@@ -118,6 +135,7 @@
         font-size: 24px;
       }
     }
+    //위치 팝업 버튼
     & .util {
       float: right;
       & .city {
@@ -278,7 +296,6 @@
       bottom: 12px;
       left: 20px;
       padding-left: 25px;
-      font-size: 30px;
       font-weight: 700;
       line-height: 1;
       letter-spacing: 0;
@@ -286,7 +303,6 @@
       color: rgba(255,255,255,1);
       @media (max-width: 799px) {
         bottom: 18px;
-        font-size: 20px;
       }
       & .icon {
         display: inline-block;
@@ -308,13 +324,17 @@
           height: 26px;
         }
       }
-      & .value {
+      & > .value {
         display: inline-block;
-        padding: 3px 0 0;
+        margin-top: 3px;
         margin-left: 3px;
+        font-size: 30px;
         line-height: 1;
         letter-spacing: -0.03em;
         vertical-align: bottom;
+        @media (max-width: 799px) {
+          font-size: 20px;
+        }
       }
       & .unit {
         display: inline-block;
@@ -337,7 +357,6 @@
       vertical-align: bottom;
       background: url('../images/weather/icon/mimun.svg') no-repeat center / contain;
       @media (max-width: 799px) {
-        left: 95px;
         height: 24px;
         margin-left: 7px;
       }
@@ -951,7 +970,7 @@
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 999999;
+    z-index: 1;
     width: 100vw;
     height: 100vh;
     background: rgba(0,0,0,0.7);
