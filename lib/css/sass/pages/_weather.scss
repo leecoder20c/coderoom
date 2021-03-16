@@ -102,27 +102,10 @@
   }
   //헤더
   & .header {
-    padding: 30px 0 10px;
+    padding: 20px 0 10px;
     line-height: 20px;
     font-size: 0;
     @include clearfix;
-    //도움말 버튼
-    & .icon-help {
-      display: block;
-      position: absolute;
-      top: 0;
-      right: 0;
-      width: 25px;
-      height: 25px;
-      padding: 8px 4px 0 0;
-      font-size: 10px;
-      font-weight: 100;
-      line-height: 1;
-      text-align: center;
-      text-decoration: none;
-      color: #fff;
-      opacity: 0.5;
-    }
     & .title {
       display: inline-block;
       float: left;
@@ -160,6 +143,9 @@
     }
   }
   //콘텐츠
+  & .content {
+    position: relative;
+  }
   & .today {
     position: relative;
     width: 100%;
@@ -317,7 +303,7 @@
           top: 0;
         }
         &.over {
-          z-index: 1;
+          //z-index: 1;
         }
         & svg {
           width: 20px;
@@ -771,7 +757,133 @@
       }
     }
   }
-  //팝업
+  //도움말 버튼
+  & .btn-guide {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    font-size: 10px;
+    font-weight: 100;
+    line-height: 1;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    opacity: 0.5;
+    & > i {
+      margin-left: 5px;
+      vertical-align: middle;
+    }
+  }
+  //팝업-도움말
+  & .pop-guide {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 800px;
+    height: 100%;
+    background: rgba(0,0,0,0.55);
+    cursor: pointer;
+    & .icon-close {
+      display: block;
+      position: absolute;
+      top: 15px;
+      right: 0;
+      left: 0;
+      width: 50px;
+      margin: 0 auto;
+      font-size: 35px;
+      text-align: center;
+      color: #fff;
+    }
+    & .guide-items {
+      display: block;
+      position: absolute;
+      & .area {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 10px;
+        border: 3px dashed rgba(0,231,255, 1);
+        box-shadow: 0px 0px 7px 2px rgba(0,0,0,0.5);
+      }
+      & .desc {
+        @include centerXY;
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 1.35;
+        text-align: center;
+        white-space: nowrap;
+        color: #fff;
+        text-shadow: 2px 2px 0px #000;
+      }
+      &.item-01 {
+        top: 5px;
+        right: 5px;
+        width: 180px;
+        height: 50px;
+      }
+      &.item-02 {
+        top: 50px;
+        left: 5px;
+        width: 45%;
+        height: 45vw;
+        max-height: 240px;
+      }
+      &.item-03 {
+        top: 60px;
+        right: 5px;
+        width: 180px;
+        height: 45px;
+      }
+      &.item-04 {
+        top: 360px;
+        right: 5px;
+        width: 175px;
+        height: 40px;
+      }
+      &.item-05 {
+        top: 360px;
+        right: 5px;
+        width: 175px;
+        height: 40px;
+      }
+      &.item-06 {
+        left: 5px;
+        top: 360px;
+        width: 190px;
+        height: 40px;
+      }
+      &.item-07 {
+        top: 315px;
+        left: 5px;
+        right: 5px;
+        width: 140px;
+        height: 40px;
+      }
+      &.item-08 {
+        top: 450px;
+        left: 5px;
+        right: 5px;
+        width: calc(100% - 10px);
+        height: 150px;
+      }
+      &.item-09 {
+        top: 625px;
+        left: 5px;
+        right: 5px;
+        width: calc(100% - 10px);
+        height: 120px;
+      }
+    }
+  }
+  //팝업-위치
   & .pop-geocode {
     position: fixed;
     top: 0;

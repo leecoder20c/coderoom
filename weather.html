@@ -127,7 +127,6 @@
   <div class="weather-wrap">
     <!-- 헤더// -->
     <div class="header">
-      <a href="#help" class="icon-help"><i class="far fa-question-circle"></i></a>
       <h1 class="title">Good Weather</h1>
       <div class="util"><a href="#pop-geocode" target="_self" class="city">노원구, 서울특별시</a></div>
     </div>
@@ -394,10 +393,37 @@
           </div>
         </div>
       </div>
-      <div class="notice">본 저작물은 공공누리 제1유형으로 개방한 한국환경공단 국가대기오염정보 조회 서비스를 활용하였습니다.<br><img src="https://www.kogl.or.kr/images/front/sub/img_opencode3_m.jpg" alt="" style="display:inline-block;width:90px;margin-top:5px;"></div>
+      <div class="notice">본 저작물은 공공누리 제1유형으로 개방한 한국환경공단 국가대기오염정보 조회 서비스를 활용하였습니다.<br>
+        <img src="https://www.kogl.or.kr/images/front/sub/img_opencode3_m.jpg" alt="" style="display:inline-block;width:90px;margin-top:5px;">
+      </div>
+      <!-- 도움말 버튼 -->
+      <a href="#help" class="btn-guide">앱 사옹 안내<i class="fas fa-info-circle"></i></a>
     </div>
     <!-- //콘텐츠 -->
-    <!-- 팝업// -->
+    <!-- 팝업 도움말// -->
+    <div class="pop-guide" title="앱 사용 안내: 클릭(터치)해서 이전화면으로 돌아가기">
+      <i class="icon-close fas fa-times-circle"></i>
+      <div class="guide-items item-01"><div class="area"><p class="desc">현재 위치 정보</p></div></div>
+      <div class="guide-items item-02"><div class="area"><p class="desc">현재 날씨 아이콘</p></div></div>
+      <div class="guide-items item-03"><div class="area"><p class="desc">날짜 및 시간</p></div></div>
+      <div class="guide-items item-04"><div class="area"><p class="desc">현재 온도 / 체감 온도</p></div></div>
+      <div class="guide-items item-05"><div class="area"><p class="desc">최고 온도 / 최저 온도</p></div></div>
+      <div class="guide-items item-06"><div class="area"><p class="desc">습도 | 미세먼지 아이콘</p></div></div>
+      <div class="guide-items item-07"><div class="area"><p class="desc">현재 날씨 설명</p></div></div>
+      <div class="guide-items item-08"><div class="area"><p class="desc">3시간 별 날씨 예보</p></div></div>
+      <div class="guide-items item-09"><div class="area"><p class="desc">일별 날씨 예보</p></div></div>
+      <script>
+        //팝업 도움말 토글
+        $('.btn-guide').on('click', function() {
+          $('.pop-guide').show();
+          $('.pop-guide').on('click', function() {
+            $(this).hide();
+          });
+        });
+      </script>
+    </div>
+    <!-- //팝업 도움말 -->
+    <!-- 팝업 위치// -->
     <div id="pop-geocode" class="pop-geocode">
       <!-- 팝업헤더 -->
       <div class="pop-header">
@@ -520,7 +546,7 @@
       <!-- 내 위치 -->
       <a class="my-location" href="javascript:getUserGeolocation();" target="_self" title="내가 있는 곳의 날씩 확인하기"><img class="icon" draggable="false" src="./lib/images/weather/icon/location.svg" alt="" /><span class="tit">HERE</span></a>
     </div>
-    <!-- //팝업 -->
+    <!-- //팝업 위치 -->
     <script>
       //Var
       var $loca = $('.header .city');//도시명
