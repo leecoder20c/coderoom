@@ -393,7 +393,7 @@
           </div>
         </div>
       </div>
-      <div class="notice">본 저작물은 공공누리 제1유형으로 개방한 한국환경공단 국가대기오염정보 조회 서비스를 활용하였습니다.<br>
+      <div class="notice">데이터는 실시간 관측된 자료이며 측정소 현지 사정이나 <br>데이터의 수신상태에 따라 미수신 될 수 있음, 출처: AirKorea<br>
         <img src="https://www.kogl.or.kr/images/front/sub/img_opencode3_m.jpg" alt="" style="display:inline-block;width:90px;margin-top:5px;">
       </div>
       <!-- 도움말 버튼 -->
@@ -759,8 +759,8 @@
           $('.weather-wrap .today .temp-max .value').text(parseInt(resp.current.temp - 273.15));//최대
           $('.weather-wrap .today .temp-min .value').text(parseInt(resp.current.temp - 273.15));//최저
           $('.weather-wrap .today .pressure .value').text(resp.current.pressure);//기압
-          $('.weather-wrap .today .humidity .value').text(resp.current.humidity);//습도
-          $('.weather-wrap .today .humidity .icon.over').css('clip','rect('+(24-parseInt(resp.current.humidity)*0.25)+'px, 20px, 24px, 0px)');
+          $('.weather-wrap .today .humidity > .value').text(resp.current.humidity);//습도
+          $('.weather-wrap .today .humidity .icon.over').css('clip','rect('+(24-parseInt(resp.current.humidity)*0.25)+'px, 20px, 24px, 0px)');//습도 아이콘
           $('.weather-wrap .today .weather .value').text(resp.current.weather[0].main);//메인날씨
           $('.weather-wrap .today .desc .value').text(resp.current.weather[0].main);//설명
           $('.weather-wrap .today .wind-deg .value').text(resp.current.wind_deg);//풍향
@@ -873,7 +873,8 @@
       if (mimunVal > 80) { $mimun.attr('data-stat','bad'); mimunState = 'Bad'; }
       if (mimunVal > 150) { $mimun.attr('data-stat','hell'); mimunState = 'Hell'; }
       //$mimun.find('.value').text(mimunVal);//수치로 적용
-      $mimun.find('.value').text(mimunState);//텍스트로 적용
+      $('.today .mimun .value').text(mimunVal);//텍스트로 적용
+      console.log(mimunState, mimunVal);
     }
   </script>
 
