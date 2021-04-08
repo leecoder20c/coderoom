@@ -819,10 +819,13 @@
           }
         }
       }).then(function() {
-        setTimeout(updateForecast, 600000);//10분마다 실행
+        //setTimeout(updateForecast, 600000);//10분마다 실행
       });
     };
     updateForecast();
+    setInterval(function() {
+      updateForecast();//10분마다 실행
+    },600000);
     /*Descripttions 
       Clouds 구름
       Snow 눈
