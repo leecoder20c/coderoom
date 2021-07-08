@@ -355,16 +355,16 @@
         height: 24px;
         margin-left: 8px;
       }
-      &[data-stat="good"] {
+      &[data-state="good"] {
         background: url('../images/weather/icon/mimun-good.svg') no-repeat center / contain;
       }
-      &[data-stat="normal"] {
+      &[data-state="normal"] {
         background: url('../images/weather/icon/mimun-normal.svg') no-repeat center / contain;
       }
-      &[data-stat="bad"] {
+      &[data-state="bad"] {
         background: url('../images/weather/icon/mimun-bad.svg') no-repeat center / contain;
       }
-      &[data-stat="hell"] {
+      &[data-state="hell"] {
         background: url('../images/weather/icon/mimun-hell.svg') no-repeat center / contain;
       }
       & .value {
