@@ -128,7 +128,7 @@
     <!-- 헤더// -->
     <div class="header">
       <h1 class="title">Good Weather</h1>
-      <div class="util"><a href="#pop-geocode" target="_self" class="city">노원구, 서울특별시</a></div>
+      <div class="util"><a href="#pop-geocode" target="_self" class="city">대한민국, 위치 변경</a></div>
     </div>
     <!-- //헤더 -->
     <!-- 콘텐츠// -->
@@ -398,6 +398,7 @@
       </div>
       <!-- 도움말 버튼 -->
       <a href="#help" class="btn-guide">앱 사용 안내<i class="fas fa-info-circle"></i></a>
+      <a href="http://daewooju.cafe24.com/weather/private.php" target="_blank" class="btn-private" style="display: block;position:absolute;bottom:0;left:80px;font-size:10px;font-weight:100;line-height:1;text-align:center;text-decoration:none;color:#fff;opacity:.5;">개인정보 처리방침</a>
     </div>
     <!-- //콘텐츠 -->
     <!-- 팝업 도움말// -->
@@ -615,7 +616,7 @@
         </li>
       </ul>
       <!-- 내 위치 -->
-      <a class="my-location" href="javascript:getUserGeolocation();" target="_self" title="내가 있는 곳의 날씩 확인하기"><img class="icon" draggable="false" src="./lib/images/weather/icon/location.svg" alt="" /><span class="tit">HERE</span></a>
+      <!-- <a class="my-location" href="javascript:getUserGeolocation();" target="_self" title="내가 있는 곳의 날씩 확인하기"><img class="icon" draggable="false" src="./lib/images/weather/icon/location.svg" alt="" /><span class="tit">HERE</span></a> -->
     </div>
     <!-- //팝업 위치 -->
     <script>
@@ -990,7 +991,7 @@
     $(function() {
       //최초 로드 시 내위치 조회
       setTimeout(function() {
-        getUserGeolocation();
+        //getUserGeolocation();
       }, 100);
     });
   </script>
