@@ -115,35 +115,27 @@
       display: inline-block;
       float: left;
       font-family: 'Poiret One', 'Potta One', sans-serif;
-      font-size: 30px;
+      font-size: 24px;
       font-weight: 500;
       letter-spacing: -0.03em;
       color: #fff;
-      @media (max-width: 799px) {
-        font-size: 24px;
-      }
     }
     //위치 팝업 버튼
     & .util {
       float: right;
       & .city {
         display: inline-block;
-        height: 19px;
+        height: 16px;
         padding: 3px 23px 3px 0;
         margin-top: 5px;
-        font-size: 15px;
+        font-size: 10px;
         font-weight: 300;
         line-height: 1;
         letter-spacing: 0;
         text-align: right;
         text-decoration: none;
         color: rgba(255,255,255,0.8);
-        background: url("../images/weather/icon/earth.svg") no-repeat right 1px top 3px/16px 16px;
-        @media (max-width: 799px) {
-          height: 16px;
-          font-size: 10px;
-          background: url("../images/weather/icon/earth.svg") no-repeat right 1px top/16px 16px;
-        }
+        background: url("../images/weather/icon/earth.svg") no-repeat right 1px top/16px 16px;
       }
     }
   }
@@ -172,9 +164,6 @@
         background-repeat: no-repeat;
         background-size: cover;
         opacity: 0.7;
-        @media (min-width: 600px) {
-          background-position: center bottom;
-        }
       }
       & .current-group {
         position: relative;
@@ -246,16 +235,12 @@
       //최저&최대
       & .temp-minmax {
         position: absolute;
-        bottom: 12px;
+        bottom: 22px;
         right: 2px;
-        font-size: 24px;
+        font-size: 16px;
         font-weight: 700;
         line-height: 1;
         color: rgba(255,255,255,1);
-        @media (max-width: 799px) {
-          bottom: 22px;
-          font-size: 16px;
-        }
         & .temp-min {
           margin-right: -10px;
           letter-spacing: -0.03em;
@@ -275,31 +260,24 @@
       //습도
       & .humidity {
         position: absolute;
-        bottom: 12px;
+        bottom: 18px;
         left: 20px;
-        height: 30px;
+        height: 24px;
         padding-left: 25px;
         font-weight: 700;
         line-height: 1;
         letter-spacing: 0;
         text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
         color: rgba(255,255,255,1);
-        @media (max-width: 799px) {
-          bottom: 18px;
-          height: 24px;
-        }
         & .icon {
           display: inline-block;
           position: absolute;
-          top: 5px;
+          top: 0;
           left: 0;
           width: 20px;
           height: 25px;
           line-height: 1;
           vertical-align: middle;
-          @media (max-width: 799px) {
-            top: 0;
-          }
           &.over {
             //z-index: 1;
           }
@@ -311,40 +289,28 @@
         & > .value {
           display: inline-block;
           margin-left: 3px;
-          font-size: 30px;
-          line-height: 30px;
+          font-size: 20px;
+          line-height: 24px;
           letter-spacing: -0.03em;
           vertical-align: middle;
-          @media (max-width: 799px) {
-            font-size: 20px;
-            line-height: 24px;
-          }
         }
         & .unit {
           display: inline-block;
           margin-left: 3px;
-          font-size: 20px;
-          line-height: 1;
+          font-size: 13px;
+          line-height: 24px;
           vertical-align: middle;
-          @media (max-width: 799px) {
-            font-size: 13px;
-            line-height: 24px;
-          }
         }
       }
       //미세먼지
       & .mimun {
         display: inline-block;
         width: 24px;
-        height: 30px;
+        height: 24px;
         margin-left: 8px;
         text-align: center;
         vertical-align: middle;
         background: url('../images/weather/icon/mimun.svg') no-repeat center / contain;
-        @media (max-width: 799px) {
-          height: 24px;
-          margin-left: 8px;
-        }
         &[data-state="good"] {
           background: url('../images/weather/icon/mimun-good.svg') no-repeat center / contain;
         }
@@ -367,32 +333,12 @@
       //아이콘
       & .weather {
         position: absolute;
-        top: -95px;
-        left: -95px;
-        width: 60%;
-        height: 0;
-        padding-bottom: 60%;
+        top: 0;
+        left: 0;
+        width: 282px;
+        height: 282px;
         text-align: right;
-        @media (min-width: 320px) {
-          top: -50px;
-          left: -60px;
-        }
-        @media (min-width: 420px) {
-          top: -50px;
-          left: -90px;
-        }
-        @media (min-width: 520px) {
-          top: -90px;
-          left: -110px;
-        }
-        @media (min-width: 640px) {
-          top: -140px;
-          left: -160px;
-        }
-        @media (min-width: 720px) {
-          top: -220px;
-          left: -140px;
-        }
+        transform: translate(-25%, -15%);
         & .icon {
           position: absolute;
           top: 0;
@@ -427,15 +373,12 @@
         position: absolute;
         bottom: 60px;
         left: 20px;
-        font-size: 24px;
+        font-size: 16px;
         font-weight: 400;
         line-height: 1;
         letter-spacing: 0;
         text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
         color: rgba(255,255,255,1);
-        @media (max-width: 799px) {
-          font-size: 16px
-        }
       }
     }
     //안내
@@ -453,16 +396,13 @@
         line-height: 20px;
         text-decoration: none;
         vertical-align: middle;
-        font-size: 12px;
+        font-size: 10px;
         font-style: italic;
         font-weight: 100;
         line-height: 20px;
         letter-spacing: 0;
         text-align: right;
         color: #fff;
-        @media (max-width: 799px) {
-          font-size: 10px;
-        }
         & span {
           display: inline-block;
           vertical-align: middle;
@@ -482,21 +422,12 @@
       @include clearfix;
       //타이틀
       & h3.tit {
-        font-size: 16px;
+        font-size: 12px;
         font-weight: 400;
         line-height: 1.5;
-        letter-spacing: 0;
+        letter-spacing: 0.05em;
         text-align: left;
         color: #fff;
-        @media (max-width: 799px) {
-          font-size: 10px;
-          letter-spacing: 0.05em;
-        }
-      }
-      //각 타임테이블
-      & .time {
-        float: left;
-        display: inline-block;
       }
       //시간별 예보
       &.eachHour {
@@ -511,8 +442,8 @@
             height: 0;  /* 가로축 스크롤바 길이 */
           }
           & .scroll-inner {
-            width: 160vw;
-            max-width: 1300px;
+            display: flex;
+            gap: 0 15px;
           }
         }
         //타이틀
@@ -521,22 +452,18 @@
         }
         //아이템
         & .time {
-          display: none;
-          width: calc(20vw - 20px);
-          max-width: 140px;
-          padding: 2vh 0;
-          border-radius: 10px;
-          margin: 0 20px 0 0;
+          display: flex;
+          flex-direction: column;
+          padding: 15px;
+          border-radius: 15px;
+          margin: 0;
           background: rgba(255,255,255,0.05);
-          &:nth-child(3n+1) {
-            display: block;
-          }
         }
         //온도
         & .temperature {
           display: inline-block;
           position: relative;
-          font-size: 30px;
+          font-size: 20px;
           font-weight: 700;
           letter-spacing: -0.03em;
           line-height: 1;
@@ -544,9 +471,6 @@
           text-align: center;
           text-indent: 5px;
           color: #fff;
-          @media (max-width: 799px) {
-            font-size: 20px
-          }
           & .value {
             display: inline-block;
             text-align: right;
@@ -561,7 +485,7 @@
         //아이콘
         & .weather-img {
           position: relative;
-          height: 8vh;
+          height: 74px;
           & img {
             position: absolute;
             top: 0;
@@ -596,18 +520,14 @@
         }
         //시간 및 일자
         & .date {
-          font-size: 13px;
+          font-size: 10px;
           font-weight: 400;
           line-height: 1;
           letter-spacing: 0;
           white-space: nowrap;
           color: #fff;
-          @media (max-width: 799px) {
-            font-size: 10px;
-          }
           & .tip {
             display: inline-block;
-            transform: scale(0.8);
           }
         }
         //풍속
@@ -617,7 +537,7 @@
       }
       //일별 예보
       &.daily {
-        margin: 2vh 0 15px;
+        margin: 20px 0 15px;
         & .scroll-wrap {
           overflow: hidden;
           @media (pointer:coarse) {
@@ -628,57 +548,48 @@
             height: 0;  /* 가로축 스크롤바 길이 */
           }
           & .scroll-inner {
+            display: flex;
             width: 140vw;
             max-width: 1120px;
           }
         }
         //타이틀
         & h3.tit {
-          margin-bottom: 2vh;
+          margin-bottom: 10px;
         }
         //아이템
         & .time {
-          //display: none;
           position: relative;
-          width: 20vw;
-          max-width: 160px;
-          padding-bottom: 30px;
+          width: 12vw;
+          min-width: 75px;
+          height: 100px;
+          padding: 5px 0;
           border-right: 1px solid rgba(255,255,255,0.1);
-          //&:nth-child(2),&:nth-child(3),&:nth-child(4),&:nth-child(5),&:nth-child(6) {
-          //  display: block;
-          //}
           &:last-child {
             border-right: none;
           }
         }
         //시간 및 일자
         & .date {
-          font-size: 15px;
+          font-size: 10px;
           font-weight: 400;
           line-height: 1;
           letter-spacing: 0;
           white-space: nowrap;
           color: #fff;
-          @media (max-width: 799px) {
-            font-size: 10px;
-          }
           & .tip {
             display: inline-block;
-            transform: scale(0.7);
           }
         }
         //아이콘
         & .weather-img {
           position: relative;
-          height: 7vh;
-          font-size: 14px;
+          height: 65px;
+          font-size: 10px;
           font-weight: 700;
           line-height: 1.5;
           letter-spacing: 0;
           color: #fff;
-          @media (max-width: 799px) {
-            font-size: 10px;
-          }
           & img {
             position: absolute;
             top: 0;
@@ -688,37 +599,34 @@
             height: 50%;
             margin: auto;
           }
-          & [data-stat="Clear"] {
+          & [data-stat=Clear] {
             @include animation('rotateIcon', 30s, 0s, 'infinite', 'linear');
           }
-          & [data-stat="Snow"] {
+          & [data-stat=Snow] {
             @include animation('flipYIcon', 3s, 0s, 'infinite', 'linear');
           }
-          & [data-stat="Tornado"] {
+          & [data-stat=Tornado] {
             @include animation('flipYIcon', 3s, 0s, 'infinite', 'linear');
           }
-          & [data-stat="Clouds"],& [data-stat="Rain"],& [data-stat="Haze"],& [data-set="Fog"],& [data-set="Squall"],& [data-set="Squall"],& [data-set="Drizzle"] {
+          & [data-stat=Clouds],& [data-stat=Rain],& [data-stat=Haze],& [data-set=Fog],& [data-set=Squall],& [data-set=Squall],& [data-set=Drizzle] {
             @include animation('left2rightIcon', 3s, 0s, 'infinite', 'linear');
           }
-          & [data-stat="Mist"] {
+          & [data-stat=Mist] {
             @include animation('slideDownIcon', 3s, 0s, 'infinite', 'linear');
           }
-          & [data-set="Smoke"],& [data-set="Thunderstorm"] {
+          & [data-set=Smoke],& [data-set=Thunderstorm] {
             @include animation('up2downIcon', 3s, 0s, 'infinite', 'linear');
           }
         }
         //온도
         & .temperature {
           @include centerX;
-          font-size: 15px;
+          font-size: 12px;
           font-weight: 300;
           letter-spacing: -0.05em;
           line-height: 1.5;
           white-space: nowrap;
           color: #fff;
-          @media (max-width: 799px) {
-            font-size: 12px;
-          }
           & .temp-min,& .temp-max {
             position: relative;
           }
@@ -729,7 +637,7 @@
           & .unit {
             display: inline-block;
             text-indent: -5px;
-            transform: scale(0.5) translate(5px, 0);
+            transform: scale(0.5) translate(7px, 0);
             transform-origin: top left;
           }
         }
@@ -756,10 +664,7 @@
       text-align: right;
       color: rgba(255,255,255,0.6);
       & br {
-        display: none;
-        @media (max-width: 799px) {
-          display: block;
-        }
+        display: block;
       }
       & img {
         display: inline-block;
@@ -1027,11 +932,8 @@
           }
           &.on+ul {
             height: auto;
-            padding: 10px 10px 0;
+            padding: 5px 10px 10px;
             margin-bottom: 10px;
-            @media (max-width: 799px) {
-              padding: 5px 10px 10px;
-            }
             & .depth2 {
               margin: 0;
               opacity: 1;
@@ -1054,28 +956,22 @@
           position: relative;
           padding: 2px 3px;
           margin: 4px 10px 4px 0;
-          font-size: 16px;
+          font-size: 13px;
           font-weight: 400;
           letter-spacing: -0.01em;
           line-height: 1.5;
           text-decoration: none;
           color: #333;
-          @media (max-width: 799px) {
-            font-size: 13px;
-          }
           &:before {
             content: '';
             display: block;
             position: absolute;
-            bottom: 4px;
+            bottom: 3px;
             left: 0;
             z-index: -1;
             width: 0;
             height: 3px;
             background: rgba(0,255,31,0.48);
-            @media (max-width: 799px) {
-              bottom: 3px;
-            }
           }
           &:hover {
             color: #000;
@@ -1189,14 +1085,11 @@
     }
     //내용
     & .message {
-      font-size: 24px;
+      font-size: 16px;
       font-weight: 400;
       line-height: 1.5;
       letter-spacing: -0.02em;
       color: #fff;
-      @media (max-width: 799px) {
-        font-size: 16px;
-      }
     }
   }
 }
