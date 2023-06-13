@@ -43,7 +43,6 @@
   <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/gsap-latest-beta.min.js"></script>
-  <script src="https://kit.fontawesome.com/66d4020c09.js" crossorigin="anonymous"></script>
 
   <!-- 크로스브라우징-->
   <!--[if lt IE 9]>
@@ -117,7 +116,7 @@
     <img class="app-logo" draggable="false" src="./lib/images/weather/seo/weather-logo.svg" alt="Good Weather" />
     <img class="brand-logo" draggable="false" src="./lib/images/weather/seo/brand-logo.svg" alt="Tiny TIger" />
     <div class="progress"><div class="gage"></div></div>
-  </div>
+  </div><!-- /.intro -->
   <script>
     //인트로 사라지기
     var intro = new gsap.timeline();
@@ -164,8 +163,10 @@
       <div class="today">
         <h3 class="blind">현재 날씨</h3>
         <div class="bg"></div>
-        <div class="current-date"></div>
-        <div class="current-time">00:00</div>
+        <div class="current-group">
+          <div class="current-date"></div>
+          <div class="current-time">00:00</div>
+        </div><!-- /.current-group -->
         <script>
           (function currentTime() {
             $('.current-date').text(getTime("md"));
@@ -181,8 +182,8 @@
         <div class="humidity"><div class="icon"><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 25.906 25.906" style="enable-background:new 0 0 25.906 25.906;" xml:space="preserve"><g><path style="fill: rgba(255,255,255,0.6);" d="M12.953,0c0,0-9,10.906-9,16.906c0,4.971,4.029,9,9,9s9-4.029,9-9C21.953,10.906,12.953,0,12.953,0z M9.026,17.496c0,1.426,0.668,4.25,1.134,5.426c-3.042-1.494-3.846-4.425-3.846-6.463c0-3.173,3.684-7.824,5.777-12.149 C11.861,6.581,9.026,13.177,9.026,17.496z"/></g></svg></div><div class="icon over" style="clip: rect(0px, 20px, 20px, 0px);"><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 25.906 25.906" style="enable-background:new 0 0 25.906 25.906;" xml:space="preserve"><g><path style="fill:#3175d0;" d="M12.953,0c0,0-9,10.906-9,16.906c0,4.971,4.029,9,9,9s9-4.029,9-9C21.953,10.906,12.953,0,12.953,0z M9.026,17.496c0,1.426,0.668,4.25,1.134,5.426c-3.042-1.494-3.846-4.425-3.846-6.463c0-3.173,3.684-7.824,5.777-12.149 C11.861,6.581,9.026,13.177,9.026,17.496z"/></g></svg></div><span class="value"></span><span class="unit">%</span><div class="mimun"><span class="blind">미세먼지 수치</span><span class="value"></span></div></div>
         <div class="weather"><img src="./lib/images/weather/icon/default.png" class="icon" draggable="false"></div>
         <div class="desc"><span class="blind">날씨설명</span><span class="value"></span></div>
-      </div>
-      <div class="notice"><a href="javascript:void(0);" title="새로고침" class="refresh"><span>OpenWeather®, Last updated </span><span class="time"></span><i class="icon"></i></a></div>
+      </div><!-- /.today -->
+      <div class="notice"><a href="javascript:void(0);" title="새로고침" class="refresh"><span>OpenWeather®, Last updated </span><span class="time"></span><i class="icon"></i></a></div><!-- /.notice -->
       <script>
         //새로고침
         $('.notice .refresh').on('click', function() {
@@ -364,7 +365,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div><!-- /.forecast.eachHour -->
       <div class="forecast daily">
         <h3 class="tit">주간 날씨</h3>
         <div class="scroll-wrap" id="scroll-wrap2">
@@ -420,14 +421,16 @@
             </div>
           </div>
         </div>
-      </div>
-      <div class="notice">데이터는 실시간 관측된 자료이며 측정소 현지 사정이나 <br>데이터의 수신상태에 따라 미수신 될 수 있음, 출처: AirKorea<br>
-        <!-- <img src="https://www.kogl.or.kr/images/front/sub/img_opencode3_m.jpg" alt="" style="display:inline-block;width:90px;margin-top:5px;"> -->
-      </div>
-      <!-- 도움말 버튼 -->
-      <a href="#help" class="btn-guide" style="letter-spacing: -0.05em;">앱 사용 안내<i class="fas fa-info-circle"></i></a>
-      <button class="btn-private" style="display: block;position:absolute;bottom:0;left:65px;border:none;font-size:10px;font-weight:100;line-height:1;text-align:center;letter-spacing: -0.05em;text-decoration:none;color:#fff;opacity:.5;">개인정보 처리방침</button>
-    </div>
+      </div><!-- /.forecast.daily -->
+      <div class="notice footer-notice">
+        <!-- 도움말 버튼 -->
+        <div class="info">
+          <a href="#help" class="btn-guide" style="letter-spacing: -0.05em;">앱 사용 안내<svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM11 17V15H13V17H11ZM11 7V13H13V7H11Z" fill="#FFFFFF"/></svg></a><!-- /.btn-guide -->
+          <button class="btn-private">개인정보 처리방침</button>
+        </div><!-- /.info -->
+        <span class="text">데이터는 실시간 관측된 자료이며 측정소 현지 사정이나 <br>데이터의 수신상태에 따라 미수신 될 수 있음, 출처: AirKorea</span>
+      </div><!-- /.footer-notice -->
+    </div><!-- /.content -->
     <!-- //콘텐츠 -->
     <!-- 팝업 도움말// -->
     <div class="pop-guide" title="앱 사용 안내: 클릭(터치)해서 이전화면으로 돌아가기">
@@ -454,7 +457,7 @@
           });
         });
       </script>
-    </div>
+    </div><!-- /.pop-guide -->
     <!-- //팝업 도움말 -->
     <!-- 팝업 위치// -->
     <div id="pop-geocode" class="pop-geocode">
@@ -642,10 +645,10 @@
             <li class="depth2"><a href="#서귀포시" target="_self" class="location" data-city="jeju" data-name="Jeju-do" data-lat="33.2468036" data-lon="126.5619184">서귀포시</a></li>
           </ul>
         </li>
-      </ul>
+      </ul><!-- /.city-list -->
       <!-- 내 위치 -->
       <!-- <a class="my-location" href="javascript:getUserGeolocation();" target="_self" title="내가 있는 곳의 날씩 확인하기"><img class="icon" draggable="false" src="./lib/images/weather/icon/location.svg" alt="" /><span class="tit">HERE</span></a> -->
-    </div>
+    </div><!-- /.pop-geocode -->
     <!-- //팝업 위치 -->
     <script>
       //Var
@@ -703,10 +706,10 @@
         <a href="#" class="close" title="닫기"><span class="bar1"></span><span class="bar2"></span></a>
         <p class="message"></p>
       </div>
-    </div>
+    </div><!-- /.alert -->
     <!-- //알림창 -->
     <!-- 팝업 개인정보처리방침// -->
-    <div class="popup-private" style="display:none;position:fixed;top:57px;left:0;right:0;bottom:0;width:calc(100% - 30px);max-width:800px;height:calc(100% - 57px);padding:50px 30px;margin:auto;font-size:16px;line-height:1.6;background:#FFF;overflow-y:scroll;">
+    <div class="popup-private">
       <button class="btn-close" style="position:absolute;top:10px;right:10px;border:none;padding:4px 10px;border-radius:5px;font-size:12px;color:#FFF;background:#4b5376;">닫기</button>
       <p class="ls2 lh6 bs5 ts4"><em class="emphasis">< Good Weather ></em>은(는) 「개인정보 보호법」 제30조에 따라 정보주체의 개인정보를 보호하고 이와 관련한 고충을 신속하고 원활하게 처리할 수 있도록 하기 위하여 다음과 같이 개인정보 처리방침을 수립·공개합니다.</p>
 
@@ -824,7 +827,7 @@
       $(".popup-private .btn-close").on("click", function() {$(".popup-private").hide()});
     </script>
     <!-- //팝업 개인정보처리방침 -->
-  </div>
+  </div><!-- /.weather-wrap -->
   <!-- //웨더 앱 -->
   <script>
     /* api 정보 : https://openweathermap.org/forecast5 */
@@ -1059,9 +1062,7 @@
       });
     };
     updateMimun();
-  </script>
 
-  <script>
     //Drag to scroll
     var drag2scroll = function(target) {
       var ele = target.get(0);
@@ -1103,9 +1104,7 @@
       drag2scroll($('.forecast.eachHour .scroll-wrap'));
       drag2scroll($('.forecast.daily .scroll-wrap'));
     });
-  </script>
 
-  <script>
     $(function() {
       //최초 로드 시 내위치 조회
       setTimeout(function() {

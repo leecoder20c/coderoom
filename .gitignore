@@ -59,3 +59,6 @@ planner/db.php
 planner/db-load.php
 planner/db-update.php
 weather/mimun.php
+/lib/css/sass/base/
+/lib/css/sass/utils/
+/lib/css/sass/vendors/

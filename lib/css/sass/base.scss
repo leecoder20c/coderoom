@@ -1,15 +1,14 @@
 /*======================================플러그인======================================*/
-@import '../../../../github_pub/libs/css/sass/vendors/slick';
-@import '../../../../github_pub/libs/css/sass/vendors/jquery-ui';//Customed by LSJ 200414
+@import './vendors/slick';
+@import './vendors/jquery-ui';//Customed by LSJ 200414
 
 /*======================================헬퍼&유틸======================================*/
-@import '../../../../github_pub/libs/css/sass/utils/functions';
-@import '../../../../github_pub/libs/css/sass/utils/helpers';
-@import '../../../../github_pub/libs/css/sass/utils/mixins';
-@import '../../../../github_pub/libs/css/sass/utils/variables';
+@import './utils/functions';
+@import './utils/helpers';
+@import './utils/mixins';
 
 /*======================================리셋======================================*/
-@import '../../../../github_pub/libs/css/sass/base/reset';
+@import './base/reset';
 
 /*======================================개별 페이지======================================*/
 @import './pages/index';
