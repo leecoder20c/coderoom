@@ -850,10 +850,10 @@
         return time.getHours();
       },
       weatherUrl: function() {
-        return "https://api.openweathermap.org/data/2.5/weather?q="+this.city+"&appid="+"1c40f42436a06d02eff28e1526d29217"+"&lang="+this.lang;
+        return "https://api.openweathermap.org/data/2.5/forecast?q="+this.city+"&appid="+"1c40f42436a06d02eff28e1526d29217"+"&lang="+this.lang;
       },
       onecallUrl: function() {
-        return "https://api.openweathermap.org/data/2.5/onecall?lat="+this.geo.lat+"&lon="+this.geo.lon+"&exclude="+this.exclude+"&appid="+"1c40f42436a06d02eff28e1526d29217"+"&lang="+this.lang;
+        return "https://api.openweathermap.org/data/2.5/forecast?lat="+this.geo.lat+"&lon="+this.geo.lon+"&exclude="+this.exclude+"&appid="+"1c40f42436a06d02eff28e1526d29217"+"&lang="+this.lang;
       }
     };
     //예보
