@@ -370,8 +370,15 @@
         <h3 class="tit">주간 날씨</h3>
         <div class="scroll-wrap" id="scroll-wrap2">
           <div class="scroll-inner">
+            <div class="time time0">
+              <div class="date"><span class="blind">날짜</span><span class="value"></span>일<span class="tip day"><!-- (내일) --></span></div>
+              <div class="weather-img"><img src="./lib/images/weather/icon/default.png" alt="날씨 아이콘" class="icon" draggable="false"></div>
+              <div class="temperature"><span class="temp-min"><span class="blind">최저 기온</span><span class="value"></span><span class="unit">˚C</span></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span class="temp-max"><span class="blind">최고 기온</span><span class="value"></span><span class="unit">˚C</span></span></div>
+              <div class="desc"><span class="blind">날씨설명</span><span class="value"></span></div>
+              <div class="wind-speed"><span class="blind">풍속</span><span class="value"></span> 노트</div>
+            </div>
             <div class="time time1">
-              <div class="date"><span class="blind">날짜</span><span class="value"></span>일<span class="tip">(내일)</span></div>
+              <div class="date"><span class="blind">날짜</span><span class="value"></span>일<span class="tip day"></span></div>
               <div class="weather-img"><img src="./lib/images/weather/icon/default.png" alt="날씨 아이콘" class="icon" draggable="false"></div>
               <div class="temperature"><span class="temp-min"><span class="blind">최저 기온</span><span class="value"></span><span class="unit">˚C</span></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span class="temp-max"><span class="blind">최고 기온</span><span class="value"></span><span class="unit">˚C</span></span></div>
               <div class="desc"><span class="blind">날씨설명</span><span class="value"></span></div>
@@ -405,23 +412,18 @@
               <div class="desc"><span class="blind">날씨설명</span><span class="value"></span></div>
               <div class="wind-speed"><span class="blind">풍속</span><span class="value"></span> 노트</div>
             </div>
-            <div class="time time6">
-              <div class="date"><span class="blind">날짜</span><span class="value"></span>일<span class="tip day"></span></div>
-              <div class="weather-img"><img src="./lib/images/weather/icon/default.png" alt="날씨 아이콘" class="icon" draggable="false"></div>
-              <div class="temperature"><span class="temp-min"><span class="blind">최저 기온</span><span class="value"></span><span class="unit">˚C</span></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span class="temp-max"><span class="blind">최고 기온</span><span class="value"></span><span class="unit">˚C</span></span></div>
-              <div class="desc"><span class="blind">날씨설명</span><span class="value"></span></div>
-              <div class="wind-speed"><span class="blind">풍속</span><span class="value"></span> 노트</div>
-            </div>
-            <div class="time time7">
-              <div class="date"><span class="blind">날짜</span><span class="value"></span>일<span class="tip day"></span></div>
-              <div class="weather-img"><img src="./lib/images/weather/icon/default.png" alt="날씨 아이콘" class="icon" draggable="false"></div>
-              <div class="temperature"><span class="temp-min"><span class="blind">최저 기온</span><span class="value"></span><span class="unit">˚C</span></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span class="temp-max"><span class="blind">최고 기온</span><span class="value"></span><span class="unit">˚C</span></span></div>
-              <div class="desc"><span class="blind">날씨설명</span><span class="value"></span></div>
-              <div class="wind-speed"><span class="blind">풍속</span><span class="value"></span> 노트</div>
-            </div>
           </div>
         </div>
       </div><!-- /.forecast.daily -->
+      <style>
+        .weather-app .content .forecast.daily .scroll-wrap .scroll-inner {
+          width: auto;
+          max-width: none;
+        }
+        .weather-app .content .forecast.daily .time {
+          width: 150px;
+        }
+      </style>
       <div class="notice footer-notice">
         <!-- 도움말 버튼 -->
         <div class="info">
@@ -840,15 +842,35 @@
         lon: 127.0580746
       },//기본 노원구 좌표계 WGS1984
       exclude: "alerts",//전체 보기
-      getForecastDay: function(UTC) {
-        var utc = UTC*1000;
-        var time = new Date(utc);
-        return time.getDate();
+      getForecastDay: function(unixTimestamp) {
+        let date = new Date(unixTimestamp * 1000);
+        // KST 시간대로 설정 (UTC+9)
+        date.setHours(date.getHours() + 9);
+  
+        // 날짜 및 시간 구성요소 추출
+        let year = date.getUTCFullYear();
+        let month = (date.getUTCMonth() + 1).toString().padStart(2, '0');
+        let day = date.getUTCDate().toString().padStart(2, '0');
+        let hours = date.getUTCHours().toString().padStart(2, '0');
+        let minutes = date.getUTCMinutes().toString().padStart(2, '0');
+        let seconds = date.getUTCSeconds().toString().padStart(2, '0');
+
+        return day;
       },
-      getForecastHour: function(UTC) {
-        var utc = UTC*1000;
-        var time = new Date(utc);
-        return time.getHours();
+      getForecastHour: function(unixTimestamp) {
+        let date = new Date(unixTimestamp * 1000);
+        // KST 시간대로 설정 (UTC+9)
+        date.setHours(date.getHours() + 9);
+  
+        // 날짜 및 시간 구성요소 추출
+        let year = date.getUTCFullYear();
+        let month = (date.getUTCMonth() + 1).toString().padStart(2, '0');
+        let day = date.getUTCDate().toString().padStart(2, '0');
+        let hours = date.getUTCHours().toString().padStart(2, '0');
+        let minutes = date.getUTCMinutes().toString().padStart(2, '0');
+        let seconds = date.getUTCSeconds().toString().padStart(2, '0');
+
+        return hours;
       },
       weatherUrl: function() {
         return "https://api.openweathermap.org/data/2.5/forecast?q="+this.city+"&appid="+"1c40f42436a06d02eff28e1526d29217"+"&lang="+this.lang;
@@ -860,86 +882,141 @@
     //예보
     var updateForecast = function() {
       $.ajax({
-        url: forecast.weatherUrl(),
+        url: forecast.onecallUrl(),
         dataType: "json",
         type: "GET",
         async: "false",
         success: function(resp) {
-          _rest = resp;
-          //해 진 뒤 구분
-          var sunset = ((getTime('hh') > 18) || (getTime('hh') < 7)) ? "after/" : "";
-          //현재 날씨
-          $('.weather-wrap .today .bg').attr("style","background-image: url('./lib/images/weather/"+sunset+resp.list[0].weather[0].main+".jpg');");//날씨별 배경
-            /*온도별 날씨이미지 개별화*/
-            if(parseInt(resp.list[0].main.temp - 273.15) < -7) {
-              $('.weather-wrap .today .bg').attr("style","background-image: url('./lib/images/weather/"+sunset+"Cold.jpg');");//추운 날
+          // 배경 설정 함수
+          function setBackgroundImage(temp, weatherMain, sunset) {
+            var backgroundUrl = './lib/images/weather/' + sunset + weatherMain + '.jpg';
+            if (temp < -7) {
+              backgroundUrl = './lib/images/weather/' + sunset + 'Cold.jpg'; // 추운 날
+            } else if (temp > 27) {
+              backgroundUrl = './lib/images/weather/' + sunset + 'Hot.jpg'; // 더운 날
             }
-            if(parseInt(resp.list[0].main.temp - 273.15) > 27) {
-              $('.weather-wrap .today .bg').attr("style","background-image: url('./lib/images/weather/"+sunset+"Hot.jpg');");//더운 날
+            $('.weather-wrap .today .bg').attr('style', 'background-image: url(' + backgroundUrl + ');');
+          }
+
+          // 날씨 정보 설정 함수
+          function setWeatherInfo(resp, index) {
+            var weatherData = resp.list[index];
+            var tempCelsius = parseInt(weatherData.main.temp - 273.15);
+            var feelsLikeCelsius = parseInt(weatherData.main.feels_like - 273.15);
+            var humidity = weatherData.main.humidity;
+            
+            $('.weather-wrap .today .temperature .value').text(tempCelsius);
+            $('.weather-wrap .today .feels-like .value').text(feelsLikeCelsius);
+            $('.weather-wrap .today .temp-max .value').text(tempCelsius);
+            $('.weather-wrap .today .temp-min .value').text(tempCelsius);
+            $('.weather-wrap .today .pressure .value').text(weatherData.main.pressure);
+            $('.weather-wrap .today .humidity > .value').text(humidity);
+            $('.weather-wrap .today .humidity .icon.over').css('clip', 'rect(' + (24 - parseInt(humidity) * 0.25) + 'px, 20px, 24px, 0px)');
+            $('.weather-wrap .today .weather .value').text(weatherData.weather[0].main);
+            $('.weather-wrap .today .desc .value').text(weatherData.weather[0].main);
+            $('.weather-wrap .today .wind-deg .value').text(weatherData.wind.deg);
+            $('.weather-wrap .today .wind-speed .value').text(weatherData.wind.speed);
+            $('.weather-wrap .today .cloud .value').text(weatherData.clouds.all);
+            $('.weather-wrap .today .weather .icon').attr('src', './lib/images/weather/icon/' + weatherData.weather[0].main + '.svg');
+            $('.weather-wrap .today .weather .icon').attr('data-stat', weatherData.weather[0].main);
+          }
+
+          // 시간별 날씨 설정 함수
+          function setHourlyForecast(resp) {
+            for (var i = 0; i < resp.list.length; i++) {
+              var forecastData = resp.list[i];
+              var ampm = parseInt(forecast.getForecastHour(forecastData.dt)) <= 12 ? '오전 ' : '오후 ';
+              var tempCelsius = parseInt(forecastData.main.temp - 273.15);
+              
+              $('.weather-wrap .forecast.eachHour .time' + (i + 1)).find('.date .value').text(ampm + forecast.getForecastHour(forecastData.dt) + '시');
+              $('.weather-wrap .forecast.eachHour .time' + (i + 1)).find('.temperature .value').text(tempCelsius);
+              $('.weather-wrap .forecast.eachHour .time' + (i + 1)).find('.weather-img .icon').attr('src', './lib/images/weather/icon/' + forecastData.weather[0].main + '.svg');
+              $('.weather-wrap .forecast.eachHour .time' + (i + 1)).find('.desc .value').text(forecastData.weather[0].description);
+              $('.weather-wrap .forecast.eachHour .time' + (i + 1)).find('.wind-speed .value').text(forecastData.wind.speed);
+              $('.weather-wrap .forecast.eachHour .time' + (i + 1)).find('.weather-img .icon').attr('data-stat', forecastData.weather[0].main);
             }
-          $('.weather-wrap .today .temperature .value').text(parseInt(resp.list[0].main.temp - 273.15));//온도
-          $('.weather-wrap .today .feels-like .value').text(parseInt(resp.list[0].main.feels_like - 273.15));//체감
-          $('.weather-wrap .today .temp-max .value').text(parseInt(resp.list[0].main.temp - 273.15));//최대
-          $('.weather-wrap .today .temp-min .value').text(parseInt(resp.list[0].main.temp - 273.15));//최저
-          $('.weather-wrap .today .pressure .value').text(resp.list[0].main.pressure);//기압
-          $('.weather-wrap .today .humidity > .value').text(resp.list[0].main.humidity);//습도
-          $('.weather-wrap .today .humidity .icon.over').css('clip','rect('+(24-parseInt(resp.list[0].main.humidity)*0.25)+'px, 20px, 24px, 0px)');//습도 아이콘
-          $('.weather-wrap .today .weather .value').text(resp.list[0].weather[0].main);//메인날씨
-          $('.weather-wrap .today .desc .value').text(resp.list[0].weather[0].main);//설명
-          $('.weather-wrap .today .wind-deg .value').text(resp.list[0].wind.deg);//풍향
-          $('.weather-wrap .today .wind-speed .value').text(resp.list[0].wind.speed);//풍속
-          $('.weather-wrap .today .cloud .value').text(resp.list[0].clouds.all);//구름
-          $('.weather-wrap .today .weather .icon').attr('src', './lib/images/weather/icon/'+resp.list[0].weather[0].main+'.svg');//아이콘
-          $('.weather-wrap .today .weather .icon').attr('data-stat',resp.list[0].weather[0].main);//아이콘 움직임
-          $('.weather-wrap .notice .time').text(getTime('date')+' '+getTime('hm'));//시계
-          //최대&최소 온도(12 시간 이내)
-          for (i=0;i<12;i++) {
-            var temp = parseInt(resp.list[0].main.temp - 273.15);
+          }
+
+          // 메인 로직
+          var _rest = resp;
+          var sunset = ((getTime('hh') > 18) || (getTime('hh') < 7)) ? 'after/' : '';
+          var currentTemp = parseInt(resp.list[0].main.temp - 273.15);
+
+          // 배경 설정
+          setBackgroundImage(currentTemp, resp.list[0].weather[0].main, sunset);
+
+          // 날씨 정보 설정
+          setWeatherInfo(resp, 0);
+
+          // 12시간 내 최대/최소 온도 설정
+          for (var i = 0; i < 12; i++) {
+            var temp = parseInt(resp.list[i].main.temp - 273.15);
             var minCurrent = parseInt($('.weather-wrap .today .temp-min .value').text());
             var maxCurrent = parseInt($('.weather-wrap .today .temp-max .value').text());
+            
             if (temp < minCurrent) {
               $('.weather-wrap .today .temp-min .value').text(temp);
             }
             if (temp > maxCurrent) {
               $('.weather-wrap .today .temp-max .value').text(temp);
             }
-            //console.log('temp:'+temp+','+'minCurrent: '+minCurrent+','+'maxCurrent: '+maxCurrent);
           }
 
-          //시간별 날씨
-          for (i=0;i<resp.list.length;i++) {
-            var ampm = parseInt(forecast.getForecastHour(resp.list[i].dt)) <= 12? "오전 ": "오후 ";
-            $('.weather-wrap .forecast.eachHour .time'+i).find('.date .value').text(ampm+forecast.getForecastHour(resp.list[i].dt)+'시');
-            $('.weather-wrap .forecast.eachHour .time'+i).find('.temperature .value').text(parseInt(resp.list[i].main.temp - 273.15));
-            $('.weather-wrap .forecast.eachHour .time'+i).find('.weather-img .icon').attr('src', './lib/images/weather/icon/'+resp.list[i].weather[0].main+'.svg');
-            $('.weather-wrap .forecast.eachHour .time'+i).find('.desc .value').text(resp.list[i].weather[0].description);
-            $('.weather-wrap .forecast.eachHour .time'+i).find('.wind-speed .value').text(resp.list[i].wind.speed);
-            $('.weather-wrap .forecast.eachHour .time'+i).find('.weather-img .icon').attr('data-stat',resp.list[i].weather[0].main);//아이콘 움직임
-          }
+          // 시간별 날씨 설정
+          setHourlyForecast(resp);
 
-          //한주간 날씨
-          /* for (i=0;i<resp.daily.length;i++) {
-            $('.weather-wrap .forecast.daily .time'+i).find('.date .value').text(forecast.getForecastDay(resp.daily[i].dt));//각 날의 정오 기준
-            $('.weather-wrap .forecast.daily .time'+i).find('.temp-min .value').text(parseInt(resp.daily[i].temp.min - 273.15));
-            $('.weather-wrap .forecast.daily .time'+i).find('.temp-max .value').text(parseInt(resp.daily[i].temp.max - 273.15));
-            $('.weather-wrap .forecast.daily .time'+i).find('.weather-img .icon').attr('src', './lib/images/weather/icon/'+resp.daily[i].weather[0].main+'.svg');
-            $('.weather-wrap .forecast.daily .time'+i).find('.desc .value').text(resp.daily[i].weather[0].description);
-            $('.weather-wrap .forecast.daily .time'+i).find('.wind-speed .value').text(resp.daily[i].wind_speed);
-            $('.weather-wrap .forecast.daily .time'+i).find('.weather-img .icon').attr('data-stat',resp.daily[i].weather[0].main);//아이콘 움직임
-            //요일
-            var day = new Date();
-            day = (parseInt(day.getDay())+i)%7;
-            switch(day) {
-              case 0: day = "일"; break;
-              case 1: day = "월"; break;
-              case 2: day = "화"; break;
-              case 3: day = "수"; break;
-              case 4: day = "목"; break;
-              case 5: day = "금"; break;
-              case 6: day = "토"; break;
+          // 현재 시간 업데이트
+          $('.weather-wrap .notice .time').text(getTime('date') + ' ' + getTime('hm'));
+
+          // 현재 시간을 한국 표준시로 설정
+          let now = new Date();
+          now.setHours(now.getHours() + 9); // UTC+9
+
+          // 결과를 저장할 객체를 초기화
+          let dailyTemps = {};
+          resp.list.forEach(item => {
+            let date = new Date(item.dt * 1000);
+            date.setHours(date.getHours() + 9);
+            let dateString = date.toISOString().split('T')[0];
+            
+            
+            if (date >= now && Object.keys(dailyTemps).length < 7) {
+              if (!dailyTemps[dateString]) {
+                dailyTemps[dateString] = {
+                  temp_min: item.main.temp_min,
+                  temp_max: item.main.temp_max,
+                  icon: item.weather[0].main
+                };
+              } else {
+                dailyTemps[dateString].temp_min = Math.min(dailyTemps[dateString].temp_min, item.main.temp_min);
+                dailyTemps[dateString].temp_max = Math.max(dailyTemps[dateString].temp_max, item.main.temp_max);
+                dailyTemps[dateString].temp_icon = item.weather[0].main;
+              }
             }
-            $('.weather-wrap .forecast.daily .time'+i).find('.date .tip.day').text('('+day+')');
-          } */
+          });
+          
+          Object.entries(dailyTemps).forEach(([date, temps], index) => {
+            let i = index;
+
+            let day = new Date(date);
+
+            // 요일을 숫자로 반환 (0 = 일요일, 1 = 월요일, ..., 6 = 토요일)
+            let dayOfWeekNumber = day.getDay();
+
+            // 요일 이름 배열
+            let daysOfWeek = ['일', '월', '화', '수', '목', '금', '토'];
+
+            // 숫자를 요일 이름으로 변환
+            let dayOfWeek = daysOfWeek[dayOfWeekNumber];
+            // console.log(`${index + 1}일차 (${date}): 최저 ${(temps.temp_min - 273.15).toFixed(1)}°C, 최고 ${(temps.temp_max - 273.15).toFixed(1)}°C`);
+
+            $('.weather-wrap .forecast.daily .time'+i).find('.date .value').text(date.slice(-2));
+            $('.weather-wrap .forecast.daily .time'+i).find('.temp-min .value').text((temps.temp_min - 273.15).toFixed(0));
+            $('.weather-wrap .forecast.daily .time'+i).find('.temp-max .value').text((temps.temp_max - 273.15).toFixed(0));
+            $('.weather-wrap .forecast.daily .time'+i).find('.weather-img .icon').attr('src', './lib/images/weather/icon/'+temps.icon+'.svg');
+            $('.weather-wrap .forecast.daily .time'+i).find('.weather-img .icon').attr('data-stat',temps.icon);//아이콘 움직임
+            $('.weather-wrap .forecast.daily .time'+i).find('.date .tip.day').text('('+dayOfWeek+')');
+          });
         }
       }).then(function() {
         //setTimeout(updateForecast, 600000);//10분마다 실행
