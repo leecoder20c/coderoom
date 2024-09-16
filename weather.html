@@ -830,6 +830,7 @@
   </div><!-- /.weather-wrap -->
   <!-- //웨더 앱 -->
   <script>
+    let _rest;
     /* api 정보 : https://openweathermap.org/forecast5 */
     var forecast = {
       city: "Seoul",
@@ -859,41 +860,41 @@
     //예보
     var updateForecast = function() {
       $.ajax({
-        url: forecast.onecallUrl(),
+        url: forecast.weatherUrl(),
         dataType: "json",
         type: "GET",
         async: "false",
         success: function(resp) {
-          console.log(resp);
+          _rest = resp;
           //해 진 뒤 구분
           var sunset = ((getTime('hh') > 18) || (getTime('hh') < 7)) ? "after/" : "";
           //현재 날씨
-          $('.weather-wrap .today .bg').attr("style","background-image: url('./lib/images/weather/"+sunset+resp.current.weather[0].main+".jpg');");//날씨별 배경
+          $('.weather-wrap .today .bg').attr("style","background-image: url('./lib/images/weather/"+sunset+resp.list[0].weather[0].main+".jpg');");//날씨별 배경
             /*온도별 날씨이미지 개별화*/
-            if(parseInt(resp.current.temp - 273.15) < -7) {
+            if(parseInt(resp.list[0].main.temp - 273.15) < -7) {
               $('.weather-wrap .today .bg').attr("style","background-image: url('./lib/images/weather/"+sunset+"Cold.jpg');");//추운 날
             }
-            if(parseInt(resp.current.temp - 273.15) > 27) {
+            if(parseInt(resp.list[0].main.temp - 273.15) > 27) {
               $('.weather-wrap .today .bg').attr("style","background-image: url('./lib/images/weather/"+sunset+"Hot.jpg');");//더운 날
             }
-          $('.weather-wrap .today .temperature .value').text(parseInt(resp.current.temp - 273.15));//온도
-          $('.weather-wrap .today .feels-like .value').text(parseInt(resp.current.feels_like - 273.15));//체감
-          $('.weather-wrap .today .temp-max .value').text(parseInt(resp.current.temp - 273.15));//최대
-          $('.weather-wrap .today .temp-min .value').text(parseInt(resp.current.temp - 273.15));//최저
-          $('.weather-wrap .today .pressure .value').text(resp.current.pressure);//기압
-          $('.weather-wrap .today .humidity > .value').text(resp.current.humidity);//습도
-          $('.weather-wrap .today .humidity .icon.over').css('clip','rect('+(24-parseInt(resp.current.humidity)*0.25)+'px, 20px, 24px, 0px)');//습도 아이콘
-          $('.weather-wrap .today .weather .value').text(resp.current.weather[0].main);//메인날씨
-          $('.weather-wrap .today .desc .value').text(resp.current.weather[0].main);//설명
-          $('.weather-wrap .today .wind-deg .value').text(resp.current.wind_deg);//풍향
-          $('.weather-wrap .today .wind-speed .value').text(resp.current.wind_speed);//풍속
-          $('.weather-wrap .today .cloud .value').text(resp.current.clouds);//구름
-          $('.weather-wrap .today .weather .icon').attr('src', './lib/images/weather/icon/'+resp.current.weather[0].main+'.svg');//아이콘
-          $('.weather-wrap .today .weather .icon').attr('data-stat',resp.current.weather[0].main);//아이콘 움직임
+          $('.weather-wrap .today .temperature .value').text(parseInt(resp.list[0].main.temp - 273.15));//온도
+          $('.weather-wrap .today .feels-like .value').text(parseInt(resp.list[0].main.feels_like - 273.15));//체감
+          $('.weather-wrap .today .temp-max .value').text(parseInt(resp.list[0].main.temp - 273.15));//최대
+          $('.weather-wrap .today .temp-min .value').text(parseInt(resp.list[0].main.temp - 273.15));//최저
+          $('.weather-wrap .today .pressure .value').text(resp.list[0].main.pressure);//기압
+          $('.weather-wrap .today .humidity > .value').text(resp.list[0].main.humidity);//습도
+          $('.weather-wrap .today .humidity .icon.over').css('clip','rect('+(24-parseInt(resp.list[0].main.humidity)*0.25)+'px, 20px, 24px, 0px)');//습도 아이콘
+          $('.weather-wrap .today .weather .value').text(resp.list[0].weather[0].main);//메인날씨
+          $('.weather-wrap .today .desc .value').text(resp.list[0].weather[0].main);//설명
+          $('.weather-wrap .today .wind-deg .value').text(resp.list[0].wind.deg);//풍향
+          $('.weather-wrap .today .wind-speed .value').text(resp.list[0].wind.speed);//풍속
+          $('.weather-wrap .today .cloud .value').text(resp.list[0].clouds.all);//구름
+          $('.weather-wrap .today .weather .icon').attr('src', './lib/images/weather/icon/'+resp.list[0].weather[0].main+'.svg');//아이콘
+          $('.weather-wrap .today .weather .icon').attr('data-stat',resp.list[0].weather[0].main);//아이콘 움직임
           $('.weather-wrap .notice .time').text(getTime('date')+' '+getTime('hm'));//시계
           //최대&최소 온도(12 시간 이내)
           for (i=0;i<12;i++) {
-            var temp = parseInt(resp.hourly[i].temp - 273.15);
+            var temp = parseInt(resp.list[0].main.temp - 273.15);
             var minCurrent = parseInt($('.weather-wrap .today .temp-min .value').text());
             var maxCurrent = parseInt($('.weather-wrap .today .temp-max .value').text());
             if (temp < minCurrent) {
@@ -906,18 +907,18 @@
           }
 
           //시간별 날씨
-          for (i=0;i<resp.hourly.length;i++) {
-            var ampm = parseInt(forecast.getForecastHour(resp.hourly[i].dt)) <= 12? "오전 ": "오후 ";
-            $('.weather-wrap .forecast.eachHour .time'+i).find('.date .value').text(ampm+forecast.getForecastHour(resp.hourly[i].dt)+'시');
-            $('.weather-wrap .forecast.eachHour .time'+i).find('.temperature .value').text(parseInt(resp.hourly[i].temp - 273.15));
-            $('.weather-wrap .forecast.eachHour .time'+i).find('.weather-img .icon').attr('src', './lib/images/weather/icon/'+resp.hourly[i].weather[0].main+'.svg');
-            $('.weather-wrap .forecast.eachHour .time'+i).find('.desc .value').text(resp.hourly[i].weather[0].description);
-            $('.weather-wrap .forecast.eachHour .time'+i).find('.wind-speed .value').text(resp.hourly[i].wind_speed);
-            $('.weather-wrap .forecast.eachHour .time'+i).find('.weather-img .icon').attr('data-stat',resp.hourly[i].weather[0].main);//아이콘 움직임
+          for (i=0;i<resp.list.length;i++) {
+            var ampm = parseInt(forecast.getForecastHour(resp.list[i].dt)) <= 12? "오전 ": "오후 ";
+            $('.weather-wrap .forecast.eachHour .time'+i).find('.date .value').text(ampm+forecast.getForecastHour(resp.list[i].dt)+'시');
+            $('.weather-wrap .forecast.eachHour .time'+i).find('.temperature .value').text(parseInt(resp.list[i].main.temp - 273.15));
+            $('.weather-wrap .forecast.eachHour .time'+i).find('.weather-img .icon').attr('src', './lib/images/weather/icon/'+resp.list[i].weather[0].main+'.svg');
+            $('.weather-wrap .forecast.eachHour .time'+i).find('.desc .value').text(resp.list[i].weather[0].description);
+            $('.weather-wrap .forecast.eachHour .time'+i).find('.wind-speed .value').text(resp.list[i].wind.speed);
+            $('.weather-wrap .forecast.eachHour .time'+i).find('.weather-img .icon').attr('data-stat',resp.list[i].weather[0].main);//아이콘 움직임
           }
 
           //한주간 날씨
-          for (i=0;i<resp.daily.length;i++) {
+          /* for (i=0;i<resp.daily.length;i++) {
             $('.weather-wrap .forecast.daily .time'+i).find('.date .value').text(forecast.getForecastDay(resp.daily[i].dt));//각 날의 정오 기준
             $('.weather-wrap .forecast.daily .time'+i).find('.temp-min .value').text(parseInt(resp.daily[i].temp.min - 273.15));
             $('.weather-wrap .forecast.daily .time'+i).find('.temp-max .value').text(parseInt(resp.daily[i].temp.max - 273.15));
@@ -938,7 +939,7 @@
               case 6: day = "토"; break;
             }
             $('.weather-wrap .forecast.daily .time'+i).find('.date .tip.day').text('('+day+')');
-          }
+          } */
         }
       }).then(function() {
         //setTimeout(updateForecast, 600000);//10분마다 실행
