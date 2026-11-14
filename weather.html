@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko"dir="ltr" class="weather-app">
+<html lang="ko" dir="ltr" class="weather-app">
 <head>
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-65NVXSK1JB"></script>
@@ -23,7 +23,7 @@
 
   <!--SEO-->
   <meta name="Author" content="#Tiger & Rabbit Company #Tiny Tiger Application Teams #LeeCoder">
-  <meta name="robots" content="noidex, nofollow">
+  <meta name="robots" content="noindex, nofollow">
   <meta name="googlebot" content="noindex"/>
   <meta name="description" content="Simply weather application">
   <meta name="format-detection" content="telephone=no"> <!-- 아이폰 number 버그 개선 -->
@@ -114,7 +114,7 @@
   </div><![endif]-->
   <div class="intro">
     <img class="app-logo" draggable="false" src="./lib/images/weather/seo/weather-logo.svg" alt="Good Weather" />
-    <img class="brand-logo" draggable="false" src="./lib/images/weather/seo/brand-logo.svg" alt="Tiny TIger" />
+    <img class="brand-logo" draggable="false" src="./lib/images/weather/seo/brand-logo.svg" alt="Tiny Tiger" />
     <div class="progress"><div class="gage"></div></div>
   </div><!-- /.intro -->
   <script>
@@ -178,7 +178,7 @@
         </script>
         <div class="temperature"><span class="blind">온도</span><span class="value"></span><span class="unit">˚C</span></div>
         <div class="feels-like"><span class="blind">체감 온도</span><span class="value"></span><span class="unit">˚C</span></div>
-        <div class="temp-minmax"><span class="temp-min">MIN <span class="blind">최고</span><span class="value"></span><span class="unit">˚C</span></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span class="temp-max">MAX <span class="blind">최저</span><span class="value"></span><span class="unit">˚C</span></span></div>
+        <div class="temp-minmax"><span class="temp-min">MIN <span class="blind">최저</span><span class="value"></span><span class="unit">˚C</span></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span class="temp-max">MAX <span class="blind">최고</span><span class="value"></span><span class="unit">˚C</span></span></div>
         <div class="humidity"><div class="icon"><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 25.906 25.906" style="enable-background:new 0 0 25.906 25.906;" xml:space="preserve"><g><path style="fill: rgba(255,255,255,0.6);" d="M12.953,0c0,0-9,10.906-9,16.906c0,4.971,4.029,9,9,9s9-4.029,9-9C21.953,10.906,12.953,0,12.953,0z M9.026,17.496c0,1.426,0.668,4.25,1.134,5.426c-3.042-1.494-3.846-4.425-3.846-6.463c0-3.173,3.684-7.824,5.777-12.149 C11.861,6.581,9.026,13.177,9.026,17.496z"/></g></svg></div><div class="icon over" style="clip: rect(0px, 20px, 20px, 0px);"><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 25.906 25.906" style="enable-background:new 0 0 25.906 25.906;" xml:space="preserve"><g><path style="fill:#3175d0;" d="M12.953,0c0,0-9,10.906-9,16.906c0,4.971,4.029,9,9,9s9-4.029,9-9C21.953,10.906,12.953,0,12.953,0z M9.026,17.496c0,1.426,0.668,4.25,1.134,5.426c-3.042-1.494-3.846-4.425-3.846-6.463c0-3.173,3.684-7.824,5.777-12.149 C11.861,6.581,9.026,13.177,9.026,17.496z"/></g></svg></div><span class="value"></span><span class="unit">%</span><div class="mimun"><span class="blind">미세먼지 수치</span><span class="value"></span></div></div>
         <div class="weather"><img src="./lib/images/weather/icon/default.png" class="icon" draggable="false"></div>
         <div class="desc"><span class="blind">날씨설명</span><span class="value"></span></div>
@@ -453,10 +453,10 @@
           $('html,body').stop().animate({'scrollTop':0});
           $('body').addClass('overflow-hidden');
           $('.pop-guide').show();
-          $('.pop-guide').on('click', function() {
-            $(this).hide();
-            $('body').removeClass('overflow-hidden');
-          });
+        });
+        $('.pop-guide').on('click', function() {
+          $(this).hide();
+          $('body').removeClass('overflow-hidden');
         });
       </script>
     </div><!-- /.pop-guide -->
@@ -482,27 +482,27 @@
             <li class="depth2"><a href="#금천구" target="_self" class="location" data-city="seoul" data-name="금천구" data-lat="37.4600969" data-lon="126.9001546">금천구</a></li>
             <li class="depth2"><a href="#노원구" target="_self" class="location" data-city="seoul" data-name="노원구" data-lat="37.655264" data-lon="127.0771201">노원구</a></li>
             <li class="depth2"><a href="#도봉구" target="_self" class="location" data-city="seoul" data-name="도봉구" data-lat="37.6658609" data-lon="127.0317674">도봉구</a></li>
-            <li class="depth2"><a href="#동대문구" target="_self" class="location" data-city="seoul" data-name="동대문구" data-lat=" 37.5838012" data-lon="127.0507003">동대문구</a></li>
+            <li class="depth2"><a href="#동대문구" target="_self" class="location" data-city="seoul" data-name="동대문구" data-lat="37.5838012" data-lon="127.0507003">동대문구</a></li>
             <li class="depth2"><a href="#동작구" target="_self" class="location" data-city="seoul" data-name="동작구" data-lat="37.4965037" data-lon="126.9443073">동작구</a></li>
             <li class="depth2"><a href="#마포구" target="_self" class="location" data-city="seoul" data-name="마포구" data-lat="37.5622906" data-lon="126.9087803">마포구</a></li>
-            <li class="depth2"><a href="#서대문구" target="_self" class="location" data-city="seoul" data-name="서대문구" data-lat=" 37.5820369" data-lon="126.9356665">서대문구</a></li>
+            <li class="depth2"><a href="#서대문구" target="_self" class="location" data-city="seoul" data-name="서대문구" data-lat="37.5820369" data-lon="126.9356665">서대문구</a></li>
             <li class="depth2"><a href="#서초구" target="_self" class="location" data-city="seoul" data-name="서초구" data-lat="37.4769528" data-lon="127.0378103">서초구</a></li>
             <li class="depth2"><a href="#성동구" target="_self" class="location" data-city="seoul" data-name="성동구" data-lat="37.5506753" data-lon="127.0409622">성동구</a></li>
-            <li class="depth2"><a href="#성북구" target="_self" class="location" data-city="seoul" data-name="성북구" data-lat="37.606991" data-lon="27.0232185">성북구</a></li>
+            <li class="depth2"><a href="#성북구" target="_self" class="location" data-city="seoul" data-name="성북구" data-lat="37.606991" data-lon="127.0232185">성북구</a></li>
             <li class="depth2"><a href="#송파구" target="_self" class="location" data-city="seoul" data-name="송파구" data-lat="37.5048534" data-lon="127.1144822">송파구</a></li>
             <li class="depth2"><a href="#양천구" target="_self" class="location" data-city="seoul" data-name="양천구" data-lat="37.5270616" data-lon="126.8561534">양천구</a></li>
-            <li class="depth2"><a href="#영등포구" target="_self" class="location" data-city="seoul" data-name="영등포구" data-lat=" 37.520641" data-lon="126.9139242">영등포구</a></li>
+            <li class="depth2"><a href="#영등포구" target="_self" class="location" data-city="seoul" data-name="영등포구" data-lat="37.520641" data-lon="126.9139242">영등포구</a></li>
             <li class="depth2"><a href="#용산구" target="_self" class="location" data-city="seoul" data-name="용산구" data-lat="37.5311008" data-lon="126.9810742">용산구</a></li>
             <li class="depth2"><a href="#은평구" target="_self" class="location" data-city="seoul" data-name="은평구" data-lat="37.6176125" data-lon="126.9227004">은평구</a></li>
             <li class="depth2"><a href="#종로구" target="_self" class="location" data-city="seoul" data-name="종로구" data-lat="37.5990998" data-lon="126.9861493">종로구</a></li>
-            <li class="depth2"><a href="#중구" target="_self" class="location" data-city="seoul" data-name="중구" data-lat=" 37.5579452" data-lon="126.9941904">중구</a></li>
+            <li class="depth2"><a href="#중구" target="_self" class="location" data-city="seoul" data-name="중구" data-lat="37.5579452" data-lon="126.9941904">중구</a></li>
             <li class="depth2"><a href="#중랑구" target="_self" class="location" data-city="seoul" data-name="중랑구" data-lat="37.5953795" data-lon="127.0939669">중랑구</a></li>
           </ul>
         </li>
         <li class="depth1"><a href="javascript:void(0);" target="_self" class="tit">광역시</a>
           <ul>
             <li class="depth2"><a href="#인천" target="_self" class="location" data-city="incheon" data-name="Incheon" data-lat="37.450001" data-lon="126.731667">인천</a></li>
-            <li class="depth2"><a href="#세종" target="_self" class="location" data-city="sejong" data-name="Chungju" data-lat="36.970558" data-lon="127.93222">세종</a></li>
+            <li class="depth2"><a href="#세종" target="_self" class="location" data-city="sejong" data-name="Sejong" data-lat="36.480098" data-lon="127.289035">세종</a></li>
             <li class="depth2"><a href="#대전" target="_self" class="location" data-city="daejeon" data-name="Daejeon" data-lat="36.321388" data-lon="127.419724">대전</a></li>
             <li class="depth2"><a href="#광주" target="_self" class="location" data-city="gwangju" data-name="Gwangju" data-lat="35.166672" data-lon="126.916672">광주</a></li>
             <li class="depth2"><a href="#대구" target="_self" class="location" data-city="daegu" data-name="Daegu" data-lat="35.799999" data-lon="128.550003">대구</a></li>
@@ -587,26 +587,26 @@
         </li>
         <li class="depth1"><a href="javascript:void(0);" target="_self" class="tit">전라북도</a>
           <ul>
-            <li class="depth2"><a href="#고흥군" target="_self" class="location" data-city="Jeollabuk" data-name="Jeollabuk-do" data-lat="34.6079911" data-lon="127.2784954">고흥군</a></li>
-            <li class="depth2"><a href="#광양시" target="_self" class="location" data-city="Jeollabuk" data-name="Jeollabuk-do" data-lat="34.9406529" data-lon="127.6937853">광양시</a></li>
-            <li class="depth2"><a href="#나주시" target="_self" class="location" data-city="Jeollabuk" data-name="Jeollabuk-do" data-lat="35.0158974" data-lon="126.7086793">나주시</a></li>
-            <li class="depth2"><a href="#순천시" target="_self" class="location" data-city="Jeollabuk" data-name="Jeollabuk-do" data-lat="34.950641" data-lon="127.4851355">순천시</a></li>
-            <li class="depth2"><a href="#목포시" target="_self" class="location" data-city="Jeollabuk" data-name="Jeollabuk-do" data-lat="34.8118335" data-lon="126.39002">목포시</a></li>
-            <li class="depth2"><a href="#무안군" target="_self" class="location" data-city="Jeollabuk" data-name="Jeollabuk-do" data-lat="34.9904248" data-lon="126.4795072">무안군</a></li>
-            <li class="depth2"><a href="#여수시" target="_self" class="location" data-city="Jeollabuk" data-name="Jeollabuk-do" data-lat="34.7604165" data-lon="127.6600961">여수시</a></li>
-            <li class="depth2"><a href="#해남군" target="_self" class="location" data-city="Jeollabuk" data-name="Jeollabuk-do" data-lat="34.5733652" data-lon="126.5970618">해남군</a></li>
-            <li class="depth2"><a href="#화순군" target="_self" class="location" data-city="Jeollabuk" data-name="Jeollabuk-do" data-lat="35.0644522" data-lon="126.9844576">화순군</a></li>
+            <li class="depth2"><a href="#군산시" target="_self" class="location" data-city="Jeollabuk" data-name="Jeollabuk-do" data-lat="35.9811114" data-lon="126.6266189">군산시</a></li>
+            <li class="depth2"><a href="#김제시" target="_self" class="location" data-city="Jeollabuk" data-name="Jeollabuk-do" data-lat="35.8035222" data-lon="126.8783376">김제시</a></li>
+            <li class="depth2"><a href="#남원시" target="_self" class="location" data-city="Jeollabuk" data-name="Jeollabuk-do" data-lat="35.4163617" data-lon="127.388216">남원시</a></li>
+            <li class="depth2"><a href="#완주군" target="_self" class="location" data-city="Jeollabuk" data-name="Jeollabuk-do" data-lat="35.9405531" data-lon="127.1481713">완주군</a></li>
+            <li class="depth2"><a href="#익산시" target="_self" class="location" data-city="Jeollabuk" data-name="Jeollabuk-do" data-lat="35.9480538" data-lon="126.95545">익산시</a></li>
+            <li class="depth2"><a href="#전주시" target="_self" class="location" data-city="Jeollabuk" data-name="Jeollabuk-do" data-lat="35.8241975" data-lon="127.1458118">전주시</a></li>
+            <li class="depth2"><a href="#정읍시" target="_self" class="location" data-city="Jeollabuk" data-name="Jeollabuk-do" data-lat="35.5698547" data-lon="126.8538471">정읍시</a></li>
           </ul>
         </li>
         <li class="depth1"><a href="javascript:void(0);" target="_self" class="tit">전라남도</a>
           <ul>
-            <li class="depth2"><a href="#군산시" target="_self" class="location" data-city="Jeollanam" data-name="Jeollanam-do" data-lat="35.9811114" data-lon="126.6266189">군산시</a></li>
-            <li class="depth2"><a href="#김제시" target="_self" class="location" data-city="Jeollanam" data-name="Jeollanam-do" data-lat="35.8035222" data-lon="126.8783376">김제시</a></li>
-            <li class="depth2"><a href="#남원시" target="_self" class="location" data-city="Jeollanam" data-name="Jeollanam-do" data-lat="35.4163617" data-lon="127.388216">남원시</a></li>
-            <li class="depth2"><a href="#완주군" target="_self" class="location" data-city="Jeollanam" data-name="Jeollanam-do" data-lat="35.9405531" data-lon="127.1481713">완주군</a></li>
-            <li class="depth2"><a href="#익산시" target="_self" class="location" data-city="Jeollanam" data-name="Jeollanam-do" data-lat="35.9480538" data-lon="126.95545">익산시</a></li>
-            <li class="depth2"><a href="#전주시" target="_self" class="location" data-city="Jeollanam" data-name="Jeollanam-do" data-lat="35.8241975" data-lon="127.1458118">전주시</a></li>
-            <li class="depth2"><a href="#정읍시" target="_self" class="location" data-city="Jeollanam" data-name="Jeollanam-do" data-lat="35.5698547" data-lon="126.8538471">정읍시</a></li>
+            <li class="depth2"><a href="#고흥군" target="_self" class="location" data-city="Jeollanam" data-name="Jeollanam-do" data-lat="34.6079911" data-lon="127.2784954">고흥군</a></li>
+            <li class="depth2"><a href="#광양시" target="_self" class="location" data-city="Jeollanam" data-name="Jeollanam-do" data-lat="34.9406529" data-lon="127.6937853">광양시</a></li>
+            <li class="depth2"><a href="#나주시" target="_self" class="location" data-city="Jeollanam" data-name="Jeollanam-do" data-lat="35.0158974" data-lon="126.7086793">나주시</a></li>
+            <li class="depth2"><a href="#순천시" target="_self" class="location" data-city="Jeollanam" data-name="Jeollanam-do" data-lat="34.950641" data-lon="127.4851355">순천시</a></li>
+            <li class="depth2"><a href="#목포시" target="_self" class="location" data-city="Jeollanam" data-name="Jeollanam-do" data-lat="34.8118335" data-lon="126.39002">목포시</a></li>
+            <li class="depth2"><a href="#무안군" target="_self" class="location" data-city="Jeollanam" data-name="Jeollanam-do" data-lat="34.9904248" data-lon="126.4795072">무안군</a></li>
+            <li class="depth2"><a href="#여수시" target="_self" class="location" data-city="Jeollanam" data-name="Jeollanam-do" data-lat="34.7604165" data-lon="127.6600961">여수시</a></li>
+            <li class="depth2"><a href="#해남군" target="_self" class="location" data-city="Jeollanam" data-name="Jeollanam-do" data-lat="34.5733652" data-lon="126.5970618">해남군</a></li>
+            <li class="depth2"><a href="#화순군" target="_self" class="location" data-city="Jeollanam" data-name="Jeollanam-do" data-lat="35.0644522" data-lon="126.9844576">화순군</a></li>
           </ul>
         </li>
         <li class="depth1"><a href="javascript:void(0);" target="_self" class="tit">경상북도</a>
@@ -672,7 +672,9 @@
 
         //미세먼지 수치 변경
         var mimunVal = $(this).attr('data-mimun');
-        $('.today .mimun').attr('data-state', mimunVal);
+        if (mimunVal) {
+          $('.today .mimun').attr('data-state', mimunVal);
+        }
 
         $popClose.trigger('click');//팝업 닫기
       };
@@ -713,97 +715,98 @@
     <!-- 팝업 개인정보처리방침// -->
     <div class="popup-private">
       <button class="btn-close" style="position:absolute;top:10px;right:10px;border:none;padding:4px 10px;border-radius:5px;font-size:12px;color:#FFF;background:#4b5376;">닫기</button>
-      <p class="ls2 lh6 bs5 ts4"><em class="emphasis">< Good Weather ></em>은(는) 「개인정보 보호법」 제30조에 따라 정보주체의 개인정보를 보호하고 이와 관련한 고충을 신속하고 원활하게 처리할 수 있도록 하기 위하여 다음과 같이 개인정보 처리방침을 수립·공개합니다.</p>
+      <p class="ls2 lh6 bs5 ts4"><em class="emphasis">&lt;Good Weather&gt;</em>은(는) 「개인정보 보호법」 제30조에 따라 정보주체의 개인정보를 보호하고 이와 관련한 고충을 신속하고 원활하게 처리할 수 있도록 하기 위하여 다음과 같이 개인정보 처리방침을 수립·공개합니다.</p>
 
-      <p class="ls2">○ 이 개인정보처리방침은 <em class="emphasis">2022</em>년 <em class="emphasis">2</em>월 <em class="emphasis">25</em>부터 적용됩니다.</p>
+      <p class="ls2">○ 이 개인정보처리방침은 <em class="emphasis">2022</em>년 <em class="emphasis">2</em>월 <em class="emphasis">25</em>일부터 적용됩니다.</p>
 
-      </br>
+      <br>
 
-      <p class='lh6 bs4'><strong>제1조(개인정보의 처리 목적)<br/><br/><em class="emphasis">< Good Weather ></em>은(는) 다음의 목적을 위하여 개인정보를 처리합니다. 처리하고 있는 개인정보는 다음의 목적 이외의 용도로는 이용되지 않으며 이용 목적이 변경되는 경우에는 「개인정보 보호법」 제18조에 따라 별도의 동의를 받는 등 필요한 조치를 이행할 예정입니다.</strong></p>
+      <p class='lh6 bs4'><strong>제1조(개인정보의 처리 목적)<br><br><em class="emphasis">&lt;Good Weather&gt;</em>은(는) 다음의 목적을 위하여 개인정보를 처리합니다. 처리하고 있는 개인정보는 다음의 목적 이외의 용도로는 이용되지 않으며 이용 목적이 변경되는 경우에는 「개인정보 보호법」 제18조에 따라 별도의 동의를 받는 등 필요한 조치를 이행할 예정입니다.</strong></p>
       
       <ul class="list_indent2 mgt10">
-        <p class="ls2">사용자 위치 정보에 따른 날씨 데이터 제공 등을 목적으로 개인정보를 처리합니다.</p>
+        <li><p class="ls2">사용자 위치 정보에 따른 날씨 데이터 제공 등을 목적으로 개인정보를 처리합니다.</p></li>
       </ul>
 
-      </br>
-      </br>
+      <br>
+      <br>
 
-        <p class='lh6 bs4'><strong>제2조(개인정보의 처리 및 보유 기간)</strong></br></br>
-          ① <em class="emphasis">< Good Weather ></em>은(는) 법령에 따른 개인정보 이용기간 또는 정보주체로부터 개인정보를 수집 시에 동의받은 개인정보 이용기간 내에서 개인정보를 처리합니다.</br></br>
+        <p class='lh6 bs4'><strong>제2조(개인정보의 처리 및 보유 기간)</strong><br><br>
+          ① <em class="emphasis">&lt;Good Weather&gt;</em>은(는) 법령에 따른 개인정보 이용기간 또는 정보주체로부터 개인정보를 수집 시에 동의받은 개인정보 이용기간 내에서 개인정보를 처리합니다.<br><br>
           ② 각각의 개인정보 처리 및 보유 기간은 다음과 같습니다.</p>
-        <p>1.개인정보를 수집 및 보유하지 않습니다.</p>
-        <p>2.사용된 데이터는 즉각 파기 됩니다.</p>
+        <p>1. 개인정보를 수집 및 보유하지 않습니다.</p>
+        <p>2. 사용된 데이터는 즉각 파기됩니다.</p>
 
-      <br/>
-      <br/>
+      <br>
+      <br>
 
       <p class="lh6 bs4"><strong>제3조(정보주체와 법정대리인의 권리·의무 및 그 행사방법)</strong></p>
-      <p class="ls2"><br/><br/>① 정보주체는 Good Weather에 대해 언제든지 개인정보 열람·정정·삭제·처리정지 요구 등의 권리를 행사할 수 있습니다.</p>
-      <p class='sub_p'>② 제1항에 따른 권리 행사는Good Weather에 대해 「개인정보 보호법」 시행령 제41조제1항에 따라 서면, 전자우편, 모사전송(FAX) 등을 통하여 하실 수 있으며 Good Weather은(는) 이에 대해 지체 없이 조치하겠습니다.</p>
-      <p class='sub_p'>③ 제1항에 따른 권리 행사는 정보주체의 법정대리인이나 위임을 받은 자 등 대리인을 통하여 하실 수 있습니다.이 경우 “개인정보 처리 방법에 관한 고시(제2020-7호)” 별지 제11호 서식에 따른 위임장을 제출하셔야 합니다.</p>
-      <p class='sub_p'>④ 개인정보 열람 및 처리정지 요구는  「개인정보 보호법」  제35조 제4항, 제37조 제2항에 의하여 정보주체의 권리가 제한 될 수 있습니다.</p>
+      <p class="ls2"><br><br>① 정보주체는 Good Weather에 대해 언제든지 개인정보 열람·정정·삭제·처리정지 요구 등의 권리를 행사할 수 있습니다.</p>
+      <p class='sub_p'>② 제1항에 따른 권리 행사는 Good Weather에 대해 「개인정보 보호법」 시행령 제41조제1항에 따라 서면, 전자우편, 모사전송(FAX) 등을 통하여 하실 수 있으며 Good Weather은(는) 이에 대해 지체 없이 조치하겠습니다.</p>
+      <p class='sub_p'>③ 제1항에 따른 권리 행사는 정보주체의 법정대리인이나 위임을 받은 자 등 대리인을 통하여 하실 수 있습니다. 이 경우 “개인정보 처리 방법에 관한 고시(제2020-7호)” 별지 제11호 서식에 따른 위임장을 제출하셔야 합니다.</p>
+      <p class='sub_p'>④ 개인정보 열람 및 처리정지 요구는 「개인정보 보호법」 제35조 제4항, 제37조 제2항에 의하여 정보주체의 권리가 제한될 수 있습니다.</p>
       <p class='sub_p'>⑤ 개인정보의 정정 및 삭제 요구는 다른 법령에서 그 개인정보가 수집 대상으로 명시되어 있는 경우에는 그 삭제를 요구할 수 없습니다.</p>
       <p class='sub_p'>⑥ Good Weather은(는) 정보주체 권리에 따른 열람의 요구, 정정·삭제의 요구, 처리정지의 요구 시 열람 등 요구를 한 자가 본인이거나 정당한 대리인인지를 확인합니다.</p>
 
-      </br>
-      </br>
+      <br>
+      <br>
 
-      <p class='lh6 bs4'><strong>제4조(처리하는 개인정보의 항목 작성) </strong></br></br>
-        ① <em class="emphasis">< Good Weather ></em>은(는) 다음의 개인정보 항목을 처리하고 있습니다.</p>
+      <p class='lh6 bs4'><strong>제4조(처리하는 개인정보의 항목 작성)</strong><br><br>
+        ① <em class="emphasis">&lt;Good Weather&gt;</em>은(는) 다음의 개인정보 항목을 처리하고 있습니다.</p>
       <p>1. 사용자 위치 정보</p>
-      </br>
-      </br>
+      <br>
+      <br>
 
-      <p class='lh6 bs4'><strong>제5조(개인정보의 파기)<em class="emphasis"></strong></p>
+      <p class='lh6 bs4'><strong>제5조(개인정보의 파기)</strong></p>
       <p class='ls2'>
-        </br>
-        ① < Good Weather > 은(는) 개인정보 보유기간의 경과, 처리목적 달성 등 개인정보가 불필요하게 되었을 때에는 지체없이 해당 개인정보를 파기합니다.</br>
-        </br>
-        ② 정보주체로부터 동의받은 개인정보 보유기간이 경과하거나 처리목적이 달성되었음에도 불구하고 다른 법령에 따라 개인정보를 계속 보존하여야 하는 경우에는, 해당 개인정보를 별도의 데이터베이스(DB)로 옮기거나 보관장소를 달리하여 보존합니다.</br>
-        1. 법령 근거 :</br>
-        2. 보존하는 개인정보 항목 : 계좌정보, 거래날짜</br>
-        </br>
-        ③ 개인정보 파기의 절차 및 방법은 다음과 같습니다.</br>
-        1. 파기절차</br>
-        < Good Weather > 은(는) 파기 사유가 발생한 개인정보를 선정하고, < Good Weather > 의 개인정보 보호책임자의 승인을 받아 개인정보를 파기합니다.</br>
+        <br>
+        ① &lt;Good Weather&gt;은(는) 개인정보 보유기간의 경과, 처리목적 달성 등 개인정보가 불필요하게 되었을 때에는 지체 없이 해당 개인정보를 파기합니다.<br>
+        <br>
+        ② 정보주체로부터 동의받은 개인정보 보유기간이 경과하거나 처리목적이 달성되었음에도 불구하고 다른 법령에 따라 개인정보를 계속 보존하여야 하는 경우에는, 해당 개인정보를 별도의 데이터베이스(DB)로 옮기거나 보관장소를 달리하여 보존합니다.<br>
+        1. 법령 근거 : 해당 사항 없음<br>
+        2. 보존하는 개인정보 항목 : 해당 사항 없음 (개인정보를 수집·보유하지 않음)<br>
+        <br>
+        ③ 개인정보 파기의 절차 및 방법은 다음과 같습니다.<br>
+        1. 파기절차<br>
+        &lt;Good Weather&gt;은(는) 파기 사유가 발생한 개인정보를 선정하고, &lt;Good Weather&gt;의 개인정보 보호책임자의 승인을 받아 개인정보를 파기합니다.<br>
       </p>
 
-      </br>
-      </br>
+      <br>
+      <br>
 
-      <p class='lh6 bs4'><strong>제6조(개인정보의 안전성 확보 조치)<em class="emphasis"></br></br>< Good Weather ></em>은(는) 개인정보의 안전성 확보를 위해 다음과 같은 조치를 취하고 있습니다.</strong></p>
+      <p class='lh6 bs4'><strong>제6조(개인정보의 안전성 확보 조치)<br><br><em class="emphasis">&lt;Good Weather&gt;</em>은(는) 개인정보의 안전성 확보를 위해 다음과 같은 조치를 취하고 있습니다.</strong></p>
 
       <p class='sub_p mgt10'>
-        1. 정기적인 자체 감사 실시</br>개인정보 취급 관련 안정성 확보를 위해 정기적(분기 1회)으로 자체 감사를 실시하고 있습니다.</br></br>
-        2. 개인정보 취급 직원의 최소화 및 교육</br>개인정보를 취급하는 직원을 지정하고 담당자에 한정시켜 최소화 하여 개인정보를 관리하는 대책을 시행하고 있습니다.</br></br>
-        3. 내부관리계획의 수립 및 시행</br>개인정보의 안전한 처리를 위하여 내부관리계획을 수립하고 시행하고 있습니다.</br></br>
-        4. 개인정보에 대한 접근 제한</br>개인정보를 처리하는 데이터베이스시스템에 대한 접근권한의 부여,변경,말소를 통하여 개인정보에 대한 접근통제를 위하여 필요한 조치를 하고 있으며 침입차단시스템을 이용하여 외부로부터의 무단 접근을 통제하고 있습니다.</br></br>
-        5. 비인가자에 대한 출입 통제</br>개인정보를 보관하고 있는 물리적 보관 장소를 별도로 두고 이에 대해 출입통제 절차를 수립, 운영하고 있습니다.</br></br>
+        1. 정기적인 자체 감사 실시<br>개인정보 취급 관련 안정성 확보를 위해 정기적(분기 1회)으로 자체 감사를 실시하고 있습니다.<br><br>
+        2. 개인정보 취급 직원의 최소화 및 교육<br>개인정보를 취급하는 직원을 지정하고 담당자에 한정시켜 최소화하여 개인정보를 관리하는 대책을 시행하고 있습니다.<br><br>
+        3. 내부관리계획의 수립 및 시행<br>개인정보의 안전한 처리를 위하여 내부관리계획을 수립하고 시행하고 있습니다.<br><br>
+        4. 개인정보에 대한 접근 제한<br>개인정보를 처리하는 데이터베이스시스템에 대한 접근권한의 부여, 변경, 말소를 통하여 개인정보에 대한 접근통제를 위하여 필요한 조치를 하고 있으며 침입차단시스템을 이용하여 외부로부터의 무단 접근을 통제하고 있습니다.<br><br>
+        5. 비인가자에 대한 출입 통제<br>개인정보를 보관하고 있는 물리적 보관 장소를 별도로 두고 이에 대해 출입통제 절차를 수립, 운영하고 있습니다.<br><br>
       </p>
 
-      </br>
-      </br>
+      <br>
+      <br>
 
-      <p class="lh6 bs4"><strong>제7조(개인정보 자동 수집 장치의 설치•운영 및 거부에 관한 사항)</strong></p>
+      <p class="lh6 bs4"><strong>제7조(개인정보 자동 수집 장치의 설치·운영 및 거부에 관한 사항)</strong></p>
       
-      <p class="ls2"><br/><br/>Good Weather 은(는) 정보주체의 이용정보를 저장하고 수시로 불러오는 ‘쿠키(cookie)’를 사용하지 않습니다.<p class='sub_p mgt30'><strong>제8조 (개인정보 보호책임자) </strong></p>
+      <p class="ls2"><br><br>Good Weather은(는) 정보주체의 이용정보를 저장하고 수시로 불러오는 ‘쿠키(cookie)’를 사용하지 않습니다.</p>
+      <p class='sub_p mgt30'><strong>제8조 (개인정보 보호책임자)</strong></p>
 
-      <p class='sub_p mgt10'> ①  <span class='colorLightBlue'>Good Weather</span> 은(는) 개인정보 처리에 관한 업무를 총괄해서 책임지고, 개인정보 처리와 관련한 정보주체의 불만처리 및 피해구제 등을 위하여 아래와 같이 개인정보 보호책임자를 지정하고 있습니다.</p>
+      <p class='sub_p mgt10'> ① <span class='colorLightBlue'>Good Weather</span>은(는) 개인정보 처리에 관한 업무를 총괄해서 책임지고, 개인정보 처리와 관련한 정보주체의 불만처리 및 피해구제 등을 위하여 아래와 같이 개인정보 보호책임자를 지정하고 있습니다.</p>
 
-      <ul class='list_indent2 mgt10'><li class='tt'>▶ 개인정보 보호책임자 </li><li>성명 :이승주</li><li>직책 :대표</li><li>연락처 010-4637-2625, leeseungju@kakao.com, </li></ul>
+      <ul class='list_indent2 mgt10'><li class='tt'>▶ 개인정보 보호책임자</li><li>성명 : 이승주</li><li>직책 : 대표</li><li>연락처 : 010-4637-2625, leeseungju@kakao.com</li></ul>
 
-      <p class='sub_p'>② 정보주체께서는 Good Weather 의 서비스(또는 사업)을 이용하시면서 발생한 모든 개인정보 보호 관련 문의, 불만처리, 피해구제 등에 관한 사항을 개인정보 보호책임자 및 담당부서로 문의하실 수 있습니다. Good Weather 은(는) 정보주체의 문의에 대해 지체 없이 답변 및 처리해드릴 것입니다.</p>
+      <p class='sub_p'>② 정보주체께서는 Good Weather의 서비스(또는 사업)을 이용하시면서 발생한 모든 개인정보 보호 관련 문의, 불만처리, 피해구제 등에 관한 사항을 개인정보 보호책임자 및 담당부서로 문의하실 수 있습니다. Good Weather은(는) 정보주체의 문의에 대해 지체 없이 답변 및 처리해드릴 것입니다.</p>
 
-      <p class='sub_p mgt30'><strong>제9조(개인정보 열람청구)</br>정보주체는 ｢개인정보 보호법｣ 제35조에 따른 개인정보의 열람 청구를 아래의 부서에 할 수 있습니다.<br/>< Good Weather ></span>은(는) 정보주체의 개인정보 열람청구가 신속하게 처리되도록 노력하겠습니다. </strong></p>
+      <p class='sub_p mgt30'><strong>제9조(개인정보 열람청구)<br>정보주체는 「개인정보 보호법」 제35조에 따른 개인정보의 열람 청구를 아래의 부서에 할 수 있습니다.<br>&lt;Good Weather&gt;은(는) 정보주체의 개인정보 열람청구가 신속하게 처리되도록 노력하겠습니다.</strong></p>
 
-      </br>
-      </br>
+      <br>
+      <br>
 
-      <p class='lh6 bs4'><strong>제10조(권익침해 구제방법)<em class="emphasis"></em></strong></p>
+      <p class='lh6 bs4'><strong>제10조(권익침해 구제방법)</strong></p>
 
-      <br/>
-      <br/>
-      <p>정보주체는 개인정보침해로 인한 구제를 받기 위하여 개인정보분쟁조정위원회, 한국인터넷진흥원 개인정보침해신고센터 등에 분쟁해결이나 상담 등을 신청할 수 있습니다. 이 밖에 기타 개인정보침해의 신고, 상담에 대하여는 아래의 기관에 문의하시기 바랍니다.<br/><br/></p>
+      <br>
+      <br>
+      <p>정보주체는 개인정보침해로 인한 구제를 받기 위하여 개인정보분쟁조정위원회, 한국인터넷진흥원 개인정보침해신고센터 등에 분쟁해결이나 상담 등을 신청할 수 있습니다. 이 밖에 기타 개인정보침해의 신고, 상담에 대하여는 아래의 기관에 문의하시기 바랍니다.<br><br></p>
 
       <ul>
         <li>1. 개인정보분쟁조정위원회 : (국번없이) 1833-6972 (www.kopico.go.kr)</li>
@@ -817,11 +820,11 @@
 
 
 
-      <p>「개인정보보호법」제35조(개인정보의 열람), 제36조(개인정보의 정정·삭제), 제37조(개인정보의 처리정지 등)의 규정에 의한 요구에 대 하여 공공기관의 장이 행한 처분 또는 부작위로 인하여 권리 또는 이익의 침해를 받은 자는 행정심판법이 정하는 바에 따라 행정심판을 청구할 수 있습니다.<br/><br/>※ 행정심판에 대해 자세한 사항은 중앙행정심판위원회(www.simpan.go.kr) 홈페이지를 참고하시기 바랍니다.</br></br></p>
+      <p>「개인정보보호법」 제35조(개인정보의 열람), 제36조(개인정보의 정정·삭제), 제37조(개인정보의 처리정지 등)의 규정에 의한 요구에 대하여 공공기관의 장이 행한 처분 또는 부작위로 인하여 권리 또는 이익의 침해를 받은 자는 행정심판법이 정하는 바에 따라 행정심판을 청구할 수 있습니다.<br><br>※ 행정심판에 대해 자세한 사항은 중앙행정심판위원회(www.simpan.go.kr) 홈페이지를 참고하시기 바랍니다.<br><br></p>
 
-      <p class='lh6 bs4'><strong>제11조(개인정보 처리방침 변경)<em class="emphasis"></em></strong></p>
+      <p class='lh6 bs4'><strong>제11조(개인정보 처리방침 변경)</strong></p>
       
-    <p class='sub_p'>① 이 개인정보처리방침은 2022년 2월 25부터 적용됩니다.</p>
+    <p class='sub_p'>① 이 개인정보처리방침은 2022년 2월 25일부터 적용됩니다.</p>
     </div><!-- /.popup-private -->
     <script>
       //개인정보 처리방침 토글
@@ -833,6 +836,7 @@
   <!-- //웨더 앱 -->
   <script>
     let _rest;
+    const KST_OFFSET_MS = 9 * 60 * 60 * 1000;
     /* api 정보 : https://openweathermap.org/forecast5 */
     var forecast = {
       city: "Seoul",
@@ -843,34 +847,12 @@
       },//기본 노원구 좌표계 WGS1984
       exclude: "alerts",//전체 보기
       getForecastDay: function(unixTimestamp) {
-        let date = new Date(unixTimestamp * 1000);
-        // KST 시간대로 설정 (UTC+9)
-        date.setHours(date.getHours() + 9);
-  
-        // 날짜 및 시간 구성요소 추출
-        let year = date.getUTCFullYear();
-        let month = (date.getUTCMonth() + 1).toString().padStart(2, '0');
-        let day = date.getUTCDate().toString().padStart(2, '0');
-        let hours = date.getUTCHours().toString().padStart(2, '0');
-        let minutes = date.getUTCMinutes().toString().padStart(2, '0');
-        let seconds = date.getUTCSeconds().toString().padStart(2, '0');
-
-        return day;
+        let date = new Date(unixTimestamp * 1000 + KST_OFFSET_MS);
+        return date.getUTCDate().toString().padStart(2, '0');
       },
       getForecastHour: function(unixTimestamp) {
-        let date = new Date(unixTimestamp * 1000);
-        // KST 시간대로 설정 (UTC+9)
-        date.setHours(date.getHours() + 9);
-  
-        // 날짜 및 시간 구성요소 추출
-        let year = date.getUTCFullYear();
-        let month = (date.getUTCMonth() + 1).toString().padStart(2, '0');
-        let day = date.getUTCDate().toString().padStart(2, '0');
-        let hours = date.getUTCHours().toString().padStart(2, '0');
-        let minutes = date.getUTCMinutes().toString().padStart(2, '0');
-        let seconds = date.getUTCSeconds().toString().padStart(2, '0');
-
-        return hours;
+        let date = new Date(unixTimestamp * 1000 + KST_OFFSET_MS);
+        return date.getUTCHours().toString().padStart(2, '0');
       },
       weatherUrl: function() {
         return "https://api.openweathermap.org/data/2.5/forecast?q="+this.city+"&appid="+"1c40f42436a06d02eff28e1526d29217"+"&lang="+this.lang;
@@ -885,8 +867,11 @@
         url: forecast.onecallUrl(),
         dataType: "json",
         type: "GET",
-        async: "false",
         success: function(resp) {
+          if (!resp || !resp.list || !resp.list.length) {
+            return;
+          }
+
           // 배경 설정 함수
           function setBackgroundImage(temp, weatherMain, sunset) {
             var backgroundUrl = './lib/images/weather/' + sunset + weatherMain + '.jpg';
@@ -901,8 +886,8 @@
           // 날씨 정보 설정 함수
           function setWeatherInfo(resp, index) {
             var weatherData = resp.list[index];
-            var tempCelsius = parseInt(weatherData.main.temp - 273.15);
-            var feelsLikeCelsius = parseInt(weatherData.main.feels_like - 273.15);
+            var tempCelsius = parseInt(weatherData.main.temp - 273.15, 10);
+            var feelsLikeCelsius = parseInt(weatherData.main.feels_like - 273.15, 10);
             var humidity = weatherData.main.humidity;
             
             $('.weather-wrap .today .temperature .value').text(tempCelsius);
@@ -911,7 +896,7 @@
             $('.weather-wrap .today .temp-min .value').text(tempCelsius);
             $('.weather-wrap .today .pressure .value').text(weatherData.main.pressure);
             $('.weather-wrap .today .humidity > .value').text(humidity);
-            $('.weather-wrap .today .humidity .icon.over').css('clip', 'rect(' + (24 - parseInt(humidity) * 0.25) + 'px, 20px, 24px, 0px)');
+            $('.weather-wrap .today .humidity .icon.over').css('clip', 'rect(' + (24 - parseInt(humidity, 10) * 0.25) + 'px, 20px, 24px, 0px)');
             $('.weather-wrap .today .weather .value').text(weatherData.weather[0].main);
             $('.weather-wrap .today .desc .value').text(weatherData.weather[0].main);
             $('.weather-wrap .today .wind-deg .value').text(weatherData.wind.deg);
@@ -923,12 +908,14 @@
 
           // 시간별 날씨 설정 함수
           function setHourlyForecast(resp) {
-            for (var i = 0; i < resp.list.length; i++) {
+            var maxHourly = Math.min(24, resp.list.length);
+            for (var i = 0; i < maxHourly; i++) {
               var forecastData = resp.list[i];
-              var ampm = parseInt(forecast.getForecastHour(forecastData.dt)) <= 12 ? '오전 ' : '오후 ';
-              var tempCelsius = parseInt(forecastData.main.temp - 273.15);
+              var forecastHour = forecast.getForecastHour(forecastData.dt);
+              var ampm = parseInt(forecastHour, 10) < 12 ? '오전 ' : '오후 ';
+              var tempCelsius = parseInt(forecastData.main.temp - 273.15, 10);
               
-              $('.weather-wrap .forecast.eachHour .time' + (i + 1)).find('.date .value').text(ampm + forecast.getForecastHour(forecastData.dt) + '시');
+              $('.weather-wrap .forecast.eachHour .time' + (i + 1)).find('.date .value').text(ampm + forecastHour + '시');
               $('.weather-wrap .forecast.eachHour .time' + (i + 1)).find('.temperature .value').text(tempCelsius);
               $('.weather-wrap .forecast.eachHour .time' + (i + 1)).find('.weather-img .icon').attr('src', './lib/images/weather/icon/' + forecastData.weather[0].main + '.svg');
               $('.weather-wrap .forecast.eachHour .time' + (i + 1)).find('.desc .value').text(forecastData.weather[0].description);
@@ -938,9 +925,10 @@
           }
 
           // 메인 로직
-          var _rest = resp;
-          var sunset = ((getTime('hh') > 18) || (getTime('hh') < 7)) ? 'after/' : '';
-          var currentTemp = parseInt(resp.list[0].main.temp - 273.15);
+          _rest = resp;
+          var currentHour = parseInt(getTime('hh'), 10);
+          var sunset = (currentHour > 18 || currentHour < 7) ? 'after/' : '';
+          var currentTemp = parseInt(resp.list[0].main.temp - 273.15, 10);
 
           // 배경 설정
           setBackgroundImage(currentTemp, resp.list[0].weather[0].main, sunset);
@@ -949,10 +937,11 @@
           setWeatherInfo(resp, 0);
 
           // 12시간 내 최대/최소 온도 설정
-          for (var i = 0; i < 12; i++) {
-            var temp = parseInt(resp.list[i].main.temp - 273.15);
-            var minCurrent = parseInt($('.weather-wrap .today .temp-min .value').text());
-            var maxCurrent = parseInt($('.weather-wrap .today .temp-max .value').text());
+          var maxRange = Math.min(12, resp.list.length);
+          for (var i = 0; i < maxRange; i++) {
+            var temp = parseInt(resp.list[i].main.temp - 273.15, 10);
+            var minCurrent = parseInt($('.weather-wrap .today .temp-min .value').text(), 10);
+            var maxCurrent = parseInt($('.weather-wrap .today .temp-max .value').text(), 10);
             
             if (temp < minCurrent) {
               $('.weather-wrap .today .temp-min .value').text(temp);
@@ -969,18 +958,15 @@
           $('.weather-wrap .notice .time').text(getTime('date') + ' ' + getTime('hm'));
 
           // 현재 시간을 한국 표준시로 설정
-          let now = new Date();
-          now.setHours(now.getHours() + 9); // UTC+9
+          let now = new Date(Date.now() + KST_OFFSET_MS);
 
           // 결과를 저장할 객체를 초기화
           let dailyTemps = {};
           resp.list.forEach(item => {
-            let date = new Date(item.dt * 1000);
-            date.setHours(date.getHours() + 9);
+            let date = new Date(item.dt * 1000 + KST_OFFSET_MS);
             let dateString = date.toISOString().split('T')[0];
-            
-            
-            if (date >= now && Object.keys(dailyTemps).length < 7) {
+
+            if (date >= now && Object.keys(dailyTemps).length < 6) {
               if (!dailyTemps[dateString]) {
                 dailyTemps[dateString] = {
                   temp_min: item.main.temp_min,
@@ -990,36 +976,27 @@
               } else {
                 dailyTemps[dateString].temp_min = Math.min(dailyTemps[dateString].temp_min, item.main.temp_min);
                 dailyTemps[dateString].temp_max = Math.max(dailyTemps[dateString].temp_max, item.main.temp_max);
-                dailyTemps[dateString].temp_icon = item.weather[0].main;
+                dailyTemps[dateString].icon = item.weather[0].main;
               }
             }
           });
           
-          Object.entries(dailyTemps).forEach(([date, temps], index) => {
-            let i = index;
+          let daysOfWeek = ['일', '월', '화', '수', '목', '금', '토'];
+          Object.entries(dailyTemps).slice(0, 6).forEach(([date, temps], index) => {
+            let day = new Date(date + 'T00:00:00Z');
+            let dayOfWeek = daysOfWeek[day.getUTCDay()];
 
-            let day = new Date(date);
-
-            // 요일을 숫자로 반환 (0 = 일요일, 1 = 월요일, ..., 6 = 토요일)
-            let dayOfWeekNumber = day.getDay();
-
-            // 요일 이름 배열
-            let daysOfWeek = ['일', '월', '화', '수', '목', '금', '토'];
-
-            // 숫자를 요일 이름으로 변환
-            let dayOfWeek = daysOfWeek[dayOfWeekNumber];
-            // console.log(`${index + 1}일차 (${date}): 최저 ${(temps.temp_min - 273.15).toFixed(1)}°C, 최고 ${(temps.temp_max - 273.15).toFixed(1)}°C`);
-
-            $('.weather-wrap .forecast.daily .time'+i).find('.date .value').text(date.slice(-2));
-            $('.weather-wrap .forecast.daily .time'+i).find('.temp-min .value').text((temps.temp_min - 273.15).toFixed(0));
-            $('.weather-wrap .forecast.daily .time'+i).find('.temp-max .value').text((temps.temp_max - 273.15).toFixed(0));
-            $('.weather-wrap .forecast.daily .time'+i).find('.weather-img .icon').attr('src', './lib/images/weather/icon/'+temps.icon+'.svg');
-            $('.weather-wrap .forecast.daily .time'+i).find('.weather-img .icon').attr('data-stat',temps.icon);//아이콘 움직임
-            $('.weather-wrap .forecast.daily .time'+i).find('.date .tip.day').text('('+dayOfWeek+')');
+            $('.weather-wrap .forecast.daily .time' + index).find('.date .value').text(date.slice(-2));
+            $('.weather-wrap .forecast.daily .time' + index).find('.temp-min .value').text((temps.temp_min - 273.15).toFixed(0));
+            $('.weather-wrap .forecast.daily .time' + index).find('.temp-max .value').text((temps.temp_max - 273.15).toFixed(0));
+            $('.weather-wrap .forecast.daily .time' + index).find('.weather-img .icon').attr('src', './lib/images/weather/icon/' + temps.icon + '.svg');
+            $('.weather-wrap .forecast.daily .time' + index).find('.weather-img .icon').attr('data-stat', temps.icon);//아이콘 움직임
+            $('.weather-wrap .forecast.daily .time' + index).find('.date .tip.day').text('(' + dayOfWeek + ')');
           });
+        },
+        error: function(xhr, status, err) {
+          console.error('날씨 데이터 조회 실패:', status, err);
         }
-      }).then(function() {
-        //setTimeout(updateForecast, 600000);//10분마다 실행
       });
     };
     updateForecast();
@@ -1044,100 +1021,74 @@
       Tornado 태풍 */
 
     //미세먼지 API
+    var MIMUN_CITY_SELECTORS = {
+      '서울': '.location[data-city="seoul"]',
+      '제주': '.location[data-city="jeju"]',
+      '전남': '.location[data-city="Jeollanam"]',
+      '전북': '.location[data-city="Jeollabuk"]',
+      '광주': '.location[data-city="gwangju"]',
+      '경남': '.location[data-city="gyeongnam"]',
+      '경북': '.location[data-city="gyeongbuk"]',
+      '울산': '.location[data-city="ulsan"]',
+      '대구': '.location[data-city="daegu"]',
+      '부산': '.location[data-city="busan"]',
+      '충남': '.location[data-city="chungnam"]',
+      '충북': '.location[data-city="chungbuk"]',
+      '세종': '.location[data-city="sejong"]',
+      '대전': '.location[data-city="daejeon"]',
+      '영동': '.location.east[data-city="gangwon"]',
+      '영서': '.location.west[data-city="gangwon"]',
+      '경기남부': '.location.south[data-city="gyeonggi"]',
+      '경기북부': '.location.north[data-city="gyeonggi"]',
+      '인천': '.location[data-city="incheon"]'
+    };
+
+    function parseMimunGrade(text) {
+      if (!text) return null;
+      if (text.indexOf('매우 나쁨') !== -1) return 'hell';
+      if (text.indexOf('나쁨') !== -1) return 'bad';
+      if (text.indexOf('보통') !== -1) return 'normal';
+      if (text.indexOf('매우 좋음') !== -1 || text.indexOf('좋음') !== -1) return 'good';
+      return null;
+    }
+
     var updateMimun = function() {
-      return false;
       $.ajax({
         url: 'https://daewooju.mycafe24.com/weather/mimun.php',
         dataType: "json",
         type: "GET",
-        async: "false",
         success: function(resp) {
-          var mimunVal = resp.response.body.items["0"].informOverall;
-          var mimunState = null;
-          var state = resp.response.body.items["0"].informGrade;
-          var obj = state.split(',');
-          for (var key in obj) {
-            var locationArr = obj[key].split(":");
+          var item = resp && resp.response && resp.response.body && resp.response.body.items && resp.response.body.items[0];
+          if (!item) return;
+
+          var mimunVal = item.informOverall || '';
+          var gradeList = (item.informGrade || '').split(',');
+
+          for (var i = 0; i < gradeList.length; i++) {
+            var locationArr = gradeList[i].split(':');
+            if (locationArr.length < 2) continue;
             var loca = locationArr[0].trim();
-            var state = locationArr[1].trim();
-
-            if(state === "좋음") { state = "good"; }
-            if(state === "매우 좋음") { state = "good"; }
-            if(state === "보통") { state = "normal"; }
-            if(state === "나쁨") { state = "bad"; }
-            if(state === "매우 나쁨") { state = "hell"; }
-
-            if(loca === "서울") {
-              $('.location[data-city="seoul"]').attr('data-mimun', state);
-            }
-            if(loca === "제주") {
-              $('.location[data-city="jeju"]').attr('data-mimun', state);
-            }
-            if(loca === "전남") {
-              $('.location[data-city="Jeollanam"]').attr('data-mimun', state);
-            }
-            if(loca === "전북") {
-              $('.location[data-city="Jeollabuk"]').attr('data-mimun', state);
-            }
-            if(loca === "광주") {
-              $('.location[data-city="gwangju"]').attr('data-mimun', state);
-            }
-            if(loca === "경남") {
-              $('.location[data-city="gyeongnam"]').attr('data-mimun', state);
-            }
-            if(loca === "경북") {
-              $('.location[data-city="gyeongbuk"]').attr('data-mimun', state);
-            }
-            if(loca === "울산") {
-              $('.location[data-city="ulsan"]').attr('data-mimun', state);
-            }
-            if(loca === "대구") {
-              $('.location[data-city="daegu"]').attr('data-mimun', state);
-            }
-            if(loca === "부산") {
-              $('.location[data-city="busan"]').attr('data-mimun', state);
-            }
-            if(loca === "충남") {
-              $('.location[data-city="chungnam"]').attr('data-mimun', state);
-            }
-            if(loca === "충북") {
-              $('.location[data-city="chungbuk"]').attr('data-mimun', state);
-            }
-            if(loca === "세종") {
-              $('.location[data-city="sejong"]').attr('data-mimun', state);
-            }
-            if(loca === "대전") {
-              $('.location[data-city="daejeon"]').attr('data-mimun', state);
-            }
-            if(loca === "영동") {
-              $('.location.east[data-city="gangwon"]').attr('data-mimun', state);
-            }
-            if(loca === "영서") {
-              $('.location.west[data-city="gangwon"]').attr('data-mimun', state);
-            }
-            if(loca === "경기남부") {
-              $('.location.south[data-city="gyeonggi"]').attr('data-mimun', state);
-            }
-            if(loca === "경기북부") {
-              $('.location.north[data-city="gyeonggi"]').attr('data-mimun', state);
-            }
-            if(loca === "인천") {
-              $('.location[data-city="incheon"]').attr('data-mimun', state);
+            var gradeState = parseMimunGrade(locationArr[1].trim());
+            var selector = MIMUN_CITY_SELECTORS[loca];
+            if (selector && gradeState) {
+              $(selector).attr('data-mimun', gradeState);
             }
           }
+
           //최초 로드 시 전국 미세먼지 지수 입력
-          mimunVal = mimunVal.match(/\‘.*\’/gi);
-          mimunVal = mimunVal[0].split('‘');
-          mimunVal = mimunVal[1];
-          if ( mimunVal.indexOf("좋음") != -1 ) { mimunState = "good"; }
-          if ( mimunVal.indexOf("매우 좋음") != -1 ) { mimunState = "good"; }
-          if ( mimunVal.indexOf("보통") != -1 ) { mimunState = "normal"; }
-          if ( mimunVal.indexOf("나쁨") != -1 ) { mimunState = "bad"; }
-          if ( mimunVal.indexOf("매우 나쁨") != -1 ) { mimunState = "hell"; }
-          $('.today .mimun').attr('data-state', mimunState);
+          var matchOverall = mimunVal.match(/‘([^’]*)’/);
+          var overallText = matchOverall ? matchOverall[1] : mimunVal;
+          var mimunState = parseMimunGrade(overallText);
+          if (mimunState) {
+            $('.today .mimun').attr('data-state', mimunState);
+          }
+        },
+        error: function(xhr, status, err) {
+          console.error('미세먼지 데이터 조회 실패:', status, err);
+        },
+        complete: function() {
+          setTimeout(updateMimun, 3600000);//60분마다 실행
         }
-      }).then(function() {
-        setTimeout(updateMimun, 36000000);//60분마다 실행
       });
     };
     updateMimun();
