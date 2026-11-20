@@ -19,12 +19,12 @@
     <!-- End Google Tag Manager -->
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
 
   <!--SEO-->
   <meta name="Author" content="#Tiger & Rabbit Company #Tiny Tiger Application Teams #LeeCoder">
-  <meta name="robots" content="noindex, nofollow">
-  <meta name="googlebot" content="noindex"/>
+  <meta name="robots" content="index, follow">
+  <meta name="googlebot" content="index, follow"/>
   <meta name="description" content="Simply weather application">
   <meta name="format-detection" content="telephone=no"> <!-- 아이폰 number 버그 개선 -->
   <link rel="image_src" href="./lib/images/weather/seo/logo.png" />
@@ -55,7 +55,8 @@
   <!--스타일시트-->
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700&family=Nanum+Gothic:wght@400;700&family=Poiret+One&family=Potta+One&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./lib/css/base.css" />
+  <link rel="stylesheet" href="./lib/css/base.css?v=20261120" />
+  <link rel="stylesheet" href="./lib/css/weather-ui.css?v=20261120-6" />
   <script>
     function getTime(data) {
       var now = new Date();
@@ -150,12 +151,17 @@
     }
     );
   </script>
+  <!-- 풀스크린 동적 날씨 배경 -->
+  <div class="weather-bg-layer" aria-hidden="true"></div>
   <!-- 웨더 앱// -->
   <div class="weather-wrap">
     <!-- 헤더// -->
     <div class="header">
       <h1 class="title">Good Weather</h1>
-      <div class="util"><a href="#pop-geocode" target="_self" class="city">대한민국, 위치 변경</a></div>
+      <div class="util"><a href="#pop-geocode" target="_self" class="city">노원구, 서울특별시</a></div>
+      <div class="header-actions">
+        <a href="javascript:void(0);" title="새로고침" class="refresh"><span class="time"></span><i class="icon"></i></a>
+      </div>
     </div>
     <!-- //헤더 -->
     <!-- 콘텐츠// -->
@@ -176,23 +182,43 @@
             }, 5000);
           })();
         </script>
-        <div class="temperature"><span class="blind">온도</span><span class="value"></span><span class="unit">˚C</span></div>
-        <div class="feels-like"><span class="blind">체감 온도</span><span class="value"></span><span class="unit">˚C</span></div>
-        <div class="temp-minmax"><span class="temp-min">MIN <span class="blind">최저</span><span class="value"></span><span class="unit">˚C</span></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span class="temp-max">MAX <span class="blind">최고</span><span class="value"></span><span class="unit">˚C</span></span></div>
-        <div class="humidity"><div class="icon"><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 25.906 25.906" style="enable-background:new 0 0 25.906 25.906;" xml:space="preserve"><g><path style="fill: rgba(255,255,255,0.6);" d="M12.953,0c0,0-9,10.906-9,16.906c0,4.971,4.029,9,9,9s9-4.029,9-9C21.953,10.906,12.953,0,12.953,0z M9.026,17.496c0,1.426,0.668,4.25,1.134,5.426c-3.042-1.494-3.846-4.425-3.846-6.463c0-3.173,3.684-7.824,5.777-12.149 C11.861,6.581,9.026,13.177,9.026,17.496z"/></g></svg></div><div class="icon over" style="clip: rect(0px, 20px, 20px, 0px);"><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 25.906 25.906" style="enable-background:new 0 0 25.906 25.906;" xml:space="preserve"><g><path style="fill:#3175d0;" d="M12.953,0c0,0-9,10.906-9,16.906c0,4.971,4.029,9,9,9s9-4.029,9-9C21.953,10.906,12.953,0,12.953,0z M9.026,17.496c0,1.426,0.668,4.25,1.134,5.426c-3.042-1.494-3.846-4.425-3.846-6.463c0-3.173,3.684-7.824,5.777-12.149 C11.861,6.581,9.026,13.177,9.026,17.496z"/></g></svg></div><span class="value"></span><span class="unit">%</span><div class="mimun"><span class="blind">미세먼지 수치</span><span class="value"></span></div></div>
-        <div class="weather"><img src="./lib/images/weather/icon/default.png" class="icon" draggable="false"></div>
-        <div class="desc"><span class="blind">날씨설명</span><span class="value"></span></div>
+        <div class="hero-main">
+          <div class="weather"><img src="./lib/images/weather/icon/default.png" class="icon" draggable="false" alt="현재 날씨 아이콘"></div>
+          <div class="temperature"><span class="blind">온도</span><span class="value">--</span><span class="unit">°</span></div>
+        </div>
+        <div class="desc"><span class="blind">날씨설명</span><span class="value">날씨 불러오는 중...</span></div>
+        <div class="hero-sub">
+          <div class="temp-minmax">
+            <span class="temp-max">최고 <span class="value">--</span><span class="unit">°</span></span>
+            <span class="temp-min">최저 <span class="value">--</span><span class="unit">°</span></span>
+          </div>
+          <div class="feels-like"><span class="label">체감</span><span class="value">--</span><span class="unit">°</span></div>
+        </div>
+        <div class="hero-pills">
+          <div class="hero-pill hero-mimun">
+            <span class="pill-dot" aria-hidden="true"></span>
+            <span class="pill-label">미세먼지</span>
+            <span class="pill-val mimun-label">확인중</span>
+          </div>
+          <div class="hero-pill hero-humidity">
+            <svg class="pill-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M12 2.69L17.66 8.35C20.78 11.47 20.78 16.53 17.66 19.65C14.54 22.77 9.46 22.77 6.34 19.65C3.22 16.53 3.22 11.47 6.34 8.35L12 2.69Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span class="pill-label">습도</span>
+            <span class="pill-val"><span class="humidity-val">--</span>%</span>
+          </div>
+        </div>
       </div><!-- /.today -->
-      <div class="notice"><a href="javascript:void(0);" title="새로고침" class="refresh"><span>OpenWeather®, Last updated </span><span class="time"></span><i class="icon"></i></a></div><!-- /.notice -->
       <script>
         //새로고침
-        $('.notice .refresh').on('click', function() {
+        $('.header .refresh').on('click', function(e) {
+          e.preventDefault();
           updateForecast();
-          gsap.fromTo('.refresh .icon', {rotation:0},{duration:1, rotation:360});
+          gsap.fromTo('.refresh .icon', {rotation:0},{duration:0.8, rotation:360});
         });
       </script>
-      <div class="forecast eachHour">
-        <h3 class="tit">시간별 날씨</h3>
+      <div class="forecast eachHour glass-card">
+        <h3 class="tit">시간별 예보</h3>
         <div class="scroll-wrap" id="scroll-wrap1">
           <div class="scroll-inner">
             <div class="time time1">
@@ -366,97 +392,147 @@
           </div>
         </div>
       </div><!-- /.forecast.eachHour -->
-      <div class="forecast daily">
-        <h3 class="tit">주간 날씨</h3>
+      <div class="forecast daily glass-card">
+        <h3 class="tit">주간 예보</h3>
         <div class="scroll-wrap" id="scroll-wrap2">
           <div class="scroll-inner">
             <div class="time time0">
-              <div class="date"><span class="blind">날짜</span><span class="value"></span>일<span class="tip day"><!-- (내일) --></span></div>
+              <div class="date"><span class="blind">날짜</span><span class="value">--</span>일<span class="tip day"></span></div>
               <div class="weather-img"><img src="./lib/images/weather/icon/default.png" alt="날씨 아이콘" class="icon" draggable="false"></div>
-              <div class="temperature"><span class="temp-min"><span class="blind">최저 기온</span><span class="value"></span><span class="unit">˚C</span></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span class="temp-max"><span class="blind">최고 기온</span><span class="value"></span><span class="unit">˚C</span></span></div>
+              <div class="temperature"><span class="temp-min"><span class="blind">최저 기온</span><span class="value">--</span><span class="unit">°</span></span><div class="temp-bar-wrap"><div class="temp-bar-track"><div class="temp-bar-fill"></div></div></div><span class="temp-max"><span class="blind">최고 기온</span><span class="value">--</span><span class="unit">°</span></span></div>
               <div class="desc"><span class="blind">날씨설명</span><span class="value"></span></div>
-              <div class="wind-speed"><span class="blind">풍속</span><span class="value"></span> 노트</div>
+              <div class="wind-speed"><span class="blind">풍속</span><span class="value"></span> m/s</div>
             </div>
             <div class="time time1">
-              <div class="date"><span class="blind">날짜</span><span class="value"></span>일<span class="tip day"></span></div>
+              <div class="date"><span class="blind">날짜</span><span class="value">--</span>일<span class="tip day"></span></div>
               <div class="weather-img"><img src="./lib/images/weather/icon/default.png" alt="날씨 아이콘" class="icon" draggable="false"></div>
-              <div class="temperature"><span class="temp-min"><span class="blind">최저 기온</span><span class="value"></span><span class="unit">˚C</span></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span class="temp-max"><span class="blind">최고 기온</span><span class="value"></span><span class="unit">˚C</span></span></div>
+              <div class="temperature"><span class="temp-min"><span class="blind">최저 기온</span><span class="value">--</span><span class="unit">°</span></span><div class="temp-bar-wrap"><div class="temp-bar-track"><div class="temp-bar-fill"></div></div></div><span class="temp-max"><span class="blind">최고 기온</span><span class="value">--</span><span class="unit">°</span></span></div>
               <div class="desc"><span class="blind">날씨설명</span><span class="value"></span></div>
-              <div class="wind-speed"><span class="blind">풍속</span><span class="value"></span> 노트</div>
+              <div class="wind-speed"><span class="blind">풍속</span><span class="value"></span> m/s</div>
             </div>
             <div class="time time2">
-              <div class="date"><span class="blind">날짜</span><span class="value"></span>일<span class="tip day"></span></div>
+              <div class="date"><span class="blind">날짜</span><span class="value">--</span>일<span class="tip day"></span></div>
               <div class="weather-img"><img src="./lib/images/weather/icon/default.png" alt="날씨 아이콘" class="icon" draggable="false"></div>
-              <div class="temperature"><span class="temp-min"><span class="blind">최저 기온</span><span class="value"></span><span class="unit">˚C</span></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span class="temp-max"><span class="blind">최고 기온</span><span class="value"></span><span class="unit">˚C</span></span></div>
+              <div class="temperature"><span class="temp-min"><span class="blind">최저 기온</span><span class="value">--</span><span class="unit">°</span></span><div class="temp-bar-wrap"><div class="temp-bar-track"><div class="temp-bar-fill"></div></div></div><span class="temp-max"><span class="blind">최고 기온</span><span class="value">--</span><span class="unit">°</span></span></div>
               <div class="desc"><span class="blind">날씨설명</span><span class="value"></span></div>
-              <div class="wind-speed"><span class="blind">풍속</span><span class="value"></span> 노트</div>
+              <div class="wind-speed"><span class="blind">풍속</span><span class="value"></span> m/s</div>
             </div>
             <div class="time time3">
-              <div class="date"><span class="blind">날짜</span><span class="value"></span>일<span class="tip day"></span></div>
+              <div class="date"><span class="blind">날짜</span><span class="value">--</span>일<span class="tip day"></span></div>
               <div class="weather-img"><img src="./lib/images/weather/icon/default.png" alt="날씨 아이콘" class="icon" draggable="false"></div>
-              <div class="temperature"><span class="temp-min"><span class="blind">최저 기온</span><span class="value"></span><span class="unit">˚C</span></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span class="temp-max"><span class="blind">최고 기온</span><span class="value"></span><span class="unit">˚C</span></span></div>
+              <div class="temperature"><span class="temp-min"><span class="blind">최저 기온</span><span class="value">--</span><span class="unit">°</span></span><div class="temp-bar-wrap"><div class="temp-bar-track"><div class="temp-bar-fill"></div></div></div><span class="temp-max"><span class="blind">최고 기온</span><span class="value">--</span><span class="unit">°</span></span></div>
               <div class="desc"><span class="blind">날씨설명</span><span class="value"></span></div>
-              <div class="wind-speed"><span class="blind">풍속</span><span class="value"></span> 노트</div>
+              <div class="wind-speed"><span class="blind">풍속</span><span class="value"></span> m/s</div>
             </div>
             <div class="time time4">
-              <div class="date"><span class="blind">날짜</span><span class="value"></span>일<span class="tip day"></span></div>
+              <div class="date"><span class="blind">날짜</span><span class="value">--</span>일<span class="tip day"></span></div>
               <div class="weather-img"><img src="./lib/images/weather/icon/default.png" alt="날씨 아이콘" class="icon" draggable="false"></div>
-              <div class="temperature"><span class="temp-min"><span class="blind">최저 기온</span><span class="value"></span><span class="unit">˚C</span></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span class="temp-max"><span class="blind">최고 기온</span><span class="value"></span><span class="unit">˚C</span></span></div>
+              <div class="temperature"><span class="temp-min"><span class="blind">최저 기온</span><span class="value">--</span><span class="unit">°</span></span><div class="temp-bar-wrap"><div class="temp-bar-track"><div class="temp-bar-fill"></div></div></div><span class="temp-max"><span class="blind">최고 기온</span><span class="value">--</span><span class="unit">°</span></span></div>
               <div class="desc"><span class="blind">날씨설명</span><span class="value"></span></div>
-              <div class="wind-speed"><span class="blind">풍속</span><span class="value"></span> 노트</div>
+              <div class="wind-speed"><span class="blind">풍속</span><span class="value"></span> m/s</div>
             </div>
             <div class="time time5">
-              <div class="date"><span class="blind">날짜</span><span class="value"></span>일<span class="tip day"></span></div>
+              <div class="date"><span class="blind">날짜</span><span class="value">--</span>일<span class="tip day"></span></div>
               <div class="weather-img"><img src="./lib/images/weather/icon/default.png" alt="날씨 아이콘" class="icon" draggable="false"></div>
-              <div class="temperature"><span class="temp-min"><span class="blind">최저 기온</span><span class="value"></span><span class="unit">˚C</span></span>&nbsp;&nbsp;/&nbsp;&nbsp;<span class="temp-max"><span class="blind">최고 기온</span><span class="value"></span><span class="unit">˚C</span></span></div>
+              <div class="temperature"><span class="temp-min"><span class="blind">최저 기온</span><span class="value">--</span><span class="unit">°</span></span><div class="temp-bar-wrap"><div class="temp-bar-track"><div class="temp-bar-fill"></div></div></div><span class="temp-max"><span class="blind">최고 기온</span><span class="value">--</span><span class="unit">°</span></span></div>
               <div class="desc"><span class="blind">날씨설명</span><span class="value"></span></div>
-              <div class="wind-speed"><span class="blind">풍속</span><span class="value"></span> 노트</div>
+              <div class="wind-speed"><span class="blind">풍속</span><span class="value"></span> m/s</div>
             </div>
           </div>
         </div>
       </div><!-- /.forecast.daily -->
-      <style>
-        .weather-app .content .forecast.daily .scroll-wrap .scroll-inner {
-          width: auto;
-          max-width: none;
-        }
-        .weather-app .content .forecast.daily .time {
-          width: 150px;
-        }
-      </style>
+
+      <!-- 상세 날씨 위젯 2x2 그리드 (Samsung & Apple Weather 스타일) -->
+      <div class="detail-grid">
+        <div class="detail-card glass-card">
+          <div class="card-tit">미세먼지 (PM10)</div>
+          <div class="mimun-row">
+            <div class="mimun"><span class="blind">미세먼지 수치</span><span class="value"></span></div>
+            <div class="mimun-label">확인중</div>
+          </div>
+          <div class="meter-bar"><div class="meter-fill mimun-meter"></div></div>
+        </div>
+
+        <div class="detail-card glass-card humidity">
+          <div class="card-tit">습도</div>
+          <div class="humidity-inline">
+            <div class="humidity-drop">
+              <div class="icon"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25.906 25.906"><g><path style="fill: rgba(255,255,255,0.4);" d="M12.953,0c0,0-9,10.906-9,16.906c0,4.971,4.029,9,9,9s9-4.029,9-9C21.953,10.906,12.953,0,12.953,0z M9.026,17.496c0,1.426,0.668,4.25,1.134,5.426c-3.042-1.494-3.846-4.425-3.846-6.463c0-3.173,3.684-7.824,5.777-12.149 C11.861,6.581,9.026,13.177,9.026,17.496z"/></g></svg></div>
+              <div class="icon over" style="clip: rect(0px, 20px, 20px, 0px);"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25.906 25.906"><g><path style="fill:#38bdf8;" d="M12.953,0c0,0-9,10.906-9,16.906c0,4.971,4.029,9,9,9s9-4.029,9-9C21.953,10.906,12.953,0,12.953,0z M9.026,17.496c0,1.426,0.668,4.25,1.134,5.426c-3.042-1.494-3.846-4.425-3.846-6.463c0-3.173,3.684-7.824,5.777-12.149 C11.861,6.581,9.026,13.177,9.026,17.496z"/></g></svg></div>
+            </div>
+            <div class="big-val"><span class="value">--</span><span class="big-unit">%</span></div>
+          </div>
+          <div class="meter-bar"><div class="meter-fill humidity-meter"></div></div>
+        </div>
+
+        <div class="detail-card glass-card wind-card">
+          <div class="card-tit">바람</div>
+          <div class="big-val"><span class="wind-speed-val">--</span><span class="big-unit">m/s</span></div>
+          <div class="card-sub">풍향: <span class="wind-dir-val">--</span></div>
+        </div>
+
+        <div class="detail-card glass-card pressure-card">
+          <div class="card-tit">기압 · 구름</div>
+          <div class="big-val"><span class="pressure-val">--</span><span class="big-unit">hPa</span></div>
+          <div class="card-sub">구름량: <span class="cloud-val">--</span>%</div>
+        </div>
+      </div><!-- /.detail-grid -->
+
       <div class="notice footer-notice">
-        <!-- 도움말 버튼 -->
+        <!-- 부가 기능 및 도움말 버튼 -->
         <div class="info">
-          <a href="#help" class="btn-guide" style="letter-spacing: -0.05em;">앱 사용 안내<svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM11 17V15H13V17H11ZM11 7V13H13V7H11Z" fill="#FFFFFF"/></svg></a><!-- /.btn-guide -->
+          <button type="button" class="btn-fullscreen" title="전체화면 전환" aria-label="전체화면 전환">
+            <svg class="icon-enter" width="13" height="13" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M8 3H5C3.89543 3 3 3.89543 3 5V8M21 8V5C21 3.89543 20.1046 3 19 3H16M16 21H19C20.1046 21 21 20.1046 21 19V16M3 16V19C3 20.1046 3.89543 21 5 21H8" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <svg class="icon-exit" width="13" height="13" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M8 3V6C8 7.10457 7.10457 8 6 8H3M21 8H18C16.8954 8 16 7.10457 16 6V3M16 21V18C16 16.8954 16.8954 16 18 16H21M3 16H6C7.10457 16 8 16.8954 8 18V21" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span class="label">전체화면</span>
+          </button>
+          <button type="button" class="btn-clock-tool" title="스탑워치 / 타이머" aria-label="스탑워치 및 타이머 열기">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="12" cy="13" r="8" stroke="currentColor" stroke-width="2"/>
+              <path d="M12 9V13L14.5 14.5M9 2H15M12 2V5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>스탑워치 · 타이머</span>
+          </button>
+          <a href="#help" class="btn-guide">앱 사용 안내<svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM11 17V15H13V17H11ZM11 7V13H13V7H11Z" fill="#FFFFFF"/></svg></a><!-- /.btn-guide -->
           <button class="btn-private">개인정보 처리방침</button>
         </div><!-- /.info -->
-        <span class="text">데이터는 실시간 관측된 자료이며 측정소 현지 사정이나 <br>데이터의 수신상태에 따라 미수신 될 수 있음, 출처: AirKorea</span>
+        <span class="text">OpenWeather® · AirKorea 실시간 관측 자료<br>측정소 현지 사정이나 수신 상태에 따라 지연될 수 있습니다.</span>
       </div><!-- /.footer-notice -->
     </div><!-- /.content -->
     <!-- //콘텐츠 -->
     <!-- 팝업 도움말// -->
-    <div class="pop-guide" title="앱 사용 안내: 클릭(터치)해서 이전화면으로 돌아가기">
-      <i class="icon-close fas fa-times-circle"></i>
-      <div class="guide-items item-01"><div class="area"><p class="desc">현재 위치 및 변경</p></div></div>
-      <div class="guide-items item-02"><div class="area"><p class="desc">현재 날씨 아이콘</p></div></div>
-      <div class="guide-items item-03"><div class="area"><p class="desc">날짜 및 시간</p></div></div>
-      <div class="guide-items item-04"><div class="area"><p class="desc">현재 온도 / 체감 온도</p></div></div>
-      <div class="guide-items item-05"><div class="area"><p class="desc">최고 온도 / 최저 온도</p></div></div>
-      <div class="guide-items item-06"><div class="area"><p class="desc">습도 | 미세먼지 아이콘</p></div></div>
-      <div class="guide-items item-07"><div class="area"><p class="desc">현재 날씨 설명</p></div></div>
-      <div class="guide-items item-08"><div class="area"><p class="desc">날씨 새로 고침</p></div></div>
-      <div class="guide-items item-09"><div class="area"><p class="desc">3시간 별 날씨 예보</p></div></div>
-      <div class="guide-items item-10"><div class="area"><p class="desc">일별 날씨 예보</p></div></div>
+    <div class="pop-guide" title="앱 사용 안내">
+      <div class="guide-modal">
+        <div class="guide-modal-header">
+          <h4 class="guide-modal-title">Good Weather 사용 안내</h4>
+          <button type="button" class="guide-modal-close">닫기</button>
+        </div>
+        <ul class="guide-list">
+          <li><strong>위치 변경</strong><span>상단 지역 버튼을 눌러 전국 시·군·구 날씨로 변경하거나 검색할 수 있습니다.</span></li>
+          <li><strong>새로고침</strong><span>우측 상단 시간/새로고침 버튼을 누르면 최신 예보를 즉시 불러옵니다.</span></li>
+          <li><strong>시간별 예보</strong><span>3시간 단위 예보를 좌우로 스와이프하거나 드래그하여 확인할 수 있습니다.</span></li>
+          <li><strong>주간 예보</strong><span>6일간의 최저/최고 기온과 전체 기온 대비 구간을 컬러 바로 한눈에 비교할 수 있습니다.</span></li>
+          <li><strong>상세 정보</strong><span>미세먼지(PM10), 습도, 바람, 기압 및 구름량을 실시간으로 제공합니다.</span></li>
+        </ul>
+      </div>
       <script>
         //팝업 도움말 토글
-        $('.btn-guide').on('click', function() {
-          $('html,body').stop().animate({'scrollTop':0});
+        $('.btn-guide').on('click', function(e) {
+          e.preventDefault();
           $('body').addClass('overflow-hidden');
           $('.pop-guide').show();
+          if (typeof pushPopupHistory === 'function') pushPopupHistory('guide');
         });
-        $('.pop-guide').on('click', function() {
-          $(this).hide();
-          $('body').removeClass('overflow-hidden');
+        $('.pop-guide').on('click', function(e) {
+          if (e.target === this || $(e.target).hasClass('guide-modal-close')) {
+            $(this).hide();
+            $('body').removeClass('overflow-hidden');
+            if (typeof clearPopupHistory === 'function') clearPopupHistory('guide');
+          }
         });
       </script>
     </div><!-- /.pop-guide -->
@@ -465,8 +541,12 @@
     <div id="pop-geocode" class="pop-geocode">
       <!-- 팝업헤더 -->
       <div class="pop-header">
-        <!-- 닫기 -->
-        <a href="javascript:void(0);" class="close" title="닫기"><span class="bar1"></span><span class="bar2"></span></a>
+        <div class="pop-header-top">
+          <span class="pop-title">위치 변경</span>
+          <!-- 닫기 -->
+          <a href="javascript:void(0);" class="close" title="닫기"><span class="bar1"></span><span class="bar2"></span></a>
+        </div>
+        <input type="search" class="city-search-input" placeholder="지역 검색 (예: 강남구, 부산, 제주시)" aria-label="지역 검색" autocomplete="off">
       </div>
       <!-- 리스트 -->
       <ul class="city-list">
@@ -514,18 +594,18 @@
           <ul>
             <li class="depth2"><a href="#가평군" target="_self" class="location north" data-city="gyeonggi" data-name="Gyeonggi-do" data-lat="37.8312591" data-lon="127.5073877">가평군</a></li>
             <li class="depth2"><a href="#고양시" target="_self" class="location north" data-city="gyeonggi" data-name="Gyeonggi-do" data-lat="37.6625964" data-lon="126.7616294">고양시</a></li>
-            <li class="depth2"><a href="#광명시" target="_self" class="location south" data-city="gyeonggi" data-name="Gyeonggi-do" data-lat="37.4294119" data-lon="127.2529534">광명시</a></li>
+            <li class="depth2"><a href="#광명시" target="_self" class="location south" data-city="gyeonggi" data-name="Gyeonggi-do" data-lat="37.478488" data-lon="126.864289">광명시</a></li>
             <li class="depth2"><a href="#광주시" target="_self" class="location south" data-city="gyeonggi" data-name="Gyeonggi-do" data-lat="37.4294119" data-lon="127.2529534">광주시</a></li>
             <li class="depth2"><a href="#구리시" target="_self" class="location north" data-city="gyeonggi" data-name="Gyeonggi-do" data-lat="37.5988442" data-lon="127.1314165">구리시</a></li>
-            <li class="depth2"><a href="#군포시" target="_self" class="location south" data-city="gyeonggi" data-name="Gyeonggi-do" data-lat="37.5990418" data-lon="126.995711">군포시</a></li>
+            <li class="depth2"><a href="#군포시" target="_self" class="location south" data-city="gyeonggi" data-name="Gyeonggi-do" data-lat="37.361669" data-lon="126.935189">군포시</a></li>
             <li class="depth2"><a href="#김포시" target="_self" class="location north" data-city="gyeonggi" data-name="Gyeonggi-do" data-lat="37.615353" data-lon="126.7132623">김포시</a></li>
             <li class="depth2"><a href="#남양주시" target="_self" class="location north" data-city="gyeonggi" data-name="Gyeonggi-do" data-lat="37.6565427" data-lon="127.152689">남양주시</a></li>
             <li class="depth2"><a href="#동두천시" target="_self" class="location north" data-city="gyeonggi" data-name="Gyeonggi-do" data-lat="37.9035825" data-lon="127.0582076">동두천시</a></li>
             <li class="depth2"><a href="#부천시" target="_self" class="location south" data-city="gyeonggi" data-name="Gyeonggi-do" data-lat="37.4927937" data-lon="126.766107">부천시</a></li>
-            <li class="depth2"><a href="#성남시" target="_self" class="location south" data-city="gyeonggi" data-name="Gyeonggi-do" data-lat="37.4930001" data-lon="126.6347789">성남시</a></li>
+            <li class="depth2"><a href="#성남시" target="_self" class="location south" data-city="gyeonggi" data-name="Gyeonggi-do" data-lat="37.420027" data-lon="127.126777">성남시</a></li>
             <li class="depth2"><a href="#수원시" target="_self" class="location south" data-city="gyeonggi" data-name="Gyeonggi-do" data-lat="37.2938967" data-lon="126.990266">수원시</a></li>
             <li class="depth2"><a href="#시흥시" target="_self" class="location south" data-city="gyeonggi" data-name="Gyeonggi-do" data-lat="37.3801142" data-lon="126.800692">시흥시</a></li>
-            <li class="depth2"><a href="#안산시" target="_self" class="location south" data-city="gyeonggi" data-name="Gyeonggi-do" data-lat="37.2200994" data-lon="126.4965717">안산시</a></li>
+            <li class="depth2"><a href="#안산시" target="_self" class="location south" data-city="gyeonggi" data-name="Gyeonggi-do" data-lat="37.321912" data-lon="126.830853">안산시</a></li>
             <li class="depth2"><a href="#안성시" target="_self" class="location south" data-city="gyeonggi" data-name="Gyeonggi-do" data-lat="37.0112668" data-lon="127.2536452">안성시</a></li>
             <li class="depth2"><a href="#안양시" target="_self" class="location south" data-city="gyeonggi" data-name="Gyeonggi-do" data-lat="37.4057434" data-lon="126.8917989">안양시</a></li>
             <li class="depth2"><a href="#양주시" target="_self" class="location north" data-city="gyeonggi" data-name="Gyeonggi-do" data-lat="37.7852912" data-lon="127.0436013">양주시</a></li>
@@ -539,7 +619,7 @@
             <li class="depth2"><a href="#파주시" target="_self" class="location north" data-city="gyeonggi" data-name="Gyeonggi-do" data-lat="37.8499002" data-lon="126.6924066">파주시</a></li>
             <li class="depth2"><a href="#포천시" target="_self" class="location north" data-city="gyeonggi" data-name="Gyeonggi-do" data-lat="37.8948786" data-lon="127.1987411">포천시</a></li>
             <li class="depth2"><a href="#평택시" target="_self" class="location south" data-city="gyeonggi" data-name="Gyeonggi-do" data-lat="37.0223143" data-lon="126.8134963">평택시</a></li>
-            <li class="depth2"><a href="#하남시" target="_self" class="location south" data-city="gyeonggi" data-name="Gyeonggi-do" data-lat="37.5443667" data-lon="127.5443667">하남시</a></li>
+            <li class="depth2"><a href="#하남시" target="_self" class="location south" data-city="gyeonggi" data-name="Gyeonggi-do" data-lat="37.539265" data-lon="127.214893">하남시</a></li>
             <li class="depth2"><a href="#화성시" target="_self" class="location south" data-city="gyeonggi" data-name="Gyeonggi-do" data-lat="37.1925387" data-lon="126.8892709">화성시</a></li>
           </ul>
         </li>
@@ -659,34 +739,114 @@
       var $newLocaTit = $('.pop-geocode .tit');//도단위 리스트
       var $newLoca = $('.pop-geocode .location');//새로운 도시명 리스트
 
+      //선택 지역 상태 관리 (localStorage 연동)
+      var STORAGE_KEY_LOCATION = 'goodWeatherSelectedLocation';
+      var selectedLocationSelector = '.location[data-city="seoul"][data-name="노원구"]';
+
+      function saveSelectedLocation(data) {
+        try {
+          localStorage.setItem(STORAGE_KEY_LOCATION, JSON.stringify(data));
+        } catch (err) {
+          // 프라이빗 브라우징 등 저장 불가 환경 무시
+        }
+      }
+
+      function loadSelectedLocation() {
+        try {
+          var raw = localStorage.getItem(STORAGE_KEY_LOCATION);
+          return raw ? JSON.parse(raw) : null;
+        } catch (err) {
+          return null;
+        }
+      }
+
       //도시 변경하기
-      var changeLocation = function() {
+      var changeLocation = function(e) {
+        if (e) e.preventDefault();
+        var $item = $(this);
+        var label = $item.text() + ', ' + $item.parents('.depth1').find('.tit').text();
+        var cityAttr = $item.attr('data-city') || '';
+        var nameAttr = $item.attr('data-name') || '';
+        var latAttr = $item.attr('data-lat');
+        var lonAttr = $item.attr('data-lon');
+
         //Var
-        $loca.text($(this).text()+', '+$(this).parents('.depth1').find('.tit').text());//도시명 변경
-        forecast.geo.city = $(this).attr('data-name');//도시 변수 변경
-        forecast.geo.lat = $(this).attr('data-lat');//Geo lat 변경
-        forecast.geo.lon = $(this).attr('data-lon');//Geo lon 변경
+        $loca.text(label);//도시명 변경
+        forecast.city = nameAttr;//도시 변수 변경
+        forecast.geo.lat = latAttr;//Geo lat 변경
+        forecast.geo.lon = lonAttr;//Geo lon 변경
+
+        selectedLocationSelector = '.location[data-lat="' + latAttr + '"][data-lon="' + lonAttr + '"]';
+        saveSelectedLocation({
+          label: label,
+          city: cityAttr,
+          name: nameAttr,
+          lat: latAttr,
+          lon: lonAttr
+        });
 
         //Set
         updateForecast();//날씨 재실행
 
         //미세먼지 수치 변경
-        var mimunVal = $(this).attr('data-mimun');
-        if (mimunVal) {
-          $('.today .mimun').attr('data-state', mimunVal);
+        var mimunVal = $item.attr('data-mimun');
+        if (mimunVal && typeof applyMimunState === 'function') {
+          applyMimunState(mimunVal);
         }
 
         $popClose.trigger('click');//팝업 닫기
       };
 
       //팝업 열기(도시명 클릭 시)
-      $loca.on('click', function() {
+      $loca.on('click', function(e) {
+        e.preventDefault();
         $('.pop-geocode').addClass("is-active");
+        $('body').addClass('overflow-hidden');
+        if (typeof pushPopupHistory === 'function') pushPopupHistory('geocode');
       });
 
       //팝업 닫기
-      $popClose.on('click', function() {
+      $popClose.on('click', function(e) {
+        if (e) e.preventDefault();
         $('.pop-geocode').removeClass("is-active");
+        $('body').removeClass('overflow-hidden');
+        $('.city-search-input').val('').trigger('input');
+        if (typeof clearPopupHistory === 'function') clearPopupHistory('geocode');
+      });
+
+      //지역 검색 필터
+      $('.city-search-input').on('input', function() {
+        var keyword = $(this).val().trim().toLowerCase();
+        $('.pop-geocode .depth1').each(function() {
+          var $group = $(this);
+          var $tit = $group.find('.tit');
+          var groupName = $tit.text().toLowerCase();
+          var hasMatch = false;
+
+          if (!keyword) {
+            $group.show();
+            $group.find('.depth2').show();
+            $tit.removeClass('on');
+            return;
+          }
+
+          $group.find('.depth2').each(function() {
+            var itemName = $(this).text().toLowerCase();
+            if (itemName.indexOf(keyword) !== -1 || groupName.indexOf(keyword) !== -1) {
+              $(this).show();
+              hasMatch = true;
+            } else {
+              $(this).hide();
+            }
+          });
+
+          if (hasMatch) {
+            $group.show();
+            $tit.addClass('on');
+          } else {
+            $group.hide();
+          }
+        });
       });
 
       //도시 드롭다운
@@ -827,13 +987,111 @@
     <p class='sub_p'>① 이 개인정보처리방침은 2022년 2월 25일부터 적용됩니다.</p>
     </div><!-- /.popup-private -->
     <script>
+      //PWA 뒤로가기 시 앱 종료 방지 및 팝업 닫기 처리
+      var activePopup = null;
+      function pushPopupHistory(name) {
+        if (activePopup === name) return;
+        activePopup = name;
+        if (window.history && window.history.pushState) {
+          window.history.pushState({ popup: name }, '', window.location.pathname + window.location.search);
+        }
+      }
+      function clearPopupHistory(name) {
+        if (activePopup !== name) return;
+        activePopup = null;
+        if (window.history && window.history.state && window.history.state.popup === name) {
+          window.history.back();
+        }
+      }
+      window.addEventListener('popstate', function() {
+        if (activePopup === 'geocode') {
+          activePopup = null;
+          $('.pop-geocode').removeClass('is-active');
+          $('body').removeClass('overflow-hidden');
+        } else if (activePopup === 'guide') {
+          activePopup = null;
+          $('.pop-guide').hide();
+          $('body').removeClass('overflow-hidden');
+        } else if (activePopup === 'private') {
+          activePopup = null;
+          $('.popup-private').hide();
+          $('body').removeClass('overflow-hidden');
+        }
+      });
+
       //개인정보 처리방침 토글
-      $(".btn-private").on("click", function() {$(".popup-private").show()});
-      $(".popup-private .btn-close").on("click", function() {$(".popup-private").hide()});
+      $(".btn-private").on("click", function() {
+        $(".popup-private").show();
+        $('body').addClass('overflow-hidden');
+        pushPopupHistory('private');
+      });
+      $(".popup-private .btn-close").on("click", function() {
+        $(".popup-private").hide();
+        $('body').removeClass('overflow-hidden');
+        clearPopupHistory('private');
+      });
     </script>
     <!-- //팝업 개인정보처리방침 -->
   </div><!-- /.weather-wrap -->
   <!-- //웨더 앱 -->
+
+  <!-- 플로팅 스탑워치 / 타이머 미니 앱 -->
+  <div id="floating-clock-app" class="floating-clock-app" role="dialog" aria-label="스탑워치 및 타이머">
+    <div class="floating-body">
+      <div class="floating-topbar" title="드래그하여 이동">
+        <span class="drag-grip" aria-hidden="true"><i></i><i></i></span>
+        <div class="floating-tabs" role="tablist">
+          <button type="button" class="tab-btn is-active" data-tab="stopwatch" role="tab" aria-selected="true">스탑워치</button>
+          <button type="button" class="tab-btn" data-tab="timer" role="tab" aria-selected="false">타이머</button>
+        </div>
+        <span class="floating-mini-time">00:00.00</span>
+        <div class="floating-win-btns">
+          <button type="button" class="win-btn btn-clock-min" title="최소화" aria-label="최소화">−</button>
+          <button type="button" class="win-btn btn-clock-close" title="닫기" aria-label="닫기">×</button>
+        </div>
+      </div>
+
+      <!-- 스탑워치 패널 -->
+      <div class="clock-panel panel-stopwatch is-active" role="tabpanel">
+        <div class="clock-display sw-display">00:00.00</div>
+        <div class="clock-controls">
+          <button type="button" class="ctrl-btn primary sw-start">시작</button>
+          <button type="button" class="ctrl-btn sw-lap">랩</button>
+          <button type="button" class="ctrl-btn sw-reset">초기화</button>
+        </div>
+        <ul class="lap-list sw-laps"></ul>
+      </div>
+
+      <!-- 타이머 패널 -->
+      <div class="clock-panel panel-timer" role="tabpanel">
+        <div class="clock-display tm-display">05:00</div>
+        <div class="timer-progress"><div class="timer-progress-fill tm-progress"></div></div>
+        <div class="timer-presets">
+          <button type="button" class="preset-btn" data-sec="60">1분</button>
+          <button type="button" class="preset-btn" data-sec="180">3분</button>
+          <button type="button" class="preset-btn" data-sec="300">5분</button>
+          <button type="button" class="preset-btn" data-sec="600">10분</button>
+          <button type="button" class="preset-btn" data-sec="1800">30분</button>
+        </div>
+        <div class="timer-inputs">
+          <input type="number" class="tm-min" min="0" max="999" value="5" aria-label="분">
+          <span>분</span>
+          <input type="number" class="tm-sec" min="0" max="59" value="0" aria-label="초">
+          <span>초</span>
+        </div>
+        <div class="clock-controls two-cols">
+          <button type="button" class="ctrl-btn primary tm-start">시작</button>
+          <button type="button" class="ctrl-btn tm-reset">초기화</button>
+        </div>
+      </div>
+    </div>
+    <div class="floating-resize-handle" title="드래그하여 크기 조절 (더블클릭: 기본 크기)" aria-label="크기 조절 핸들">
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M11 3L3 11M11 7L7 11" stroke="rgba(255,255,255,0.75)" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+    </div>
+  </div><!-- /.floating-clock-app -->
+  <div class="app-toast" role="status" aria-live="polite"></div>
   <script>
     let _rest;
     const KST_OFFSET_MS = 9 * 60 * 60 * 1000;
@@ -855,14 +1113,32 @@
         return date.getUTCHours().toString().padStart(2, '0');
       },
       weatherUrl: function() {
-        return "https://api.openweathermap.org/data/2.5/forecast?q="+this.city+"&appid="+"1c40f42436a06d02eff28e1526d29217"+"&lang="+this.lang;
+        return "https://api.openweathermap.org/data/2.5/forecast?q=" + encodeURIComponent(this.city) + "&appid=" + "1c40f42436a06d02eff28e1526d29217" + "&lang=" + encodeURIComponent(this.lang);
       },
       onecallUrl: function() {
-        return "https://api.openweathermap.org/data/2.5/forecast?lat="+this.geo.lat+"&lon="+this.geo.lon+"&exclude="+this.exclude+"&appid="+"1c40f42436a06d02eff28e1526d29217"+"&lang="+this.lang;
+        return "https://api.openweathermap.org/data/2.5/forecast?lat=" + encodeURIComponent(this.geo.lat) + "&lon=" + encodeURIComponent(this.geo.lon) + "&exclude=" + encodeURIComponent(this.exclude) + "&appid=" + "1c40f42436a06d02eff28e1526d29217" + "&lang=" + encodeURIComponent(this.lang);
       }
     };
+    var lastForecastFetchedAt = 0;
+    var mimunTimerId = null;
+
+    //저장된 지역이 있으면 초기 로드 전에 복원
+    (function restoreSavedLocation() {
+      var saved = typeof loadSelectedLocation === 'function' ? loadSelectedLocation() : null;
+      if (saved && saved.lat && saved.lon) {
+        forecast.city = saved.name || forecast.city;
+        forecast.geo.lat = saved.lat;
+        forecast.geo.lon = saved.lon;
+        if (saved.label) {
+          $('.header .city').text(saved.label);
+        }
+        selectedLocationSelector = '.location[data-lat="' + saved.lat + '"][data-lon="' + saved.lon + '"]';
+      }
+    })();
+
     //예보
     var updateForecast = function() {
+      lastForecastFetchedAt = Date.now();
       $.ajax({
         url: forecast.onecallUrl(),
         dataType: "json",
@@ -872,7 +1148,14 @@
             return;
           }
 
-          // 배경 설정 함수
+          // 풍향 각도 -> 8방위 한글 변환
+          function getWindDirection(deg) {
+            if (typeof deg !== 'number') return '--';
+            var dirs = ['북풍', '북동풍', '동풍', '남동풍', '남풍', '남서풍', '서풍', '북서풍'];
+            return dirs[Math.round(deg / 45) % 8];
+          }
+
+          // 배경 설정 함수 (풀스크린 배경 적용)
           function setBackgroundImage(temp, weatherMain, sunset) {
             var backgroundUrl = './lib/images/weather/' + sunset + weatherMain + '.jpg';
             if (temp < -7) {
@@ -880,28 +1163,29 @@
             } else if (temp > 27) {
               backgroundUrl = './lib/images/weather/' + sunset + 'Hot.jpg'; // 더운 날
             }
-            $('.weather-wrap .today .bg').attr('style', 'background-image: url(' + backgroundUrl + ');');
+            $('.weather-bg-layer').css('background-image', 'url(' + backgroundUrl + ')');
           }
 
           // 날씨 정보 설정 함수
           function setWeatherInfo(resp, index) {
             var weatherData = resp.list[index];
-            var tempCelsius = parseInt(weatherData.main.temp - 273.15, 10);
-            var feelsLikeCelsius = parseInt(weatherData.main.feels_like - 273.15, 10);
+            var tempCelsius = Math.round(weatherData.main.temp - 273.15);
+            var feelsLikeCelsius = Math.round(weatherData.main.feels_like - 273.15);
             var humidity = weatherData.main.humidity;
             
             $('.weather-wrap .today .temperature .value').text(tempCelsius);
             $('.weather-wrap .today .feels-like .value').text(feelsLikeCelsius);
             $('.weather-wrap .today .temp-max .value').text(tempCelsius);
             $('.weather-wrap .today .temp-min .value').text(tempCelsius);
-            $('.weather-wrap .today .pressure .value').text(weatherData.main.pressure);
-            $('.weather-wrap .today .humidity > .value').text(humidity);
-            $('.weather-wrap .today .humidity .icon.over').css('clip', 'rect(' + (24 - parseInt(humidity, 10) * 0.25) + 'px, 20px, 24px, 0px)');
-            $('.weather-wrap .today .weather .value').text(weatherData.weather[0].main);
-            $('.weather-wrap .today .desc .value').text(weatherData.weather[0].main);
-            $('.weather-wrap .today .wind-deg .value').text(weatherData.wind.deg);
-            $('.weather-wrap .today .wind-speed .value').text(weatherData.wind.speed);
-            $('.weather-wrap .today .cloud .value').text(weatherData.clouds.all);
+            $('.weather-wrap .humidity .value').text(humidity);
+            $('.weather-wrap .today .humidity-val').text(humidity);
+            $('.weather-wrap .humidity .icon.over').css('clip', 'rect(' + (24 - parseInt(humidity, 10) * 0.24) + 'px, 20px, 25px, 0px)');
+            $('.weather-wrap .humidity-meter').css('width', Math.min(100, Math.max(0, humidity)) + '%');
+            $('.weather-wrap .today .desc .value').text(weatherData.weather[0].description || weatherData.weather[0].main);
+            $('.weather-wrap .wind-speed-val').text(weatherData.wind ? weatherData.wind.speed : '--');
+            $('.weather-wrap .wind-dir-val').text(weatherData.wind ? getWindDirection(weatherData.wind.deg) : '--');
+            $('.weather-wrap .pressure-val').text(weatherData.main.pressure);
+            $('.weather-wrap .cloud-val').text(weatherData.clouds ? weatherData.clouds.all : '--');
             $('.weather-wrap .today .weather .icon').attr('src', './lib/images/weather/icon/' + weatherData.weather[0].main + '.svg');
             $('.weather-wrap .today .weather .icon').attr('data-stat', weatherData.weather[0].main);
           }
@@ -913,10 +1197,11 @@
               var forecastData = resp.list[i];
               var forecastHour = forecast.getForecastHour(forecastData.dt);
               var ampm = parseInt(forecastHour, 10) < 12 ? '오전 ' : '오후 ';
-              var tempCelsius = parseInt(forecastData.main.temp - 273.15, 10);
+              var tempCelsius = Math.round(forecastData.main.temp - 273.15);
               
-              $('.weather-wrap .forecast.eachHour .time' + (i + 1)).find('.date .value').text(ampm + forecastHour + '시');
+              $('.weather-wrap .forecast.eachHour .time' + (i + 1)).find('.date .value').text(i === 0 ? '지금' : ampm + forecastHour + '시');
               $('.weather-wrap .forecast.eachHour .time' + (i + 1)).find('.temperature .value').text(tempCelsius);
+              $('.weather-wrap .forecast.eachHour .time' + (i + 1)).find('.temperature .unit').text('°');
               $('.weather-wrap .forecast.eachHour .time' + (i + 1)).find('.weather-img .icon').attr('src', './lib/images/weather/icon/' + forecastData.weather[0].main + '.svg');
               $('.weather-wrap .forecast.eachHour .time' + (i + 1)).find('.desc .value').text(forecastData.weather[0].description);
               $('.weather-wrap .forecast.eachHour .time' + (i + 1)).find('.wind-speed .value').text(forecastData.wind.speed);
@@ -955,7 +1240,7 @@
           setHourlyForecast(resp);
 
           // 현재 시간 업데이트
-          $('.weather-wrap .notice .time').text(getTime('date') + ' ' + getTime('hm'));
+          $('.weather-wrap .header .refresh .time').text(getTime('hm'));
 
           // 현재 시간을 한국 표준시로 설정
           let now = new Date(Date.now() + KST_OFFSET_MS);
@@ -971,27 +1256,53 @@
                 dailyTemps[dateString] = {
                   temp_min: item.main.temp_min,
                   temp_max: item.main.temp_max,
-                  icon: item.weather[0].main
+                  icon: item.weather[0].main,
+                  desc: item.weather[0].description || item.weather[0].main,
+                  wind_speed: item.wind ? item.wind.speed : ''
                 };
               } else {
                 dailyTemps[dateString].temp_min = Math.min(dailyTemps[dateString].temp_min, item.main.temp_min);
                 dailyTemps[dateString].temp_max = Math.max(dailyTemps[dateString].temp_max, item.main.temp_max);
                 dailyTemps[dateString].icon = item.weather[0].main;
+                dailyTemps[dateString].desc = item.weather[0].description || item.weather[0].main;
+                if (item.wind && typeof item.wind.speed !== 'undefined') {
+                  dailyTemps[dateString].wind_speed = item.wind.speed;
+                }
               }
             }
           });
           
           let daysOfWeek = ['일', '월', '화', '수', '목', '금', '토'];
-          Object.entries(dailyTemps).slice(0, 6).forEach(([date, temps], index) => {
+          let dailyEntries = Object.entries(dailyTemps).slice(0, 6);
+          let globalMin = Infinity;
+          let globalMax = -Infinity;
+          dailyEntries.forEach(([, temps]) => {
+            globalMin = Math.min(globalMin, temps.temp_min - 273.15);
+            globalMax = Math.max(globalMax, temps.temp_max - 273.15);
+          });
+          let tempSpan = Math.max(1, globalMax - globalMin);
+
+          dailyEntries.forEach(([date, temps], index) => {
             let day = new Date(date + 'T00:00:00Z');
             let dayOfWeek = daysOfWeek[day.getUTCDay()];
+            let dayMin = temps.temp_min - 273.15;
+            let dayMax = temps.temp_max - 273.15;
+            let barLeft = ((dayMin - globalMin) / tempSpan) * 100;
+            let barWidth = Math.max(12, ((dayMax - dayMin) / tempSpan) * 100);
+            if (barLeft + barWidth > 100) {
+              barLeft = Math.max(0, 100 - barWidth);
+            }
 
-            $('.weather-wrap .forecast.daily .time' + index).find('.date .value').text(date.slice(-2));
-            $('.weather-wrap .forecast.daily .time' + index).find('.temp-min .value').text((temps.temp_min - 273.15).toFixed(0));
-            $('.weather-wrap .forecast.daily .time' + index).find('.temp-max .value').text((temps.temp_max - 273.15).toFixed(0));
-            $('.weather-wrap .forecast.daily .time' + index).find('.weather-img .icon').attr('src', './lib/images/weather/icon/' + temps.icon + '.svg');
-            $('.weather-wrap .forecast.daily .time' + index).find('.weather-img .icon').attr('data-stat', temps.icon);//아이콘 움직임
-            $('.weather-wrap .forecast.daily .time' + index).find('.date .tip.day').text('(' + dayOfWeek + ')');
+            let $row = $('.weather-wrap .forecast.daily .time' + index);
+            $row.find('.date .value').text(date.slice(-2));
+            $row.find('.temp-min .value').text(Math.round(dayMin));
+            $row.find('.temp-max .value').text(Math.round(dayMax));
+            $row.find('.temp-bar-fill').css({ left: barLeft.toFixed(1) + '%', width: barWidth.toFixed(1) + '%' });
+            $row.find('.weather-img .icon').attr('src', './lib/images/weather/icon/' + temps.icon + '.svg');
+            $row.find('.weather-img .icon').attr('data-stat', temps.icon);//아이콘 움직임
+            $row.find('.desc .value').text(temps.desc);
+            $row.find('.wind-speed .value').text(temps.wind_speed);
+            $row.find('.date .tip.day').text('(' + dayOfWeek + ')');
           });
         },
         error: function(xhr, status, err) {
@@ -1043,6 +1354,21 @@
       '인천': '.location[data-city="incheon"]'
     };
 
+    var MIMUN_STATE_LABELS = {
+      good: '좋음',
+      normal: '보통',
+      bad: '나쁨',
+      hell: '매우 나쁨'
+    };
+
+    function applyMimunState(state) {
+      if (!state) return;
+      $('.detail-grid .mimun').attr('data-state', state);
+      $('.detail-grid .mimun-meter').attr('data-state', state);
+      $('.today .hero-mimun .pill-dot').attr('data-state', state);
+      $('.weather-wrap .mimun-label').text(MIMUN_STATE_LABELS[state] || '확인중');
+    }
+
     function parseMimunGrade(text) {
       if (!text) return null;
       if (text.indexOf('매우 나쁨') !== -1) return 'hell';
@@ -1075,64 +1401,578 @@
             }
           }
 
-          //최초 로드 시 전국 미세먼지 지수 입력
-          var matchOverall = mimunVal.match(/‘([^’]*)’/);
-          var overallText = matchOverall ? matchOverall[1] : mimunVal;
-          var mimunState = parseMimunGrade(overallText);
-          if (mimunState) {
-            $('.today .mimun').attr('data-state', mimunState);
+          //선택된 지역의 미세먼지 등급 우선 적용 (없으면 전국 기준 fallback)
+          var selectedMimunState = selectedLocationSelector ? $(selectedLocationSelector).first().attr('data-mimun') : null;
+          if (selectedMimunState) {
+            applyMimunState(selectedMimunState);
+          } else {
+            var matchOverall = mimunVal.match(/‘([^’]*)’/);
+            var overallText = matchOverall ? matchOverall[1] : mimunVal;
+            var mimunState = parseMimunGrade(overallText);
+            if (mimunState) {
+              applyMimunState(mimunState);
+            }
           }
         },
         error: function(xhr, status, err) {
           console.error('미세먼지 데이터 조회 실패:', status, err);
         },
         complete: function() {
-          setTimeout(updateMimun, 3600000);//60분마다 실행
+          if (mimunTimerId) clearTimeout(mimunTimerId);
+          mimunTimerId = setTimeout(updateMimun, 3600000);//60분마다 실행
         }
       });
     };
     updateMimun();
 
-    //Drag to scroll
+    //태블릿 상시 거치 지원: 화면 꺼짐 방지 (Screen Wake Lock API) & 복귀/재연결 시 즉시 갱신
+    var wakeLockSentinel = null;
+    var requestWakeLock = function() {
+      if (!('wakeLock' in navigator) || !navigator.wakeLock || wakeLockSentinel) return;
+      navigator.wakeLock.request('screen').then(function(sentinel) {
+        wakeLockSentinel = sentinel;
+        sentinel.addEventListener('release', function() {
+          wakeLockSentinel = null;
+        });
+      }).catch(function() {
+        // 배터리 절약 모드나 브라우저 정책으로 거부된 경우 무시
+      });
+    };
+    requestWakeLock();
+    document.addEventListener('click', requestWakeLock, { passive: true });
+    document.addEventListener('touchstart', requestWakeLock, { passive: true });
+
+    document.addEventListener('visibilitychange', function() {
+      if (document.visibilityState === 'visible') {
+        $('.current-date').text(getTime('md'));
+        $('.current-time').text(getTime('hm'));
+        requestWakeLock();
+        if (Date.now() - lastForecastFetchedAt > 60000) {
+          updateForecast();
+        }
+      }
+    });
+
+    window.addEventListener('online', function() {
+      updateForecast();
+      updateMimun();
+    });
+
+    //Drag to scroll (관성 스크롤 및 마우스 휠 지원)
     var drag2scroll = function(target) {
       var ele = target.get(0);
+      if (!ele) return;
       ele.style.cursor = 'grab';
-      var pos = { top: 0, left: 0, x: 0, y: 0 };
-      var mouseDownHandler = function(e) {
-          ele.style.cursor = 'grabbing';
-          ele.style.userSelect = 'none';
-          pos = {
-              left: ele.scrollLeft,
-              top: ele.scrollTop,
-              // Get the current mouse position
-              x: e.clientX,
-              y: e.clientY,
-          };
 
-          document.addEventListener('mousemove', mouseMoveHandler);
-          document.addEventListener('mouseup', mouseUpHandler);
+      var isDown = false;
+      var startX = 0;
+      var scrollStart = 0;
+      var lastX = 0;
+      var lastTime = 0;
+      var velocity = 0;
+      var momentumId = null;
+
+      var stopMomentum = function() {
+        if (momentumId) {
+          cancelAnimationFrame(momentumId);
+          momentumId = null;
+        }
       };
+
+      var runMomentum = function() {
+        if (Math.abs(velocity) < 0.25) {
+          momentumId = null;
+          return;
+        }
+        ele.scrollLeft -= velocity;
+        velocity *= 0.94;
+        momentumId = requestAnimationFrame(runMomentum);
+      };
+
+      var mouseDownHandler = function(e) {
+        if (e.button !== 0) return;
+        stopMomentum();
+        isDown = true;
+        ele.style.cursor = 'grabbing';
+        startX = e.clientX;
+        lastX = e.clientX;
+        lastTime = performance.now();
+        scrollStart = ele.scrollLeft;
+        velocity = 0;
+
+        document.addEventListener('mousemove', mouseMoveHandler);
+        document.addEventListener('mouseup', mouseUpHandler);
+      };
+
       var mouseMoveHandler = function(e) {
-          // How far the mouse has been moved
-          var dx = e.clientX - pos.x;
-          var dy = e.clientY - pos.y;
-          // Scroll the element
-          ele.scrollTop = pos.top - dy;
-          ele.scrollLeft = pos.left - dx;
+        if (!isDown) return;
+        e.preventDefault();
+        var now = performance.now();
+        var dx = e.clientX - startX;
+        var dt = Math.max(1, now - lastTime);
+        var instantVel = ((e.clientX - lastX) / dt) * 16;
+
+        velocity = velocity * 0.65 + instantVel * 0.35;
+        ele.scrollLeft = scrollStart - dx;
+
+        lastX = e.clientX;
+        lastTime = now;
       };
+
       var mouseUpHandler = function() {
-          ele.style.cursor = 'grab';
-          ele.style.removeProperty('user-select');
-          document.removeEventListener('mousemove', mouseMoveHandler);
-          document.removeEventListener('mouseup', mouseUpHandler);
+        if (!isDown) return;
+        isDown = false;
+        ele.style.cursor = 'grab';
+        document.removeEventListener('mousemove', mouseMoveHandler);
+        document.removeEventListener('mouseup', mouseUpHandler);
+
+        if (performance.now() - lastTime < 80 && Math.abs(velocity) > 0.5) {
+          momentumId = requestAnimationFrame(runMomentum);
+        }
       };
-      // Attach the handler
+
       ele.addEventListener('mousedown', mouseDownHandler);
+      ele.addEventListener('touchstart', stopMomentum, { passive: true });
+      ele.addEventListener('wheel', function(e) {
+        if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+          e.preventDefault();
+          stopMomentum();
+          ele.scrollLeft += e.deltaY;
+        }
+      }, { passive: false });
     };
     $(function() {
-      //날씨 예보 스크롤
+      //시간별 날씨 예보 가로 드래그 스크롤
       drag2scroll($('.forecast.eachHour .scroll-wrap'));
-      drag2scroll($('.forecast.daily .scroll-wrap'));
+
+      //간단한 토스트 알림
+      var toastTimer = null;
+      function showToast(msg) {
+        var $toast = $('.app-toast');
+        $toast.text(msg).addClass('is-visible');
+        if (toastTimer) clearTimeout(toastTimer);
+        toastTimer = setTimeout(function() {
+          $toast.removeClass('is-visible');
+        }, 2600);
+      }
+
+      //1. 전체화면 토글
+      var $btnFullscreen = $('.btn-fullscreen');
+      function isFullscreenActive() {
+        return !!(document.fullscreenElement || document.webkitFullscreenElement);
+      }
+      function syncFullscreenUI() {
+        var active = isFullscreenActive();
+        $btnFullscreen.toggleClass('is-active', active);
+        $btnFullscreen.find('.label').text(active ? '전체화면 종료' : '전체화면');
+      }
+      $btnFullscreen.on('click', function() {
+        var docEl = document.documentElement;
+        if (!isFullscreenActive()) {
+          var req = docEl.requestFullscreen || docEl.webkitRequestFullscreen;
+          if (req) {
+            Promise.resolve(req.call(docEl)).catch(function() {
+              showToast('이 브라우저에서는 홈 화면 추가 시 전체화면으로 사용할 수 있습니다.');
+            });
+          } else {
+            showToast('이 브라우저에서는 홈 화면 추가 시 전체화면으로 사용할 수 있습니다.');
+          }
+        } else {
+          var exit = document.exitFullscreen || document.webkitExitFullscreen;
+          if (exit) exit.call(document);
+        }
+      });
+      document.addEventListener('fullscreenchange', syncFullscreenUI);
+      document.addEventListener('webkitfullscreenchange', syncFullscreenUI);
+      syncFullscreenUI();
+
+      //2. 플로팅 스탑워치 / 타이머 미니 앱
+      var $floating = $('#floating-clock-app');
+      var $btnClockTool = $('.btn-clock-tool');
+      var $miniTime = $floating.find('.floating-mini-time');
+      var activeTab = 'stopwatch';
+      var currentScale = 1;
+      var MIN_SCALE = 0.75;
+      var MAX_SCALE = 1.8;
+
+      function clampFloatingPosition(left, top, scale) {
+        var s = typeof scale === 'number' ? scale : currentScale;
+        var rectW = $floating.outerWidth() * s;
+        var rectH = $floating.outerHeight() * s;
+        var maxLeft = Math.max(8, window.innerWidth - rectW - 8);
+        var maxTop = Math.max(8, window.innerHeight - rectH - 8);
+        return {
+          left: Math.min(Math.max(8, left), maxLeft),
+          top: Math.min(Math.max(8, top), maxTop)
+        };
+      }
+
+      function applyFloatingTransform(scale) {
+        currentScale = Math.min(MAX_SCALE, Math.max(MIN_SCALE, scale));
+        $floating.css('transform', 'scale(' + currentScale.toFixed(3) + ')');
+        var curLeft = parseFloat($floating.css('left')) || 20;
+        var curTop = parseFloat($floating.css('top')) || 84;
+        var clamped = clampFloatingPosition(curLeft, curTop, currentScale);
+        $floating.css({ left: clamped.left + 'px', top: clamped.top + 'px' });
+      }
+
+      $btnClockTool.on('click', function() {
+        var willOpen = !$floating.hasClass('is-open');
+        $floating.toggleClass('is-open', willOpen);
+        $btnClockTool.toggleClass('is-active', willOpen);
+        if (willOpen) {
+          var initLeft = Math.max(12, Math.round((window.innerWidth - $floating.outerWidth() * currentScale) / 2));
+          var initTop = Math.max(64, Math.min(110, window.innerHeight - $floating.outerHeight() * currentScale - 24));
+          var pos = clampFloatingPosition(initLeft, initTop, currentScale);
+          $floating.css({ left: pos.left + 'px', top: pos.top + 'px' });
+        }
+      });
+
+      $floating.find('.btn-clock-close').on('click', function(e) {
+        e.stopPropagation();
+        $floating.removeClass('is-open');
+        $btnClockTool.removeClass('is-active');
+      });
+
+      $floating.find('.btn-clock-min').on('click', function(e) {
+        e.stopPropagation();
+        var minimized = !$floating.hasClass('is-minimized');
+        $floating.toggleClass('is-minimized', minimized);
+        $(this).text(minimized ? '+' : '−').attr('title', minimized ? '펼치기' : '최소화');
+        applyFloatingTransform(currentScale);
+      });
+
+      // 탭 전환
+      $floating.find('.tab-btn').on('click', function() {
+        activeTab = $(this).data('tab');
+        $floating.find('.tab-btn').removeClass('is-active').attr('aria-selected', 'false');
+        $(this).addClass('is-active').attr('aria-selected', 'true');
+        $floating.find('.clock-panel').removeClass('is-active');
+        $floating.find('.panel-' + activeTab).addClass('is-active');
+        syncMiniTime();
+      });
+
+      // 드래그 이동 (마우스 & 터치)
+      (function initFloatingDrag() {
+        var dragEl = $floating.get(0);
+        if (!dragEl) return;
+        var dragging = false;
+        var startX = 0, startY = 0, origLeft = 0, origTop = 0;
+
+        function getPoint(e) {
+          if (e.touches && e.touches.length) return { x: e.touches[0].clientX, y: e.touches[0].clientY };
+          return { x: e.clientX, y: e.clientY };
+        }
+
+        function onStart(e) {
+          if ($(e.target).closest('button, input, .floating-resize-handle, .lap-list').length) return;
+          dragging = true;
+          var pt = getPoint(e);
+          startX = pt.x;
+          startY = pt.y;
+          origLeft = parseFloat($floating.css('left')) || 20;
+          origTop = parseFloat($floating.css('top')) || 84;
+          document.addEventListener('mousemove', onMove);
+          document.addEventListener('mouseup', onEnd);
+          document.addEventListener('touchmove', onMove, { passive: false });
+          document.addEventListener('touchend', onEnd);
+        }
+
+        function onMove(e) {
+          if (!dragging) return;
+          if (e.cancelable) e.preventDefault();
+          var pt = getPoint(e);
+          var pos = clampFloatingPosition(origLeft + (pt.x - startX), origTop + (pt.y - startY), currentScale);
+          $floating.css({ left: pos.left + 'px', top: pos.top + 'px' });
+        }
+
+        function onEnd() {
+          dragging = false;
+          document.removeEventListener('mousemove', onMove);
+          document.removeEventListener('mouseup', onEnd);
+          document.removeEventListener('touchmove', onMove);
+          document.removeEventListener('touchend', onEnd);
+        }
+
+        dragEl.addEventListener('mousedown', onStart);
+        dragEl.addEventListener('touchstart', onStart, { passive: true });
+      })();
+
+      // 우측 하단 리사이즈 핸들 (Scale 조절, 마우스 & 터치 + 더블클릭/탭 초기화)
+      (function initFloatingResize() {
+        var handleEl = $floating.find('.floating-resize-handle').get(0);
+        if (!handleEl) return;
+        var resizing = false;
+        var startX = 0, startY = 0, startScale = 1, baseW = 304, baseH = 260;
+        var lastTapTime = 0;
+
+        function getPoint(e) {
+          if (e.touches && e.touches.length) return { x: e.touches[0].clientX, y: e.touches[0].clientY };
+          return { x: e.clientX, y: e.clientY };
+        }
+
+        function onStart(e) {
+          if (e.cancelable) e.preventDefault();
+          e.stopPropagation();
+
+          // 터치 더블탭으로 기본 크기 복원
+          if (e.type === 'touchstart') {
+            var now = Date.now();
+            if (now - lastTapTime < 300) {
+              applyFloatingTransform(1);
+              lastTapTime = 0;
+              return;
+            }
+            lastTapTime = now;
+          }
+
+          resizing = true;
+          var pt = getPoint(e);
+          startX = pt.x;
+          startY = pt.y;
+          startScale = currentScale;
+          baseW = $floating.outerWidth() || 304;
+          baseH = $floating.outerHeight() || 260;
+
+          document.addEventListener('mousemove', onMove);
+          document.addEventListener('mouseup', onEnd);
+          document.addEventListener('touchmove', onMove, { passive: false });
+          document.addEventListener('touchend', onEnd);
+        }
+
+        function onMove(e) {
+          if (!resizing) return;
+          if (e.cancelable) e.preventDefault();
+          var pt = getPoint(e);
+          var dx = pt.x - startX;
+          var dy = pt.y - startY;
+          var scaleByX = (baseW * startScale + dx) / baseW;
+          var scaleByY = (baseH * startScale + dy) / baseH;
+          var nextScale = (scaleByX + scaleByY) / 2;
+          var maxFitW = (window.innerWidth - 16) / baseW;
+          var maxFitH = (window.innerHeight - 16) / baseH;
+          var dynamicMax = Math.min(MAX_SCALE, maxFitW, maxFitH);
+          applyFloatingTransform(Math.min(dynamicMax, Math.max(MIN_SCALE, nextScale)));
+        }
+
+        function onEnd() {
+          resizing = false;
+          document.removeEventListener('mousemove', onMove);
+          document.removeEventListener('mouseup', onEnd);
+          document.removeEventListener('touchmove', onMove);
+          document.removeEventListener('touchend', onEnd);
+        }
+
+        handleEl.addEventListener('mousedown', onStart);
+        handleEl.addEventListener('touchstart', onStart, { passive: false });
+        handleEl.addEventListener('dblclick', function(e) {
+          e.stopPropagation();
+          applyFloatingTransform(1);
+        });
+      })();
+
+      window.addEventListener('resize', function() {
+        if ($floating.hasClass('is-open')) {
+          applyFloatingTransform(currentScale);
+        }
+      });
+
+      // 스탑워치 로직
+      var swRunning = false;
+      var swStartPerf = 0;
+      var swElapsed = 0;
+      var swRafId = null;
+      var swLapCount = 0;
+
+      function formatStopwatch(ms) {
+        var totalCs = Math.floor(ms / 10);
+        var cs = totalCs % 100;
+        var totalSec = Math.floor(totalCs / 100);
+        var sec = totalSec % 60;
+        var totalMin = Math.floor(totalSec / 60);
+        var min = totalMin % 60;
+        var hr = Math.floor(totalMin / 60);
+        var pad = function(n) { return (n < 10 ? '0' : '') + n; };
+        return (hr > 0 ? pad(hr) + ':' : '') + pad(min) + ':' + pad(sec) + '.' + pad(cs);
+      }
+
+      function renderStopwatch() {
+        var nowElapsed = swRunning ? swElapsed + (performance.now() - swStartPerf) : swElapsed;
+        var txt = formatStopwatch(nowElapsed);
+        $floating.find('.sw-display').text(txt);
+        if (activeTab === 'stopwatch') $miniTime.text(txt);
+        if (swRunning) {
+          swRafId = requestAnimationFrame(renderStopwatch);
+        }
+      }
+
+      $floating.find('.sw-start').on('click', function() {
+        if (!swRunning) {
+          swRunning = true;
+          swStartPerf = performance.now();
+          $(this).text('일시정지').addClass('is-running');
+          swRafId = requestAnimationFrame(renderStopwatch);
+        } else {
+          swRunning = false;
+          swElapsed += performance.now() - swStartPerf;
+          if (swRafId) cancelAnimationFrame(swRafId);
+          $(this).text('계속').removeClass('is-running');
+          renderStopwatch();
+        }
+      });
+
+      $floating.find('.sw-lap').on('click', function() {
+        var nowElapsed = swRunning ? swElapsed + (performance.now() - swStartPerf) : swElapsed;
+        if (nowElapsed <= 0) return;
+        swLapCount += 1;
+        $floating.find('.sw-laps').prepend('<li><span>랩 ' + swLapCount + '</span><span>' + formatStopwatch(nowElapsed) + '</span></li>');
+      });
+
+      $floating.find('.sw-reset').on('click', function() {
+        swRunning = false;
+        swElapsed = 0;
+        swLapCount = 0;
+        if (swRafId) cancelAnimationFrame(swRafId);
+        $floating.find('.sw-start').text('시작').removeClass('is-running');
+        $floating.find('.sw-laps').empty();
+        renderStopwatch();
+      });
+
+      // 타이머 로직 (Web Audio API 종료 알림음 포함)
+      var tmTotalMs = 300000;
+      var tmRemainingMs = 300000;
+      var tmRunning = false;
+      var tmEndPerf = 0;
+      var tmRafId = null;
+      var audioCtx = null;
+
+      function playTimerAlarm() {
+        try {
+          var AudioContextClass = window.AudioContext || window.webkitAudioContext;
+          if (!AudioContextClass) return;
+          if (!audioCtx) audioCtx = new AudioContextClass();
+          if (audioCtx.state === 'suspended') audioCtx.resume();
+          [0, 0.28, 0.56].forEach(function(delay) {
+            var osc = audioCtx.createOscillator();
+            var gain = audioCtx.createGain();
+            osc.type = 'sine';
+            osc.frequency.value = 880;
+            gain.gain.setValueAtTime(0.001, audioCtx.currentTime + delay);
+            gain.gain.exponentialRampToValueAtTime(0.22, audioCtx.currentTime + delay + 0.02);
+            gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + delay + 0.22);
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            osc.start(audioCtx.currentTime + delay);
+            osc.stop(audioCtx.currentTime + delay + 0.23);
+          });
+        } catch (err) {
+          // 오디오 재생 불가 환경 무시
+        }
+      }
+
+      function formatTimer(ms) {
+        var totalSec = Math.ceil(Math.max(0, ms) / 1000);
+        var hr = Math.floor(totalSec / 3600);
+        var min = Math.floor((totalSec % 3600) / 60);
+        var sec = totalSec % 60;
+        var pad = function(n) { return (n < 10 ? '0' : '') + n; };
+        return (hr > 0 ? pad(hr) + ':' : '') + pad(min) + ':' + pad(sec);
+      }
+
+      function setTimerSeconds(totalSec) {
+        tmRunning = false;
+        if (tmRafId) cancelAnimationFrame(tmRafId);
+        tmTotalMs = Math.max(1, totalSec) * 1000;
+        tmRemainingMs = tmTotalMs;
+        $floating.find('.tm-min').val(Math.floor(totalSec / 60));
+        $floating.find('.tm-sec').val(totalSec % 60);
+        $floating.find('.tm-start').text('시작').removeClass('is-running');
+        $floating.find('.tm-display').removeClass('is-done');
+        renderTimer();
+      }
+
+      function renderTimer() {
+        var rem = tmRunning ? Math.max(0, tmEndPerf - performance.now()) : tmRemainingMs;
+        var txt = formatTimer(rem);
+        var pct = tmTotalMs > 0 ? (rem / tmTotalMs) * 100 : 0;
+        $floating.find('.tm-display').text(txt);
+        $floating.find('.tm-progress').css('width', pct.toFixed(1) + '%');
+        if (activeTab === 'timer') $miniTime.text(txt);
+
+        if (tmRunning) {
+          if (rem <= 0) {
+            tmRunning = false;
+            tmRemainingMs = 0;
+            $floating.find('.tm-start').text('시작').removeClass('is-running');
+            $floating.find('.tm-display').addClass('is-done');
+            playTimerAlarm();
+            showToast('타이머가 완료되었습니다.');
+            return;
+          }
+          tmRafId = requestAnimationFrame(renderTimer);
+        }
+      }
+
+      function syncMiniTime() {
+        if (activeTab === 'stopwatch') {
+          $miniTime.text($floating.find('.sw-display').text());
+        } else {
+          $miniTime.text($floating.find('.tm-display').text());
+        }
+      }
+
+      $floating.find('.preset-btn').on('click', function() {
+        setTimerSeconds(parseInt($(this).data('sec'), 10) || 60);
+      });
+
+      $floating.find('.tm-min, .tm-sec').on('change input', function() {
+        if (tmRunning) return;
+        var m = Math.max(0, parseInt($floating.find('.tm-min').val(), 10) || 0);
+        var s = Math.min(59, Math.max(0, parseInt($floating.find('.tm-sec').val(), 10) || 0));
+        var total = m * 60 + s;
+        if (total > 0) {
+          tmTotalMs = total * 1000;
+          tmRemainingMs = tmTotalMs;
+          $floating.find('.tm-display').removeClass('is-done');
+          renderTimer();
+        }
+      });
+
+      $floating.find('.tm-start').on('click', function() {
+        // 사용자 클릭 시 오디오 컨텍스트 미리 활성화
+        try {
+          var AudioContextClass = window.AudioContext || window.webkitAudioContext;
+          if (AudioContextClass && !audioCtx) audioCtx = new AudioContextClass();
+          if (audioCtx && audioCtx.state === 'suspended') audioCtx.resume();
+        } catch (err) {}
+
+        if (!tmRunning) {
+          if (tmRemainingMs <= 0) {
+            var m = Math.max(0, parseInt($floating.find('.tm-min').val(), 10) || 0);
+            var s = Math.min(59, Math.max(0, parseInt($floating.find('.tm-sec').val(), 10) || 0));
+            if (m * 60 + s <= 0) return;
+            tmTotalMs = (m * 60 + s) * 1000;
+            tmRemainingMs = tmTotalMs;
+          }
+          tmRunning = true;
+          tmEndPerf = performance.now() + tmRemainingMs;
+          $floating.find('.tm-display').removeClass('is-done');
+          $(this).text('일시정지').addClass('is-running');
+          tmRafId = requestAnimationFrame(renderTimer);
+        } else {
+          tmRunning = false;
+          tmRemainingMs = Math.max(0, tmEndPerf - performance.now());
+          if (tmRafId) cancelAnimationFrame(tmRafId);
+          $(this).text('계속').removeClass('is-running');
+          renderTimer();
+        }
+      });
+
+      $floating.find('.tm-reset').on('click', function() {
+        var m = Math.max(0, parseInt($floating.find('.tm-min').val(), 10) || 0);
+        var s = Math.min(59, Math.max(0, parseInt($floating.find('.tm-sec').val(), 10) || 0));
+        setTimerSeconds(m * 60 + s || 300);
+      });
     });
 
     $(function() {
