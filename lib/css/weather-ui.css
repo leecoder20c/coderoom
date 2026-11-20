@@ -1,0 +1,1545 @@
+@charset "utf-8";
+
+/* ==========================================================================
+   Good Weather — Apple & Samsung Weather Inspired Glassmorphism UI
+   ========================================================================== */
+
+:root {
+  --glass-bg: rgba(255, 255, 255, 0.12);
+  --glass-bg-strong: rgba(255, 255, 255, 0.18);
+  --glass-border: rgba(255, 255, 255, 0.18);
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.74);
+  --text-muted: rgba(255, 255, 255, 0.52);
+  --modal-bg: rgba(16, 22, 38, 0.94);
+  --radius-card: 22px;
+  --radius-pill: 999px;
+}
+
+.weather-app,
+.weather-app body {
+  min-height: 100%;
+  min-height: 100dvh;
+  background: #10172a;
+  color: var(--text-primary);
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Apple SD Gothic Neo", "Lato", "Nanum Gothic", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Full-bleed Dynamic Weather Background */
+.weather-app .weather-bg-layer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+  background-color: #16223d;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  transition: background-image 0.6s ease;
+  transform: translateZ(0);
+}
+
+.weather-app .weather-bg-layer::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(11, 18, 36, 0.42) 0%,
+    rgba(13, 21, 42, 0.52) 45%,
+    rgba(9, 14, 28, 0.84) 100%
+  );
+}
+
+/* Main Container */
+.weather-app .weather-wrap {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 680px;
+  min-height: 100dvh;
+  padding: calc(14px + env(safe-area-inset-top)) 16px calc(36px + env(safe-area-inset-bottom));
+  margin: 0 auto;
+}
+
+/* Header */
+.weather-app .header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 6px 0 12px;
+  line-height: 1.2;
+  font-size: 14px;
+}
+
+.weather-app .header::after {
+  display: none;
+}
+
+.weather-app .header .title {
+  display: none;
+}
+
+.weather-app .header .util {
+  float: none;
+  display: flex;
+  align-items: center;
+  min-width: 0;
+}
+
+.weather-app .header .util .city {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: auto;
+  padding: 8px 14px;
+  margin-top: 0;
+  border-radius: var(--radius-pill);
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  text-align: left;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 240px;
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.weather-app .header .util .city:active {
+  transform: scale(0.97);
+  background: var(--glass-bg-strong);
+}
+
+.weather-app .header .util .city::before {
+  content: "";
+  display: inline-block;
+  flex-shrink: 0;
+  width: 15px;
+  height: 15px;
+  background: url("../images/weather/icon/location.svg") no-repeat center/contain;
+  opacity: 0.9;
+}
+
+.weather-app .header .header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.weather-app .header .refresh {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border-radius: var(--radius-pill);
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  text-decoration: none;
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--text-secondary);
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.weather-app .header .refresh:active {
+  transform: scale(0.96);
+  background: var(--glass-bg-strong);
+}
+
+.weather-app .header .refresh .icon {
+  display: inline-block;
+  width: 13px;
+  height: 13px;
+  background: url("../images/weather/icon/refresh.svg") no-repeat center/contain;
+  opacity: 0.9;
+}
+
+/* Hero Section (Today) */
+.weather-app .content .today {
+  position: relative;
+  width: 100%;
+  height: auto;
+  padding: 18px 8px 28px;
+  border-radius: 0;
+  overflow: visible;
+  text-align: center;
+}
+
+.weather-app .content .today .bg {
+  display: none;
+}
+
+.weather-app .content .today .current-group {
+  position: static;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 0 0 8px;
+}
+
+.weather-app .content .today .current-group .current-date,
+.weather-app .content .today .current-group .current-time {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  text-align: center;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.35);
+  color: var(--text-secondary);
+}
+
+.weather-app .content .today .hero-main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 4px 0 8px;
+}
+
+.weather-app .content .today .weather {
+  position: relative;
+  top: auto;
+  left: auto;
+  width: 72px;
+  height: 72px;
+  transform: none;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.weather-app .content .today .weather .icon {
+  position: relative;
+  top: auto;
+  left: auto;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  -webkit-filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3));
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3));
+}
+
+.weather-app .content .today .temperature {
+  position: static;
+  display: inline-flex;
+  align-items: flex-start;
+  justify-content: center;
+  height: auto;
+  padding: 0;
+  font-size: 88px;
+  font-weight: 200;
+  letter-spacing: -0.05em;
+  line-height: 0.95;
+  text-shadow: 0 4px 18px rgba(0, 0, 0, 0.28);
+  color: var(--text-primary);
+}
+
+.weather-app .content .today .temperature .unit {
+  padding-bottom: 0;
+  margin-top: 8px;
+  margin-left: 2px;
+  font-size: 32px;
+  font-weight: 300;
+}
+
+.weather-app .content .today .desc {
+  position: static;
+  display: block;
+  margin: 6px 0 10px;
+  font-size: 19px;
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+  color: var(--text-primary);
+}
+
+.weather-app .content .today .hero-sub {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px 14px;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.3);
+}
+
+.weather-app .content .today .temp-minmax {
+  position: static;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.weather-app .content .today .temp-minmax .temp-min,
+.weather-app .content .today .temp-minmax .temp-max {
+  margin: 0;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  text-shadow: none;
+}
+
+.weather-app .content .today .temp-minmax .temp-min {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.weather-app .content .today .temp-minmax .unit {
+  display: inline;
+  transform: none;
+  font-size: 15px;
+}
+
+.weather-app .content .today .feels-like {
+  position: static;
+  display: inline-flex;
+  align-items: center;
+  padding: 0;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--text-secondary);
+  transform: none;
+  text-shadow: none;
+}
+
+.weather-app .content .today .feels-like .label {
+  margin-right: 4px;
+}
+
+.weather-app .content .today .feels-like .unit {
+  padding-bottom: 0;
+  margin-left: 0;
+  font-size: 15px;
+}
+
+/* Hero Air Quality & Humidity Pills */
+.weather-app .content .today .hero-pills {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.weather-app .content .today .hero-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 13px;
+  border-radius: var(--radius-pill);
+  background: var(--glass-bg);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.14);
+  font-size: 13px;
+  line-height: 1.2;
+}
+
+.weather-app .content .today .hero-pill .pill-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  flex-shrink: 0;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.weather-app .content .today .hero-pill .pill-dot[data-state=good] {
+  background: #38bdf8;
+  box-shadow: 0 0 8px rgba(56, 189, 248, 0.75);
+}
+
+.weather-app .content .today .hero-pill .pill-dot[data-state=normal] {
+  background: #34d399;
+  box-shadow: 0 0 8px rgba(52, 211, 153, 0.75);
+}
+
+.weather-app .content .today .hero-pill .pill-dot[data-state=bad] {
+  background: #fbbf24;
+  box-shadow: 0 0 8px rgba(251, 191, 36, 0.75);
+}
+
+.weather-app .content .today .hero-pill .pill-dot[data-state=hell] {
+  background: #f87171;
+  box-shadow: 0 0 8px rgba(248, 113, 113, 0.75);
+}
+
+.weather-app .content .today .hero-pill .pill-icon {
+  color: #7dd3fc;
+  flex-shrink: 0;
+}
+
+.weather-app .content .today .hero-pill .pill-label {
+  color: var(--text-secondary);
+  font-weight: 400;
+}
+
+.weather-app .content .today .hero-pill .pill-val {
+  color: var(--text-primary);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+/* Glass Card Common */
+.weather-app .content .glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-card);
+  padding: 16px;
+  margin-bottom: 14px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.16);
+}
+
+.weather-app .content .forecast h3.tit,
+.weather-app .content .detail-card .card-tit {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: 0.02em;
+  text-align: left;
+  color: var(--text-secondary);
+  padding-bottom: 11px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* Hourly Forecast (Apple Weather Horizontal Strip) */
+.weather-app .content .forecast.eachHour {
+  margin: 0 0 14px;
+}
+
+.weather-app .content .forecast.eachHour .scroll-wrap {
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-x;
+  overscroll-behavior-x: contain;
+  user-select: none;
+  -webkit-user-select: none;
+  padding-bottom: 2px;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 14px, #000 calc(100% - 14px), transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0%, #000 14px, #000 calc(100% - 14px), transparent 100%);
+}
+
+.weather-app .content .forecast.eachHour .scroll-wrap .scroll-inner {
+  display: flex;
+  gap: 6px;
+  width: max-content;
+  padding: 0 6px;
+}
+
+.weather-app .content .forecast.eachHour .time {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 66px;
+  padding: 10px 6px;
+  border-radius: 16px;
+  background: transparent;
+  transition: background 0.2s ease;
+}
+
+.weather-app .content .forecast.eachHour .time.time1 {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.weather-app .content .forecast.eachHour .date {
+  order: 1;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+}
+
+.weather-app .content .forecast.eachHour .weather-img {
+  order: 2;
+  position: relative;
+  width: 36px;
+  height: 36px;
+  margin: 2px 0 8px;
+}
+
+.weather-app .content .forecast.eachHour .weather-img img {
+  position: static;
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  margin: 2px auto;
+}
+
+.weather-app .content .forecast.eachHour .temperature {
+  order: 3;
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  text-indent: 0;
+  color: var(--text-primary);
+}
+
+.weather-app .content .forecast.eachHour .temperature .unit {
+  text-indent: 0;
+  transform: none;
+  font-size: 14px;
+  font-weight: 400;
+  margin-left: 1px;
+}
+
+/* Daily Forecast (Apple & Samsung Vertical Rows + Temperature Range Bar) */
+.weather-app .content .forecast.daily {
+  margin: 0 0 14px;
+  text-align: left;
+}
+
+.weather-app .content .forecast.daily .scroll-wrap {
+  overflow: visible;
+}
+
+.weather-app .content .forecast.daily .scroll-wrap .scroll-inner {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: none;
+}
+
+.weather-app .content .forecast.daily .time {
+  position: static;
+  display: grid;
+  grid-template-columns: 76px 38px 34px 1fr 34px;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  min-width: 0;
+  height: auto;
+  padding: 11px 2px;
+  border-right: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.weather-app .content .forecast.daily .time:last-child {
+  border-bottom: none;
+  padding-bottom: 2px;
+}
+
+.weather-app .content .forecast.daily .date {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+
+.weather-app .content .forecast.daily .date .tip {
+  margin-left: 3px;
+  font-weight: 400;
+  color: var(--text-secondary);
+}
+
+.weather-app .content .forecast.daily .weather-img {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  margin: 0 auto;
+}
+
+.weather-app .content .forecast.daily .weather-img img {
+  position: static;
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  margin: 2px auto;
+}
+
+.weather-app .content .forecast.daily .temperature {
+  display: contents;
+}
+
+.weather-app .content .forecast.daily .temperature .temp-min {
+  grid-column: 3;
+  text-align: right;
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.weather-app .content .forecast.daily .temp-bar-wrap {
+  grid-column: 4;
+  display: flex;
+  align-items: center;
+  padding: 0 4px;
+}
+
+.weather-app .content .forecast.daily .temp-bar-track {
+  position: relative;
+  width: 100%;
+  height: 5px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.16);
+  overflow: hidden;
+}
+
+.weather-app .content .forecast.daily .temp-bar-fill {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 15%;
+  width: 70%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #56ccf2 0%, #6ee7b7 45%, #fbbf24 78%, #fb7185 100%);
+  transition: left 0.4s ease, width 0.4s ease;
+}
+
+.weather-app .content .forecast.daily .temperature .temp-max {
+  grid-column: 5;
+  text-align: left;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.weather-app .content .forecast.daily .temperature .unit {
+  text-indent: 0;
+  transform: none;
+  font-size: 13px;
+}
+
+/* Detail Widget Grid (2x2 Samsung & Apple Style) */
+.weather-app .content .detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.weather-app .content .detail-card {
+  margin-bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 132px;
+}
+
+.weather-app .content .detail-card .card-tit {
+  padding-bottom: 8px;
+  margin-bottom: 10px;
+}
+
+.weather-app .content .detail-card .card-main {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.weather-app .content .detail-card .big-val {
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  color: var(--text-primary);
+}
+
+.weather-app .content .detail-card .big-unit {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--text-secondary);
+  margin-left: 2px;
+}
+
+.weather-app .content .detail-card .card-sub {
+  margin-top: 8px;
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--text-secondary);
+}
+
+/* Air Quality (Mimun) Card */
+.weather-app .content .detail-card .mimun-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.weather-app .content .detail-card .mimun {
+  display: inline-block;
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  margin-left: 0;
+  background: url("../images/weather/icon/mimun.svg") no-repeat center/contain;
+}
+
+.weather-app .content .detail-card .mimun[data-state=good] {
+  background: url("../images/weather/icon/mimun-good.svg") no-repeat center/contain;
+}
+
+.weather-app .content .detail-card .mimun[data-state=normal] {
+  background: url("../images/weather/icon/mimun-normal.svg") no-repeat center/contain;
+}
+
+.weather-app .content .detail-card .mimun[data-state=bad] {
+  background: url("../images/weather/icon/mimun-bad.svg") no-repeat center/contain;
+}
+
+.weather-app .content .detail-card .mimun[data-state=hell] {
+  background: url("../images/weather/icon/mimun-hell.svg") no-repeat center/contain;
+}
+
+.weather-app .content .detail-card .mimun-label {
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.weather-app .content .detail-card .meter-bar {
+  position: relative;
+  width: 100%;
+  height: 6px;
+  margin-top: 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.16);
+  overflow: hidden;
+}
+
+.weather-app .content .detail-card .meter-fill {
+  height: 100%;
+  width: 0%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #38bdf8, #818cf8);
+  transition: width 0.4s ease, background 0.4s ease;
+}
+
+.weather-app .content .detail-card .meter-fill[data-state=good] {
+  width: 25%;
+  background: #38bdf8;
+}
+
+.weather-app .content .detail-card .meter-fill[data-state=normal] {
+  width: 50%;
+  background: #34d399;
+}
+
+.weather-app .content .detail-card .meter-fill[data-state=bad] {
+  width: 78%;
+  background: #fbbf24;
+}
+
+.weather-app .content .detail-card .meter-fill[data-state=hell] {
+  width: 100%;
+  background: #f87171;
+}
+
+/* Humidity Card */
+.weather-app .content .detail-card .humidity-inline {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.weather-app .content .detail-card .humidity-drop {
+  position: relative;
+  width: 22px;
+  height: 26px;
+  flex-shrink: 0;
+}
+
+.weather-app .content .detail-card .humidity-drop .icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 25px;
+}
+
+.weather-app .content .detail-card .humidity-drop .icon svg {
+  width: 20px;
+  height: 25px;
+}
+
+/* Footer Notice */
+.weather-app .content .footer-notice {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 4px 4px;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: center;
+  color: var(--text-muted);
+  opacity: 1;
+}
+
+.weather-app .content .footer-notice .info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+}
+
+.weather-app .content .footer-notice .info .btn-guide,
+.weather-app .content .footer-notice .info .btn-private,
+.weather-app .content .footer-notice .info .btn-fullscreen,
+.weather-app .content .footer-notice .info .btn-clock-tool {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 7px 12px;
+  border-radius: var(--radius-pill);
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  opacity: 1;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.15s ease;
+}
+
+.weather-app .content .footer-notice .info .btn-fullscreen:active,
+.weather-app .content .footer-notice .info .btn-clock-tool:active,
+.weather-app .content .footer-notice .info .btn-guide:active,
+.weather-app .content .footer-notice .info .btn-private:active {
+  transform: scale(0.96);
+  background: var(--glass-bg-strong);
+}
+
+.weather-app .content .footer-notice .info .btn-fullscreen.is-active,
+.weather-app .content .footer-notice .info .btn-clock-tool.is-active {
+  background: rgba(56, 189, 248, 0.24);
+  border-color: rgba(56, 189, 248, 0.55);
+  color: #ffffff;
+}
+
+.weather-app .content .footer-notice .info .btn-fullscreen .icon-exit {
+  display: none;
+}
+
+.weather-app .content .footer-notice .info .btn-fullscreen.is-active .icon-enter {
+  display: none;
+}
+
+.weather-app .content .footer-notice .info .btn-fullscreen.is-active .icon-exit {
+  display: inline-block;
+}
+
+/* ==========================================================================
+   Floating Draggable & Scalable Stopwatch / Timer Mini App
+   ========================================================================== */
+.weather-app .floating-clock-app {
+  display: none;
+  position: fixed;
+  top: 84px;
+  left: 20px;
+  z-index: 900;
+  width: 304px;
+  border-radius: 22px;
+  background: rgba(16, 22, 38, 0.9);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.48);
+  color: var(--text-primary);
+  transform-origin: top left;
+  user-select: none;
+  -webkit-user-select: none;
+  overflow: hidden;
+}
+
+.weather-app .floating-clock-app.is-open {
+  display: block;
+}
+
+.weather-app .floating-clock-app .floating-body {
+  padding: 18px 16px 20px;
+}
+
+.weather-app .floating-clock-app .floating-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 14px;
+  cursor: grab;
+  touch-action: none;
+}
+
+.weather-app .floating-clock-app .floating-topbar:active {
+  cursor: grabbing;
+}
+
+.weather-app .floating-clock-app .drag-grip {
+  display: inline-flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  gap: 2px;
+  opacity: 0.55;
+}
+
+.weather-app .floating-clock-app .drag-grip i {
+  display: block;
+  width: 12px;
+  height: 1.5px;
+  border-radius: 2px;
+  background: #ffffff;
+}
+
+.weather-app .floating-clock-app .floating-mini-time {
+  display: none;
+  flex: 1;
+  font-size: 13px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  color: #38bdf8;
+  margin-left: 2px;
+}
+
+.weather-app .floating-clock-app.is-minimized {
+  width: -webkit-fit-content;
+  width: fit-content;
+  min-width: 190px;
+}
+
+.weather-app .floating-clock-app.is-minimized .floating-body {
+  padding: 10px 12px 10px 14px;
+}
+
+.weather-app .floating-clock-app.is-minimized .floating-topbar {
+  margin-bottom: 0;
+}
+
+.weather-app .floating-clock-app.is-minimized .floating-mini-time {
+  display: inline-block;
+}
+
+.weather-app .floating-clock-app.is-minimized .floating-tabs,
+.weather-app .floating-clock-app.is-minimized .clock-panel,
+.weather-app .floating-clock-app.is-minimized .clock-panel.is-active,
+.weather-app .floating-clock-app.is-minimized .floating-resize-handle {
+  display: none;
+}
+
+.weather-app .floating-clock-app .floating-win-btns {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  gap: 6px;
+}
+
+.weather-app .floating-clock-app .win-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  font-size: 14px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.weather-app .floating-clock-app .win-btn:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.weather-app .floating-clock-app .floating-tabs {
+  flex: 1;
+  min-width: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+  padding: 3px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.weather-app .floating-clock-app .tab-btn {
+  padding: 7px 0;
+  border: none;
+  border-radius: 9px;
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.weather-app .floating-clock-app .tab-btn.is-active {
+  background: rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+}
+
+.weather-app .floating-clock-app .clock-panel {
+  display: none;
+}
+
+.weather-app .floating-clock-app .clock-panel.is-active {
+  display: block;
+}
+
+.weather-app .floating-clock-app .clock-display {
+  text-align: center;
+  font-size: 40px;
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  font-variant-numeric: tabular-nums;
+  margin: 6px 0 14px;
+  color: #ffffff;
+}
+
+.weather-app .floating-clock-app .clock-display.is-done {
+  color: #fb7185;
+  animation: clockPulse 0.8s ease-in-out infinite;
+}
+
+@keyframes clockPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.weather-app .floating-clock-app .clock-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 8px;
+}
+
+.weather-app .floating-clock-app .clock-controls.two-cols {
+  grid-template-columns: 1fr 1fr;
+}
+
+.weather-app .floating-clock-app .ctrl-btn {
+  padding: 10px 8px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+
+.weather-app .floating-clock-app .ctrl-btn:active {
+  transform: scale(0.96);
+}
+
+.weather-app .floating-clock-app .ctrl-btn.primary {
+  background: rgba(56, 189, 248, 0.32);
+  border-color: rgba(56, 189, 248, 0.55);
+}
+
+.weather-app .floating-clock-app .ctrl-btn.primary.is-running {
+  background: rgba(251, 191, 36, 0.3);
+  border-color: rgba(251, 191, 36, 0.55);
+}
+
+.weather-app .floating-clock-app .lap-list {
+  max-height: 112px;
+  margin-top: 12px;
+  padding: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.weather-app .floating-clock-app .lap-list li {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-secondary);
+}
+
+.weather-app .floating-clock-app .lap-list li:last-child {
+  border-bottom: none;
+}
+
+.weather-app .floating-clock-app .timer-presets {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.weather-app .floating-clock-app .preset-btn {
+  padding: 5px 10px;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.weather-app .floating-clock-app .preset-btn:hover,
+.weather-app .floating-clock-app .preset-btn:active {
+  background: rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+}
+
+.weather-app .floating-clock-app .timer-inputs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.weather-app .floating-clock-app .timer-inputs input {
+  width: 58px;
+  padding: 6px 8px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 600;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+  outline: none;
+}
+
+.weather-app .floating-clock-app .timer-inputs span {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.weather-app .floating-clock-app .timer-progress {
+  width: 100%;
+  height: 5px;
+  margin-bottom: 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.14);
+  overflow: hidden;
+}
+
+.weather-app .floating-clock-app .timer-progress-fill {
+  width: 100%;
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #38bdf8, #818cf8);
+  transition: width 0.2s linear;
+}
+
+/* Bottom-right Scale Resize Handle */
+.weather-app .floating-clock-app .floating-resize-handle {
+  position: absolute;
+  right: 2px;
+  bottom: 2px;
+  z-index: 5;
+  width: 34px;
+  height: 34px;
+  cursor: nwse-resize;
+  touch-action: none;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: 8px;
+  opacity: 0.78;
+  transition: opacity 0.2s ease;
+}
+
+.weather-app .floating-clock-app .floating-resize-handle:hover,
+.weather-app .floating-clock-app .floating-resize-handle:active {
+  opacity: 1;
+}
+
+/* Toast Message */
+.weather-app .app-toast {
+  position: fixed;
+  left: 50%;
+  bottom: calc(28px + env(safe-area-inset-bottom));
+  z-index: 1200;
+  transform: translate(-50%, 16px);
+  padding: 10px 16px;
+  border-radius: var(--radius-pill);
+  background: rgba(16, 22, 38, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 500;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.weather-app .app-toast.is-visible {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+/* Location Picker Drawer / Sheet (.pop-geocode) */
+.weather-app .pop-geocode {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  background: var(--modal-bg);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(20px);
+  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
+}
+
+.weather-app .pop-geocode.is-active {
+  left: 0;
+  z-index: 1000;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.weather-app .pop-geocode .pop-header {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  max-width: 680px;
+  height: auto;
+  padding: calc(16px + env(safe-area-inset-top)) 20px 14px;
+  margin: 0 auto;
+  background: rgba(16, 22, 38, 0.92);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.weather-app .pop-geocode .pop-header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.weather-app .pop-geocode .pop-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.weather-app .pop-geocode .pop-header .close {
+  position: relative;
+  top: auto;
+  right: auto;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.weather-app .pop-geocode .pop-header .close .bar1,
+.weather-app .pop-geocode .pop-header .close .bar2 {
+  width: 16px;
+  left: calc(50% - 8px);
+  background: #ffffff;
+}
+
+.weather-app .pop-geocode .city-search-input {
+  width: 100%;
+  padding: 11px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  font-size: 15px;
+  outline: none;
+  -webkit-appearance: none;
+}
+
+.weather-app .pop-geocode .city-search-input::placeholder {
+  color: var(--text-muted);
+}
+
+.weather-app .pop-geocode .city-list {
+  width: 100%;
+  max-width: 680px;
+  height: calc(100% - 124px - env(safe-area-inset-top));
+  padding: 16px 20px calc(32px + env(safe-area-inset-bottom));
+  margin: 0 auto;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.weather-app .pop-geocode .city-list .depth1 {
+  margin-bottom: 12px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+}
+
+.weather-app .pop-geocode .city-list .depth1 .tit {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--text-primary);
+}
+
+.weather-app .pop-geocode .city-list .depth1 .tit::before {
+  display: none;
+}
+
+.weather-app .pop-geocode .city-list .depth1 .tit::after {
+  content: "▾";
+  font-size: 14px;
+  color: var(--text-secondary);
+  transition: transform 0.2s ease;
+}
+
+.weather-app .pop-geocode .city-list .depth1 .tit.on::after {
+  transform: rotate(180deg);
+}
+
+.weather-app .pop-geocode .city-list .depth1 .tit.on,
+.weather-app .pop-geocode .city-list .depth1 .tit:hover,
+.weather-app .pop-geocode .city-list .depth1 .tit:focus {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.weather-app .pop-geocode .city-list .depth1 > ul {
+  padding: 0;
+  margin: 0;
+}
+
+.weather-app .pop-geocode .city-list .depth1 .tit.on + ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 6px 14px 14px;
+  margin-bottom: 0;
+}
+
+.weather-app .pop-geocode .city-list .depth2 {
+  float: none;
+  margin: 0;
+}
+
+.weather-app .pop-geocode .city-list .depth2 .location {
+  padding: 7px 12px;
+  margin: 0;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.1);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-primary);
+  transition: background 0.2s ease;
+}
+
+.weather-app .pop-geocode .city-list .depth2 .location::before {
+  display: none;
+}
+
+.weather-app .pop-geocode .city-list .depth2 .location:hover,
+.weather-app .pop-geocode .city-list .depth2 .location:active {
+  color: #ffffff;
+  background: rgba(94, 196, 255, 0.35);
+}
+
+/* Guide Modal (.pop-guide) */
+.weather-app .pop-guide {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  padding: calc(24px + env(safe-area-inset-top)) 16px calc(24px + env(safe-area-inset-bottom));
+  background: rgba(8, 12, 24, 0.78);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.weather-app .pop-guide .guide-modal {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  margin: 24px auto;
+  padding: 24px 20px;
+  border-radius: 22px;
+  background: var(--modal-bg);
+  border: 1px solid var(--glass-border);
+  color: var(--text-primary);
+  text-align: left;
+  cursor: default;
+}
+
+.weather-app .pop-guide .guide-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.weather-app .pop-guide .guide-modal-title {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.weather-app .pop-guide .guide-modal-close {
+  padding: 6px 12px;
+  border-radius: var(--radius-pill);
+  border: none;
+  background: rgba(255, 255, 255, 0.14);
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.weather-app .pop-guide .guide-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 0;
+  margin: 0;
+}
+
+.weather-app .pop-guide .guide-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.06);
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--text-secondary);
+}
+
+.weather-app .pop-guide .guide-list li strong {
+  color: var(--text-primary);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Privacy Policy Modal (.popup-private) */
+.weather-app .popup-private {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  width: 100%;
+  max-width: 680px;
+  height: 100%;
+  padding: calc(64px + env(safe-area-inset-top)) 22px calc(40px + env(safe-area-inset-bottom));
+  background: var(--modal-bg);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  color: var(--text-secondary);
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.weather-app .popup-private p,
+.weather-app .popup-private li {
+  color: var(--text-secondary);
+}
+
+.weather-app .popup-private strong,
+.weather-app .popup-private em {
+  color: var(--text-primary);
+}
+
+.weather-app .popup-private .btn-close {
+  position: fixed !important;
+  top: calc(14px + env(safe-area-inset-top)) !important;
+  right: 16px !important;
+  z-index: 1001;
+  padding: 8px 14px !important;
+  border-radius: var(--radius-pill) !important;
+  background: rgba(255, 255, 255, 0.16) !important;
+  color: #ffffff !important;
+  font-size: 13px !important;
+  font-weight: 600;
+}
+
+/* Responsive Tweaks for Small Mobile */
+@media (max-width: 400px) {
+  .weather-app .header .util .city {
+    max-width: 185px;
+    font-size: 13px;
+    padding: 7px 12px;
+  }
+
+  .weather-app .content .today .temperature {
+    font-size: 76px;
+  }
+
+  .weather-app .content .today .weather {
+    width: 60px;
+    height: 60px;
+  }
+
+  .weather-app .content .forecast.daily .time {
+    grid-template-columns: 68px 32px 30px 1fr 30px;
+    gap: 6px;
+  }
+
+  .weather-app .content .detail-card .big-val {
+    font-size: 24px;
+  }
+}
