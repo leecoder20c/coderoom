@@ -277,7 +277,7 @@
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--glass-border);
   text-decoration: none;
-  font-size: 11px;
+  font-size: 16px;
   font-weight: 400;
   color: var(--text-secondary);
   transition: background 0.2s ease, transform 0.15s ease;
@@ -367,7 +367,7 @@
   justify-content: center;
   height: auto;
   padding: 0;
-  font-size: 88px;
+  font-size: 132px;
   font-weight: 200;
   letter-spacing: -0.05em;
   line-height: 0.95;
@@ -377,9 +377,9 @@
 
 .weather-app .content .today .temperature .unit {
   padding-bottom: 0;
-  margin-top: 8px;
+  margin-top: 12px;
   margin-left: 2px;
-  font-size: 32px;
+  font-size: 48px;
   font-weight: 300;
 }
 
@@ -659,7 +659,7 @@
 .weather-app .content .forecast.daily .time {
   position: static;
   display: grid;
-  grid-template-columns: 76px 38px 34px 1fr 34px;
+  grid-template-columns: 76px 38px 1fr;
   align-items: center;
   gap: 8px;
   width: 100%;
@@ -704,22 +704,32 @@
 }
 
 .weather-app .content .forecast.daily .temperature {
-  display: contents;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0 34px;
+  --bar-left: 0.15;
+  --bar-end: 0.85;
 }
 
 .weather-app .content .forecast.daily .temperature .temp-min {
-  grid-column: 3;
+  position: absolute;
+  top: 50%;
+  right: calc(34px + (100% - 68px) * (1 - var(--bar-left)) + 6px);
+  transform: translateY(-50%);
+  white-space: nowrap;
   text-align: right;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.65);
+  color: rgba(255, 255, 255, 0.7);
+  transition: right 0.4s ease;
 }
 
 .weather-app .content .forecast.daily .temp-bar-wrap {
-  grid-column: 4;
+  width: 100%;
   display: flex;
   align-items: center;
-  padding: 0 4px;
+  padding: 0;
 }
 
 .weather-app .content .forecast.daily .temp-bar-track {
@@ -727,7 +737,7 @@
   width: 100%;
   height: 5px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.04);
   overflow: hidden;
 }
 
@@ -735,19 +745,26 @@
   position: absolute;
   top: 0;
   bottom: 0;
-  left: 15%;
-  width: 70%;
+  left: 0;
+  width: 100%;
   border-radius: 999px;
   background: linear-gradient(90deg, #56ccf2 0%, #6ee7b7 45%, #fbbf24 78%, #fb7185 100%);
-  transition: left 0.4s ease, width 0.4s ease;
+  -webkit-clip-path: inset(0 15% 0 15% round 999px);
+  clip-path: inset(0 15% 0 15% round 999px);
+  transition: -webkit-clip-path 0.4s ease, clip-path 0.4s ease;
 }
 
 .weather-app .content .forecast.daily .temperature .temp-max {
-  grid-column: 5;
+  position: absolute;
+  top: 50%;
+  left: calc(34px + (100% - 68px) * var(--bar-end) + 6px);
+  transform: translateY(-50%);
+  white-space: nowrap;
   text-align: left;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
   color: var(--text-primary);
+  transition: left 0.4s ease;
 }
 
 .weather-app .content .forecast.daily .temperature .unit {
@@ -1010,15 +1027,15 @@
 }
 
 .weather-app .floating-clock-app .floating-body {
-  padding: 18px 16px 20px;
+  padding: 10px 10px 12px;
 }
 
 .weather-app .floating-clock-app .floating-topbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 8px;
-  margin-bottom: 14px;
+  gap: 5px;
+  margin-bottom: 6px;
   cursor: grab;
   touch-action: none;
 }
@@ -1046,7 +1063,7 @@
 .weather-app .floating-clock-app .floating-mini-time {
   display: none;
   flex: 1;
-  font-size: 13px;
+  font-size: 20px;
   font-weight: 600;
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
@@ -1061,7 +1078,7 @@
 }
 
 .weather-app .floating-clock-app.is-minimized .floating-body {
-  padding: 10px 12px 10px 14px;
+  padding: 5px 6px 5px 7px;
 }
 
 .weather-app .floating-clock-app.is-minimized .floating-topbar {
@@ -1083,20 +1100,20 @@
   display: flex;
   align-items: center;
   flex-shrink: 0;
-  gap: 6px;
+  gap: 4px;
 }
 
 .weather-app .floating-clock-app .win-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 26px;
-  height: 26px;
+  width: 18px;
+  height: 18px;
   border: none;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.12);
   color: #ffffff;
-  font-size: 14px;
+  font-size: 11px;
   line-height: 1;
   cursor: pointer;
 }
@@ -1110,19 +1127,19 @@
   min-width: 0;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 4px;
-  padding: 3px;
-  border-radius: 12px;
+  gap: 2px;
+  padding: 2px;
+  border-radius: 7px;
   background: rgba(255, 255, 255, 0.08);
 }
 
 .weather-app .floating-clock-app .tab-btn {
-  padding: 7px 0;
+  padding: 3px 0;
   border: none;
-  border-radius: 9px;
+  border-radius: 5px;
   background: transparent;
   color: var(--text-secondary);
-  font-size: 13px;
+  font-size: 10px;
   font-weight: 600;
   cursor: pointer;
   transition: background 0.2s ease, color 0.2s ease;
@@ -1143,12 +1160,12 @@
 
 .weather-app .floating-clock-app .clock-display {
   text-align: center;
-  font-size: 40px;
-  font-weight: 300;
+  font-size: 48px;
+  font-weight: 400;
   letter-spacing: -0.02em;
-  line-height: 1.15;
+  line-height: 1.08;
   font-variant-numeric: tabular-nums;
-  margin: 6px 0 14px;
+  margin: 4px 0 8px;
   color: #ffffff;
 }
 
@@ -1165,7 +1182,7 @@
 .weather-app .floating-clock-app .clock-controls {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 8px;
+  gap: 4px;
 }
 
 .weather-app .floating-clock-app .clock-controls.two-cols {
@@ -1173,12 +1190,12 @@
 }
 
 .weather-app .floating-clock-app .ctrl-btn {
-  padding: 10px 8px;
-  border-radius: 12px;
+  padding: 5px 4px;
+  border-radius: 7px;
   border: 1px solid rgba(255, 255, 255, 0.14);
   background: rgba(255, 255, 255, 0.1);
   color: #ffffff;
-  font-size: 13px;
+  font-size: 10px;
   font-weight: 600;
   cursor: pointer;
   transition: background 0.15s ease, transform 0.1s ease;
@@ -1200,7 +1217,7 @@
 
 .weather-app .floating-clock-app .lap-list {
   max-height: 112px;
-  margin-top: 12px;
+  margin-top: 6px;
   padding: 0;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
@@ -1209,9 +1226,9 @@
 .weather-app .floating-clock-app .lap-list li {
   display: flex;
   justify-content: space-between;
-  padding: 6px 8px;
+  padding: 3px 5px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  font-size: 12px;
+  font-size: 10px;
   font-variant-numeric: tabular-nums;
   color: var(--text-secondary);
 }
@@ -1224,17 +1241,17 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 6px;
-  margin-bottom: 12px;
+  gap: 3px;
+  margin-bottom: 6px;
 }
 
 .weather-app .floating-clock-app .preset-btn {
-  padding: 5px 10px;
+  padding: 2px 6px;
   border-radius: var(--radius-pill);
   border: 1px solid rgba(255, 255, 255, 0.14);
   background: rgba(255, 255, 255, 0.08);
   color: var(--text-secondary);
-  font-size: 12px;
+  font-size: 10px;
   font-weight: 500;
   cursor: pointer;
 }
@@ -1249,18 +1266,18 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
-  margin-bottom: 12px;
+  gap: 4px;
+  margin-bottom: 6px;
 }
 
 .weather-app .floating-clock-app .timer-inputs input {
-  width: 58px;
-  padding: 6px 8px;
-  border-radius: 10px;
+  width: 40px;
+  padding: 3px 4px;
+  border-radius: 6px;
   border: 1px solid rgba(255, 255, 255, 0.18);
   background: rgba(255, 255, 255, 0.08);
   color: #ffffff;
-  font-size: 15px;
+  font-size: 11px;
   font-weight: 600;
   text-align: center;
   font-variant-numeric: tabular-nums;
@@ -1268,14 +1285,14 @@
 }
 
 .weather-app .floating-clock-app .timer-inputs span {
-  font-size: 12px;
+  font-size: 10px;
   color: var(--text-secondary);
 }
 
 .weather-app .floating-clock-app .timer-progress {
   width: 100%;
-  height: 5px;
-  margin-bottom: 14px;
+  height: 3px;
+  margin-bottom: 6px;
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.14);
   overflow: hidden;
@@ -1650,7 +1667,7 @@
   }
 
   .weather-app .content .today .temperature {
-    font-size: 76px;
+    font-size: 114px;
   }
 
   .weather-app .content .today .weather {
@@ -1659,7 +1676,7 @@
   }
 
   .weather-app .content .forecast.daily .time {
-    grid-template-columns: 68px 32px 30px 1fr 30px;
+    grid-template-columns: 68px 32px 1fr;
     gap: 6px;
   }
 
