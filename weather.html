@@ -56,7 +56,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700&family=Nanum+Gothic:wght@400;700&family=Poiret+One&family=Potta+One&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./lib/css/base.css?v=20261120" />
-  <link rel="stylesheet" href="./lib/css/weather-ui.css?v=20261120-7" />
+  <link rel="stylesheet" href="./lib/css/weather-ui.css?v=20261123-4" />
   <script>
     function getTime(data) {
       var now = new Date();
@@ -1309,7 +1309,11 @@
             $row.find('.date .value').text(date.slice(-2));
             $row.find('.temp-min .value').text(Math.round(dayMin));
             $row.find('.temp-max .value').text(Math.round(dayMax));
-            $row.find('.temp-bar-fill').css({ left: barLeft.toFixed(1) + '%', width: barWidth.toFixed(1) + '%' });
+            let barEnd = Math.min(100, barLeft + barWidth);
+            let barRight = Math.max(0, 100 - barEnd);
+            let clipInset = 'inset(0 ' + barRight.toFixed(1) + '% 0 ' + barLeft.toFixed(1) + '% round 999px)';
+            $row.find('.temperature').css({ '--bar-left': (barLeft / 100).toFixed(4), '--bar-end': (barEnd / 100).toFixed(4) });
+            $row.find('.temp-bar-fill').css({ '-webkit-clip-path': clipInset, 'clip-path': clipInset });
             $row.find('.weather-img .icon').attr('src', './lib/images/weather/icon/' + temps.icon + '.svg');
             $row.find('.weather-img .icon').attr('data-stat', temps.icon);//아이콘 움직임
             $row.find('.desc .value').text(temps.desc);
